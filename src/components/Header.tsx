@@ -1,0 +1,30 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+const Header: React.FC = () => {
+  return (
+    <header className="bg-gray-800 text-white p-4">
+      <nav className="container mx-auto flex justify-between">
+        <Link to="/" className="text-lg font-bold">
+          E-Portfolio
+        </Link>
+        <div className="space-x-4">
+          <Link to="/" className="hover:underline">
+            Home
+          </Link>
+          <Link to="/about" className="hover:underline">
+            About Me
+          </Link>
+          <Link to="/projects" className="hover:underline">
+            Projects
+          </Link>
+          <Link to="/contact" className="hover:underline">
+            Contact
+          </Link>
+        </div>
+      </nav>
+    </header>
+  );
+};
+
+export default Header;
