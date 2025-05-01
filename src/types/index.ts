@@ -6,6 +6,7 @@ export interface Project {
     background: string;
     realizations: string;
     learnings: string;
+    videoUrl?: string;
 }
 
 export interface ContactForm {

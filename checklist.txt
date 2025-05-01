@@ -1,3 +1,61 @@
+
+
+
+## e-portfolio
+- how should i create my e-portifolio
+	- what web formates are the best i study: cloud cyber security
+- it should contain a menu bar
+	- Must be reachable on every page
+		- Contains a direct reference to 
+			- Homapage
+			- About me 
+			- Project / achivements
+
+### Content
+- Home page / welcome
+	- Introduce yourself briefly
+	- Welcome the read in a professional manner
+- About me
+	- Introduce myself
+	- Appropraite photo
+	- Why you chose applied Electronics-ict
+	- Hobbies that set me a part form other (GYM, HOMELAB(VPN, Minecraft server hosting, rust develpemnt))
+	- Future dreams & professional ambitions
+- About me: CV
+	- CV in HTML format
+		- need to be viewed in a separte page
+		- provide download link in pdfd
+		- the name of the download is and must be in CV_Myname.pdf
+- Projects - Realisations:
+	- what do i execl at: security and cloud develpment
+	- these project need to be discussed:
+		- Project semester 1 skills 2. packet automate
+			- Automatic communication for from low lever boards to high level (PCB (rassbery pi to laptop via internet and with ipv6))
+		- Project semeseter 2 skill 2. Hosting platform
+			- Siem stack creation
+		- And at least 2 more project
+			- biceps configuration with microsoft azure
+			- aws hosting platform
+	- IN each project we need to have sufficent context & background
+		- what subject it was as stated in ECTS sheets
+		- WHO what where why
+		- Concrete & specific realistation
+		- what i have learned
+- Projects - Achievements
+	- Context & Background: what subject ?  who? hwat? where? why?
+	- Concrete & specific realisations
+	- what you have learned
+	- Dont just linke the document behind the tile on your webpage
+	- Use visuals whenever possible
+	- In case of group work, make clear which part you did 
+	- Use subetitile consistnety
+- Design - Language
+	- Easy to see / Open
+	- in the apporite format
+		- zip execel
+		- DO: pfd, HTML, Movies, Screenshots
+		- No langauge mistakes
+
 # content Per Page
 
 ### Home

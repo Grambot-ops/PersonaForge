@@ -13,16 +13,17 @@ const About: React.FC = () => {
         <section className="py-10 px-5">
             <div className="flex flex-col md:flex-row items-center max-w-4xl mx-auto">
                 <img 
-                    src="/profile.jpg" 
+                    src="/images/profile.png" 
                     alt="Maximus" 
                     className="rounded-full w-48 h-48 object-cover mb-8 md:mb-0 md:mr-10 shadow-lg border-4 border-white"
                 />
                 <div className="md:flex-1">
                     <p className="text-lg mb-6 text-gray-700 leading-relaxed">
-                        Hello! I'm Maximus, a passionate Cloud & Cybersecurity Professional with a strong foundation in 
-                        Applied Electronics-ICT. I chose this field because it combines my love for technology with 
-                        practical applications in security. The crossover between hardware understanding and software 
-                        implementation gives me an edge in building secure systems from the ground up.
+                    I am a motivated IT student with a broad passion for technology. After completing two years of ICT studies at KOSH in secondary education, 
+                    I am now pursuing a bachelor's degree in Cyber/Computer Forensics and Counterterrorism at Thomas More University of Applied Sciences.
+                    Through various internships and student jobs, I have gained valuable foundational experience in IT as well as in other sectors.
+                    I am a proactive and curious team player, always eager to take initiative and contribute actively to problem-solving. 
+                    I have strong communication skills and a continuous drive to learn new technologies and concepts.
                     </p>
                     
                     <div className="mb-6">

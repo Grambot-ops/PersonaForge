@@ -21,106 +21,123 @@ const CV: React.FC = () => {
         
         <div className="bg-white shadow-lg rounded-lg p-8 max-w-4xl mx-auto">
           <div className="mb-10">
-            <h2 className="text-3xl font-bold mb-4 text-gray-800">Maximus</h2>
-            <p className="text-lg text-gray-600 mb-2">Cloud & Cybersecurity Professional</p>
+            <h2 className="text-3xl font-bold mb-4 text-gray-800">Maximus Mukiza</h2>
+            <p className="text-lg text-gray-600 mb-2">Bachelor Student at Thomas More University of Applied Sciences</p>
             <div className="flex flex-wrap gap-4 text-sm text-gray-600">
-              <span>maximus@example.com</span>
-              <span>San Francisco, CA</span>
-              <span>(555) 123-4567</span>
+              <span>0456190617</span>
+              <span>Vorselaar, Flemish Region</span>
+              <a href="https://linkedin.com/in/maximus-mukiza-1523a5297" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                LinkedIn Profile
+              </a>
             </div>
           </div>
           
-          <div className="mb-10">
+          <div className="mb-8">
+            <h3 className="text-xl font-bold mb-4 border-b-2 border-blue-600 pb-2">Profile</h3>
+            <p className="text-gray-700 mb-2">
+              Motivated IT student with a broad interest in technology. I studied ICT for two years in secondary education (KOSH) 
+              and am currently pursuing a bachelor's degree in Cyber/Computer Forensics and Counterterrorism at Thomas More University of Applied Sciences.
+            </p>
+            <p className="text-gray-700">
+              During various internships and student jobs, I gained basic experience in both IT and other sectors. 
+              I'm an eager team player who likes to take initiative and actively contributes to problem-solving. 
+              Strong in communication and always willing to learn new technologies and concepts.
+            </p>
+          </div>
+          
+          <div className="mb-8">
             <h3 className="text-xl font-bold mb-4 border-b-2 border-blue-600 pb-2">Education</h3>
-            <div className="mb-6">
+            <div className="mb-4">
               <div className="flex flex-col md:flex-row justify-between mb-2">
-                <h4 className="font-semibold text-lg">Bachelor of Science - Applied Electronics-ICT</h4>
-                <span className="text-gray-600">2018 - 2022</span>
+                <h4 className="font-semibold text-lg">Bachelor's degree, CyberSecurity/Computer Forensics and Counterterrorism</h4>
+                <span className="text-gray-600">09-2023 - 09-2026</span>
               </div>
               <p className="text-gray-700">Thomas More University of Applied Sciences</p>
-              <ul className="list-disc ml-5 mt-2 text-gray-700">
-                <li>Specialized in cybersecurity and cloud infrastructure</li>
-                <li>Completed senior project on secure cloud architectures</li>
-                <li>Graduated with distinction</li>
-              </ul>
+            </div>
+            
+            <div>
+              <div className="flex flex-col md:flex-row justify-between mb-2">
+                <h4 className="font-semibold text-lg">Secondary Degree, Information Technology</h4>
+                <span className="text-gray-600">09-2018 - 05-2022</span>
+              </div>
+              <p className="text-gray-700">KOSH</p>
             </div>
           </div>
           
-          <div className="mb-10">
-            <h3 className="text-xl font-bold mb-4 border-b-2 border-blue-600 pb-2">Professional Experience</h3>
+          <div className="mb-8">
+            <h3 className="text-xl font-bold mb-4 border-b-2 border-blue-600 pb-2">Work Experience</h3>
             
             <div className="mb-6">
               <div className="flex flex-col md:flex-row justify-between mb-2">
-                <h4 className="font-semibold text-lg">Senior Cloud Security Architect</h4>
-                <span className="text-gray-600">2020 - Present</span>
+                <h4 className="font-semibold text-lg">Fitness Instructor / Assistant</h4>
+                <span className="text-gray-600">04-2024 - 11-2024</span>
               </div>
-              <p className="font-medium text-gray-800 mb-2">Enterprise Security Solutions</p>
+              <p className="font-medium text-gray-800 mb-2">OmniMove - Health, Wellbeing & Performance coaching, Belgium</p>
               <ul className="list-disc ml-5 text-gray-700">
-                <li>Lead architect for cloud security solutions for Fortune 500 clients</li>
-                <li>Designed and implemented zero-trust architectures across multi-cloud environments</li>
-                <li>Developed security frameworks compliant with NIST and ISO 27001 standards</li>
-                <li>Led a team of 5 security engineers in delivering enterprise-scale solutions</li>
+                <li>Developed and delivered more than 20 personalized fitness programs tailored to individual client needs</li>
+                <li>Provided expert advice on training techniques and program follow-up, improving client results</li>
+                <li>Assisted with sales by promoting and selling fitness subscriptions, contributing to revenue growth</li>
+                <li>Managed client registrations and ensured a smooth onboarding process</li>
+                <li>Acted as the first point of contact for clients, answering questions and providing fitness advice</li>
               </ul>
             </div>
             
-            <div className="mb-6">
+            <div>
               <div className="flex flex-col md:flex-row justify-between mb-2">
-                <h4 className="font-semibold text-lg">Cloud Security Engineer</h4>
-                <span className="text-gray-600">2017 - 2020</span>
+                <h4 className="font-semibold text-lg">IT Assistant (Student)</h4>
+                <span className="text-gray-600">07-2024 - 08-2024</span>
               </div>
-              <p className="font-medium text-gray-800 mb-2">TechSecure Inc.</p>
+              <p className="font-medium text-gray-800 mb-2">B-PAC BV, Grobbendonk, Vlaanderen, België</p>
               <ul className="list-disc ml-5 text-gray-700">
-                <li>Designed and implemented security solutions for AWS and Azure environments</li>
-                <li>Led a team of security analysts in developing automated compliance monitoring</li>
-                <li>Integrated security controls into CI/CD pipelines for automated security validation</li>
+                <li>Revamped the sales website, optimizing navigation for customers and improving customer retention</li>
+                <li>Created and carefully selected product photos, ensuring an attractive online presence</li>
+                <li>Enhanced user experience by aligning website design with customer preferences and company objectives</li>
+                <li>Effectively collaborated with a diverse team of various ages, strengthening communication and collaboration skills</li>
               </ul>
             </div>
           </div>
           
-          <div className="mb-10">
-            <h3 className="text-xl font-bold mb-4 border-b-2 border-blue-600 pb-2">Technical Skills</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <h3 className="text-xl font-bold mb-4 border-b-2 border-blue-600 pb-2">Skills</h3>
+              <ul className="list-disc ml-5 text-gray-700">
+                <li>Adaptation</li>
+                <li>Management</li>
+                <li>Customer Satisfaction</li>
+                <li>Problem Solving</li>
+                <li>Communication</li>
+              </ul>
+            </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <h4 className="font-semibold mb-2">Cloud Platforms</h4>
-                <p className="text-gray-700">AWS, Azure, Google Cloud Platform</p>
-              </div>
-              
-              <div>
-                <h4 className="font-semibold mb-2">Security</h4>
-                <p className="text-gray-700">Zero-Trust Architecture, SIEM, WAF, IDS/IPS</p>
-              </div>
-              
-              <div>
-                <h4 className="font-semibold mb-2">Infrastructure as Code</h4>
-                <p className="text-gray-700">Terraform, AWS CloudFormation, Azure Bicep</p>
-              </div>
-              
-              <div>
-                <h4 className="font-semibold mb-2">Programming</h4>
-                <p className="text-gray-700">Python, Rust, JavaScript, Bash</p>
-              </div>
-              
-              <div>
-                <h4 className="font-semibold mb-2">Containers & Orchestration</h4>
-                <p className="text-gray-700">Docker, Kubernetes, ECS</p>
-              </div>
-              
-              <div>
-                <h4 className="font-semibold mb-2">Compliance</h4>
-                <p className="text-gray-700">NIST CSF, ISO 27001, GDPR, HIPAA</p>
-              </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4 border-b-2 border-blue-600 pb-2">Languages</h3>
+              <ul className="list-disc ml-5 text-gray-700">
+                <li>Nederlands</li>
+                <li>Frans</li>
+                <li>Engels</li>
+                <li>Kinyarwanda</li>
+              </ul>
             </div>
           </div>
           
-          <div>
-            <h3 className="text-xl font-bold mb-4 border-b-2 border-blue-600 pb-2">Certifications</h3>
-            <ul className="list-disc ml-5 text-gray-700">
-              <li>AWS Certified Security Specialty</li>
-              <li>Microsoft Certified: Azure Security Engineer Associate</li>
-              <li>Certified Information Systems Security Professional (CISSP)</li>
-              <li>Certified Cloud Security Professional (CCSP)</li>
-            </ul>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-bold mb-4 border-b-2 border-blue-600 pb-2">Hobbies & Interests</h3>
+              <ul className="list-disc ml-5 text-gray-700">
+                <li>Cycling</li>
+                <li>Environment Virtualization</li>
+                <li>Homelab (VPNs, Minecraft server hosting)</li>
+                <li>Rust Development</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-xl font-bold mb-4 border-b-2 border-blue-600 pb-2">Certifications</h3>
+              <ul className="list-disc ml-5 text-gray-700">
+                <li>LPI Certifications (12-2023)</li>
+                <li>Driver's License (12-2024)</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
