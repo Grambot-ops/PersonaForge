@@ -1,0 +1,68 @@
+# content Per Page
+
+### Home
+
+- Short professional welcome
+- Introduce yourself in 2-3 sentences
+- Possibly a professional background image or banner
+- Call to action (LEarn more about me or view my prjects)
+    
+
+### About Me
+
+- Short biography (who you are, where you're from)
+    
+- Photo (professional but friendly)
+    
+- Why you chose **Applied Electronics-ICT**
+    
+- Hobbies: **Gym**, **Homelab** (VPNs, Minecraft server hosting, Rust development)
+    
+- Professional ambitions and future dreams
+    
+
+### CV (Subpage of About Me)
+
+- HTML CV: easy to read on the site
+    
+- Button to download your CV (`CV_YourName.pdf`)
+    
+
+**Projects & Achievements**
+
+- **Project 1: Semester 1 Skills 2 - Packet Automation**
+    - Context & Background (subject, who, what, where, why)
+    - Concrete realisation (details of the project)
+    - Learnings
+    - Visuals (screenshots, diagrams, etc.)
+
+- **Project 2: Semester 2 Skills 2 - SIEM Stack Creation**
+    - Context & Background
+    - Concrete realisation
+    - Learnings
+    - Visuals
+
+- **Project 3: Bicep Configuration with Microsoft Azure**
+    - Context & Background
+    - Concrete realisation
+    - Learnings
+    - Visuals
+
+- **Project 4: AWS Hosting Platform**
+    - Context & Background
+    - Concrete realisation
+    - Learnings
+    - Visuals
+- **Project 4: iot project**
+- 
+    
+5. **Design & Language Guidelines**
+    
+    - Ensure easy readability and open design
+    - Use appropriate formats (PDF, HTML, Movies, Screenshots)
+    - Avoid language mistakes (proofread carefully)
+    
+
+### Contact (optional)
+
+- A simple email link or form

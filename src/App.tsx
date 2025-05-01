@@ -6,11 +6,17 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
+import CV from "./pages/CV";
 import NotFound from "./pages/NotFound";
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <Router
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}
+    >
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow">
@@ -19,6 +25,7 @@ const App: React.FC = () => {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/cv" element={<CV />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
