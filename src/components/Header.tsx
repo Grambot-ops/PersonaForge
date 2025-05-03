@@ -21,7 +21,7 @@ const Header: React.FC = () => {
             <span className="text-2xl font-bold bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color)] bg-clip-text text-transparent">
               Maximus
             </span>
-            <span className="text-sm text-gray-500">Cloud & Security</span>
+            <span className="text-sm text-gray-500">Student</span>
           </Link>
 
           {/* Desktop Navigation */}

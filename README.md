@@ -1,6 +1,6 @@
 # E-Portfolio Website
 
-This is a personal e-portfolio website built using React, TypeScript, and Tailwind CSS. The website showcases personal information, projects, and contact details in a clean and modern design.
+This is a personal e-portfolio website built using React, TypeScript, and Tailwind CSS. The website showcases the learning journey, projects, and skills of a Cloud & Cybersecurity student.
 
 ## Features
 
@@ -32,17 +32,20 @@ e-portfolio-website
 ## Installation
 
 1. Clone the repository:
+
    ```
    git clone <repository-url>
    cd e-portfolio-website
    ```
 
 2. Install dependencies:
+
    ```
    npm install
    ```
 
 3. Start the development server:
+
    ```
    npm start
    ```
