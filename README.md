@@ -21,7 +21,7 @@ e-portfolio-website
 │   ├── pages             # Page components
 │   ├── styles            # Global styles
 │   ├── App.tsx          # Main app component
-│   ├── main.tsx         # Entry point for the React app
+│   ├── index.tsx         # Entry point for the React app (Corrected from main.tsx)
 │   └── types             # Custom types and interfaces
 ├── package.json          # NPM configuration
 ├── tsconfig.json         # TypeScript configuration
@@ -61,4 +61,4 @@ e-portfolio-website
 
 ## License
 
-This project is licensed under the MIT License. Feel free to use and modify it as you wish.# PersonaForge
+This project is licensed under the MIT License. Feel free to use and modify it as you wish.

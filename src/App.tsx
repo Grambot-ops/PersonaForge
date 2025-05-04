@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async"; // Import HelmetProvider
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import BackToTop from "./components/BackToTop";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -33,6 +34,7 @@ const App: React.FC = () => {
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
+          <BackToTop />
           <Footer />
         </div>
       </Router>

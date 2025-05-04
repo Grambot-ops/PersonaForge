@@ -1,5 +1,16 @@
 import React, { useState } from "react";
+import { IconContext } from "react-icons";
 import { ContactForm } from "../types";
+import {
+  FaPaperPlane,
+  FaExclamationCircle,
+  FaCheckCircle,
+} from "react-icons/fa";
+
+// Cast the icon components to React.ElementType
+const PaperPlaneIcon = FaPaperPlane as React.ElementType;
+const ExclamationCircleIcon = FaExclamationCircle as React.ElementType;
+const CheckCircleIcon = FaCheckCircle as React.ElementType;
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState<ContactForm>({
@@ -68,100 +79,146 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-xl shadow-lg border border-gray-100">
-      <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
+    <div className="max-w-md mx-auto p-6 bg-white dark:bg-gray-700 rounded-xl shadow-lg border border-gray-100 dark:border-gray-600 transition-colors duration-200">
+      <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 dark:text-white">
         Get In Touch
       </h2>
 
-      {submitSuccess ? (
-        <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded mb-6">
-          <p>
-            Thank you for your message! I'll get back to you as soon as
-            possible.
-          </p>
-          <button
-            onClick={() => setSubmitSuccess(false)}
-            className="mt-2 text-sm text-green-700 underline"
-          >
-            Send another message
-          </button>
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label
-              className="block text-sm font-medium mb-2 text-gray-700"
-              htmlFor="name"
-            >
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-sm font-medium mb-2 text-gray-700"
-              htmlFor="email"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-sm font-medium mb-2 text-gray-700"
-              htmlFor="message"
-            >
-              Message
-            </label>
-            <textarea
-              id="message"
-              value={formData.message}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-              rows={4}
-              required
-            ></textarea>
-          </div>
-
-          {submitError && (
-            <div className="mb-4 p-3 bg-red-50 text-red-700 rounded-lg border border-red-200">
-              {submitError}
+      <IconContext.Provider value={{ className: "react-icons" }}>
+        {submitSuccess ? (
+          <div className="bg-green-50 dark:bg-green-900 border border-green-200 dark:border-green-700 text-green-700 dark:text-green-200 px-4 py-3 rounded mb-6 animate-fadeIn">
+            <div className="flex items-center mb-2">
+              <CheckCircleIcon className="mr-2" aria-hidden="true" />
+              <p className="font-medium">Message sent successfully!</p>
             </div>
-          )}
+            <p>
+              Thank you for your message! I'll get back to you as soon as
+              possible.
+            </p>
+            <button
+              onClick={() => setSubmitSuccess(false)}
+              className="mt-4 text-sm text-green-700 dark:text-green-300 underline focus:outline-none focus:ring-2 focus:ring-green-500"
+            >
+              Send another message
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="animate-slideInBottom">
+            <div className="mb-4">
+              <label
+                className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300"
+                htmlFor="name"
+              >
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                required
+                aria-required="true"
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300"
+                htmlFor="email"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                required
+                aria-required="true"
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300"
+                htmlFor="message"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                value={formData.message}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                rows={4}
+                required
+                aria-required="true"
+              ></textarea>
+            </div>
 
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className={`w-full p-3 rounded-lg font-medium transition-all duration-200 ${
-              isSubmitting
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-blue-600 hover:bg-blue-700 text-white"
-            }`}
-          >
-            {isSubmitting ? "Sending..." : "Send Message"}
-          </button>
-        </form>
-      )}
+            {submitError && (
+              <div
+                role="alert"
+                className="mb-4 p-3 bg-red-50 dark:bg-red-900 text-red-700 dark:text-red-200 rounded-lg border border-red-200 dark:border-red-700 flex items-start"
+              >
+                <ExclamationCircleIcon
+                  className="mt-1 mr-2 flex-shrink-0"
+                  aria-hidden="true"
+                />
+                <span>{submitError}</span>
+              </div>
+            )}
 
-      <div className="mt-6 pt-6 border-t border-gray-200 text-center text-sm text-gray-600">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={`w-full p-3 rounded-lg font-medium transition-all duration-200 flex justify-center items-center ${
+                isSubmitting
+                  ? "bg-gray-400 dark:bg-gray-600 cursor-not-allowed"
+                  : "bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white"
+              }`}
+              aria-busy={isSubmitting}
+            >
+              {isSubmitting ? (
+                <>
+                  <svg
+                    className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                  Sending...
+                </>
+              ) : (
+                <>
+                  <PaperPlaneIcon className="mr-2" aria-hidden="true" /> Send
+                  Message
+                </>
+              )}
+            </button>
+          </form>
+        )}
+      </IconContext.Provider>
+
+      <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-600 text-center text-sm text-gray-600 dark:text-gray-400">
         <p>Prefer email? Reach me at:</p>
         <a
           href="mailto:maximusmukiza08@gmail.com"
-          className="text-blue-600 hover:underline"
+          className="text-blue-600 dark:text-blue-400 hover:underline"
         >
           maximusmukiza08@gmail.com
         </a>

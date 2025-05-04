@@ -21,6 +21,7 @@ const CV: React.FC = () => {
             href="/CV_Maximus.pdf"
             download
             className="btn btn-primary flex items-center"
+            aria-label="Download CV"
           >
             <svg
               className="w-4 h-4 mr-2"

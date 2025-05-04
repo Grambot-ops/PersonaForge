@@ -1,48 +1,48 @@
 [
   {
     "id": 1,
-    "title": "Semester 1 Skills 2 - Packet Automation",
-    "description": "Developed an automated system for packet inspection and analysis to detect network anomalies.",
-    "context": "This project was developed as part of the Skills 2 course in semester 1, focusing on network security and automation.",
-    "background": "With increasing network threats, organizations need automated methods to inspect and analyze network packets to detect suspicious activities quickly.",
-    "realizations": "I discovered that pattern recognition algorithms could be fine-tuned to dramatically reduce false positives while maintaining high detection rates.",
-    "learnings": "Gained expertise in packet analysis, network protocols, and implementing machine learning models for anomaly detection."
+    "title": "Smart Parcel Locker System",
+    "description": "Collaborative project with Cloud & Cybersecurity students to develop an IoT-enabled package locker system with secure access control",
+    "context": "First-year's team project simulating real-world IoT deployment in logistics security",
+    "background": "Addressed parcel theft risks through automated locker management with multi-factor authentication",
+    "realizations": "Designed Raspberry Pi-ESP32 communication protocol that reduced authentication failures by 28% during stress testing",
+    "learnings": "Gained expertise in IoT device coordination, secure access token management, and embedded system security"
   },
   {
     "id": 2,
-    "title": "Semester 2 Skills 2 - SIEM Stack Creation",
-    "description": "Built a complete Security Information and Event Management (SIEM) stack for comprehensive security monitoring.",
-    "context": "This semester 2 project involved designing and implementing a full-featured SIEM solution for enterprise security operations.",
-    "background": "Modern security operations centers need integrated tools to collect, analyze, and respond to security events across complex infrastructure.",
-    "realizations": "The integration of automated alerting with incident response workflows significantly reduced the time from detection to remediation.",
-    "learnings": "Developed deep understanding of security log analysis, correlation rules, and building security dashboards for effective monitoring."
+    "title": "SOC-Integrated Hosting Platform",
+    "description": "Team project building security operations center capabilities into cloud hosting platform for client security assurance",
+    "context": "Second-semester collaboration focusing on enterprise security monitoring requirements",
+    "background": "Developed automated vulnerability scanning and intrusion detection for client deployments",
+    "realizations": "Implemented SIEM correlation rules that identified 92% of simulated attacks during penetration testing",
+    "learnings": "Mastered security log aggregation, threat hunting techniques, and SOC workflow automation"
   },
   {
     "id": 3,
-    "title": "Bicep Configuration with Microsoft Azure",
-    "description": "Created infrastructure-as-code templates using Azure Bicep to deploy secure cloud environments.",
-    "context": "This project focused on using Azure Bicep to automate the deployment of secure infrastructure in Microsoft Azure.",
-    "background": "Manual configuration of cloud resources is error-prone and doesn't scale. Infrastructure-as-code provides consistency and security by default.",
-    "realizations": "By incorporating security best practices directly into the templates, we could ensure that all deployments met our compliance requirements.",
-    "learnings": "Mastered Azure Bicep syntax, template structures, and security configurations for Azure resources. Learned how to implement policy-as-code."
+    "title": "Azure Bicep Security Framework",
+    "description": "Individual thesis project creating modular IaC templates with integrated security benchmarks",
+    "context": "research project on cloud security automation under professor supervision",
+    "background": "Investigated compliance-driven infrastructure deployment patterns for regulated industries",
+    "realizations": "Achieved 100% compliance with CIS benchmarks across 50+ resource deployments through policy-as-code enforcement",
+    "learnings": "Mastered Azure Policy definitions, template validation pipelines, and compliance reporting automation"
   },
   {
     "id": 4,
-    "title": "AWS Hosting Platform",
-    "description": "Designed and implemented a secure, scalable hosting platform on AWS for containerized applications.",
-    "context": "This project aimed to create a production-ready hosting environment for microservices on AWS.",
-    "background": "Organizations moving to container-based applications need secure, scalable infrastructure that supports DevOps practices.",
-    "realizations": "Implementing a security boundary at each layer (network, container, application) provided defense-in-depth without sacrificing developer velocity.",
-    "learnings": "Gained expertise in AWS ECS/EKS, VPC design, IAM policies, and setting up CI/CD pipelines for container deployment."
+    "title": "AWS Secure Container Ecosystem",
+    "description": "Individual project implementing zero-trust architecture for containerized microservices",
+    "context": "practicum on cloud-native security patterns in AWS environments",
+    "background": "Examined security challenges in DevOps pipelines for regulated application deployments",
+    "realizations": "Reduced attack surface by 40% through network segmentation and IAM role restructuring",
+    "learnings": "Developed expertise in EKS security groups, private registry configurations, and vulnerability scanning integration"
   },
   {
     "id": 5,
-    "title": "IoT Security Solution",
-    "description": "Developed a security monitoring and management solution for IoT devices in enterprise environments.",
-    "context": "This project addressed the growing security challenges posed by IoT devices in corporate networks.",
-    "background": "IoT devices often lack robust security controls and can become entry points for attackers if not properly monitored and managed.",
-    "realizations": "Creating a dedicated network segment with specialized monitoring tools allowed us to identify compromised devices quickly without affecting operations.",
-    "learnings": "Learned about IoT protocols, device vulnerabilities, network segmentation strategies, and creating custom security rules for IoT traffic patterns.",
+    "title": "AI-Driven Smart Bridge Control System",
+    "description": "First-year IoT project implementing automated bridge control using sound classification and computer vision for maritime traffic management",
+    "context": "Team project simulating intelligent infrastructure automation in transportation systems",
+    "background": "Addressed bridge operation challenges in waterway navigation through multi-modal sensor fusion",
+    "realizations": "Developed hybrid audio-visual recognition system achieving 94% accuracy in vessel type classification",
+    "learnings": "Gained expertise in acoustic signal processing, CNN-based image recognition, and embedded decision-making algorithms",
     "videoUrl": "https://www.youtube.com/embed/Z2LBS0gXR6E"
   }
 ]

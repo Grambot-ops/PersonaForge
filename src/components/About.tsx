@@ -11,27 +11,34 @@ const About: React.FC = () => {
 
   return (
     <section className="py-10 px-5">
-      <div className="flex flex-col md:flex-row items-center max-w-4xl mx-auto">
+      {/* Adjusted container for better alignment and spacing */}
+      <div className="flex flex-col md:flex-row items-center md:items-start max-w-5xl mx-auto gap-8 md:gap-16">
+        {/* Increased image size and margin */}
         <img
           src="/images/Profile.png"
           alt="Profile of Maximus"
-          className="rounded-full w-48 h-48 object-cover mb-8 md:mb-0 md:mr-10 shadow-lg border-4 border-white"
+          className="rounded-full w-56 h-56 object-cover mb-4 md:mb-0 shadow-lg border-4 border-white flex-shrink-0" // Increased size, added flex-shrink-0
         />
-        <div className="md:flex-1">
-          <p className="text-lg mb-6 text-gray-700 leading-relaxed">
-            I am a motivated IT student with a broad passion for technology.
-            After completing two years of ICT studies at KOSH in secondary
-            education, I am now pursuing a bachelor's degree in Cyber/Computer
-            Forensics and Counterterrorism at Thomas More University of Applied
-            Sciences. Through various internships and student jobs, I have
-            gained valuable foundational experience in IT as well as in other
-            sectors. I am a proactive and curious team player, always eager to
-            take initiative and contribute actively to problem-solving. I have
-            strong communication skills and a continuous drive to learn new
-            technologies and concepts.
+        {/* Adjusted text container width */}
+        <div className="flex-grow">
+          {" "}
+          {/* Changed from md:flex-1 to flex-grow */}
+          <p className="text-lg mb-6 text-gray-700 leading-relaxed max-w-prose">
+            {" "}
+            {/* Added max-w-prose */}I am a motivated IT student with a broad
+            passion for technology. After completing two years of ICT studies at
+            KOSH in secondary education, I am now pursuing a bachelor's degree
+            in Cyber/Computer Forensics and Counterterrorism at Thomas More
+            University of Applied Sciences. Through various internships and
+            student jobs, I have gained valuable foundational experience in IT
+            as well as in other sectors. I am a proactive and curious team
+            player, always eager to take initiative and contribute actively to
+            problem-solving. I have strong communication skills and a continuous
+            drive to learn new technologies and concepts.
           </p>
-
-          <div className="mb-6">
+          <div className="mb-6 max-w-prose">
+            {" "}
+            {/* Added max-w-prose */}
             <h3 className="text-xl font-semibold mb-3 text-blue-700">
               Hobbies:
             </h3>
@@ -44,8 +51,9 @@ const About: React.FC = () => {
               ))}
             </ul>
           </div>
-
-          <div className="mb-6">
+          <div className="mb-6 max-w-prose">
+            {" "}
+            {/* Added max-w-prose */}
             <h3 className="text-xl font-semibold mb-3 text-blue-700">
               Education:
             </h3>
@@ -57,8 +65,9 @@ const About: React.FC = () => {
               vulnerabilities at both the hardware and software levels.
             </p>
           </div>
-
-          <div>
+          <div className="max-w-prose">
+            {" "}
+            {/* Added max-w-prose */}
             <h3 className="text-xl font-semibold mb-3 text-blue-700">
               Professional Ambitions:
             </h3>
@@ -70,8 +79,9 @@ const About: React.FC = () => {
               threats while maintaining operational efficiency.
             </p>
           </div>
-
-          <div className="mt-6">
+          <div className="mt-8">
+            {" "}
+            {/* Adjusted margin-top */}
             <Link to="/cv" className="btn btn-primary inline-block">
               View Full CV
             </Link>

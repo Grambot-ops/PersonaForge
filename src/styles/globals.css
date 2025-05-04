@@ -2,50 +2,173 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom global styles */
-:root {
-  --primary-color: #2563eb; /* blue-600 */
-  --secondary-color: #1e40af; /* blue-800 */
-  --accent-color: #3b82f6; /* blue-500 */
-  --background-color: #f8fafc; /* slate-50 */
-  --text-color: #1e293b; /* slate-800 */
-  --card-background: #ffffff; /* white */
-  --muted-text-color: #64748b; /* slate-500 */
+@layer base {
+  /* Define CSS variables for themes */
+  :root {
+    /* Light mode variables */
+    --primary-color: #2563eb; /* blue-600 */
+    --secondary-color: #1e40af; /* blue-800 */
+    --accent-color: #3b82f6; /* blue-500 */
+    --background-color: #f8fafc; /* slate-50 */
+    --text-color: #1e293b; /* slate-800 */
+    --muted-text-color: #64748b; /* slate-500 */
+    /* Variables used in components */
+    --card-bg-light: #ffffff; /* white */
+    --border-light: #e5e7eb; /* gray-200 */
+  }
+
+  /* Dark mode variables */
+  .dark-theme {
+    --primary-color: #3b82f6; /* blue-500 */
+    --secondary-color: #60a5fa; /* blue-400 */
+    --accent-color: #2563eb; /* blue-600 */
+    --background-color: #1e293b; /* slate-800 */
+    --text-color: #f1f5f9; /* slate-100 */
+    --muted-text-color: #cbd5e1; /* slate-300 */
+    /* Variables used in components */
+    --card-bg-dark: #334155; /* slate-700 */
+    --border-dark: #4b5563; /* gray-600 */
+  }
+
+  body {
+    @apply bg-[var(--background-color)] text-[var(--text-color)] antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold tracking-tight;
+    color: var(--text-color);
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  a {
+    @apply text-[var(--primary-color)] hover:text-[var(--secondary-color)] transition-colors duration-200;
+  }
+
+  /* Focus styles for better accessibility */
+  :focus {
+    @apply outline-none ring-2 ring-[var(--primary-color)] ring-offset-2;
+  }
+
+  /* Improved input focus states */
+  input:focus,
+  textarea:focus,
+  select:focus {
+    @apply ring-2 ring-[var(--primary-color)] ring-offset-2 outline-none;
+  }
+
+  /* Dark theme base overrides */
+  .dark-theme .bg-white {
+    @apply bg-gray-800;
+  }
+  .dark-theme .text-gray-600 {
+    @apply text-gray-300;
+  }
+  .dark-theme .text-gray-700 {
+    @apply text-gray-200;
+  }
+  .dark-theme .text-gray-800 {
+    @apply text-gray-100;
+  }
+  .dark-theme .text-slate-900 {
+    @apply text-white;
+  }
+  .dark-theme .border-gray-200 {
+    @apply border-gray-700;
+  }
+  .dark-theme .bg-gray-50 {
+    @apply bg-gray-900;
+  }
+  .dark-theme .bg-gray-100 {
+    @apply bg-gray-800;
+  }
+  .dark-theme img {
+    filter: brightness(0.9);
+  }
 }
 
-body {
-  @apply bg-[var(--background-color)] text-[var(--text-color)] antialiased;
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transitions if added later */
+/* Custom utility classes */
+@layer utilities {
+  .container {
+    @apply mx-auto px-4 max-w-7xl;
+  }
+  .section {
+    @apply py-16 md:py-24;
+  }
+  .grid-layout {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+  .page-transition {
+    animation: fadeInUp 0.3s ease-out;
+  }
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  .animate-slideInLeft {
+    animation: slideInFromLeft 0.6s ease-out forwards;
+  }
+  .animate-slideInRight {
+    animation: slideInFromRight 0.6s ease-out forwards;
+  }
+  .animate-slideInBottom {
+    animation: slideInFromBottom 0.6s ease-out forwards;
+  }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply font-bold tracking-tight text-slate-900; /* Slightly darker headings */
+/* Component specific styles */
+@layer components {
+  .btn {
+    @apply inline-block px-6 py-2 rounded-md font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply bg-[var(--primary-color)] text-white hover:bg-opacity-90 focus:ring-[var(--primary-color)];
+  }
+
+  .btn-outline {
+    @apply border border-[var(--primary-color)] text-[var(--primary-color)] hover:bg-[var(--primary-color)] hover:text-white focus:ring-[var(--primary-color)];
+  }
+
+  .card {
+    /* Use CSS variables with arbitrary value syntax */
+    @apply bg-[var(--card-bg-light)] dark:bg-[var(--card-bg-dark)] p-6 rounded-xl shadow-md border border-[var(--border-light)] dark:border-[var(--border-dark)] transition-all duration-300 ease-in-out;
+  }
+
+  /* BackToTop Button Styles */
+  .back-to-top {
+    @apply fixed bottom-5 right-5 p-3 rounded-full shadow-lg transition-all duration-300 ease-in-out opacity-0 translate-y-2;
+    /* Light theme colors */
+    @apply bg-blue-600 text-white;
+    /* Dark theme colors */
+    @apply dark:bg-blue-500 dark:text-gray-900;
+    /* Hover/Focus states */
+    @apply hover:bg-blue-700 dark:hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800;
+  }
+
+  .back-to-top.visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Ensure react-icons inherit color */
+  .react-icons {
+    vertical-align: middle;
+    /* Add other base styles if needed */
+  }
 }
 
-h1 {
-  @apply text-4xl md:text-5xl;
-}
-
-h2 {
-}
-h3 {
-  @apply text-2xl md:text-3xl;
-}
-
-a {
-  @apply text-[var(--primary-color)] hover:text-[var(--secondary-color)] transition-colors duration-200;
-}
-
-.container {
-  @apply mx-auto px-4 max-w-7xl;
-}
-
-/* Custom animations */
+/* Custom animations (Keep keyframes outside layers) */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -55,34 +178,55 @@ a {
   }
 }
 
-.animate-fadeIn {
-  animation: fadeIn 0.5s ease-in-out;
+@keyframes growWidth {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--width-value);
+  }
 }
 
-/* Custom components */
-.btn {
-  @apply px-4 py-2 rounded-lg font-medium transition-all duration-200;
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-.btn-primary {
-  @apply bg-[var(--primary-color)] text-white hover:bg-[var(--secondary-color)];
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-.btn-outline {
-  @apply border-2 border-[var(--primary-color)] text-[var(--primary-color)] hover:bg-[var(--primary-color)] hover:text-white;
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-/* Card styles */
-.card {
-  @apply bg-white rounded-xl shadow-lg p-6 transition-all duration-200 hover:shadow-xl;
-}
-
-/* Section styles */
-.section {
-  @apply py-16 md:py-24;
-}
-
-/* Grid layout */
-.grid-layout {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
