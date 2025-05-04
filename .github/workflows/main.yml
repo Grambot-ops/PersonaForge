@@ -3,7 +3,7 @@ name: Deploy to Combell
 on:
   push:
     branches:
-      - main  # or 'master' if you still use master
+      - main # or 'master' if your branch is named master
 
 jobs:
   deploy:
@@ -22,4 +22,4 @@ jobs:
       - name: Push to Combell
         run: |
           git remote add combell "ssh://${{ secrets.COMBELL_GIT_REPO }}"
-          git push -f combell main  # force push if needed
+          git push combell main
