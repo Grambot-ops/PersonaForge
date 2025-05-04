@@ -9,22 +9,30 @@ const Projects: React.FC = () => {
   const [videoLightbox, setVideoLightbox] = useState<string | null>(null);
   const [focusedProject, setFocusedProject] = useState<number | null>(null);
 
-  const openLightbox = (projectId: number) => {
-    const project = projectData.find((p) => p.id === projectId);
-    setFocusedProject(projectId);
+  const openLightbox = useCallback(
+    (projectId: number) => {
+      // Wrap in useCallback
+      const project = projectData.find((p) => p.id === projectId);
+      setFocusedProject(projectId);
 
-    if (project && project.videoUrl) {
-      setVideoLightbox(project.videoUrl);
-    } else {
-      setLightboxImage(`${publicUrl}/projects/project${projectId}.png`); // Prepend PUBLIC_URL
-    }
-  };
+      if (project && project.videoUrl) {
+        setVideoLightbox(project.videoUrl);
+        setLightboxImage(null); // Ensure image lightbox is closed
+      } else {
+        setLightboxImage(`${publicUrl}/projects/project${projectId}.png`); // Prepend PUBLIC_URL
+        setVideoLightbox(null); // Ensure video lightbox is closed
+      }
+      // Add dependencies for useCallback
+    },
+    [publicUrl, setFocusedProject, setVideoLightbox, setLightboxImage]
+  );
 
-  const closeLightbox = () => {
+  const closeLightbox = useCallback(() => {
+    // Also wrap closeLightbox for consistency
     setLightboxImage(null);
     setVideoLightbox(null);
     setFocusedProject(null);
-  };
+  }, [setLightboxImage, setVideoLightbox, setFocusedProject]); // Add dependencies
 
   // Enhanced keyboard navigation
   const handleKeyDown = useCallback(
@@ -47,7 +55,8 @@ const Projects: React.FC = () => {
           break;
       }
     },
-    [focusedProject, openLightbox] // Add openLightbox here
+    // Dependencies are now stable
+    [focusedProject, openLightbox, closeLightbox]
   );
 
   // Handle keyboard events
@@ -56,7 +65,7 @@ const Projects: React.FC = () => {
       window.addEventListener("keydown", handleKeyDown);
       return () => window.removeEventListener("keydown", handleKeyDown);
     }
-  }, [lightboxImage, videoLightbox, handleKeyDown]);
+  }, [lightboxImage, videoLightbox, handleKeyDown]); // handleKeyDown is now stable
 
   // Helper function to extract YouTube video ID
   const getYouTubeVideoId = (url: string): string | null => {
