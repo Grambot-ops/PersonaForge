@@ -3,8 +3,7 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import HttpApi from "i18next-http-backend";
 
-// Get the base path, ensuring it doesn't end with a slash
-const basename = (process.env.PUBLIC_URL || "").replace(/\/$/, "");
+// Remove manual basename construction - rely on build process and relative paths
 
 i18n
   // load translation using http -> see /public/locales (i.e. https://github.com/i18next/react-i18next/tree/master/example/react/public/locales)
@@ -24,8 +23,10 @@ i18n
       escapeValue: false, // not needed for react as it escapes by default
     },
     backend: {
-      // Prepend the basename to the loadPath
-      loadPath: `${basename}/locales/{{lng}}/{{ns}}.json`, // Path to translation files
+      // Use a path relative to the PUBLIC_URL root.
+      // CRA ensures files in `public` are served relative to `PUBLIC_URL`.
+      // i18next-http-backend should resolve this correctly based on the app's location.
+      loadPath: `/locales/{{lng}}/{{ns}}.json`,
     },
     detection: {
       order: ["localStorage", "navigator", "htmlTag", "path", "subdomain"],
