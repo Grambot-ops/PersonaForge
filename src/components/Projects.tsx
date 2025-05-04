@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
-import projectData from "../data/projects.json";
+import { useTranslation } from "react-i18next"; // Import useTranslation
+import projectData from "../data/projects.json"; // Keep this for IDs and video URLs
 
 const Projects: React.FC = () => {
+  const { t } = useTranslation(); // Initialize useTranslation hook
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
   const [videoLightbox, setVideoLightbox] = useState<string | null>(null);
   const [focusedProject, setFocusedProject] = useState<number | null>(null);
@@ -67,12 +69,14 @@ const Projects: React.FC = () => {
     <div className="mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {projectData.map((project) => {
+          // Iterate over original data for IDs/video URLs
           const videoId = project.videoUrl
             ? getYouTubeVideoId(project.videoUrl)
             : null;
           const thumbnailUrl = videoId
             ? `https://img.youtube.com/vi/${videoId}/0.jpg`
             : `/projects/project${project.id}.png`;
+          const projectTitle = t(`projects.p${project.id}.title`); // Get title via translation
 
           return (
             <div
@@ -84,44 +88,53 @@ const Projects: React.FC = () => {
               }}
             >
               <h3 className="text-xl font-bold mb-3 text-[var(--primary-color)]">
-                {project.title}
+                {projectTitle} {/* Use translated title */}
               </h3>
               <p className="text-[var(--text-color)] font-medium mb-4">
-                {project.description}
+                {t(`projects.p${project.id}.description`)}{" "}
+                {/* Translate description */}
               </p>
 
               <div className="space-y-3">
                 <div>
                   <h4 className="text-sm uppercase tracking-wider font-semibold text-[var(--muted-text-color)] mb-1">
-                    Context
+                    {t("projects.context")} {/* Translate Context label */}
                   </h4>
-                  <p className="text-[var(--text-color)]">{project.context}</p>
+                  <p className="text-[var(--text-color)]">
+                    {t(`projects.p${project.id}.context`)}
+                  </p>{" "}
+                  {/* Translate context */}
                 </div>
 
                 <div>
                   <h4 className="text-sm uppercase tracking-wider font-semibold text-[var(--muted-text-color)] mb-1">
-                    Background
+                    {t("projects.background")}{" "}
+                    {/* Translate Background label */}
                   </h4>
                   <p className="text-[var(--text-color)]">
-                    {project.background}
+                    {t(`projects.p${project.id}.background`)}{" "}
+                    {/* Translate background */}
                   </p>
                 </div>
 
                 <div>
                   <h4 className="text-sm uppercase tracking-wider font-semibold text-[var(--muted-text-color)] mb-1">
-                    Key Realizations
+                    {t("projects.keyRealizations")}{" "}
+                    {/* Translate Key Realizations label */}
                   </h4>
                   <p className="text-[var(--text-color)]">
-                    {project.realizations}
+                    {t(`projects.p${project.id}.realizations`)}{" "}
+                    {/* Translate realizations */}
                   </p>
                 </div>
 
                 <div>
                   <h4 className="text-sm uppercase tracking-wider font-semibold text-[var(--muted-text-color)] mb-1">
-                    Learnings
+                    {t("projects.learnings")} {/* Translate Learnings label */}
                   </h4>
                   <p className="text-[var(--text-color)]">
-                    {project.learnings}
+                    {t(`projects.p${project.id}.learnings`)}{" "}
+                    {/* Translate learnings */}
                   </p>
                 </div>
               </div>
@@ -133,7 +146,9 @@ const Projects: React.FC = () => {
                     onClick={() => openLightbox(project.id)}
                     tabIndex={0}
                     role="button"
-                    aria-label={`View video for ${project.title}`}
+                    aria-label={t("projects.viewVideoAria", {
+                      title: projectTitle, // Use translated title
+                    })}
                   >
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="bg-[var(--primary-color)] text-white rounded-full w-12 h-12 flex items-center justify-center">
@@ -161,7 +176,9 @@ const Projects: React.FC = () => {
                     </div>
                     <img
                       src={thumbnailUrl}
-                      alt={`${project.title} - Video Thumbnail`}
+                      alt={t("projects.thumbnailAlt", {
+                        title: projectTitle, // Use translated title
+                      })}
                       className="max-h-40 rounded shadow hover:opacity-90 transition-opacity"
                       loading="lazy"
                     />
@@ -169,7 +186,9 @@ const Projects: React.FC = () => {
                 ) : (
                   <img
                     src={`/projects/project${project.id}.png`}
-                    alt={`${project.title} - Screenshot`}
+                    alt={t("projects.screenshotAlt", {
+                      title: projectTitle, // Use translated title
+                    })}
                     className="max-h-40 rounded shadow cursor-pointer hover:opacity-90 transition-opacity"
                     onClick={() => openLightbox(project.id)}
                     loading="lazy"
@@ -192,19 +211,18 @@ const Projects: React.FC = () => {
           onClick={closeLightbox}
           role="dialog"
           aria-modal="true"
-          aria-label="Image lightbox"
+          aria-label={t("projects.closeLightbox")} // Translate aria-label
         >
           <div className="relative max-w-4xl max-h-full bg-white dark:bg-gray-800 rounded-lg shadow-2xl overflow-hidden">
             <img
               src={lightboxImage}
-              alt="Project Detail View"
+              alt={t("projects.imageAlt")} // Translate alt text
               className="block max-w-full max-h-[90vh] object-contain"
               onClick={(e) => e.stopPropagation()}
             />
             <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/40 text-white text-center">
-              <p className="text-sm">
-                Use arrow keys to navigate between projects, ESC to close
-              </p>
+              <p className="text-sm">{t("projects.lightboxNav")}</p>{" "}
+              {/* Translate navigation hint */}
             </div>
             <button
               className="absolute top-2 right-2 bg-white/80 dark:bg-gray-700/80 text-black dark:text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-white dark:hover:bg-gray-600 text-xl font-bold"
@@ -212,7 +230,7 @@ const Projects: React.FC = () => {
                 e.stopPropagation();
                 closeLightbox();
               }}
-              aria-label="Close image lightbox"
+              aria-label={t("projects.closeImageLightbox")} // Translate aria-label
               tabIndex={0}
             >
               &times;
@@ -228,7 +246,7 @@ const Projects: React.FC = () => {
           onClick={closeLightbox}
           role="dialog"
           aria-modal="true"
-          aria-label="Video lightbox"
+          aria-label={t("projects.closeLightbox")} // Translate aria-label
         >
           <div className="relative w-full max-w-4xl bg-black rounded-lg shadow-2xl overflow-hidden">
             <div className="aspect-video">
@@ -237,13 +255,12 @@ const Projects: React.FC = () => {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="w-full h-full"
-                title="Project Video"
+                title={t("projects.videoTitle")} // Translate title
               ></iframe>
             </div>
             <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/40 text-white text-center">
-              <p className="text-sm">
-                Use arrow keys to navigate between projects, ESC to close
-              </p>
+              <p className="text-sm">{t("projects.lightboxNav")}</p>{" "}
+              {/* Translate navigation hint */}
             </div>
             <button
               className="absolute top-2 right-2 bg-white/80 dark:bg-gray-700/80 text-black dark:text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-white dark:hover:bg-gray-600 text-xl font-bold"
@@ -251,7 +268,7 @@ const Projects: React.FC = () => {
                 e.stopPropagation();
                 closeLightbox();
               }}
-              aria-label="Close video lightbox"
+              aria-label={t("projects.closeVideoLightbox")} // Translate aria-label
               tabIndex={0}
             >
               &times;

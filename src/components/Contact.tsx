@@ -6,6 +6,7 @@ import {
   FaExclamationCircle,
   FaCheckCircle,
 } from "react-icons/fa";
+import { useTranslation } from "react-i18next"; // Import useTranslation
 
 // Cast the icon components to React.ElementType
 const PaperPlaneIcon = FaPaperPlane as React.ElementType;
@@ -13,6 +14,7 @@ const ExclamationCircleIcon = FaExclamationCircle as React.ElementType;
 const CheckCircleIcon = FaCheckCircle as React.ElementType;
 
 const Contact: React.FC = () => {
+  const { t } = useTranslation(); // Initialize useTranslation hook
   const [formData, setFormData] = useState<ContactForm>({
     name: "",
     email: "",
@@ -53,8 +55,7 @@ const Contact: React.FC = () => {
         setFormData({ name: "", email: "", message: "" }); // Clear form on success
       } else {
         // Try to parse error from Formspree response
-        let errorMessage =
-          "There was an error submitting your message. Please try again.";
+        let errorMessage = t("contact.submitErrorFallback"); // Use translated fallback
         try {
           const errorData = await response.json();
           if (errorData && errorData.errors && errorData.errors.length > 0) {
@@ -71,7 +72,7 @@ const Contact: React.FC = () => {
         throw new Error(errorMessage);
       }
     } catch (error: any) {
-      setSubmitError(error.message || "An unexpected error occurred.");
+      setSubmitError(error.message || t("contact.submitError")); // Use translated error
       console.error("Form submission error:", error);
     } finally {
       setIsSubmitting(false);
@@ -81,7 +82,7 @@ const Contact: React.FC = () => {
   return (
     <div className="max-w-md mx-auto p-6 bg-white dark:bg-gray-700 rounded-xl shadow-lg border border-gray-100 dark:border-gray-600 transition-colors duration-200">
       <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 dark:text-white">
-        Get In Touch
+        {t("contact.title")} {/* Translate title */}
       </h2>
 
       <IconContext.Provider value={{ className: "react-icons" }}>
@@ -89,17 +90,16 @@ const Contact: React.FC = () => {
           <div className="bg-green-50 dark:bg-green-900 border border-green-200 dark:border-green-700 text-green-700 dark:text-green-200 px-4 py-3 rounded mb-6 animate-fadeIn">
             <div className="flex items-center mb-2">
               <CheckCircleIcon className="mr-2" aria-hidden="true" />
-              <p className="font-medium">Message sent successfully!</p>
+              <p className="font-medium">{t("contact.successTitle")}</p>{" "}
+              {/* Translate success title */}
             </div>
-            <p>
-              Thank you for your message! I'll get back to you as soon as
-              possible.
-            </p>
+            <p>{t("contact.successMessage")}</p>{" "}
+            {/* Translate success message */}
             <button
               onClick={() => setSubmitSuccess(false)}
               className="mt-4 text-sm text-green-700 dark:text-green-300 underline focus:outline-none focus:ring-2 focus:ring-green-500"
             >
-              Send another message
+              {t("contact.sendAnother")} {/* Translate button text */}
             </button>
           </div>
         ) : (
@@ -109,7 +109,7 @@ const Contact: React.FC = () => {
                 className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300"
                 htmlFor="name"
               >
-                Name
+                {t("contact.nameLabel")} {/* Translate label */}
               </label>
               <input
                 type="text"
@@ -126,7 +126,7 @@ const Contact: React.FC = () => {
                 className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300"
                 htmlFor="email"
               >
-                Email
+                {t("contact.emailLabel")} {/* Translate label */}
               </label>
               <input
                 type="email"
@@ -143,7 +143,7 @@ const Contact: React.FC = () => {
                 className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300"
                 htmlFor="message"
               >
-                Message
+                {t("contact.messageLabel")} {/* Translate label */}
               </label>
               <textarea
                 id="message"
@@ -165,7 +165,7 @@ const Contact: React.FC = () => {
                   className="mt-1 mr-2 flex-shrink-0"
                   aria-hidden="true"
                 />
-                <span>{submitError}</span>
+                <span>{submitError}</span> {/* Already translated */}
               </div>
             )}
 
@@ -201,12 +201,12 @@ const Contact: React.FC = () => {
                       d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                     ></path>
                   </svg>
-                  Sending...
+                  {t("contact.sending")} {/* Translate sending text */}
                 </>
               ) : (
                 <>
-                  <PaperPlaneIcon className="mr-2" aria-hidden="true" /> Send
-                  Message
+                  <PaperPlaneIcon className="mr-2" aria-hidden="true" />{" "}
+                  {t("contact.sendMessageButton")} {/* Translate button text */}
                 </>
               )}
             </button>
@@ -215,12 +215,12 @@ const Contact: React.FC = () => {
       </IconContext.Provider>
 
       <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-600 text-center text-sm text-gray-600 dark:text-gray-400">
-        <p>Prefer email? Reach me at:</p>
+        <p>{t("contact.preferEmail")}</p> {/* Translate text */}
         <a
           href="mailto:maximusmukiza08@gmail.com"
           className="text-blue-600 dark:text-blue-400 hover:underline"
         >
-          maximusmukiza08@gmail.com
+          {t("contact.emailAddress")} {/* Translate email */}
         </a>
       </div>
     </div>

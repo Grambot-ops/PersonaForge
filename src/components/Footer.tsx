@@ -2,12 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { useTranslation } from "react-i18next"; // Import useTranslation
 
 // Cast the icon components to React.ElementType
 const GithubIcon = FaGithub as React.ElementType;
 const LinkedinIcon = FaLinkedin as React.ElementType;
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation(); // Initialize useTranslation hook - Removed unused i18n
   const currentYear = new Date().getFullYear();
 
   return (
@@ -19,12 +21,12 @@ const Footer: React.FC = () => {
               Maximus
             </h3>
             <p className="text-gray-600 dark:text-gray-300">
-              Cloud & Cybersecurity Student
+              {t("hero.subtitle")} {/* Reuse subtitle translation */}
             </p>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">
-              Quick Links
+              {t("footer.quickLinks")} {/* Translate Quick Links */}
             </h3>
             <ul className="space-y-2">
               <li>
@@ -32,7 +34,7 @@ const Footer: React.FC = () => {
                   to="/about"
                   className="text-gray-600 dark:text-gray-300 hover:text-[var(--primary-color)] dark:hover:text-[var(--primary-color)] transition-colors"
                 >
-                  About Me
+                  {t("footer.aboutMe")} {/* Translate About Me */}
                 </Link>
               </li>
               <li>
@@ -40,7 +42,7 @@ const Footer: React.FC = () => {
                   to="/projects"
                   className="text-gray-600 dark:text-gray-300 hover:text-[var(--primary-color)] dark:hover:text-[var(--primary-color)] transition-colors"
                 >
-                  Projects
+                  {t("footer.projects")} {/* Translate Projects */}
                 </Link>
               </li>
               <li>
@@ -48,14 +50,14 @@ const Footer: React.FC = () => {
                   to="/contact"
                   className="text-gray-600 dark:text-gray-300 hover:text-[var(--primary-color)] dark:hover:text-[var(--primary-color)] transition-colors"
                 >
-                  Contact
+                  {t("footer.contact")} {/* Translate Contact */}
                 </Link>
               </li>
             </ul>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">
-              Connect
+              {t("footer.connect")} {/* Translate Connect */}
             </h3>
             <IconContext.Provider value={{ className: "react-icons" }}>
               <div className="flex space-x-4">
@@ -82,7 +84,8 @@ const Footer: React.FC = () => {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700 text-center text-gray-600 dark:text-gray-300">
-          <p>&copy; {currentYear} Maximus Mukiza. All rights reserved.</p>
+          <p>{t("footer.copyright", { year: currentYear })}</p>{" "}
+          {/* Translate copyright */}
         </div>
       </div>
     </footer>

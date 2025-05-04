@@ -1,32 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next"; // Import useTranslation
 
 const Hero: React.FC = () => {
+  const { t } = useTranslation(); // Initialize useTranslation hook
+
   return (
     <div className="relative bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-24 md:py-32">
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-3xl">
-          <h1 className="text-5xl font-bold mb-6 animate-fadeIn">Maximus</h1>
+          <h1 className="text-5xl font-bold mb-6 animate-fadeIn">
+            {t("hero.title")}
+          </h1>{" "}
+          {/* Translate title */}
           <h2 className="text-3xl font-semibold mb-6 opacity-90">
-            Cloud & Cybersecurity Student
+            {t("hero.subtitle")} {/* Translate subtitle */}
           </h2>
           <p className="text-xl mb-8 opacity-80 max-w-2xl">
-            Aspiring to build secure cloud solutions and protect digital assets.
-            Currently studying Azure, AWS, and cybersecurity frameworks to help
-            organizations navigate the complex landscape of digital security.
+            {t("hero.description")} {/* Translate description */}
           </p>
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
             <Link
               to="/projects"
               className="btn btn-primary px-8 py-3 text-center"
             >
-              View My Projects
+              {t("hero.viewProjects")} {/* Translate button text */}
             </Link>
             <Link
               to="/contact"
               className="btn bg-white text-blue-700 hover:bg-gray-100 px-8 py-3 text-center"
             >
-              Get In Touch
+              {t("hero.getInTouch")} {/* Translate button text */}
             </Link>
           </div>
         </div>

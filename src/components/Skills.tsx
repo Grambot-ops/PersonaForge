@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next"; // Import useTranslation
 
 interface Skill {
   name: string;
@@ -7,6 +8,8 @@ interface Skill {
 }
 
 const Skills: React.FC = () => {
+  const { t } = useTranslation(); // Initialize useTranslation hook
+
   // Skills data with proficiency level (0-100)
   const skills: Skill[] = [
     { name: "AWS Cloud Services", proficiency: 85, category: "Cloud" },
@@ -27,7 +30,7 @@ const Skills: React.FC = () => {
   return (
     <div className="py-8">
       <h2 className="text-3xl font-bold text-center mb-10 text-gray-800 dark:text-white">
-        Technical Skills
+        {t("skills.title")} {/* Translate title */}
       </h2>
 
       <div className="max-w-4xl mx-auto">
@@ -68,7 +71,7 @@ const Skills: React.FC = () => {
       {/* Add related certifications or achievements */}
       <div className="mt-12 max-w-4xl mx-auto bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow-md">
         <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
-          Related Certifications & Licenses
+          {t("skills.certsTitle")} {/* Translate certifications title */}
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
@@ -76,11 +79,13 @@ const Skills: React.FC = () => {
               LPI Certifications
             </h4>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              Completed December 2023
+              {t("skills.certsCompleted", { date: "December 2023" })}{" "}
+              {/* Translate completion date */}
             </p>
           </div>
           <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-100 dark:bg-gray-700">
-            <h4 className="font-bold">Currently pursuing:</h4>
+            <h4 className="font-bold">{t("skills.certsPursuing")}</h4>{" "}
+            {/* Translate pursuing text */}
             <p className="text-blue-600 dark:text-blue-400">
               AWS Cloud Practitioner
             </p>
@@ -91,7 +96,8 @@ const Skills: React.FC = () => {
               Driving License
             </h4>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              Category A2 (Motorcycle)
+              {t("skills.drivingLicenseCat", { category: "A2 (Motorcycle)" })}{" "}
+              {/* Translate category */}
             </p>
           </div>
         </div>

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { IconContext } from "react-icons";
 import { FaSun, FaMoon } from "react-icons/fa";
+import { useTranslation } from "react-i18next"; // Import useTranslation
 
 // Cast the icon components to React.ElementType
 const SunIcon = FaSun as React.ElementType;
 const MoonIcon = FaMoon as React.ElementType;
 
 const ThemeToggle: React.FC = () => {
+  const { t } = useTranslation(); // Initialize useTranslation hook
   const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
     if (typeof window !== "undefined") {
       // Check for saved theme preference or system preference
@@ -35,8 +37,10 @@ const ThemeToggle: React.FC = () => {
     <IconContext.Provider value={{ className: "react-icons" }}>
       <button
         aria-label={
-          isDarkMode ? "Switch to light theme" : "Switch to dark theme"
-        }
+          isDarkMode
+            ? t("themeToggle.switchToLight")
+            : t("themeToggle.switchToDark")
+        } // Use t function for aria-label
         className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
         onClick={() => setIsDarkMode(!isDarkMode)}
       >

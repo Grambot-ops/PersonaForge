@@ -1,19 +1,20 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next"; // Import useTranslation
 
 const CV: React.FC = () => {
+  const { t } = useTranslation(); // Initialize useTranslation hook
+
   return (
     <div className="py-16 bg-gray-50">
       <Helmet>
-        <title>CV - Maximus Mukiza | Cyber Security Student</title>
-        <meta
-          name="description"
-          content="View the Curriculum Vitae of Maximus Mukiza, detailing education, work experience, skills, and certifications in IT and Cyber Security."
-        />
+        <title>{t("cv.pageTitle")}</title> {/* Translate title */}
+        <meta name="description" content={t("cv.pageDescription")} />{" "}
+        {/* Translate description */}
       </Helmet>
       <div className="container mx-auto px-4">
         <h1 className="text-4xl font-bold mb-8 text-center">
-          Curriculum Vitae
+          {t("cv.heading")} {/* Translate heading */}
         </h1>
 
         <div className="flex justify-end mb-6">
@@ -21,7 +22,7 @@ const CV: React.FC = () => {
             href="/CV_Maximus.pdf"
             download
             className="btn btn-primary flex items-center"
-            aria-label="Download CV"
+            aria-label={t("cv.downloadAria")} // Translate aria-label
           >
             <svg
               className="w-4 h-4 mr-2"
@@ -37,7 +38,7 @@ const CV: React.FC = () => {
                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
               ></path>
             </svg>
-            Download CV
+            {t("cv.downloadButton")} {/* Translate button text */}
           </a>
         </div>
 

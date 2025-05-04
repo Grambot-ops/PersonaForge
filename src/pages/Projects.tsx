@@ -1,23 +1,24 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next"; // Import useTranslation
 import ProjectsComponent from "../components/Projects";
 
 const Projects: React.FC = () => {
+  const { t } = useTranslation(); // Initialize useTranslation hook
+
   return (
     <div className="py-16 bg-gray-50">
       <Helmet>
-        <title>Projects - Maximus Mukiza | Cyber Security Portfolio</title>
-        <meta
-          name="description"
-          content="Explore Maximus Mukiza's projects, including packet automation, SIEM stack creation, Azure Bicep configurations, AWS hosting, and IoT security solutions."
-        />
+        <title>{t("projects.pageTitle")}</title> {/* Translate title */}
+        <meta name="description" content={t("projects.pageDescription")} />{" "}
+        {/* Translate description */}
       </Helmet>
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold mb-8 text-center">My Projects</h1>
+        <h1 className="text-4xl font-bold mb-8 text-center">
+          {t("projects.heading")} {/* Translate heading */}
+        </h1>
         <p className="text-lg text-gray-700 max-w-3xl mx-auto text-center mb-12">
-          Here are some of the key projects I've worked on throughout my career.
-          Each project represents unique challenges and valuable learning
-          experiences in the field of cybersecurity and cloud computing.
+          {t("projects.intro")} {/* Translate intro */}
         </p>
         <ProjectsComponent />
       </div>
