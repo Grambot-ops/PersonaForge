@@ -1,0 +1,25 @@
+name: Deploy to Combell
+
+on:
+  push:
+    branches:
+      - main  # or 'master' if you still use master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.COMBELL_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H ${{ secrets.COMBELL_SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Push to Combell
+        run: |
+          git remote add combell "ssh://${{ secrets.COMBELL_GIT_REPO }}"
+          git push -f combell main  # force push if needed
