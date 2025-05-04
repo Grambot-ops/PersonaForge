@@ -3,6 +3,9 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import HttpApi from "i18next-http-backend";
 
+// Get the base path, ensuring it doesn't end with a slash
+const basename = (process.env.PUBLIC_URL || "").replace(/\/$/, "");
+
 i18n
   // load translation using http -> see /public/locales (i.e. https://github.com/i18next/react-i18next/tree/master/example/react/public/locales)
   // learn more: https://github.com/i18next/i18next-http-backend
@@ -21,7 +24,8 @@ i18n
       escapeValue: false, // not needed for react as it escapes by default
     },
     backend: {
-      loadPath: "/locales/{{lng}}/{{ns}}.json", // Path to translation files
+      // Prepend the basename to the loadPath
+      loadPath: `${basename}/locales/{{lng}}/{{ns}}.json`, // Path to translation files
     },
     detection: {
       order: ["localStorage", "navigator", "htmlTag", "path", "subdomain"],
