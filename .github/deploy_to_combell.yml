@@ -2,8 +2,8 @@ name: Deploy to Combell
 
 on:
   push:
-    branches:
-      - main  # or master, depending on your default branch name
+    # branches:
+    #  - main  # or master, depending on your default branch name
 
 jobs:
   deploy:
