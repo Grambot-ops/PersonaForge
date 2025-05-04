@@ -1,0 +1,87 @@
+name: Deploy to Combell
+
+on:
+  push:
+    branches:
+      - main  # or master, depending on your default branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Build project
+        run: npm run build
+        
+      - name: Setup SSH key
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.COMBELL_SSH_KEY }}
+          
+      - name: Add Combell host to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan ssh.domain.be >> ~/.ssh/known_hosts
+          
+      - name: Clone Combell repository
+        run: |
+          git clone ${{ secrets.COMBELL_GIT_REPO }} combell-repo
+          
+      - name: Prepare deployment files
+        run: |
+          # Create the www directory if it doesn't exist
+          mkdir -p combell-repo/www
+          # Copy the built files to the www directory
+          cp -r dist/* combell-repo/www/
+          
+      - name: Create .autogit.yml if not exists
+        run: |
+          if [ ! -f combell-repo/.autogit.yml ]; then
+            echo "Creating default .autogit.yml file"
+            echo "# Combell Autogit configuration
+deploy:
+  # Set to true to enable deployment
+  enabled: true
+  
+  # The branch to deploy from
+  branch: main
+  
+  # The directory to deploy from
+  source: www
+  
+  # The directory to deploy to
+  target: /
+  
+  # Files to exclude from deployment
+  exclude:
+    - .git
+    - .github
+    - .gitignore
+    - .autogit.yml
+    - README.md" > combell-repo/.autogit.yml
+          fi
+          
+      - name: Configure Git in Combell repo
+        run: |
+          cd combell-repo
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          
+      - name: Commit and push changes
+        run: |
+          cd combell-repo
+          git add .
+          git commit -m "Deploy website changes via GitHub Actions" || echo "No changes to commit"
+          git push origin main
