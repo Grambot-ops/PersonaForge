@@ -1,10 +1,9 @@
-name: Deploy to Combell
+name: Deploy to MMT Labs
 
 on:
   push:
     branches:
-      - main
-      - master # Included for repositories that still use master
+      - main # Deploy only when pushing to main
 
 jobs:
   deploy:
@@ -29,40 +28,40 @@ jobs:
       - name: Setup SSH key
         uses: webfactory/ssh-agent@v0.7.0
         with:
-          ssh-private-key: ${{ secrets.COMBELL_SSH_KEY }}
+          ssh-private-key: ${{ secrets.MMT_SSH_KEY }} # Use new secret name
 
-      - name: Add Combell host to known_hosts
+      - name: Add MMT host to known_hosts
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan -t rsa,ecdsa,ed25519 ${{ secrets.COMBELL_SSH_HOST }} >> ~/.ssh/known_hosts
+          ssh-keyscan -t rsa,ecdsa,ed25519 ${{ secrets.MMT_SSH_HOST }} >> ~/.ssh/known_hosts # Use new host secret
           chmod 644 ~/.ssh/known_hosts
 
-      - name: Setup SSH and clone repository
+      - name: Setup SSH and clone MMT repository
         run: |
           eval $(ssh-agent -s)
-          echo "${{ secrets.COMBELL_SSH_KEY }}" | ssh-add -
+          echo "${{ secrets.MMT_SSH_KEY }}" | ssh-add -
           echo "Attempting to connect to SSH host..."
           # Test connection using the known_hosts file
-          ssh -T ${{ secrets.COMBELL_SSH_USER }}@${{ secrets.COMBELL_SSH_HOST }} || echo "SSH connection test complete or failed (expected if just testing)"
+          ssh -T ${{ secrets.MMT_SSH_USER }}@${{ secrets.MMT_SSH_HOST }} || echo "SSH connection test complete or failed (expected if just testing)" # Use new user/host secrets
           # Clone using the default SSH settings which respect known_hosts
-          git clone ${{ secrets.COMBELL_GIT_REPO }} combell-repo
+          git clone ${{ secrets.MMT_GIT_REPO }} mmt-repo # Use new repo secret and directory name
 
       - name: Prepare deployment files
         run: |
           # Create the www directory if it doesn't exist
-          mkdir -p combell-repo/www
+          mkdir -p mmt-repo/www # Use new directory name
           # Copy the built files to the www directory
-          cp -r build/* combell-repo/www/ # Corrected build output directory
+          cp -r build/* mmt-repo/www/ # Use new directory name
 
       - name: Create .autogit.yml if not exists
         run: |
-          cd combell-repo
+          cd mmt-repo # Use new directory name
           if [ ! -f .autogit.yml ]; then
             echo "Creating default .autogit.yml file"
             cat <<EOF > .autogit.yml
           deploy:
             enabled: true
-            branch: master
+            branch: main # Use main branch
             source: www
             target: /
             exclude:
@@ -74,9 +73,9 @@ jobs:
           EOF
           fi
 
-      - name: Configure Git in Combell repo
+      - name: Configure Git in MMT repo
         run: |
-          cd combell-repo
+          cd mmt-repo # Use new directory name
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           # Ensure git uses the SSH agent and known_hosts file correctly
@@ -84,7 +83,7 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          cd combell-repo
+          cd mmt-repo # Use new directory name
           git add .
           git commit -m "Deploy website changes via GitHub Actions" || echo "No changes to commit"
-          git push origin master # Pushing to the branch specified in .autogit.yml
+          git push origin main # Push to main branch
