@@ -14,6 +14,7 @@ import NotFound from "./pages/NotFound";
 
 const App: React.FC = () => {
   const { t, i18n } = useTranslation(); // Initialize useTranslation hook
+  const basename = process.env.PUBLIC_URL; // Get basename from PUBLIC_URL
 
   // Update html lang attribute whenever language changes
   useEffect(() => {
@@ -43,6 +44,7 @@ const App: React.FC = () => {
         {/* Reusing OG description */}
       </Helmet>
       <Router
+        basename={basename} // Add basename prop here
         future={{
           v7_startTransition: true,
           v7_relativeSplatPath: true,
