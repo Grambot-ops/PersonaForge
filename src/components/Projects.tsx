@@ -81,64 +81,68 @@ const Projects: React.FC = () => {
           return (
             <div
               key={project.id}
-              className="card hover:translate-y-[-5px]"
+              className="card hover:translate-y-[-5px] flex flex-col" // Added flex flex-col
               tabIndex={0}
               onKeyDown={(e) => {
                 if (e.key === "Enter") openLightbox(project.id);
               }}
             >
-              <h3 className="text-xl font-bold mb-3 text-[var(--primary-color)]">
-                {projectTitle} {/* Use translated title */}
-              </h3>
-              <p className="text-[var(--text-color)] font-medium mb-4">
-                {t(`projects.p${project.id}.description`)}{" "}
-                {/* Translate description */}
-              </p>
+              {/* Wrap text content and add flex-grow */}
+              <div className="flex-grow">
+                <h3 className="text-xl font-bold mb-3 text-[var(--primary-color)]">
+                  {projectTitle} {/* Use translated title */}
+                </h3>
+                <p className="text-[var(--text-color)] font-medium mb-4">
+                  {t(`projects.p${project.id}.description`)}{" "}
+                  {/* Translate description */}
+                </p>
 
-              <div className="space-y-3">
-                <div>
-                  <h4 className="text-sm uppercase tracking-wider font-semibold text-[var(--muted-text-color)] mb-1">
-                    {t("projects.context")} {/* Translate Context label */}
-                  </h4>
-                  <p className="text-[var(--text-color)]">
-                    {t(`projects.p${project.id}.context`)}
-                  </p>{" "}
-                  {/* Translate context */}
-                </div>
+                <div className="space-y-3">
+                  <div>
+                    <h4 className="text-sm uppercase tracking-wider font-semibold text-[var(--muted-text-color)] mb-1">
+                      {t("projects.context")} {/* Translate Context label */}
+                    </h4>
+                    <p className="text-[var(--text-color)]">
+                      {t(`projects.p${project.id}.context`)}
+                    </p>{" "}
+                    {/* Translate context */}
+                  </div>
 
-                <div>
-                  <h4 className="text-sm uppercase tracking-wider font-semibold text-[var(--muted-text-color)] mb-1">
-                    {t("projects.background")}{" "}
-                    {/* Translate Background label */}
-                  </h4>
-                  <p className="text-[var(--text-color)]">
-                    {t(`projects.p${project.id}.background`)}{" "}
-                    {/* Translate background */}
-                  </p>
-                </div>
+                  <div>
+                    <h4 className="text-sm uppercase tracking-wider font-semibold text-[var(--muted-text-color)] mb-1">
+                      {t("projects.background")}{" "}
+                      {/* Translate Background label */}
+                    </h4>
+                    <p className="text-[var(--text-color)]">
+                      {t(`projects.p${project.id}.background`)}{" "}
+                      {/* Translate background */}
+                    </p>
+                  </div>
 
-                <div>
-                  <h4 className="text-sm uppercase tracking-wider font-semibold text-[var(--muted-text-color)] mb-1">
-                    {t("projects.keyRealizations")}{" "}
-                    {/* Translate Key Realizations label */}
-                  </h4>
-                  <p className="text-[var(--text-color)]">
-                    {t(`projects.p${project.id}.realizations`)}{" "}
-                    {/* Translate realizations */}
-                  </p>
-                </div>
+                  <div>
+                    <h4 className="text-sm uppercase tracking-wider font-semibold text-[var(--muted-text-color)] mb-1">
+                      {t("projects.keyRealizations")}{" "}
+                      {/* Translate Key Realizations label */}
+                    </h4>
+                    <p className="text-[var(--text-color)]">
+                      {t(`projects.p${project.id}.realizations`)}{" "}
+                      {/* Translate realizations */}
+                    </p>
+                  </div>
 
-                <div>
-                  <h4 className="text-sm uppercase tracking-wider font-semibold text-[var(--muted-text-color)] mb-1">
-                    {t("projects.learnings")} {/* Translate Learnings label */}
-                  </h4>
-                  <p className="text-[var(--text-color)]">
-                    {t(`projects.p${project.id}.learnings`)}{" "}
-                    {/* Translate learnings */}
-                  </p>
+                  <div>
+                    <h4 className="text-sm uppercase tracking-wider font-semibold text-[var(--muted-text-color)] mb-1">
+                      {t("projects.learnings")}{" "}
+                      {/* Translate Learnings label */}
+                    </h4>
+                    <p className="text-[var(--text-color)]">
+                      {t(`projects.p${project.id}.learnings`)}{" "}
+                      {/* Translate learnings */}
+                    </p>
+                  </div>
                 </div>
               </div>
-
+              {/* Image/Video container remains at the bottom */}
               <div className="mt-4 p-3 bg-gray-100 dark:bg-slate-800 rounded-lg flex justify-center">
                 {project.videoUrl && videoId ? (
                   <div

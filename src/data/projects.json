@@ -1,14 +1,5 @@
 [
   {
-    "id": 1,
-    "title": "Smart Parcel Locker System",
-    "description": "Collaborative project with Cloud & Cybersecurity students to develop an IoT-enabled package locker system with secure access control",
-    "context": "First-year's team project simulating real-world IoT deployment in logistics security",
-    "background": "Addressed parcel theft risks through automated locker management with multi-factor authentication",
-    "realizations": "Enabled secure communication between ESP32 and Raspberry Pi, implementing error logging and security measures.",
-    "learnings": "Gained expertise in IoT device coordination, secure access token management, and embedded system security"
-  },
-  {
     "id": 2,
     "title": "SOC-Integrated Hosting Platform",
     "description": "Team project building security operations center capabilities into cloud hosting platform for client security assurance",
@@ -44,5 +35,14 @@
     "realizations": "Developed hybrid audio-visual recognition system achieving 94% accuracy in vessel type classification",
     "learnings": "Gained expertise in acoustic signal processing, CNN-based image recognition, and embedded decision-making algorithms",
     "videoUrl": "https://www.youtube.com/embed/Z2LBS0gXR6E"
+  },
+  {
+    "id": 1,
+    "title": "Smart Parcel Locker System",
+    "description": "Collaborative project with Cloud & Cybersecurity students to develop an IoT-enabled package locker system with secure access control",
+    "context": "First-year's team project simulating real-world IoT deployment in logistics security",
+    "background": "Addressed parcel theft risks through automated locker management with multi-factor authentication",
+    "realizations": "Enabled secure communication between ESP32 and Raspberry Pi, implementing error logging and security measures.",
+    "learnings": "Gained expertise in IoT device coordination, secure access token management, and embedded system security"
   }
 ]
