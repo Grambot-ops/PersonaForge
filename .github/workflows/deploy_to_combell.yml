@@ -33,10 +33,15 @@ jobs:
       - name: Add Combell host to known_hosts
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan ${{ secrets.COMBELL_SSH_HOST }} >> ~/.ssh/known_hosts
+          ssh-keyscan -t rsa,ecdsa,ed25519 ${{ secrets.COMBELL_SSH_HOST }} >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
 
-      - name: Clone Combell repository
+      - name: Setup SSH and clone repository
         run: |
+          eval $(ssh-agent -s)
+          echo "${{ secrets.COMBELL_SSH_KEY }}" | ssh-add -
+          echo "Attempting to connect to SSH host..."
+          ssh -o StrictHostKeyChecking=accept-new -T ${{ secrets.COMBELL_SSH_USER }}@${{ secrets.COMBELL_SSH_HOST }} || echo "SSH connection test complete"
           git clone ${{ secrets.COMBELL_GIT_REPO }} combell-repo
 
       - name: Prepare deployment files
@@ -78,7 +83,7 @@ jobs:
           cd combell-repo
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git config core.sshCommand "ssh -i ~/.ssh/id_rsa -o IdentitiesOnly=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=~/.ssh/known_hosts -l ${{ secrets.COMBELL_SSH_USER }}"
+          git config core.sshCommand "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=~/.ssh/known_hosts"
 
       - name: Commit and push changes
         run: |
