@@ -1,9 +1,10 @@
-name: Deploy to MMT Labs
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main # Deploy only when pushing to main
+      - main
+      - master # Included for repositories that still use master
 
 jobs:
   deploy:
@@ -25,65 +26,12 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Setup SSH key
-        uses: webfactory/ssh-agent@v0.7.0
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          ssh-private-key: ${{ secrets.MMT_SSH_KEY }} # Use new secret name
-
-      - name: Add MMT host to known_hosts
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -t rsa,ecdsa,ed25519 ${{ secrets.MMT_SSH_HOST }} >> ~/.ssh/known_hosts # Use new host secret
-          chmod 644 ~/.ssh/known_hosts
-
-      - name: Setup SSH and clone MMT repository
-        run: |
-          eval $(ssh-agent -s)
-          echo "${{ secrets.MMT_SSH_KEY }}" | ssh-add -
-          echo "Attempting to connect to SSH host..."
-          # Test connection using the known_hosts file
-          ssh -T ${{ secrets.MMT_SSH_USER }}@${{ secrets.MMT_SSH_HOST }} || echo "SSH connection test complete or failed (expected if just testing)" # Use new user/host secrets
-          # Clone using the default SSH settings which respect known_hosts
-          git clone ${{ secrets.MMT_GIT_REPO }} mmt-repo # Use new repo secret and directory name
-
-      - name: Prepare deployment files
-        run: |
-          # Create the www directory if it doesn't exist
-          mkdir -p mmt-repo/www # Use new directory name
-          # Copy the built files to the www directory
-          cp -r build/* mmt-repo/www/ # Use new directory name
-
-      - name: Create .autogit.yml if not exists
-        run: |
-          cd mmt-repo # Use new directory name
-          if [ ! -f .autogit.yml ]; then
-            echo "Creating default .autogit.yml file"
-            cat <<EOF > .autogit.yml
-          deploy:
-            enabled: true
-            branch: main # Use main branch
-            source: www
-            target: /
-            exclude:
-              - .git
-              - .github
-              - .gitignore
-              - .autogit.yml
-              - README.md
-          EOF
-          fi
-
-      - name: Configure Git in MMT repo
-        run: |
-          cd mmt-repo # Use new directory name
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          # Ensure git uses the SSH agent and known_hosts file correctly
-          git config core.sshCommand "ssh -o UserKnownHostsFile=~/.ssh/known_hosts"
-
-      - name: Commit and push changes
-        run: |
-          cd mmt-repo # Use new directory name
-          git add .
-          git commit -m "Deploy website changes via GitHub Actions" || echo "No changes to commit"
-          git push origin main # Push to main branch
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build # Directory containing build artifacts
+          # Optional: specify a different branch if needed, default is gh-pages
+          # publish_branch: gh-pages
+          # Optional: specify a custom domain if configured
+          # cname: yourdomain.com
