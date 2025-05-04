@@ -42,7 +42,9 @@ jobs:
           eval $(ssh-agent -s)
           echo "${{ secrets.COMBELL_SSH_KEY }}" | ssh-add -
           echo "Attempting to connect to SSH host..."
-          ssh -o StrictHostKeyChecking=accept-new -T ${{ secrets.COMBELL_SSH_USER }}@${{ secrets.COMBELL_SSH_HOST }} || echo "SSH connection test complete"
+          # Test connection using the known_hosts file
+          ssh -T ${{ secrets.COMBELL_SSH_USER }}@${{ secrets.COMBELL_SSH_HOST }} || echo "SSH connection test complete or failed (expected if just testing)"
+          # Clone using the default SSH settings which respect known_hosts
           git clone ${{ secrets.COMBELL_GIT_REPO }} combell-repo
 
       - name: Prepare deployment files
@@ -77,7 +79,8 @@ jobs:
           cd combell-repo
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git config core.sshCommand "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=~/.ssh/known_hosts"
+          # Ensure git uses the SSH agent and known_hosts file correctly
+          git config core.sshCommand "ssh -o UserKnownHostsFile=~/.ssh/known_hosts"
 
       - name: Commit and push changes
         run: |
