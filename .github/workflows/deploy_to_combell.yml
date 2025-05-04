@@ -3,7 +3,8 @@ name: Deploy to Combell
 on:
   push:
     branches:
-      - main # or master, depending on your default branch name
+      - main
+      - master # Included for repositories that still use master
 
 jobs:
   deploy:
@@ -49,33 +50,26 @@ jobs:
           # Create the www directory if it doesn't exist
           mkdir -p combell-repo/www
           # Copy the built files to the www directory
-          cp -r dist/* combell-repo/www/
+          cp -r build/* combell-repo/www/ # Corrected build output directory
 
       - name: Create .autogit.yml if not exists
         run: |
-          if [ ! -f combell-repo/.autogit.yml ]; then
+          cd combell-repo
+          if [ ! -f .autogit.yml ]; then
             echo "Creating default .autogit.yml file"
-            echo "# Combell Autogit configuration
+            cat <<EOF > .autogit.yml
           deploy:
-            # Set to true to enable deployment
             enabled: true
-            
-            # The branch to deploy from
             branch: master
-            
-            # The directory to deploy from
             source: www
-            
-            # The directory to deploy to
             target: /
-            
-            # Files to exclude from deployment
             exclude:
               - .git
               - .github
               - .gitignore
               - .autogit.yml
-              - README.md" > combell-repo/.autogit.yml
+              - README.md
+          EOF
           fi
 
       - name: Configure Git in Combell repo
@@ -90,4 +84,4 @@ jobs:
           cd combell-repo
           git add .
           git commit -m "Deploy website changes via GitHub Actions" || echo "No changes to commit"
-          git push origin master
+          git push origin master # Pushing to the branch specified in .autogit.yml
