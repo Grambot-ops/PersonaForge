@@ -31,7 +31,7 @@
     "getInTouch": "Get In Touch"
   },
   "about": {
-    "bio": "Hello! I'm Maximus, a passionate Cloud & Cybersecurity student based in the Netherlands. I thrive on tackling complex challenges and continuously expanding my knowledge in the ever-evolving tech landscape. My journey involves hands-on experience with cloud platforms like Azure and AWS, coupled with a strong interest in cybersecurity principles and practices.",
+    "bio": "Hello! I'm Maximus, a passionate Cloud & Cybersecurity student based in the Belgium. I thrive on tackling complex challenges and continuously expanding my knowledge in the ever-evolving tech landscape. My journey involves hands-on experience with cloud platforms like Azure and AWS, coupled with a strong interest in cybersecurity principles and practices.",
     "hobbiesTitle": "Hobbies & Interests",
     "hobbies": {
       "gym": "Gym & Fitness",
@@ -45,9 +45,9 @@
     "ambitionsText": "My goal is to become a proficient Cloud Security Engineer, helping organizations design, implement, and maintain secure and resilient cloud environments. I am eager to contribute to innovative projects and collaborate with like-minded professionals.",
     "viewCvButton": "View CV Page",
     "downloadCvButton": "Download CV (PDF)",
-    "pageTitle": "About Maximus Mukiza | Cyber Security Professional",
-    "pageDescription": "Learn more about Maximus Mukiza, a passionate cyber security professional with experience in IT support, web development, and fitness coaching.",
-    "pageKeywords": "Maximus Mukiza, cyber security, cloud security, AWS, Azure, portfolio, IT professional",
+    "pageTitle": "About Maximus Mukiza | Cyber Security Student",
+    "pageDescription": "Learn more about Maximus Mukiza, a passionate cyber security student with experience in IT support, web development, and fitness coaching.",
+    "pageKeywords": "Maximus Mukiza, cyber security, cloud security, AWS, Azure, portfolio, IT student",
     "mainTitle": "About Me"
   },
   "backToTop": {
@@ -169,11 +169,6 @@
     "categorySecurity": "Security",
     "categoryProgramming": "Programming",
     "categoryDevOps": "DevOps",
-    "relatedCertsTitle": "Related Certifications & Licenses",
-    "completedOn": "Completed {{date}}",
-    "currentlyPursuing": "Currently pursuing:",
-    "drivingLicense": "Driving License",
-    "drivingLicenseCategory": "Category A2 (Motorcycle)",
     "aws": "AWS Cloud Services",
     "azure": "Azure Security",
     "network": "Network Security",
@@ -196,8 +191,6 @@
     "heading": "Curriculum Vitae",
     "downloadButton": "Download CV",
     "downloadAria": "Download CV",
-    "mainTitle": "Curriculum Vitae",
-    "downloadAriaLabel": "Download CV",
     "name": "Maximus Mukiza",
     "role": "Bachelor Student at Thomas More University of Applied Sciences",
     "phone": "0456190617",
@@ -236,9 +229,9 @@
     "skillProblemSolving": "Problem Solving",
     "skillCommunication": "Communication",
     "languagesTitle": "Languages",
-    "langDutch": "Nederlands",
-    "langFrench": "Frans",
-    "langEnglish": "Engels",
+    "langDutch": "Dutch",
+    "langFrench": "French",
+    "langEnglish": "English",
     "langKinyarwanda": "Kinyarwanda",
     "hobbiesTitle": "Hobbies & Interests",
     "hobbyCycling": "Cycling",
@@ -257,7 +250,7 @@
     "metaDescription": "E-Portfolio of Maximus Mukiza, a Cloud & Cybersecurity Student showcasing projects, skills, and learning journey.",
     "metaKeywords": "cybersecurity, cloud computing, portfolio, Maximus Mukiza, IT security, AWS, Azure",
     "ogTitle": "Maximus Mukiza | Cloud & Cybersecurity Portfolio",
-    "ogDescription": "Portfolio of Maximus Mukiza, showcasing cybersecurity and cloud projects, skills, and professional journey."
+    "ogDescription": "Portfolio of Maximus Mukiza, showcasing cybersecurity and cloud projects, skills, and learning journey."
   },
   "theme": {
     "switchToLight": "Switch to light theme",
@@ -280,9 +273,9 @@
       "description": "Welcome to the portfolio of Maximus Mukiza. Explore projects in cyber security, IT, and web development."
     },
     "about": {
-      "title": "About Maximus Mukiza | Cyber Security Professional",
-      "description": "Learn more about Maximus Mukiza, a passionate cyber security professional with experience in IT support, web development, and fitness coaching.",
-      "keywords": "Maximus Mukiza, cyber security, cloud security, AWS, Azure, portfolio, IT professional"
+      "title": "About Maximus Mukiza | Cyber Security Student",
+      "description": "Learn more about Maximus Mukiza, a passionate cyber security student with experience in IT support, web development, and fitness coaching.",
+      "keywords": "Maximus Mukiza, cyber security, cloud security, AWS, Azure, portfolio, IT student"
     },
     "contact": {
       "title": "Contact Maximus Mukiza | Get In Touch",

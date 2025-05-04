@@ -1,43 +1,49 @@
 import React from "react";
-import { useTranslation } from "react-i18next"; // Import useTranslation
+import { useTranslation } from "react-i18next";
+import skillsData from "../data/skills.json"; // Import skills data
 
 interface Skill {
-  name: string;
+  id: string; // Use ID for translation key
   proficiency: number;
   category: string;
 }
 
 const Skills: React.FC = () => {
-  const { t } = useTranslation(); // Initialize useTranslation hook
+  const { t } = useTranslation();
 
-  // Skills data with proficiency level (0-100)
-  const skills: Skill[] = [
-    { name: "AWS Cloud Services", proficiency: 85, category: "Cloud" },
-    { name: "Azure Security", proficiency: 80, category: "Cloud" },
-    { name: "Network Security", proficiency: 90, category: "Security" },
-    { name: "SIEM Solutions", proficiency: 75, category: "Security" },
-    { name: "Threat Intelligence", proficiency: 70, category: "Security" },
-    { name: "Python", proficiency: 80, category: "Programming" },
-    { name: "Rust", proficiency: 60, category: "Programming" }, // Added Rust
-    { name: "Infrastructure as Code", proficiency: 85, category: "DevOps" },
-    { name: "Containerization", proficiency: 70, category: "DevOps" },
-    { name: "Incident Response", proficiency: 65, category: "Security" },
-  ];
+  // Use imported skills data
+  const skills: Skill[] = skillsData;
 
   // Group skills by category
   const categories = Array.from(new Set(skills.map((skill) => skill.category)));
 
+  // Helper function to get category translation key
+  const getCategoryKey = (category: string): string => {
+    switch (category.toLowerCase()) {
+      case "cloud":
+        return "skills.categoryCloud";
+      case "security":
+        return "skills.categorySecurity";
+      case "programming":
+        return "skills.categoryProgramming";
+      case "devops":
+        return "skills.categoryDevOps";
+      default:
+        return category; // Fallback if category not found
+    }
+  };
+
   return (
     <div className="py-8">
       <h2 className="text-3xl font-bold text-center mb-10 text-gray-800 dark:text-white">
-        {t("skills.title")} {/* Translate title */}
+        {t("skills.title")}
       </h2>
 
       <div className="max-w-4xl mx-auto">
         {categories.map((category) => (
           <div key={category} className="mb-10">
             <h3 className="text-2xl font-bold mb-4 text-blue-700 dark:text-blue-500">
-              {category}
+              {t(getCategoryKey(category))} {/* Translate category */}
             </h3>
             <div className="space-y-4">
               {skills
@@ -46,7 +52,8 @@ const Skills: React.FC = () => {
                   <div key={index} className="mb-2">
                     <div className="flex justify-between mb-1">
                       <span className="text-base font-medium text-gray-700 dark:text-gray-300">
-                        {skill.name}
+                        {t(`skills.${skill.id}`)}{" "}
+                        {/* Translate skill name using ID */}
                       </span>
                       <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
                         {skill.proficiency}%
@@ -68,36 +75,35 @@ const Skills: React.FC = () => {
         ))}
       </div>
 
-      {/* Add related certifications or achievements */}
+      {/* Certifications Section */}
       <div className="mt-12 max-w-4xl mx-auto bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow-md">
         <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
-          {t("skills.certsTitle")} {/* Translate certifications title */}
+          {t("skills.certsTitle")}
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* LPI Cert */}
           <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
             <h4 className="font-bold text-blue-600 dark:text-blue-400">
-              LPI Certifications
+              {t("skills.certLpi")}
             </h4>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              {t("skills.certsCompleted", { date: "December 2023" })}{" "}
-              {/* Translate completion date */}
+              {t("skills.certLpiDate")}
             </p>
           </div>
+          {/* Pursuing Cert */}
           <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-100 dark:bg-gray-700">
-            <h4 className="font-bold">{t("skills.certsPursuing")}</h4>{" "}
-            {/* Translate pursuing text */}
+            <h4 className="font-bold">{t("skills.certsPursuing")}</h4>
             <p className="text-blue-600 dark:text-blue-400">
-              AWS Cloud Practitioner
+              {t("skills.certAws")}
             </p>
           </div>
-          {/* Added Driving License */}
+          {/* Driving License */}
           <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg md:col-span-2">
             <h4 className="font-bold text-blue-600 dark:text-blue-400">
-              Driving License
+              {t("skills.certDriving")}
             </h4>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              {t("skills.drivingLicenseCat", { category: "A2 (Motorcycle)" })}{" "}
-              {/* Translate category */}
+              {t("skills.certDrivingCat")}
             </p>
           </div>
         </div>

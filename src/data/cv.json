@@ -1,0 +1,75 @@
+{
+  "name": "Maximus Mukiza",
+  "roleKey": "cv.role",
+  "phone": "0456190617",
+  "locationKey": "cv.location",
+  "linkedinUrl": "https://linkedin.com/in/maximus-mukiza-1523a5297",
+  "linkedinKey": "cv.linkedin",
+  "profile": ["cv.profileBio1", "cv.profileBio2"],
+  "education": [
+    {
+      "degreeKey": "cv.educationDegree1",
+      "universityKey": "cv.educationUniversity1",
+      "dateKey": "cv.educationDate1"
+    },
+    {
+      "degreeKey": "cv.educationDegree2",
+      "universityKey": "cv.educationUniversity2",
+      "dateKey": "cv.educationDate2"
+    }
+  ],
+  "workExperience": [
+    {
+      "titleKey": "cv.work1Title",
+      "dateKey": "cv.work1Date",
+      "companyKey": "cv.work1Company",
+      "details": [
+        "cv.work1Detail1",
+        "cv.work1Detail2",
+        "cv.work1Detail3",
+        "cv.work1Detail4",
+        "cv.work1Detail5"
+      ]
+    },
+    {
+      "titleKey": "cv.work2Title",
+      "dateKey": "cv.work2Date",
+      "companyKey": "cv.work2Company",
+      "details": [
+        "cv.work2Detail1",
+        "cv.work2Detail2",
+        "cv.work2Detail3",
+        "cv.work2Detail4"
+      ]
+    }
+  ],
+  "skills": [
+    "cv.skillAdaptation",
+    "cv.skillManagement",
+    "cv.skillCustomerSatisfaction",
+    "cv.skillProblemSolving",
+    "cv.skillCommunication"
+  ],
+  "languages": [
+    "cv.langDutch",
+    "cv.langFrench",
+    "cv.langEnglish",
+    "cv.langKinyarwanda"
+  ],
+  "hobbies": [
+    "cv.hobbyCycling",
+    "cv.hobbyVirtualization",
+    "cv.hobbyHomelab",
+    "cv.hobbyRust"
+  ],
+  "certifications": [
+    {
+      "nameKey": "cv.certLPI",
+      "dateKey": "cv.certLPIDate"
+    },
+    {
+      "nameKey": "cv.certDrivers",
+      "dateKey": "cv.certDriversDate"
+    }
+  ]
+}

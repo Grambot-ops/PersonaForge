@@ -44,8 +44,8 @@ const Header: React.FC = () => {
                 to={item.path}
                 className={`text-sm font-medium transition-colors duration-200 ${
                   location.pathname === item.path
-                    ? "text-blue-600 dark:text-blue-400" // Use standard Tailwind class for active state temporarily
-                    : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                    ? "text-[var(--primary-color)]" // Use CSS variable for active state
+                    : "text-gray-600 dark:text-gray-300 hover:text-[var(--primary-color)] dark:hover:text-[var(--primary-color)]"
                 }`}
               >
                 {item.label}
@@ -57,26 +57,26 @@ const Header: React.FC = () => {
               {/* Adjusted margin from ml-4 */}
               <button
                 onClick={() => changeLanguage("en")}
-                className={`text-sm font-medium ${
+                className={`text-sm font-medium transition-colors duration-200 ${
                   i18n.language === "en"
-                    ? "text-blue-600 dark:text-blue-400" // Use standard Tailwind class for active state temporarily
-                    : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                    ? "text-[var(--primary-color)]" // Use CSS variable for active state
+                    : "text-gray-600 dark:text-gray-300 hover:text-[var(--primary-color)] dark:hover:text-[var(--primary-color)]"
                 }`}
-                aria-label="Switch to English"
+                aria-label={t("header.switchToEn")}
               >
-                EN
+                {t("header.langEnShort")}
               </button>
               <span className="text-gray-300 dark:text-gray-600">|</span>
               <button
                 onClick={() => changeLanguage("nl")}
-                className={`text-sm font-medium ${
+                className={`text-sm font-medium transition-colors duration-200 ${
                   i18n.language === "nl"
-                    ? "text-blue-600 dark:text-blue-400" // Use standard Tailwind class for active state temporarily
-                    : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                    ? "text-[var(--primary-color)]" // Use CSS variable for active state
+                    : "text-gray-600 dark:text-gray-300 hover:text-[var(--primary-color)] dark:hover:text-[var(--primary-color)]"
                 }`}
-                aria-label="Switch to Dutch"
+                aria-label={t("header.switchToNl")}
               >
-                NL
+                {t("header.langNlShort")}
               </button>
             </div>
             <ThemeToggle />
@@ -88,7 +88,9 @@ const Header: React.FC = () => {
             <button
               className="text-gray-600 dark:text-gray-300 hover:text-[var(--primary-color)] dark:hover:text-[var(--primary-color)]"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-label={t(
+                isMenuOpen ? "header.closeMenu" : "header.openMenu"
+              )}
             >
               <svg
                 className="w-6 h-6"
@@ -125,8 +127,8 @@ const Header: React.FC = () => {
                 to={item.path}
                 className={`block text-sm font-medium transition-colors duration-200 ${
                   location.pathname === item.path
-                    ? "text-blue-600 dark:text-blue-400" // Use standard Tailwind class for active state temporarily
-                    : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                    ? "text-[var(--primary-color)]" // Use CSS variable for active state
+                    : "text-gray-600 dark:text-gray-300 hover:text-[var(--primary-color)] dark:hover:text-[var(--primary-color)]"
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -137,26 +139,26 @@ const Header: React.FC = () => {
             <div className="flex items-center space-x-2 pt-4 border-t border-gray-200 dark:border-gray-700">
               <button
                 onClick={() => changeLanguage("en")}
-                className={`text-sm font-medium ${
+                className={`text-sm font-medium transition-colors duration-200 ${
                   i18n.language === "en"
-                    ? "text-blue-600 dark:text-blue-400" // Use standard Tailwind class for active state temporarily
-                    : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                    ? "text-[var(--primary-color)]" // Use CSS variable for active state
+                    : "text-gray-600 dark:text-gray-300 hover:text-[var(--primary-color)] dark:hover:text-[var(--primary-color)]"
                 }`}
-                aria-label="Switch to English"
+                aria-label={t("header.switchToEn")}
               >
-                English
+                {t("header.langEnLong")}
               </button>
               <span className="text-gray-400 dark:text-gray-500">|</span>
               <button
                 onClick={() => changeLanguage("nl")}
-                className={`text-sm font-medium ${
+                className={`text-sm font-medium transition-colors duration-200 ${
                   i18n.language === "nl"
-                    ? "text-blue-600 dark:text-blue-400" // Use standard Tailwind class for active state temporarily
-                    : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                    ? "text-[var(--primary-color)]" // Use CSS variable for active state
+                    : "text-gray-600 dark:text-gray-300 hover:text-[var(--primary-color)] dark:hover:text-[var(--primary-color)]"
                 }`}
-                aria-label="Switch to Dutch"
+                aria-label={t("header.switchToNl")}
               >
-                Nederlands
+                {t("header.langNlLong")}
               </button>
             </div>
           </div>

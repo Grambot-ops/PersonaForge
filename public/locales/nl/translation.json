@@ -26,7 +26,7 @@
     "changeLanguage": "Verander Taal"
   },
   "about": {
-    "bio": "Hallo! Ik ben Maximus, een gepassioneerde Cloud & Cybersecurity student gevestigd in Nederland. Ik gedij op het aanpakken van complexe uitdagingen en het continu uitbreiden van mijn kennis in het steeds evoluerende tech-landschap. Mijn reis omvat praktische ervaring met cloudplatforms zoals Azure en AWS, gekoppeld aan een sterke interesse in cybersecurityprincipes en -praktijken.",
+    "bio": "Hallo! Ik ben Maximus, een gepassioneerde Cloud & Cybersecurity student gevestigd in Belgie. Ik gedij op het aanpakken van complexe uitdagingen en het continu uitbreiden van mijn kennis in het steeds evoluerende tech-landschap. Mijn reis omvat praktische ervaring met cloudplatforms zoals Azure en AWS, gekoppeld aan een sterke interesse in cybersecurityprincipes en -praktijken.",
     "hobbiesTitle": "Hobby's & Interesses",
     "hobbies": {
       "gym": "Sportschool & Fitness",
@@ -40,9 +40,9 @@
     "ambitionsText": "Mijn doel is om een bekwame Cloud Security Engineer te worden, die organisaties helpt bij het ontwerpen, implementeren en onderhouden van veilige en veerkrachtige cloudomgevingen. Ik sta te popelen om bij te dragen aan innovatieve projecten en samen te werken met gelijkgestemde professionals.",
     "viewCvButton": "Bekijk CV Pagina",
     "downloadCvButton": "Download CV (PDF)",
-    "pageTitle": "Over Maximus Mukiza | Cyber Security Professional",
-    "pageDescription": "Leer meer over Maximus Mukiza, een gepassioneerde cyber security professional met ervaring in IT-ondersteuning, webontwikkeling en fitnesscoaching.",
-    "pageKeywords": "Maximus Mukiza, cyber security, cloud security, AWS, Azure, portfolio, IT professional",
+    "pageTitle": "Over Maximus Mukiza | Cyber Security Student",
+    "pageDescription": "Leer meer over Maximus Mukiza, een gepassioneerde cyber security student met ervaring in IT-ondersteuning, webontwikkeling en fitnesscoaching.",
+    "pageKeywords": "Maximus Mukiza, cyber security, cloud security, AWS, Azure, portfolio, IT student",
     "mainTitle": "Over Mij"
   },
   "backToTop": {
@@ -162,11 +162,21 @@
     "categorySecurity": "Beveiliging",
     "categoryProgramming": "Programmeren",
     "categoryDevOps": "DevOps",
-    "relatedCertsTitle": "Gerelateerde Certificaten & Licenties",
-    "completedOn": "Voltooid {{date}}",
-    "currentlyPursuing": "Momenteel bezig met:",
-    "drivingLicense": "Rijbewijs",
-    "drivingLicenseCategory": "Categorie A2 (Motorfiets)"
+    "aws": "AWS Cloud Services",
+    "azure": "Azure Beveiliging",
+    "network": "Netwerkbeveiliging",
+    "siem": "SIEM Oplossingen",
+    "threat": "Dreigingsinformatie",
+    "python": "Python",
+    "rust": "Rust",
+    "iac": "Infrastructure as Code",
+    "container": "Containerisatie",
+    "incident": "Incidentrespons",
+    "certLpi": "LPI Certificeringen",
+    "certLpiDate": "Voltooid December 2023",
+    "certAws": "AWS Cloud Practitioner",
+    "certDriving": "Rijbewijs",
+    "certDrivingCat": "Categorie A2 (Motorfiets)"
   },
   "cv": {
     "pageTitle": "CV - Maximus Mukiza | Cyber Security Student",
@@ -235,6 +245,6 @@
     "metaDescription": "E-Portfolio van Maximus Mukiza, een Cloud & Cybersecurity Student die projecten, vaardigheden en leertraject laat zien.",
     "metaKeywords": "cybersecurity, cloud computing, portfolio, Maximus Mukiza, IT security, AWS, Azure",
     "ogTitle": "Maximus Mukiza | Cloud & Cybersecurity Portfolio",
-    "ogDescription": "Portfolio van Maximus Mukiza, toont cybersecurity en cloud projecten, vaardigheden en professionele reis."
+    "ogDescription": "Portfolio van Maximus Mukiza, toont cybersecurity en cloud projecten, vaardigheden en leertraject."
   }
 }

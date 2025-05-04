@@ -1,0 +1,12 @@
+[
+  { "id": "aws", "proficiency": 85, "category": "Cloud" },
+  { "id": "azure", "proficiency": 80, "category": "Cloud" },
+  { "id": "network", "proficiency": 90, "category": "Security" },
+  { "id": "siem", "proficiency": 75, "category": "Security" },
+  { "id": "threat", "proficiency": 70, "category": "Security" },
+  { "id": "python", "proficiency": 80, "category": "Programming" },
+  { "id": "rust", "proficiency": 60, "category": "Programming" },
+  { "id": "iac", "proficiency": 85, "category": "DevOps" },
+  { "id": "container", "proficiency": 70, "category": "DevOps" },
+  { "id": "incident", "proficiency": 65, "category": "Security" }
+]
