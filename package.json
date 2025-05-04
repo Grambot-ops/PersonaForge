@@ -2,6 +2,7 @@
   "name": "e-portfolio-website",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://grambot-ops.github.io/PersonaForge",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
