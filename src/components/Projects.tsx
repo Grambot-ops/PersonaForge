@@ -47,7 +47,7 @@ const Projects: React.FC = () => {
           break;
       }
     },
-    [focusedProject]
+    [focusedProject, openLightbox] // Add openLightbox here
   );
 
   // Handle keyboard events
