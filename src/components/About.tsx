@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next"; // Import useTranslation
 
 const About: React.FC = () => {
   const { t } = useTranslation(); // Initialize useTranslation hook
+  const publicUrl = process.env.PUBLIC_URL || ""; // Get PUBLIC_URL
 
   // Define keys for translation
   const hobbyKeys = [
@@ -19,7 +20,7 @@ const About: React.FC = () => {
       <div className="flex flex-col md:flex-row items-center md:items-start max-w-5xl mx-auto gap-8 md:gap-16">
         {/* Increased image size and margin */}
         <img
-          src="/images/Profile.png"
+          src={`${publicUrl}/images/Profile.png`} // Prepend PUBLIC_URL
           alt="Profile of Maximus"
           className="rounded-full w-56 h-56 object-cover mb-4 md:mb-0 shadow-lg border-4 border-white flex-shrink-0" // Increased size, added flex-shrink-0
         />
@@ -90,7 +91,7 @@ const About: React.FC = () => {
               {t("about.viewCvButton")} {/* Translate button text */}
             </Link>
             <a
-              href="/CV_Maximus.pdf"
+              href={`${publicUrl}/CV_Maximus.pdf`} // Prepend PUBLIC_URL
               download
               className="btn btn-outline ml-4 inline-block"
             >

@@ -5,6 +5,7 @@ import cvData from "../data/cv.json"; // Import CV data
 
 const CV: React.FC = () => {
   const { t } = useTranslation();
+  const publicUrl = process.env.PUBLIC_URL || ""; // Get PUBLIC_URL
 
   return (
     <div className="py-16 bg-gray-50 dark:bg-gray-900 page-transition">
@@ -19,7 +20,7 @@ const CV: React.FC = () => {
 
         <div className="flex justify-end mb-6">
           <a
-            href="/CV_Maximus.pdf"
+            href={`${publicUrl}/CV_Maximus.pdf`} // Prepend PUBLIC_URL
             download
             className="btn btn-primary flex items-center"
             aria-label={t("cv.downloadAria")}

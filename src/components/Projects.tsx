@@ -4,6 +4,7 @@ import projectData from "../data/projects.json"; // Keep this for IDs and video 
 
 const Projects: React.FC = () => {
   const { t } = useTranslation(); // Initialize useTranslation hook
+  const publicUrl = process.env.PUBLIC_URL || ""; // Get PUBLIC_URL
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
   const [videoLightbox, setVideoLightbox] = useState<string | null>(null);
   const [focusedProject, setFocusedProject] = useState<number | null>(null);
@@ -15,7 +16,7 @@ const Projects: React.FC = () => {
     if (project && project.videoUrl) {
       setVideoLightbox(project.videoUrl);
     } else {
-      setLightboxImage(`/projects/project${projectId}.png`);
+      setLightboxImage(`${publicUrl}/projects/project${projectId}.png`); // Prepend PUBLIC_URL
     }
   };
 
@@ -75,7 +76,7 @@ const Projects: React.FC = () => {
             : null;
           const thumbnailUrl = videoId
             ? `https://img.youtube.com/vi/${videoId}/0.jpg`
-            : `/projects/project${project.id}.png`;
+            : `${publicUrl}/projects/project${project.id}.png`; // Prepend PUBLIC_URL to the fallback image thumbnail
           const projectTitle = t(`projects.p${project.id}.title`); // Get title via translation
 
           return (
@@ -189,7 +190,7 @@ const Projects: React.FC = () => {
                   </div>
                 ) : (
                   <img
-                    src={`/projects/project${project.id}.png`}
+                    src={`${publicUrl}/projects/project${project.id}.png`} // Prepend PUBLIC_URL
                     alt={t("projects.screenshotAlt", {
                       title: projectTitle, // Use translated title
                     })}
