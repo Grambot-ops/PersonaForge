@@ -33,7 +33,7 @@ jobs:
       - name: Add Combell host to known_hosts
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan ssh.domain.be >> ~/.ssh/known_hosts
+          ssh-keyscan ${{ secrets.COMBELL_SSH_HOST }} >> ~/.ssh/known_hosts
           
       - name: Clone Combell repository
         run: |
@@ -56,7 +56,7 @@ deploy:
   enabled: true
   
   # The branch to deploy from
-  branch: main
+  branch: master
   
   # The directory to deploy from
   source: www
@@ -78,10 +78,11 @@ deploy:
           cd combell-repo
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
+          git config core.sshCommand "ssh -i ~/.ssh/id_rsa -o IdentitiesOnly=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=~/.ssh/known_hosts -l ${{ secrets.COMBELL_SSH_USER }}"
           
       - name: Commit and push changes
         run: |
           cd combell-repo
           git add .
           git commit -m "Deploy website changes via GitHub Actions" || echo "No changes to commit"
-          git push origin main
+          git push origin master
