@@ -2,10 +2,15 @@
   "name": "Maximus Mukiza",
   "roleKey": "cv.role",
   "phone": "0456190617",
+  "email": "mukizamaximus08@gmail.com",
   "locationKey": "cv.location",
   "linkedinUrl": "https://linkedin.com/in/maximus-mukiza-1523a5297",
   "linkedinKey": "cv.linkedin",
-  "profile": ["cv.profileBio1", "cv.profileBio2"],
+  "githubUrl": "https://github.com/Maximus-Mukiza",
+  "githubKey": "cv.github",
+  "portfolioUrl": "https://mmt-labs.be/",
+  "portfolioKey": "cv.portfolio",
+  "profile": ["cv.profileBio1"],
   "education": [
     {
       "degreeKey": "cv.educationDegree1",
@@ -20,56 +25,70 @@
   ],
   "workExperience": [
     {
-      "titleKey": "cv.work1Title",
-      "dateKey": "cv.work1Date",
-      "companyKey": "cv.work1Company",
-      "details": [
-        "cv.work1Detail1",
-        "cv.work1Detail2",
-        "cv.work1Detail3",
-        "cv.work1Detail4",
-        "cv.work1Detail5"
-      ]
+      "titleKey": "cv.work3Title",
+      "dateKey": "cv.work3Date",
+      "companyKey": "cv.work3Company",
+      "details": ["cv.work3Detail1", "cv.work3Detail2", "cv.work3Detail3"]
     },
     {
       "titleKey": "cv.work2Title",
       "dateKey": "cv.work2Date",
       "companyKey": "cv.work2Company",
-      "details": [
-        "cv.work2Detail1",
-        "cv.work2Detail2",
-        "cv.work2Detail3",
-        "cv.work2Detail4"
-      ]
+      "details": ["cv.work2Detail1", "cv.work2Detail2", "cv.work2Detail3"]
+    },
+    {
+      "titleKey": "cv.work1Title",
+      "dateKey": "cv.work1Date",
+      "companyKey": "cv.work1Company",
+      "details": ["cv.work1Detail1", "cv.work1Detail2", "cv.work1Detail3"]
     }
   ],
-  "skills": [
-    "cv.skillAdaptation",
-    "cv.skillManagement",
-    "cv.skillCustomerSatisfaction",
-    "cv.skillProblemSolving",
-    "cv.skillCommunication"
-  ],
+  "skills": {
+    "cloudInfrastructure": [
+      "Microsoft Azure",
+      "Amazon AWS",
+      "Kubernetes",
+      "Terraform",
+      "Azure Bicep"
+    ],
+    "securityMonitoring": [
+      "Wazuh",
+      "Graylog",
+      "TheHive/Cortex",
+      "SOC Principles",
+      "Incident Response"
+    ],
+    "scriptingAutomation": ["Python", "Bash", "GitHub Actions", "Jenkins"],
+    "toolsPlatforms": [
+      "Docker",
+      "Virtualization",
+      "Linux (LPI Certified)",
+      "Git"
+    ]
+  },
   "languages": [
     "cv.langDutch",
-    "cv.langFrench",
     "cv.langEnglish",
+    "cv.langFrench",
     "cv.langKinyarwanda"
   ],
-  "hobbies": [
-    "cv.hobbyCycling",
-    "cv.hobbyVirtualization",
-    "cv.hobbyHomelab",
-    "cv.hobbyRust"
-  ],
+  "hobbies": ["cv.hobbyFitness", "cv.hobbyMotorcycling"],
   "certifications": [
+    {
+      "nameKey": "cv.certChainguardML",
+      "dateKey": "cv.certChainguardMLDate"
+    },
+    {
+      "nameKey": "cv.certChainguardVuln",
+      "dateKey": "cv.certChainguardVulnDate"
+    },
+    {
+      "nameKey": "cv.certPlatformEng",
+      "dateKey": "cv.certPlatformEngDate"
+    },
     {
       "nameKey": "cv.certLPI",
       "dateKey": "cv.certLPIDate"
-    },
-    {
-      "nameKey": "cv.certDrivers",
-      "dateKey": "cv.certDriversDate"
     }
   ]
 }

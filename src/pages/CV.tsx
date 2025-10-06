@@ -54,14 +54,31 @@ const CV: React.FC = () => {
             </p>
             <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-600 dark:text-gray-400">
               <span>{cvData.phone}</span>
-              <span>{t("cv.location")}</span> {/* Use literal key */}
+              <span>{cvData.email}</span>
+              <span>{t("cv.location")}</span>
               <a
                 href={cvData.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 dark:text-blue-400 hover:underline"
               >
-                {t("cv.linkedin")} {/* Use literal key */}
+                {t("cv.linkedin")}
+              </a>
+              <a
+                href={cvData.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                {t("cv.github")}
+              </a>
+              <a
+                href={cvData.portfolioUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                {t("cv.portfolio")}
               </a>
             </div>
           </div>
@@ -135,28 +152,41 @@ const CV: React.FC = () => {
             ))}
           </div>
 
-          {/* Skills & Languages Section */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            <div>
-              <h3 className="text-xl font-bold mb-4 border-b-2 border-blue-600 dark:border-blue-500 pb-2 text-gray-800 dark:text-white">
-                {t("cv.skillsTitle")}
-              </h3>
-              <ul className="list-disc ml-5 text-gray-700 dark:text-gray-300 space-y-1">
-                {cvData.skills.map((skillKey) => (
-                  <li key={skillKey}>{t(skillKey)}</li>
-                ))}
-              </ul>
+          {/* Skills Section */}
+          <div className="mb-8">
+            <h3 className="text-xl font-bold mb-4 border-b-2 border-blue-600 dark:border-blue-500 pb-2 text-gray-800 dark:text-white">
+              {t("cv.skillsTitle")}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {Object.entries(cvData.skills).map(([category, skills]) => (
+                <div key={category}>
+                  <h4 className="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-2">
+                    {t(
+                      `cv.skills${
+                        category.charAt(0).toUpperCase() + category.slice(1)
+                      }`
+                    )}
+                  </h4>
+                  <ul className="list-disc ml-5 text-gray-700 dark:text-gray-300 space-y-1">
+                    {(skills as string[]).map((skill) => (
+                      <li key={skill}>{skill}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
-            <div>
-              <h3 className="text-xl font-bold mb-4 border-b-2 border-blue-600 dark:border-blue-500 pb-2 text-gray-800 dark:text-white">
-                {t("cv.languagesTitle")}
-              </h3>
-              <ul className="list-disc ml-5 text-gray-700 dark:text-gray-300 space-y-1">
-                {cvData.languages.map((langKey) => (
-                  <li key={langKey}>{t(langKey)}</li>
-                ))}
-              </ul>
-            </div>
+          </div>
+
+          {/* Languages Section */}
+          <div>
+            <h3 className="text-xl font-bold mb-4 border-b-2 border-blue-600 dark:border-blue-500 pb-2 text-gray-800 dark:text-white">
+              {t("cv.languagesTitle")}
+            </h3>
+            <ul className="list-disc ml-5 text-gray-700 dark:text-gray-300 space-y-1">
+              {cvData.languages.map((langKey) => (
+                <li key={langKey}>{t(langKey)}</li>
+              ))}
+            </ul>
           </div>
 
           {/* Hobbies & Certifications Section */}
@@ -178,7 +208,7 @@ const CV: React.FC = () => {
               <ul className="list-disc ml-5 text-gray-700 dark:text-gray-300 space-y-1">
                 {cvData.certifications.map((cert, index) => (
                   <li key={index}>
-                    {t(cert.nameKey)} ({t(cert.dateKey)})
+                    {t(cert.nameKey)} - <i>{t(cert.dateKey)}</i>
                   </li>
                 ))}
               </ul>
