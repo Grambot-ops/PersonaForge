@@ -129,6 +129,14 @@
       "background": "Pakt uitdagingen bij brugbediening in waterwegnavigatie aan via multimodale sensorfusie",
       "realizations": "Ontwikkelde een hybride audio-visueel herkenningssysteem dat 94% nauwkeurigheid behaalde in classificatie van scheepstypes",
       "learnings": "Expertise opgedaan in akoestische signaalverwerking, CNN-gebaseerde beeldherkenning en ingebedde besluitvormingsalgoritmen"
+    },
+    "p6": {
+      "title": "React-Sec-Ops: Een Veilige 3-Tier Applicatie op AWS",
+      "description": "Een full-stack, 3-tier webapplicatie geïmplementeerd op AWS, die een moderne, veilige en geautomatiseerde benadering van cloudapplicatie-implementatie demonstreert.",
+      "context": "Demonstratie van het diagnosticeren van en aanpassen aan de reële beperkingen van beheerde bedrijfs- of educatieve cloudomgevingen.",
+      "background": "Oorspronkelijk gericht op 100% geautomatiseerde implementatie met OpenTofu, maar aangepast naar een hybride model vanwege IAM-beperkingen in de AWS Learner Lab-omgeving, wat handmatige configuratie voor CI/CD- en CloudFront-componenten vereiste.",
+      "realizations": "Succesvol een hybride architectuur geïmplementeerd met geautomatiseerde kerninfrastructuur (VPC, ECS, RDS) via OpenTofu en handmatig geconfigureerde CI/CD en CloudFront, waarbij de beperkingen en de oplossing zijn gedocumenteerd.",
+      "learnings": "Beheersing van Infrastructure as Code (IaC) met OpenTofu, het ontwerpen van een cloud-native 3-tier architectuur, het toepassen van DevSecOps-principes en het ontwikkelen van geavanceerde probleemoplossende vaardigheden als reactie op omgevingsbeperkingen."
     }
   },
   "loading": "Laden...",
