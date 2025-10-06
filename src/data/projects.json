@@ -1,6 +1,6 @@
 [
   {
-    "id": 2,
+    "id": 6,
     "title": "SOC-Integrated Hosting Platform",
     "description": "Team project building security operations center capabilities into cloud hosting platform for client security assurance",
     "context": "Second-semester collaboration focusing on enterprise security monitoring requirements",
@@ -46,13 +46,13 @@
     "learnings": "Gained expertise in IoT device coordination, secure access token management, and embedded system security"
   },
   {
-    "id": 6,
+    "id": 2,
     "title": "React-Sec-Ops: A Secure 3-Tier Application on AWS",
     "description": "A full-stack, 3-tier web application deployed on AWS, demonstrating a modern, secure, and automated approach to cloud application deployment.",
     "context": "Demonstration of diagnosing and adapting to real-world constraints of managed enterprise or educational cloud environments.",
     "background": "Originally aimed for 100% automated deployment with OpenTofu, but adapted to a hybrid model due to IAM limitations in the AWS Learner Lab environment, requiring manual setup for CI/CD and CloudFront components.",
     "realizations": "Successfully deployed a hybrid architecture with automated core infrastructure (VPC, ECS, RDS) via OpenTofu and manually configured CI/CD and CloudFront, documenting the constraints and workaround.",
     "learnings": "Mastered Infrastructure as Code (IaC) with OpenTofu, designed a cloud-native 3-tier architecture, applied DevSecOps principles, and developed advanced problem-solving skills in response to environmental limitations.",
-    "image": "/projects/react-sec-ops.png"
+    "image": "/pu"
   }
 ]
