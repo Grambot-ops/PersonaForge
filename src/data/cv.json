@@ -10,7 +10,7 @@
   "githubKey": "cv.github",
   "portfolioUrl": "https://mmt-labs.be/",
   "portfolioKey": "cv.portfolio",
-  "profile": ["cv.profileBio1"],
+  "profile": ["cv.profileBio1", "cv.profileBio2", "cv.profileBio3"],
   "education": [
     {
       "degreeKey": "cv.educationDegree1",
