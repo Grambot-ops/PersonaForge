@@ -1,91 +1,58 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { IconContext } from "react-icons";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { useTranslation } from "react-i18next"; // Import useTranslation
 
 // Cast the icon components to React.ElementType
 const GithubIcon = FaGithub as React.ElementType;
 const LinkedinIcon = FaLinkedin as React.ElementType;
 
 const Footer: React.FC = () => {
-  const { t } = useTranslation(); // Initialize useTranslation hook - Removed unused i18n
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-8 transition-colors duration-200">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">
-              Maximus
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300">
-              {t("hero.subtitle")} {/* Reuse subtitle translation */}
+    <footer className="py-12 border-t border-slate-800 bg-black text-slate-400">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="text-center md:text-left">
+            <div className="flex items-center space-x-2 justify-center md:justify-start mb-4">
+              <span className="font-mono font-bold tracking-tight text-xl text-white">
+                MAXIMUS.SH
+              </span>
+              <span className="text-slate-700">|</span>
+              <span className="font-mono text-xs text-primary bg-primary/10 px-1 border border-primary/20">
+                v2.4.0-stable
+              </span>
+            </div>
+            <p className="text-[10px] text-slate-600 uppercase tracking-widest font-mono">
+              Engineering & Security Portfolio
             </p>
           </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">
-              {t("footer.quickLinks")} {/* Translate Quick Links */}
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  to="/about"
-                  className="text-gray-600 dark:text-gray-300 hover:text-[var(--primary-color)] dark:hover:text-[var(--primary-color)] transition-colors"
-                >
-                  {t("footer.aboutMe")} {/* Translate About Me */}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/projects"
-                  className="text-gray-600 dark:text-gray-300 hover:text-[var(--primary-color)] dark:hover:text-[var(--primary-color)] transition-colors"
-                >
-                  {t("footer.projects")} {/* Translate Projects */}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/contact"
-                  className="text-gray-600 dark:text-gray-300 hover:text-[var(--primary-color)] dark:hover:text-[var(--primary-color)] transition-colors"
-                >
-                  {t("footer.contact")} {/* Translate Contact */}
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-100">
-              {t("footer.connect")} {/* Translate Connect */}
-            </h3>
-            <IconContext.Provider value={{ className: "react-icons" }}>
-              <div className="flex space-x-4">
-                <a
-                  href="https://github.com/Grambot-ops"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-300 hover:text-[var(--primary-color)] dark:hover:text-[var(--primary-color)] transition-colors duration-200"
-                  aria-label="GitHub Profile"
-                >
-                  <GithubIcon size={24} aria-hidden="true" />{" "}
-                </a>
-                <a
-                  href="https://linkedin.com/in/maximus-mukiza-1523a5297"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-300 hover:text-[var(--primary-color)] dark:hover:text-[var(--primary-color)] transition-colors duration-200"
-                  aria-label="LinkedIn Profile"
-                >
-                  <LinkedinIcon size={24} aria-hidden="true" />{" "}
-                </a>
-              </div>
-            </IconContext.Provider>
+
+          <div className="flex space-x-6">
+            <a
+              href="https://github.com/Grambot-ops"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-600 hover:text-primary transition-colors"
+            >
+              <GithubIcon size={20} />
+            </a>
+            <a
+              href="https://linkedin.com/in/maximus-mukiza-1523a5297"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-600 hover:text-primary transition-colors"
+            >
+              <LinkedinIcon size={20} />
+            </a>
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700 text-center text-gray-600 dark:text-gray-300">
-          <p>{t("footer.copyright", { year: currentYear })}</p>{" "}
-          {/* Translate copyright */}
+
+        <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-[10px] text-slate-600 uppercase tracking-widest gap-4 font-mono">
+          <p>© {currentYear} Maximus Mukiza. All rights reserved.</p>
+          <p>
+            Latency: <span className="text-primary">12ms</span> {"//"} Region:{" "}
+            <span className="text-white">eu-central-1</span>
+          </p>
         </div>
       </div>
     </footer>

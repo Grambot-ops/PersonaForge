@@ -5,7 +5,7 @@
     "projects": "Projecten",
     "cv": "CV",
     "contact": "Contact",
-    "student": "Student"
+    "student": "Infrastructuur"
   },
   "footer": {
     "quickLinks": "Snelle Links",
@@ -17,8 +17,8 @@
   },
   "hero": {
     "title": "Maximus",
-    "subtitle": "Cloud & Cybersecurity Student",
-    "description": "Ambitie om veilige cloudoplossingen te bouwen en digitale activa te beschermen. Studeert momenteel Azure, AWS en cybersecurity-frameworks om organisaties te helpen navigeren in het complexe landschap van digitale beveiliging.",
+    "subtitle": "Cloud & Cybersecurity Infrastructuur",
+    "description": "Architect van veilige cloudoplossingen en beschermer van digitale activa met veerkrachtig ontwerp, geautomatiseerde beveiligingspipelines en enterprise-grade infrastructuur.",
     "viewProjects": "Bekijk Mijn Projecten",
     "getInTouch": "Neem Contact Op"
   },
@@ -26,7 +26,7 @@
     "changeLanguage": "Verander Taal"
   },
   "about": {
-    "bio": "Hallo! Ik ben Maximus, een gepassioneerde Cloud & Cybersecurity student gevestigd in Belgie. Ik gedij op het aanpakken van complexe uitdagingen en het continu uitbreiden van mijn kennis in het steeds evoluerende tech-landschap. Mijn reis omvat praktische ervaring met cloudplatforms zoals Azure en AWS, gekoppeld aan een sterke interesse in cybersecurityprincipes en -praktijken.",
+    "bio": "Hallo! Ik ben Maximus, een gepassioneerde Cloud & Cybersecurity specialist gevestigd in België. Ik gedij op het aanpakken van complexe uitdagingen en het continu uitbreiden van mijn kennis in het steeds evoluerende tech-landschap. Mijn reis omvat praktische ervaring met cloudplatforms zoals Azure en AWS, gekoppeld aan een sterke interesse in cybersecurityprincipes en -praktijken.",
     "hobbiesTitle": "Hobby's & Interesses",
     "hobbies": {
       "gym": "Sportschool & Fitness",
@@ -35,14 +35,14 @@
       "cloud": "Cloud Architectuur & Beveiliging"
     },
     "educationTitle": "Opleiding",
-    "educationText": "Momenteel volg ik een studie gericht op Cloud Technologieën en Cybersecurity, waarbij ik expertise opdoe in netwerkbeveiliging, ethisch hacken, cloudinfrastructuurbeheer en compliance.",
+    "educationText": "Mijn specialisatie richt zich op Cloud Technologieën en Cybersecurity, waarbij ik expertise opdoe in netwerkbeveiliging, ethisch hacken, cloudinfrastructuurbeheer en compliance.",
     "ambitionsTitle": "Ambities",
     "ambitionsText": "Mijn doel is om een bekwame Cloud Security Engineer te worden, die organisaties helpt bij het ontwerpen, implementeren en onderhouden van veilige en veerkrachtige cloudomgevingen. Ik sta te popelen om bij te dragen aan innovatieve projecten en samen te werken met gelijkgestemde professionals.",
     "viewCvButton": "Bekijk CV Pagina",
     "downloadCvButton": "Download CV (PDF)",
-    "pageTitle": "Over Maximus Mukiza | Cyber Security Student",
-    "pageDescription": "Leer meer over Maximus Mukiza, een gepassioneerde cyber security student met ervaring in IT-ondersteuning, webontwikkeling en fitnesscoaching.",
-    "pageKeywords": "Maximus Mukiza, cyber security, cloud security, AWS, Azure, portfolio, IT student",
+    "pageTitle": "Over Maximus Mukiza | Cloud Security Specialist",
+    "pageDescription": "Leer meer over Maximus Mukiza, een gepassioneerde cloud & cyber security professional met ervaring in IT-ondersteuning, architectuur en beveiliging.",
+    "pageKeywords": "Maximus Mukiza, cyber security, cloud security, AWS, Azure, portfolio, infrastructuur specialist",
     "mainTitle": "Over Mij"
   },
   "backToTop": {
@@ -61,13 +61,13 @@
     "successMessage": "Bedankt voor je bericht. Ik neem snel contact met je op.",
     "sendAnother": "Nog een bericht sturen?",
     "preferEmail": "Liever direct mailen?",
-    "emailAddress": "maximus.mukiza@gmail.com",
+    "emailAddress": "mukizamaximus08@gmail.com",
     "pageTitle": "Contacteer Maximus Mukiza | Neem Contact Op",
     "pageDescription": "Neem contact op met Maximus Mukiza om cyberbeveiliging, cloudprojecten of mogelijke samenwerkingen te bespreken. Vul het contactformulier in of mail direct.",
     "heading": "Contacteer Mij",
-    "intro": "Geïnteresseerd in het bespreken van cyberbeveiliging, cloudprojecten of mogelijke samenwerkingen? Als student met een passie voor dit vakgebied, hoor ik graag van u. Vul onderstaand formulier in.",
+    "intro": "Geïnteresseerd in het bespreken van cyberbeveiliging, cloudprojecten of mogelijke samenwerkingen? Als infrastructuurprofessional met een passie voor dit vakgebied, hoor ik graag van u. Vul onderstaand formulier in.",
     "mainTitle": "Contacteer Mij",
-    "mainDescription": "Geïnteresseerd in het bespreken van cybersecurity, cloud projecten, of mogelijke samenwerkingen? Als student gepassioneerd door dit vakgebied, hoor ik graag van je. Vul het onderstaande formulier in."
+    "mainDescription": "Geïnteresseerd in het bespreken van cybersecurity, cloud projecten, of mogelijke samenwerkingen? Als infrastructuurprofessional gepassioneerd door dit vakgebied, hoor ik graag van je. Vul het onderstaande formulier in."
   },
   "projects": {
     "closeLightbox": "Sluiten",
@@ -92,15 +92,20 @@
     "viewCode": "Bekijk Code",
     "p1": {
       "title": "Slim Pakketkluis Systeem",
-      "description": "Samenwerkingsproject met Cloud & Cybersecurity studenten om een IoT-gestuurd pakketkluissysteem met veilige toegangscontrole te ontwikkelen",
-      "context": "Eerstejaars teamproject dat een real-world IoT-implementatie in logistieke beveiliging simuleert",
+      "description": "Samenwerkingsproject voor de ontwikkeling van een IoT-gestuurd pakketkluissysteem met veilige toegangscontrole en centraal beheer.",
+      "context": "Universitair teamproject dat een real-world IoT-implementatie in logistieke beveiliging simuleert",
       "background": "Pakt risico's van pakketdiefstal aan via geautomatiseerd kluisbeheer met multi-factor authenticatie",
       "realizations": "Beveiligde communicatie tussen ESP32 en Raspberry Pi mogelijk gemaakt, met implementatie van foutlogging en beveiligingsmaatregelen.",
       "learnings": "Expertise opgedaan in IoT-apparaatcoördinatie, veilig beheer van toegangstokens en beveiliging van ingebedde systemen"
     },
     "p2": {
       "title": "SOC-Geïntegreerd Hosting Platform",
-      "description": "Bijgedragen aan een teamproject voor het bouwen van SOC-mogelijkheden in een cloud hostingplatform, met focus op logaggregatie, monitoring en incidentrespons planning.",
+      "description": "Collaboratieve ontwikkeling van een SOC-geïntegreerd cloud hostingplatform, met focus op logaggregatie, monitoring en incidentrespons orkestratie.",
+      "context": "Enterprise security monitoring initiatief voor gedistribueerde hostingomgevingen.",
+      "background": "Onderzoek en implementatie van gecentraliseerde logging (Wazuh, Graylog) voor real-time detectie, forensische analyse en client-isolatie.",
+      "realizations": "Geïntegreerde multi-tool security stack (Wazuh, MISP, Grafana, Shuffle) om een geautomatiseerd Security Operations Center framework te vestigen.",
+      "learnings": "Geavanceerde vaardigheid in SIEM-architectuur, threat intelligence integratie en geautomatiseerde incidentrespons workflows."
+    },
       "context": "Tweede-semester teamsamenwerking gericht op enterprise security monitoring voor een gesimuleerd hostingplatform binnen een datacenteromgeving.",
       "background": "Mijn rol omvatte het onderzoeken en implementeren van logging-oplossingen (Wazuh, Graylog) om uitgebreide monitoring, aanvalsdetectie en client-isolatiemogelijkheden mogelijk te maken.",
       "realizations": "Leidde de integratie van logging- en monitoringtools (Wazuh, Graylog, Grafana, MISP, OpenCTI, TheHive/Cortex, Velociraptor, Shuffle, InfluxDB/Telegraf), waarmee een basis werd gelegd voor een bijna compleet Security Operations Center (SOC). Ontwikkelde processen voor het identificeren en isoleren van potentieel gecompromitteerde client-instanties.",
@@ -124,11 +129,11 @@
     },
     "p5": {
       "title": "AI-Gedreven Slim Brugbesturingssysteem",
-      "description": "Eerstejaars IoT-project dat geautomatiseerde brugbesturing implementeert met geluidsclassificatie en computer vision voor maritiem verkeersbeheer",
-      "context": "Teamproject dat intelligente infrastructuurautomatisering in transportsystemen simuleert",
-      "background": "Pakt uitdagingen bij brugbediening in waterwegnavigatie aan via multimodale sensorfusie",
-      "realizations": "Ontwikkelde een hybride audio-visueel herkenningssysteem dat 94% nauwkeurigheid behaalde in classificatie van scheepstypes",
-      "learnings": "Expertise opgedaan in akoestische signaalverwerking, CNN-gebaseerde beeldherkenning en ingebedde besluitvormingsalgoritmen"
+      "description": "Intelligent IoT-brugbesturingssysteem met nauwkeurige geluidsclassificatie en computer vision voor autonoom maritiem verkeersbeheer.",
+      "context": "Project voor infrastructuurautomatisering gericht op intelligente transportsystemen en sensorfusie.",
+      "background": "Ontwikkelde een multi-modaal herkenningssysteem om de brugbediening en waterwegnavigatie te optimaliseren.",
+      "realizations": "Ontwikkelde hybride audio-visuele herkenningsalgoritmen met een nauwkeurigheid van 94% in real-world vaartuigclassificatie.",
+      "learnings": "Expertise in digitale signaalverwerking, CNN-gebaseerde vision-systemen en edge-gebaseerde beslissingslogica."
     },
     "p6": {
       "title": "React-Sec-Ops: Een Veilige 3-Tier Applicatie op AWS",
@@ -187,7 +192,7 @@
     "certDrivingCat": "Categorie A2 (Motorfiets)"
   },
   "cv": {
-    "pageTitle": "CV - Maximus Mukiza | Cyber Security Student",
+    "pageTitle": "CV - Maximus Mukiza | Cloud Security Specialist",
     "pageDescription": "Bekijk het Curriculum Vitae van Maximus Mukiza, met details over opleiding, werkervaring, vaardigheden en certificeringen in IT en Cyber Security.",
     "heading": "Curriculum Vitae",
     "downloadButton": "Download CV",
@@ -195,16 +200,16 @@
     "mainTitle": "Curriculum Vitae",
     "downloadAriaLabel": "Download CV",
     "name": "Maximus Mukiza",
-    "role": "Cloud & Cyber Security Student",
+    "role": "Cloud & Cyber Security Specialist",
     "phone": "0456190617",
     "location": "Vorselaar, Vlaams Gewest",
     "linkedin": "LinkedIn Profiel",
     "github": "GitHub",
     "portfolio": "Portfolio",
     "profileTitle": "Samenvatting",
-    "profileBio1": "Gemotiveerde bachelorstudent Cloud & Cybersecurity aan Thomas More, momenteel in een specialisatietraject rond Cloud Automation en Defence.",
-    "profileBio2": "Combineert hands-on ervaring met Azure, AWS en SOC-tools (Wazuh, Graylog) met een passie voor het bouwen van veilige, geautomatiseerde cloudinfrastructuur.",
-    "profileBio3": "Leergierig, initiatiefrijk en op zoek naar een stage om bij te dragen aan echte beveiligingsoplossingen in een cloud-omgeving.",
+    "profileBio1": "Gefocuste Cloud & Cybersecurity professional gespecialiseerd in Infrastructure as Code, security automatisering en veerkrachtige cloudarchitectuur.",
+    "profileBio2": "Combineert praktische ervaring met Azure, AWS en SOC-tools (Wazuh, Graylog) met een passie voor het bouwen van veilige, geautomatiseerde cloudinfrastructuur.",
+    "profileBio3": "Toegewijd aan operationele uitmuntendheid en proactieve beveiliging, met focus op het implementeren van real-world oplossingen in gedistribueerde cloudomgevingen.",
     "educationTitle": "Educatie",
     "educationDegree1": "Professionele Bachelor, Cloud en Cyber Security",
     "educationUniversity1": "Thomas More Hogeschool",
@@ -219,13 +224,13 @@
     "work1Detail1": "Ontwikkelde 20+ gepersonaliseerde trainingsplannen; coachte klanten met focus op veiligheid en resultaat.",
     "work1Detail2": "Promootte en verkocht abonnementen — bijdrage aan omzetgroei.",
     "work1Detail3": "Eerste aanspreekpunt voor vragen: oefende duidelijke, oplossingsgerichte communicatie.",
-    "work2Title": "IT Support (Student)",
+    "work2Title": "IT Support Specialist",
     "work2Date": "jun. 2025 – aug. 2025",
     "work2Company": "TSG Group, Turnhout",
     "work2Detail1": "Verwerkte en volgde ~ 800 leveringsorders/week via Excel; verbeterde data-organisatie en verminderde fouten.",
     "work2Detail2": "Ondersteunde klanten via e-mail en loste serviceverzoeken op — sterke focus op klanttevredenheid.",
     "work2Detail3": "Werkte samen met logistiek en sales: ontwikkelde inzicht in bedrijfsprocessen en dataflow.",
-    "work3Title": "IT-assistent (Student)",
+    "work3Title": "IT Assistent",
     "work3Date": "jul. 2024 – aug. 2024",
     "work3Company": "B-PAC BV, Grobbendonk",
     "work3Detail1": "Herontwierp de verkoopwebsite: verbeterde navigatie en gebruikerservaring (UX).",
@@ -256,7 +261,7 @@
   "app": {
     "htmlLang": "nl",
     "defaultTitle": "Maximus | Cloud & Cybersecurity E-Portfolio",
-    "metaDescription": "E-Portfolio van Maximus Mukiza, een Cloud & Cybersecurity Student die projecten, vaardigheden en leertraject laat zien.",
+    "metaDescription": "E-Portfolio van Maximus Mukiza, een Cloud & Cybersecurity Specialist die gespecialiseerde projecten, vaardigheden en technische expertise laat zien.",
     "metaKeywords": "cybersecurity, cloud computing, portfolio, Maximus Mukiza, IT security, AWS, Azure",
     "ogTitle": "Maximus Mukiza | Cloud & Cybersecurity Portfolio",
     "ogDescription": "Portfolio van Maximus Mukiza, toont cybersecurity en cloud projecten, vaardigheden en leertraject."

@@ -43,29 +43,32 @@ const App: React.FC = () => {
         />{" "}
         {/* Reusing OG description */}
       </Helmet>
-      <Router
-        basename={basename} // Add basename prop here
-        future={{
-          v7_startTransition: true,
-          v7_relativeSplatPath: true,
-        }}
-      >
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-grow">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/cv" element={<CV />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <BackToTop />
-          <Footer />
-        </div>
-      </Router>
+      <div className="scanlines"></div>
+      <div className="min-h-screen bg-background text-slate-300 selection:bg-primary selection:text-black">
+        <Router
+          basename={basename} // Add basename prop here
+          future={{
+            v7_startTransition: true,
+            v7_relativeSplatPath: true,
+          }}
+        >
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-grow">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/cv" element={<CV />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+            <BackToTop />
+            <Footer />
+          </div>
+        </Router>
+      </div>
     </HelmetProvider>
   );
 };

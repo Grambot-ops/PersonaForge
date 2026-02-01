@@ -5,7 +5,7 @@
     "projects": "Projects",
     "cv": "CV",
     "contact": "Contact",
-    "student": "Student",
+    "student": "Infrastructure",
     "langEnShort": "EN",
     "langNlShort": "NL",
     "switchToEn": "Switch to English",
@@ -25,13 +25,13 @@
   },
   "hero": {
     "title": "Maximus",
-    "subtitle": "Cloud & Cybersecurity Student",
-    "description": "Aspiring to build secure cloud solutions and protect digital assets. Currently studying Azure, AWS, and cybersecurity frameworks to help organizations navigate the complex landscape of digital security.",
+    "subtitle": "Cloud & Cybersecurity Infrastructure",
+    "description": "Architecting secure cloud solutions and protecting digital assets with resilient design, automated security pipelines, and enterprise-grade infrastructure.",
     "viewProjects": "View My Projects",
     "getInTouch": "Get In Touch"
   },
   "about": {
-    "bio": "Hello! I'm Maximus, a passionate Cloud & Cybersecurity student based in the Belgium. I thrive on tackling complex challenges and continuously expanding my knowledge in the ever-evolving tech landscape. My journey involves hands-on experience with cloud platforms like Azure and AWS, coupled with a strong interest in cybersecurity principles and practices.",
+    "bio": "Hello! I'm Maximus, a passionate Cloud & Cybersecurity specialist based in Belgium. I thrive on tackling complex challenges and continuously expanding my knowledge in the ever-evolving tech landscape. My journey involves hands-on experience with cloud platforms like Azure and AWS, coupled with a strong interest in cybersecurity principles and practices.",
     "hobbiesTitle": "Hobbies & Interests",
     "hobbies": {
       "gym": "Gym & Fitness",
@@ -40,14 +40,14 @@
       "cloud": "Cloud Architecture & Security"
     },
     "educationTitle": "Education",
-    "educationText": "Currently pursuing studies focused on Cloud Technologies and Cybersecurity, gaining expertise in network security, ethical hacking, cloud infrastructure management, and compliance.",
+    "educationText": "Specialized education focused on Cloud Technologies and Cybersecurity, gaining expertise in network security, ethical hacking, cloud infrastructure management, and compliance.",
     "ambitionsTitle": "Ambitions",
     "ambitionsText": "My goal is to become a proficient Cloud Security Engineer, helping organizations design, implement, and maintain secure and resilient cloud environments. I am eager to contribute to innovative projects and collaborate with like-minded professionals.",
     "viewCvButton": "View CV Page",
     "downloadCvButton": "Download CV (PDF)",
-    "pageTitle": "About Maximus Mukiza | Cyber Security Student",
-    "pageDescription": "Learn more about Maximus Mukiza, a passionate cyber security student with experience in IT support, web development, and fitness coaching.",
-    "pageKeywords": "Maximus Mukiza, cyber security, cloud security, AWS, Azure, portfolio, IT student",
+    "pageTitle": "About Maximus Mukiza | Cloud Security Specialist",
+    "pageDescription": "Learn more about Maximus Mukiza, a passionate cyber security professional with experience in IT support, cloud architecture, and security automation.",
+    "pageKeywords": "Maximus Mukiza, cyber security, cloud security, AWS, Azure, portfolio, infrastructure engineer",
     "mainTitle": "About Me"
   },
   "backToTop": {
@@ -66,18 +66,18 @@
     "successMessage": "Thanks for reaching out. I'll get back to you soon.",
     "sendAnother": "Send another message?",
     "preferEmail": "Prefer to email directly?",
-    "emailAddress": "maximusmukiza08@gmail.com",
+    "emailAddress": "mukizamaximus08@gmail.com",
     "pageTitle": "Contact Maximus Mukiza | Get In Touch",
     "pageDescription": "Contact Maximus Mukiza to discuss cyber security, cloud projects, or potential collaborations. Fill out the contact form or email directly.",
     "heading": "Contact Me",
-    "intro": "Interested in discussing cybersecurity, cloud projects, or potential collaborations? As a student passionate about this field, I'd love to hear from you. Fill out the form below.",
+    "intro": "Interested in discussing cybersecurity, cloud projects, or potential collaborations? As an infrastructure professional passionate about this field, I'd love to hear from you. Fill out the form below.",
     "mainTitle": "Contact Me",
-    "mainDescription": "Interested in discussing cybersecurity, cloud projects, or potential collaborations? As a student passionate about this field, I'd love to hear from you. Fill out the form below."
+    "mainDescription": "Interested in discussing cybersecurity, cloud projects, or potential collaborations? As an infrastructure professional passionate about this field, I'd love to hear from you. Fill out the form below."
   },
   "projects": {
     "closeLightbox": "Close",
-    "pageTitle": "Projects - Maximus Mukiza | Cyber Security Portfolio",
-    "pageDescription": "Explore Maximus Mukiza's projects, including packet automation, SIEM stack creation, Azure Bicep configurations, AWS hosting, and IoT security solutions.",
+    "pageTitle": "Projects - Maximus Mukiza | Cloud Security Portfolio",
+    "pageDescription": "Explore Maximus Mukiza's infrastructure projects, including packet automation, SIEM stack creation, Azure Bicep configurations, AWS hosting, and IoT security solutions.",
     "heading": "My Projects",
     "intro": "Here are some of the key projects I've worked on throughout my career. Each project represents unique challenges and valuable learning experiences in the field of cybersecurity and cloud computing.",
     "lightboxNav": "Use arrow keys to navigate between projects, ESC to close",
@@ -96,15 +96,20 @@
     "videoLightboxLabel": "Video lightbox",
     "p1": {
       "title": "Smart Parcel Locker System",
-      "description": "Collaborative project with Cloud & Cybersecurity students to develop an IoT-enabled package locker system with secure access control",
-      "context": "First-year's team project simulating real-world IoT deployment in logistics security",
+      "description": "Collaborative project to develop an IoT-enabled package locker system with secure access control and centralized management.",
+      "context": "University-led team project simulating real-world IoT deployment in logistics security",
       "background": "Addressed parcel theft risks through automated locker management with multi-factor authentication",
       "realizations": "Enabled secure communication between ESP32 and Raspberry Pi, implementing error logging and security measures.",
       "learnings": "Gained expertise in IoT device coordination, secure access token management, and embedded system security"
     },
     "p2": {
       "title": "SOC-Integrated Hosting Platform",
-      "description": "Contributed to a team project building SOC capabilities into a cloud hosting platform, focusing on log aggregation, monitoring, and incident response planning.",
+      "description": "Collaborative development of a SOC-integrated cloud hosting platform, focusing on log aggregation, monitoring, and incident response orchestration.",
+      "context": "Enterprise security monitoring initiative for distributed hosting environments.",
+      "background": "Researched and implemented centralized logging (Wazuh, Graylog) to enable real-time detection, forensic analysis, and client isolation.",
+      "realizations": "Integrated multi-tool security stack (Wazuh, MISP, Grafana, Shuffle) to establish an automated Security Operations Center framework.",
+      "learnings": "Advanced proficiency in SIEM architecture, threat intelligence integration, and automated incident response workflows."
+    },
       "context": "Second-semester team collaboration focused on enterprise security monitoring requirements for a simulated hosting platform within a datacenter environment.",
       "background": "My role involved researching and implementing logging solutions (Wazuh, Graylog) to enable comprehensive monitoring, attack detection, and client isolation capabilities.",
       "realizations": "Spearheaded the integration of logging and monitoring tools (Wazuh, Graylog, Grafana, MISP, OpenCTI, TheHive/Cortex, Velociraptor, Shuffle, InfluxDB/Telegraf), establishing a foundation for a near-complete Security Operations Center (SOC). Developed processes for identifying and isolating potentially compromised client instances.",
@@ -128,11 +133,11 @@
     },
     "p5": {
       "title": "AI-Driven Smart Bridge Control System",
-      "description": "First-year IoT project implementing automated bridge control using sound classification and computer vision for maritime traffic management",
-      "context": "Team project simulating intelligent infrastructure automation in transportation systems",
-      "background": "Addressed bridge operation challenges in waterway navigation through multi-modal sensor fusion",
-      "realizations": "Developed hybrid audio-visual recognition system achieving 94% accuracy in vessel type classification",
-      "learnings": "Gained expertise in acoustic signal processing, CNN-based image recognition, and embedded decision-making algorithms"
+      "description": "Intelligent IoT bridge control system implementing high-accuracy sound classification and computer vision for autonomous maritime traffic management.",
+      "context": "Infrastructure automation project focused on intelligent transportation systems and sensor fusion.",
+      "background": "Engineered multi-modal recognition system to optimize bridge operations and waterway navigation safety.",
+      "realizations": "Developed hybrid audio-visual recognition algorithms achieving 94% accuracy in real-world vessel classification.",
+      "learnings": "Expertise in digital signal processing, CNN-based vision systems, and edge-based decision logic."
     },
     "p6": {
       "title": "React-Sec-Ops: A Secure 3-Tier Application on AWS",
@@ -194,7 +199,7 @@
     "certDrivingCat": "Category A2 (Motorcycle)"
   },
   "cv": {
-    "pageTitle": "CV - Maximus Mukiza | Cyber Security Student",
+    "pageTitle": "CV - Maximus Mukiza | Cloud & Cyber Security Specialist",
     "pageDescription": "View the Curriculum Vitae of Maximus Mukiza, detailing education, work experience, skills, and certifications in IT and Cyber Security.",
     "heading": "Curriculum Vitae",
     "downloadButton": "Download CV",
@@ -202,16 +207,16 @@
     "mainTitle": "Curriculum Vitae",
     "downloadAriaLabel": "Download CV",
     "name": "Maximus Mukiza",
-    "role": "Cloud & Cyber Security Student",
+    "role": "Cloud & Cyber Security Specialist",
     "phone": "0456190617",
     "location": "Vorselaar, Flemish Region",
     "linkedin": "LinkedIn Profile",
     "github": "GitHub",
     "portfolio": "Portfolio",
     "profileTitle": "Summary",
-    "profileBio1": "Motivated Bachelor's student in Cloud & Cybersecurity at Thomas More, currently in a specialization track on Cloud Automation and Defence.",
+    "profileBio1": "Focused Cloud & Cybersecurity professional specializing in Infrastructure as Code, security automation, and resilient cloud architecture.",
     "profileBio2": "Combines hands-on experience with Azure, AWS, and SOC tools (Wazuh, Graylog) with a passion for building secure, automated cloud infrastructure.",
-    "profileBio3": "Eager to learn, proactive, and looking for an internship to contribute to real security solutions in a cloud environment.",
+    "profileBio3": "Dedicated to operational excellence and proactive security, implementing real-world solutions in distributed cloud environments.",
     "educationTitle": "Education",
     "educationDegree1": "Professional Bachelor, Cloud and Cyber Security",
     "educationUniversity1": "Thomas More University of Applied Sciences",
@@ -226,13 +231,13 @@
     "work1Detail1": "Developed 20+ personalized training plans; coached clients with a focus on safety and results.",
     "work1Detail2": "Promoted and sold memberships — contributing to revenue growth.",
     "work1Detail3": "First point of contact for questions: practiced clear, solution-oriented communication.",
-    "work2Title": "IT Support (Student)",
+    "work2Title": "IT Support Specialist",
     "work2Date": "Jun 2025 – Aug 2025",
     "work2Company": "TSG Group, Turnhout",
     "work2Detail1": "Processed and tracked ~800 delivery orders/week via Excel; improved data organization and reduced errors.",
     "work2Detail2": "Supported customers via email and resolved service requests — strong focus on customer satisfaction.",
     "work2Detail3": "Collaborated with logistics and sales: developed insight into business processes and data flow.",
-    "work3Title": "IT Assistant (Student)",
+    "work3Title": "IT Assistant",
     "work3Date": "Jul 2024 – Aug 2024",
     "work3Company": "B-PAC BV, Grobbendonk",
     "work3Detail1": "Redesigned the sales website: improved navigation and user experience (UX).",
@@ -263,48 +268,48 @@
   },
   "app": {
     "htmlLang": "en",
-    "defaultTitle": "Maximus | Cloud & Cybersecurity E-Portfolio",
-    "metaDescription": "E-Portfolio of Maximus Mukiza, a Cloud & Cybersecurity Student showcasing projects, skills, and learning journey.",
-    "metaKeywords": "cybersecurity, cloud computing, portfolio, Maximus Mukiza, IT security, AWS, Azure",
-    "ogTitle": "Maximus Mukiza | Cloud & Cybersecurity Portfolio",
-    "ogDescription": "Portfolio of Maximus Mukiza, showcasing cybersecurity and cloud projects, skills, and learning journey."
+    "defaultTitle": "Maximus | Cloud & Cybersecurity Infrastructure",
+    "metaDescription": "E-Portfolio of Maximus Mukiza, a Cloud & Cybersecurity Specialist showcasing enterprise infrastructure projects, security research, and technical expertise.",
+    "metaKeywords": "cybersecurity, cloud computing, infrastructure, Maximus Mukiza, IT security, AWS, Azure, DevSecOps",
+    "ogTitle": "Maximus Mukiza | Cloud & Cybersecurity Infrastructure Portfolio",
+    "ogDescription": "Portfolio of Maximus Mukiza, showcasing cybersecurity and cloud infrastructure projects and expertise."
   },
   "theme": {
     "switchToLight": "Switch to light theme",
     "switchToDark": "Switch to dark theme"
   },
   "projectsPage": {
-    "title": "My Projects",
-    "description": "Here are some of the key projects I've worked on throughout my career. Each project represents unique challenges and valuable learning experiences in the field of cybersecurity and cloud computing."
+    "title": "Engineering Case Studies",
+    "description": "Exploration of scalable cloud environments and automated security frameworks developed for enterprise-grade compliance."
   },
   "contactPage": {
-    "title": "Contact Me",
-    "description": "Interested in discussing cybersecurity, cloud projects, or potential collaborations? As a student passionate about this field, I'd love to hear from you. Fill out the form below."
+    "title": "Establish Connection",
+    "description": "Interested in discussing cybersecurity, cloud projects, or potential collaborations? Initiate a handshake protocol below."
   },
   "aboutPage": {
-    "title": "About Me"
+    "title": "Systems Overview"
   },
   "meta": {
     "home": {
-      "title": "Maximus Mukiza - Home | Cyber Security & IT Portfolio",
-      "description": "Welcome to the portfolio of Maximus Mukiza. Explore projects in cyber security, IT, and web development."
+      "title": "Maximus Mukiza | Cloud Security & Infrastructure",
+      "description": "Welcome to the technical portfolio of Maximus Mukiza. Explore specialized projects in cloud security, automated infrastructure, and DevSecOps."
     },
     "about": {
-      "title": "About Maximus Mukiza | Cyber Security Student",
-      "description": "Learn more about Maximus Mukiza, a passionate cyber security student with experience in IT support, web development, and fitness coaching.",
-      "keywords": "Maximus Mukiza, cyber security, cloud security, AWS, Azure, portfolio, IT student"
+      "title": "Engineering Profile | Maximus Mukiza",
+      "description": "Professional profile of Maximus Mukiza, a Cloud & Cybersecurity specialist with expertise in resilient systems and security automation.",
+      "keywords": "Maximus Mukiza, cloud security, infrastructure engineer, AWS, Azure, DevSecOps"
     },
     "contact": {
-      "title": "Contact Maximus Mukiza | Get In Touch",
-      "description": "Contact Maximus Mukiza to discuss cyber security, cloud projects, or potential collaborations. Fill out the contact form or email directly."
+      "title": "Contact | Secure Handshake",
+      "description": "Securely contact Maximus Mukiza for infrastructure and security collaboration."
     },
     "projects": {
-      "title": "Projects - Maximus Mukiza | Cyber Security Portfolio",
-      "description": "Explore Maximus Mukiza's projects, including packet automation, SIEM stack creation, Azure Bicep configurations, AWS hosting, and IoT security solutions."
+      "title": "Case Studies | Engineering Portfolio",
+      "description": "Enterprise-grade cloud security projects and automated infrastructure deployments."
     },
     "cv": {
-      "title": "CV - Maximus Mukiza | Cyber Security Student",
-      "description": "View the Curriculum Vitae of Maximus Mukiza, detailing education, work experience, skills, and certifications in IT and Cyber Security."
+      "title": "Dossier | Maximus Mukiza",
+      "description": "Curriculum Vitae of Maximus Mukiza, detailing expertise in Cloud Security, Infrastructure as Code, and Security Operations."
     }
   }
 }

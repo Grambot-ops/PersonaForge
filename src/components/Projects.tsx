@@ -1,296 +1,137 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { useTranslation } from "react-i18next"; // Import useTranslation
+import React from "react";
 import projectData from "../data/projects.json"; // Keep this for IDs and video URLs
 
 const Projects: React.FC = () => {
-  const { t } = useTranslation(); // Initialize useTranslation hook
-  const publicUrl = process.env.PUBLIC_URL || ""; // Get PUBLIC_URL
-  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
-  const [videoLightbox, setVideoLightbox] = useState<string | null>(null);
-  const [focusedProject, setFocusedProject] = useState<number | null>(null);
-
-  const openLightbox = useCallback(
-    (projectId: number) => {
-      // Wrap in useCallback
-      const project = projectData.find((p) => p.id === projectId);
-      setFocusedProject(projectId);
-
-      if (project && project.videoUrl) {
-        setVideoLightbox(project.videoUrl);
-        setLightboxImage(null); // Ensure image lightbox is closed
-      } else {
-        setLightboxImage(`${publicUrl}/projects/project${projectId}.png`); // Prepend PUBLIC_URL
-        setVideoLightbox(null); // Ensure video lightbox is closed
-      }
-      // Add dependencies for useCallback
-    },
-    [publicUrl, setFocusedProject, setVideoLightbox, setLightboxImage]
-  );
-
-  const closeLightbox = useCallback(() => {
-    // Also wrap closeLightbox for consistency
-    setLightboxImage(null);
-    setVideoLightbox(null);
-    setFocusedProject(null);
-  }, [setLightboxImage, setVideoLightbox, setFocusedProject]); // Add dependencies
-
-  // Enhanced keyboard navigation
-  const handleKeyDown = useCallback(
-    (event: KeyboardEvent) => {
-      switch (event.key) {
-        case "Escape":
-          closeLightbox();
-          break;
-        case "ArrowRight":
-          if (focusedProject !== null && focusedProject < projectData.length) {
-            openLightbox(focusedProject + 1);
-          }
-          break;
-        case "ArrowLeft":
-          if (focusedProject !== null && focusedProject > 1) {
-            openLightbox(focusedProject - 1);
-          }
-          break;
-        default:
-          break;
-      }
-    },
-    // Dependencies are now stable
-    [focusedProject, openLightbox, closeLightbox]
-  );
-
-  // Handle keyboard events
-  useEffect(() => {
-    if (lightboxImage || videoLightbox) {
-      window.addEventListener("keydown", handleKeyDown);
-      return () => window.removeEventListener("keydown", handleKeyDown);
-    }
-  }, [lightboxImage, videoLightbox, handleKeyDown]); // handleKeyDown is now stable
-
-  // Helper function to extract YouTube video ID
-  const getYouTubeVideoId = (url: string): string | null => {
-    const regExp =
-      /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-    const match = url.match(regExp);
-    return match && match[2].length === 11 ? match[2] : null;
-  };
+  const publicUrl = process.env.PUBLIC_URL || "";
 
   return (
-    <div className="mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {projectData.map((project) => {
-          // Iterate over original data for IDs/video URLs
-          const videoId = project.videoUrl
-            ? getYouTubeVideoId(project.videoUrl)
-            : null;
-          const thumbnailUrl = videoId
-            ? `https://img.youtube.com/vi/${videoId}/0.jpg`
-            : `${publicUrl}/projects/project${project.id}.png`; // Prepend PUBLIC_URL to the fallback image thumbnail
-          const projectTitle = t(`projects.p${project.id}.title`); // Get title via translation
+    <section className="py-24 bg-black relative" id="projects">
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImEiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdHRlcm4gaWQ9ImIiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9InRyYW5zcGFyZW50Ii8+PHBhdGggZD0iTTEgMGgwLTI1YzAtMS41Mi40OC0zIDEuNTItM3YzeiIgZmlsbD0iIzIyYzU1ZSIgb3BhY2l0eT0iLjEiLz48L3BhdHRlcm4+PHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSJ1cmwoI2IpIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2EpIi8+PC9zdmc+')] opacity-20 pointer-events-none"></div>
 
-          return (
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="mb-12 border-b border-slate-800 flex flex-col md:flex-row justify-between items-end gap-6">
+          <div>
+            <h2 className="text-4xl font-display font-bold mb-4 text-white">
+              <span className="text-primary font-mono text-lg mr-2">03.</span>
+              Engineering Case Studies
+            </h2>
+            <div className="flex space-x-1 mt-8">
+              <div className="px-6 py-3 bg-primary/10 border-t-2 border-primary text-primary font-mono text-xs font-bold cursor-default tracking-wider">
+                {"// ACTIVE_DEPLOYMENTS"}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-16">
+          {projectData.map((project) => (
             <div
               key={project.id}
-              className="card hover:translate-y-[-5px] flex flex-col" // Added flex flex-col
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") openLightbox(project.id);
-              }}
+              className="group flex flex-col lg:flex-row bg-[#080808] rounded-sm border border-slate-800 overflow-hidden hover:border-primary transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(0,255,65,0.1)]"
             >
-              {/* Wrap text content and add flex-grow */}
-              <div className="flex-grow">
-                <h3 className="text-xl font-bold mb-3 text-[var(--primary-color)]">
-                  {projectTitle} {/* Use translated title */}
-                </h3>
-                <p className="text-[var(--text-color)] font-medium mb-4">
-                  {t(`projects.p${project.id}.description`)}{" "}
-                  {/* Translate description */}
+              <div className="relative lg:w-3/5 min-h-[300px] border-r border-slate-800 overflow-hidden">
+                <img
+                  alt={project.title}
+                  className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                  src={`${publicUrl}/projects/project${project.id}.png`}
+                />
+                <div className="absolute inset-0 bg-black/50 group-hover:bg-black/10 transition-colors"></div>
+                <div className="absolute top-4 right-4 bg-black/90 backdrop-blur text-primary text-[10px] px-3 py-1.5 rounded-sm font-mono border border-primary/30 uppercase">
+                  {project.id === 6
+                    ? "AWS // SIEM // SOC"
+                    : project.id === 3
+                      ? "AZURE // BICEP // DOCKER"
+                      : "CLOUD // SEC // DEVOPS"}
+                </div>
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+              </div>
+
+              <div className="lg:w-2/5 p-8 flex flex-col">
+                <div className="mb-4">
+                  <div className="inline-flex items-center px-2 py-1 mb-3 rounded-sm bg-primary/10 border border-primary/40 text-primary text-[10px] font-bold font-mono tracking-wider">
+                    <span className="material-symbols-outlined text-sm mr-1">
+                      check_circle
+                    </span>
+                    KEY ACHIEVEMENT: VERIFIED
+                  </div>
+                  <h3 className="text-2xl font-display font-bold text-white mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="font-mono text-xs text-slate-500 uppercase">
+                    {`ID: EXT-PROJ-0${project.id} // STATUS: STABLE`}
+                  </p>
+                </div>
+
+                <p className="text-slate-400 mb-6 text-sm leading-relaxed font-mono">
+                  {project.description}
                 </p>
 
-                <div className="space-y-3">
-                  <div>
-                    <h4 className="text-sm uppercase tracking-wider font-semibold text-[var(--muted-text-color)] mb-1">
-                      {t("projects.context")} {/* Translate Context label */}
-                    </h4>
-                    <p className="text-[var(--text-color)]">
-                      {t(`projects.p${project.id}.context`)}
-                    </p>{" "}
-                    {/* Translate context */}
+                <div className="bg-[#1e1e1e] rounded-sm border border-slate-700 mb-6 overflow-hidden shadow-inner">
+                  <div className="bg-[#2d2d2d] px-3 py-1 flex justify-between items-center border-b border-slate-700">
+                    <span className="text-[10px] font-mono text-slate-400">
+                      deployment_spec.yaml - VIM
+                    </span>
+                    <div className="flex gap-1">
+                      <div className="w-1.5 h-1.5 rounded-full bg-slate-600"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-slate-600"></div>
+                    </div>
                   </div>
-
-                  <div>
-                    <h4 className="text-sm uppercase tracking-wider font-semibold text-[var(--muted-text-color)] mb-1">
-                      {t("projects.background")}{" "}
-                      {/* Translate Background label */}
-                    </h4>
-                    <p className="text-[var(--text-color)]">
-                      {t(`projects.p${project.id}.background`)}{" "}
-                      {/* Translate background */}
-                    </p>
-                  </div>
-
-                  <div>
-                    <h4 className="text-sm uppercase tracking-wider font-semibold text-[var(--muted-text-color)] mb-1">
-                      {t("projects.keyRealizations")}{" "}
-                      {/* Translate Key Realizations label */}
-                    </h4>
-                    <p className="text-[var(--text-color)]">
-                      {t(`projects.p${project.id}.realizations`)}{" "}
-                      {/* Translate realizations */}
-                    </p>
-                  </div>
-
-                  <div>
-                    <h4 className="text-sm uppercase tracking-wider font-semibold text-[var(--muted-text-color)] mb-1">
-                      {t("projects.learnings")}{" "}
-                      {/* Translate Learnings label */}
-                    </h4>
-                    <p className="text-[var(--text-color)]">
-                      {t(`projects.p${project.id}.learnings`)}{" "}
-                      {/* Translate learnings */}
-                    </p>
+                  <div className="p-3 bg-[#1e1e1e] overflow-x-auto">
+                    <pre className="font-mono text-[10px] text-slate-300 leading-tight">
+                      <code>
+                        <div className="flex">
+                          <span className="text-slate-600 border-r border-slate-700 pr-3 mr-3 select-none text-right">
+                            1<br />2<br />3
+                          </span>
+                          <div>
+                            <span className="text-purple-400">Context:</span>{" "}
+                            <span className="text-yellow-400">
+                              "{project.context}"
+                            </span>
+                            {"\n"}
+                            <span className="text-purple-400">
+                              Outcome:
+                            </span>{" "}
+                            <span className="text-green-400">
+                              "{project.realizations}"
+                            </span>
+                            {"\n"}
+                            <span className="text-blue-400">Status:</span>{" "}
+                            <span className="text-green-400">VALIDATED</span>
+                          </div>
+                        </div>
+                      </code>
+                    </pre>
                   </div>
                 </div>
-              </div>
-              {/* Image/Video container remains at the bottom */}
-              <div className="mt-4 p-3 bg-gray-100 dark:bg-slate-800 rounded-lg flex justify-center">
-                {project.videoUrl && videoId ? (
-                  <div
-                    className="relative cursor-pointer"
-                    onClick={() => openLightbox(project.id)}
-                    tabIndex={0}
-                    role="button"
-                    aria-label={t("projects.viewVideoAria", {
-                      title: projectTitle, // Use translated title
-                    })}
-                  >
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="bg-[var(--primary-color)] text-white rounded-full w-12 h-12 flex items-center justify-center">
-                        <svg
-                          className="w-6 h-6"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                          ></path>
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                          ></path>
-                        </svg>
-                      </div>
-                    </div>
-                    <img
-                      src={thumbnailUrl}
-                      alt={t("projects.thumbnailAlt", {
-                        title: projectTitle, // Use translated title
-                      })}
-                      className="max-h-40 rounded shadow hover:opacity-90 transition-opacity"
-                      loading="lazy"
-                    />
-                  </div>
-                ) : (
-                  <img
-                    src={`${publicUrl}/projects/project${project.id}.png`} // Prepend PUBLIC_URL
-                    alt={t("projects.screenshotAlt", {
-                      title: projectTitle, // Use translated title
-                    })}
-                    className="max-h-40 rounded shadow cursor-pointer hover:opacity-90 transition-opacity"
-                    onClick={() => openLightbox(project.id)}
-                    loading="lazy"
-                    tabIndex={0}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") openLightbox(project.id);
-                    }}
-                  />
-                )}
+
+                <div className="flex gap-4 mt-auto">
+                  <button className="flex-1 bg-white text-black py-3 rounded-sm text-xs font-mono font-bold flex items-center justify-center hover:bg-slate-200 transition-colors uppercase tracking-wider">
+                    <span className="material-symbols-outlined mr-2 text-base">
+                      terminal
+                    </span>{" "}
+                    Tech Stack
+                  </button>
+                  {project.videoUrl && (
+                    <a
+                      href={project.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 border border-slate-700 py-3 rounded-sm text-xs font-mono font-bold flex items-center justify-center hover:border-primary hover:text-primary transition-colors text-slate-400 uppercase tracking-wider"
+                    >
+                      <span className="material-symbols-outlined mr-2 text-base">
+                        play_circle
+                      </span>{" "}
+                      Demo
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
-          );
-        })}
+          ))}
+        </div>
       </div>
-
-      {/* Image Lightbox with improved accessibility */}
-      {lightboxImage && (
-        <div
-          className="fixed inset-0 backdrop-blur-md bg-black/70 flex items-center justify-center z-50 p-4"
-          onClick={closeLightbox}
-          role="dialog"
-          aria-modal="true"
-          aria-label={t("projects.closeLightbox")} // Translate aria-label
-        >
-          <div className="relative max-w-4xl max-h-full bg-white dark:bg-gray-800 rounded-lg shadow-2xl overflow-hidden">
-            <img
-              src={lightboxImage}
-              alt={t("projects.imageAlt")} // Translate alt text
-              className="block max-w-full max-h-[90vh] object-contain"
-              onClick={(e) => e.stopPropagation()}
-            />
-            <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/40 text-white text-center">
-              <p className="text-sm">{t("projects.lightboxNav")}</p>{" "}
-              {/* Translate navigation hint */}
-            </div>
-            <button
-              className="absolute top-2 right-2 bg-white/80 dark:bg-gray-700/80 text-black dark:text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-white dark:hover:bg-gray-600 text-xl font-bold"
-              onClick={(e) => {
-                e.stopPropagation();
-                closeLightbox();
-              }}
-              aria-label={t("projects.closeImageLightbox")} // Translate aria-label
-              tabIndex={0}
-            >
-              &times;
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Video Lightbox with improved accessibility */}
-      {videoLightbox && (
-        <div
-          className="fixed inset-0 backdrop-blur-md bg-black/70 flex items-center justify-center z-50 p-4"
-          onClick={closeLightbox}
-          role="dialog"
-          aria-modal="true"
-          aria-label={t("projects.closeLightbox")} // Translate aria-label
-        >
-          <div className="relative w-full max-w-4xl bg-black rounded-lg shadow-2xl overflow-hidden">
-            <div className="aspect-video">
-              <iframe
-                src={videoLightbox}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full"
-                title={t("projects.videoTitle")} // Translate title
-              ></iframe>
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/40 text-white text-center">
-              <p className="text-sm">{t("projects.lightboxNav")}</p>{" "}
-              {/* Translate navigation hint */}
-            </div>
-            <button
-              className="absolute top-2 right-2 bg-white/80 dark:bg-gray-700/80 text-black dark:text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-white dark:hover:bg-gray-600 text-xl font-bold"
-              onClick={(e) => {
-                e.stopPropagation();
-                closeLightbox();
-              }}
-              aria-label={t("projects.closeVideoLightbox")} // Translate aria-label
-              tabIndex={0}
-            >
-              &times;
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
+    </section>
   );
 };
 

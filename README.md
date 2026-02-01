@@ -1,32 +1,25 @@
-# E-Portfolio Website
+# PersonaForge | Infrastructure Specialist Portfolio
 
-This is a personal e-portfolio website built using React, TypeScript, and Tailwind CSS. The website showcases the learning journey, projects, and skills of a Cloud & Cybersecurity student.
+High-performance terminal-themed portfolio built with React, TypeScript, and Bun. Dedicated to showcasing enterprise infrastructure, cloud orchestration, and cybersecurity research.
 
 ## Features
 
-- **Responsive Design**: The website is fully responsive and looks great on all devices.
-- **Dynamic Routing**: Utilizes React Router for seamless navigation between pages.
-- **Tailwind CSS**: Styled using Tailwind CSS for a modern and customizable design.
-- **TypeScript**: Built with TypeScript for type safety and better development experience.
+- **Cyberpunk Terminal UI**: High-fidelity CRT and glitch effects powered by Tailwind CSS.
+- **Multilingual Support**: Dynamic i18n switching between English and Dutch.
+- **Infrastructure Focus**: Modular architecture designed for high maintainability.
+- **Bun Runtime**: Optimized for speed with Bun and React 18.
+- **Responsive Terminal**: Fully responsive grid system with scanline effects.
 
 ## Project Structure
 
 ```
-e-portfolio-website
-├── public
-│   ├── index.html        # Main HTML file
-│   └── favicon.ico       # Favicon for the website
+PersonaForge
 ├── src
-│   ├── components        # Reusable components
-│   ├── pages             # Page components
-│   ├── styles            # Global styles
-│   ├── App.tsx          # Main app component
-│   ├── index.tsx         # Entry point for the React app (Corrected from main.tsx)
-│   └── types             # Custom types and interfaces
-├── package.json          # NPM configuration
-├── tsconfig.json         # TypeScript configuration
-├── tailwind.config.js    # Tailwind CSS configuration
-└── postcss.config.js     # PostCSS configuration
+│   ├── components   # Cyberpunk-themed UI components
+│   ├── pages        # Layout and view logic
+│   ├── data         # Structured content
+│   ├── styles       # Tailwind global layers and CRT animations
+│   └── types        # Type definitions
 ```
 
 ## Installation
