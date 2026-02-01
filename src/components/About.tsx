@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next"; // Import useTranslation
 
 const About: React.FC = () => {
   const { t } = useTranslation();
-  const publicUrl = process.env.PUBLIC_URL || "";
+  const publicUrl = import.meta.env.BASE_URL;
 
   return (
     <section className="py-24 bg-black relative" id="about">

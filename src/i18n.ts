@@ -3,8 +3,8 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import HttpApi from "i18next-http-backend";
 
-// Use PUBLIC_URL to construct the base path for locales
-const publicUrl = process.env.PUBLIC_URL || "";
+// Use BASE_URL to construct the base path for locales
+const publicUrl = import.meta.env.BASE_URL;
 
 i18n
   // load translation using http -> see /public/locales (i.e. https://github.com/i18next/react-i18next/tree/master/example/react/public/locales)
@@ -19,7 +19,7 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     fallbackLng: "en",
-    debug: process.env.NODE_ENV === "development", // Enable debug output in development
+    debug: import.meta.env.DEV, // Enable debug output in development
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },

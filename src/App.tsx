@@ -14,7 +14,7 @@ import NotFound from "./pages/NotFound";
 
 const App: React.FC = () => {
   const { t, i18n } = useTranslation(); // Initialize useTranslation hook
-  const basename = process.env.PUBLIC_URL; // Get basename from PUBLIC_URL
+  const basename = import.meta.env.BASE_URL;
 
   // Update html lang attribute whenever language changes
   useEffect(() => {

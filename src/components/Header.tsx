@@ -5,10 +5,10 @@ const Header: React.FC = () => {
   const location = useLocation();
 
   const navItems = [
-    { path: "/", label: "[01] Home", hash: "#services" },
-    { path: "/about", label: "[02] About", hash: "#about" },
-    { path: "/projects", label: "[03] Projects", hash: "#projects" },
-    { path: "/contact", label: "[04] Contact", hash: "#contact" },
+    { path: "/", label: "[01] Home" },
+    { path: "/about", label: "[02] About" },
+    { path: "/projects", label: "[03] Projects" },
+    { path: "/contact", label: "[04] Contact" },
   ];
 
   return (
@@ -31,9 +31,9 @@ const Header: React.FC = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8 text-xs font-mono font-medium tracking-widest uppercase">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.path}
-                href={item.hash}
+                to={item.path}
                 className={`transition-colors ${
                   location.pathname === item.path
                     ? "text-primary"
@@ -41,7 +41,7 @@ const Header: React.FC = () => {
                 }`}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </div>
 

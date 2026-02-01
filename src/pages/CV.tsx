@@ -5,7 +5,7 @@ import cvData from "../data/cv.json"; // Import CV data
 
 const CV: React.FC = () => {
   const { t } = useTranslation();
-  const publicUrl = process.env.PUBLIC_URL || ""; // Get PUBLIC_URL
+  const publicUrl = import.meta.env.BASE_URL; // Get BASE_URL
 
   return (
     <div className="py-16 bg-gray-50 dark:bg-gray-900 page-transition">

@@ -2,7 +2,7 @@ import React from "react";
 import projectData from "../data/projects.json"; // Keep this for IDs and video URLs
 
 const Projects: React.FC = () => {
-  const publicUrl = process.env.PUBLIC_URL || "";
+  const publicUrl = import.meta.env.BASE_URL;
 
   return (
     <section className="py-24 bg-black relative" id="projects">
