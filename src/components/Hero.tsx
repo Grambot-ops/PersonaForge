@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next"; // Import useTranslation
 
 const Hero: React.FC = () => {
@@ -58,12 +57,16 @@ const Hero: React.FC = () => {
               <span className="material-symbols-outlined mr-2">download</span>{" "}
               EXECUTE_DL_RESUME
             </a>
-            <Link
-              to="/projects"
-              className="px-8 py-4 border border-slate-700 text-slate-300 rounded-sm font-bold text-sm font-mono flex items-center justify-center hover:border-primary hover:text-primary transition-colors bg-black"
+            <a
+              href="#projects"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="px-8 py-4 border border-slate-700 text-slate-300 rounded-sm font-bold text-sm font-mono flex items-center justify-center hover:border-primary hover:text-primary transition-colors bg-black cursor-pointer"
             >
               <span className="mr-2">&gt;</span> cd /engineering_projects
-            </Link>
+            </a>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 {
   "name": "personaforge-portfolio",
   "version": "1.1.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "vite",

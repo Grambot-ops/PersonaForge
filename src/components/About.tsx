@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next"; // Import useTranslation
 
 const About: React.FC = () => {
@@ -164,12 +163,16 @@ const About: React.FC = () => {
             </div>
 
             <div className="mt-10 flex gap-4">
-              <Link
-                to="/cv"
-                className="px-6 py-3 bg-white text-black font-bold text-xs font-mono rounded-sm hover:bg-primary transition-colors uppercase tracking-widest"
+              <a
+                href="#cv"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("cv")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="px-6 py-3 bg-white text-black font-bold text-xs font-mono rounded-sm hover:bg-primary transition-colors uppercase tracking-widest cursor-pointer flex items-center justify-center"
               >
                 View Dossier
-              </Link>
+              </a>
               <a
                 href={`${publicUrl}/CV_Maximus.pdf`}
                 download

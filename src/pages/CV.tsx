@@ -1,5 +1,4 @@
 import React from "react";
-import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import cvData from "../data/cv.json"; // Import CV data
 
@@ -9,10 +8,6 @@ const CV: React.FC = () => {
 
   return (
     <div className="py-16 bg-gray-50 dark:bg-gray-900 page-transition">
-      <Helmet>
-        <title>{t("cv.pageTitle")}</title>
-        <meta name="description" content={t("cv.pageDescription")} />
-      </Helmet>
       <div className="container mx-auto px-4">
         <h1 className="text-4xl font-bold mb-8 text-center text-gray-800 dark:text-white">
           {t("cv.heading")}
