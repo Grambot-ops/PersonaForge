@@ -54,7 +54,7 @@ const Mermaid: React.FC<MermaidProps> = ({ chart, responsive = true }) => {
 
   useEffect(() => {
     let isMounted = true;
-    const chartId = `mermaid-svg-${Math.random().toString(36).substr(2, 9)}`;
+    const chartId = "mermaid-svg-" + Math.random().toString(36).substr(2, 9);
 
     const renderChart = async () => {
       if (!chart || !chart.trim()) return;
@@ -117,7 +117,7 @@ const Mermaid: React.FC<MermaidProps> = ({ chart, responsive = true }) => {
               lineColor: isDark ? "#666" : "#475569",
               secondaryColor: isDark ? "#111" : "#f1f5f9",
               tertiaryColor: isDark ? "#222" : "#e2e8f0",
-              mainBkg: "transparent", // Use transparent to inherit from container
+              mainBkg: "transparent",
               nodeBorder: isDark ? "#00ff41" : "#059669",
               clusterBkg: isDark ? "#111" : "#f8fafc",
               clusterBorder: isDark ? "#333" : "#cbd5e1",

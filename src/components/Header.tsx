@@ -70,9 +70,9 @@ const Header: React.FC<HeaderProps> = ({
               aria-controls="mobile-menu"
             >
               {isMenuOpen ? (
-                <FaTimes aria-hidden="true" size={20} />
+                <FaTimes size={20} aria-hidden="true" />
               ) : (
-                <FaBars aria-hidden="true" size={20} />
+                <FaBars size={20} aria-hidden="true" />
               )}
             </button>
           </div>
