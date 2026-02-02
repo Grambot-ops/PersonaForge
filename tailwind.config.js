@@ -1,14 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: ["class", '[class="dark-theme"]'], // Configure class-based dark mode
+  darkMode: "class", // Standard class-based dark mode
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        primary: "#00FF41",
-        "primary-dark": "#00CC33",
-        background: "#050505",
-        "card-dark": "#0a0a0a",
+        primary: "var(--primary)",
+        "primary-dark": "var(--secondary-color)",
+        background: "var(--background)",
+        "card-dark": "var(--card-bg)",
+        foreground: "var(--text-color)",
+        muted: "var(--text-muted)",
+        border: "var(--border-color)",
+        "border-muted": "var(--border-muted)",
         "accent-warn": "#FBBF24",
       },
       fontFamily: {
@@ -21,6 +25,7 @@ export default {
         slideInBottom: "slideInBottom 0.5s ease-out",
         "cursor-blink": "blink 1s step-end infinite",
         "scan-line": "scanline 8s linear infinite",
+        "spin-slow": "spin 8s linear infinite",
       },
       keyframes: {
         fadeIn: {

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"; // Import useEffect
+import React, { useEffect, useState } from "react"; // Import useEffect, useState
 import { Helmet, HelmetProvider } from "react-helmet-async"; // Import Helmet
 import { useTranslation } from "react-i18next"; // Import useTranslation
 import Header from "./components/Header";
@@ -8,8 +8,20 @@ import Home from "./pages/Home";
 
 const App: React.FC = () => {
   const { t, i18n } = useTranslation(); // Initialize useTranslation hook
+  const [aestheticMode, setAestheticMode] = useState<boolean>(() => {
+    const saved = localStorage.getItem("aesthetic-mode");
+    return saved === null ? false : saved === "true";
+  });
 
-  // Update html lang attribute whenever language changes
+  const toggleAestheticMode = () => {
+    setAestheticMode((prev) => {
+      const next = !prev;
+      localStorage.setItem("aesthetic-mode", String(next));
+      return next;
+    });
+  };
+
+  // Update html lang whenever context changes
   useEffect(() => {
     document.documentElement.lang = i18n.language;
   }, [i18n.language]);
@@ -36,15 +48,18 @@ const App: React.FC = () => {
         />{" "}
         {/* Reusing OG description */}
       </Helmet>
-      <div className="scanlines"></div>
-      <div className="min-h-screen bg-background text-slate-300 selection:bg-primary selection:text-black">
+      {aestheticMode && <div className="scanlines"></div>}
+      <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-black transition-colors duration-300">
         <div className="flex flex-col min-h-screen">
-          <Header />
-            <main className="flex-grow">
-              <Home />
-            </main>
+          <Header
+            aestheticMode={aestheticMode}
+            toggleAestheticMode={toggleAestheticMode}
+          />
+          <main className="flex-grow">
+            <Home aestheticMode={aestheticMode} />
+          </main>
           <BackToTop />
-        <Footer />
+          <Footer />
         </div>
       </div>
     </HelmetProvider>

@@ -19,13 +19,15 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     fallbackLng: "en",
+    supportedLngs: ["en", "nl"],
+    load: "languageOnly",
     debug: import.meta.env.DEV, // Enable debug output in development
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
     backend: {
-      // Prepend the PUBLIC_URL to the loadPath
-      loadPath: `${publicUrl}/locales/{{lng}}/{{ns}}.json`,
+      // Prepend the PUBLIC_URL to the loadPath. Ensure we don't have double slashes.
+      loadPath: `${publicUrl.endsWith("/") ? publicUrl : publicUrl + "/"}locales/{{lng}}/{{ns}}.json`,
     },
     detection: {
       order: ["localStorage", "navigator", "htmlTag", "path", "subdomain"],

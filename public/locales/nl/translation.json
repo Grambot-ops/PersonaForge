@@ -17,33 +17,37 @@
   },
   "hero": {
     "title": "Maximus",
-    "subtitle": "Cloud & Cybersecurity Infrastructuur",
-    "description": "Architect van veilige cloudoplossingen en beschermer van digitale activa met veerkrachtig ontwerp, geautomatiseerde beveiligingspipelines en enterprise-grade infrastructuur.",
-    "viewProjects": "Bekijk Mijn Projecten",
-    "getInTouch": "Neem Contact Op"
+    "subtitle": "Platform Engineering | SRE | DevSecOps",
+    "description": "Architect van veerkrachtige, geautomatiseerde cloud-platformen met een focus op GitOps-workflows, DevSecOps-integratie en schaalbare SRE-principes. Gespecialiseerd in high-availability gedistribueerde systemen en MLOps op de edge.",
+    "viewProjects": "Verken Infra Projecten",
+    "getInTouch": "Maak Verbinding"
   },
   "languageSwitcher": {
     "changeLanguage": "Verander Taal"
   },
   "about": {
-    "bio": "Hallo! Ik ben Maximus, een gepassioneerde Cloud & Cybersecurity specialist gevestigd in België. Ik gedij op het aanpakken van complexe uitdagingen en het continu uitbreiden van mijn kennis in het steeds evoluerende tech-landschap. Mijn reis omvat praktische ervaring met cloudplatforms zoals Azure en AWS, gekoppeld aan een sterke interesse in cybersecurityprincipes en -praktijken.",
-    "hobbiesTitle": "Hobby's & Interesses",
+    "bio": "Hallo! Ik ben Maximus, een Platform Engineer en SRE specialist die zich focust op het bouwen van robuuste, geautomatiseerde infrastructuur. Ik gedij bij het oplossen van complexe problemen in gedistribueerde systemen en het implementeren van GitOps-workflows voor elk niveau van de stack. Mijn expertise omvat Kubernetes orkestratie (Talos, ArgoCD), multi-cloud automatisering (AWS, Azure) en het engineeren van secure-by-default pipelines voor zowel web- als ML-workloads.",
+    "hobbiesTitle": "Kerninteresses",
     "hobbies": {
-      "gym": "Sportschool & Fitness",
-      "homelabbing": "Homelabbing & Serverbeheer",
-      "rust": "Rust Ontwikkeling",
-      "cloud": "Cloud Architectuur & Beveiliging"
+      "gym": "Fitness & Biomechanica",
+      "homelabbing": "Homelabbing & Gedistribueerde Systemen",
+      "rust": "Systems Programming (Rust)",
+      "cloud": "High-Availability Arch & SRE"
     },
-    "educationTitle": "Opleiding",
-    "educationText": "Mijn specialisatie richt zich op Cloud Technologieën en Cybersecurity, waarbij ik expertise opdoe in netwerkbeveiliging, ethisch hacken, cloudinfrastructuurbeheer en compliance.",
-    "ambitionsTitle": "Ambities",
-    "ambitionsText": "Mijn doel is om een bekwame Cloud Security Engineer te worden, die organisaties helpt bij het ontwerpen, implementeren en onderhouden van veilige en veerkrachtige cloudomgevingen. Ik sta te popelen om bij te dragen aan innovatieve projecten en samen te werken met gelijkgestemde professionals.",
-    "viewCvButton": "Bekijk CV Pagina",
-    "downloadCvButton": "Download CV (PDF)",
-    "pageTitle": "Over Maximus Mukiza | Cloud Security Specialist",
-    "pageDescription": "Leer meer over Maximus Mukiza, een gepassioneerde cloud & cyber security professional met ervaring in IT-ondersteuning, architectuur en beveiliging.",
-    "pageKeywords": "Maximus Mukiza, cyber security, cloud security, AWS, Azure, portfolio, infrastructuur specialist",
-    "mainTitle": "Over Mij"
+    "educationTitle": "Systeem Opleiding",
+    "educationText": "Specialisatie gericht op Cloud/Platform Engineering en Cybersecurity, met expertise in netwerkweerbaarheid, IaC-automatisering en compliance op enterprise-niveau.",
+    "ambitionsTitle": "Carrièretraject",
+    "ambitionsText": "Mijn doel is om een lead Platform Engineer/SRE te worden, die organisaties helpt bij het bouwen van zelfherstellende, geautomatiseerde en veilige cloud-ecosystemen.",
+    "viewCvButton": "Analyseer Technisch Dossier",
+    "downloadCvButton": "Download PDF Blauwdruk",
+    "philosophy_1": "Ik benader infrastructuur niet als een verzameling resources, maar als een levend, zelfherstellend softwareplatform.",
+    "philosophy_2": "Mijn werk volgt het ",
+    "philosophy_3": " principe—systemen ontwerpen die beschikbaarheid en integriteit behouden, zelfs tijdens gedegradeerde operaties.",
+    "trajectory": "Momenteel verdiep ik me in GitOps voor eBPF-gestuurde Kubernetes-clusters en de implementatie van edge MLOps pipelines.",
+    "pageTitle": "Maximus Mukiza | Platform Engineer Portfolio",
+    "pageDescription": "Technisch profiel van Maximus Mukiza, specialist in Cloud Engineering, SRE en DevSecOps met expertise in AWS, Azure en geautomatiseerde infrastructuur.",
+    "pageKeywords": "Platform Engineer, SRE, DevOps, DevSecOps, MLOps, GitOps, Kubernetes, AWS, Azure, Maximus Mukiza",
+    "mainTitle": "Systeemerprofiel"
   },
   "backToTop": {
     "label": "Terug naar Boven"
@@ -91,63 +95,70 @@
     "viewProject": "Bekijk Project",
     "viewCode": "Bekijk Code",
     "p1": {
-      "title": "Slim Pakketkluis Systeem",
-      "description": "Samenwerkingsproject voor de ontwikkeling van een IoT-gestuurd pakketkluissysteem met veilige toegangscontrole en centraal beheer.",
-      "context": "Universitair teamproject dat een real-world IoT-implementatie in logistieke beveiliging simuleert",
-      "background": "Pakt risico's van pakketdiefstal aan via geautomatiseerd kluisbeheer met multi-factor authenticatie",
-      "realizations": "Beveiligde communicatie tussen ESP32 en Raspberry Pi mogelijk gemaakt, met implementatie van foutlogging en beveiligingsmaatregelen.",
-      "learnings": "Expertise opgedaan in IoT-apparaatcoördinatie, veilig beheer van toegangstokens en beveiliging van ingebedde systemen"
+      "title": "Secure Edge Node: Smart Parcel Ecosystem",
+      "description": "Gedistribueerde IoT-architectuur met beveiligde inter-node communicatie, centraal statusbeheer en containerized locker-controllers.",
+      "context": "Gedistribueerde Systemen & Secure Edge Computing",
+      "background": "Ontwerp van een veerkrachtig lockerbeheersysteem met zero-trust principes, met focus op beveiligde handshakes tussen Raspberry Pi-nodes en ESP32-controllers.",
+      "realizations": "Implementatie van een event-driven architectuur voor real-time updates en hardware-encryptie voor toegangstokens.",
+      "learnings": "Expertise in mutual TLS voor IoT, gedistribueerde consensus voor statussynchronisatie en secure boot fundamenten."
     },
     "p2": {
-      "title": "SOC-Geïntegreerd Hosting Platform",
-      "description": "Collaboratieve ontwikkeling van een SOC-geïntegreerd cloud hostingplatform, met focus op logaggregatie, monitoring en incidentrespons orkestratie.",
-      "context": "Enterprise security monitoring initiatief voor gedistribueerde hostingomgevingen.",
-      "background": "Onderzoek en implementatie van gecentraliseerde logging (Wazuh, Graylog) voor real-time detectie, forensische analyse en client-isolatie.",
-      "realizations": "Geïntegreerde multi-tool security stack (Wazuh, MISP, Grafana, Shuffle) om een geautomatiseerd Security Operations Center framework te vestigen.",
-      "learnings": "Geavanceerde vaardigheid in SIEM-architectuur, threat intelligence integratie en geautomatiseerde incidentrespons workflows."
-    },
-      "context": "Tweede-semester teamsamenwerking gericht op enterprise security monitoring voor een gesimuleerd hostingplatform binnen een datacenteromgeving.",
-      "background": "Mijn rol omvatte het onderzoeken en implementeren van logging-oplossingen (Wazuh, Graylog) om uitgebreide monitoring, aanvalsdetectie en client-isolatiemogelijkheden mogelijk te maken.",
-      "realizations": "Leidde de integratie van logging- en monitoringtools (Wazuh, Graylog, Grafana, MISP, OpenCTI, TheHive/Cortex, Velociraptor, Shuffle, InfluxDB/Telegraf), waarmee een basis werd gelegd voor een bijna compleet Security Operations Center (SOC). Ontwikkelde processen voor het identificeren en isoleren van potentieel gecompromitteerde client-instanties.",
-      "learnings": "Praktische ervaring opgedaan met logaggregatie, beveiligingsmonitoring, threat intelligence platforms, incidentrespons workflows en automatiseringstools binnen een SOC-context. Verdiept begrip van SOC-principes en toolintegratie."
+      "title": "React-Sec-Ops: Geautomatiseerde 3-Layer DevSecOps",
+      "description": "High-availability webplatform op AWS met focus op DevSecOps-integratie, geautomatiseerde security scanning en managed cloud-infrastructuur.",
+      "context": "DevSecOps & Platform Automatisering op AWS",
+      "background": "Engineeren van een veilige 3-tier architectuur binnen AWS Learner Lab beperkingen, gebruikmakend van een hybride IaC-model voor maximale automatisering.",
+      "realizations": "Automatisering van ECS Fargate-orkestratie en Aurora RDS-provisioning, met een handmatige fallback voor beperkte IAM-resources.",
+      "learnings": "Beheersing van DevSecOps-pipelines, geautomatiseerd secrets management en elastische infrastructuur-schaling."
     },
     "p3": {
-      "title": "Bicep-Flex: Flask CRUD App Implementatie op Azure",
-      "description": "Implementeerde een Flask CRUD-applicatie op Azure met Bicep, inclusief ACR, ACI, Load Balancer, VNet met privé/publieke subnets en NSG's voor beveiliging.",
-      "context": "Persoonlijk project dat Infrastructure as Code (IaC) met Bicep demonstreert voor het implementeren van gecontaineriseerde applicaties op Azure.",
-      "background": "Doel was om veilige implementatiepraktijken te tonen door de applicatie in een privé subnet te plaatsen en deze via een load balancer in een publiek subnet toegankelijk te maken.",
-      "realizations": "Succesvol de implementatie van de volledige stack (ACR, ACI, VNet, LB, NSG's) geautomatiseerd met Bicep. Veilige netwerkconfiguratie geïmplementeerd met privé/publieke subnets en NSG's. Pull-only toegangstoken geconfigureerd voor ACR. Log Analytics geïntegreerd voor monitoring.",
-      "learnings": "Praktische ervaring opgedaan met Bicep voor complexe Azure-implementaties, containerisatie met Docker, ACR/ACI-integratie, Azure-netwerken (VNet, Subnets, NSG's, Load Balancer) en veilig referentiebeheer voor ACR."
-    },
-    "p4": {
-      "title": "AWS Veilig Container Ecosysteem",
-      "description": "Implementeerde een gecontaineriseerde Flask CRUD-applicatie op AWS met zowel EC2/Docker Compose als ECS, gericht op veilige infrastructuurconfiguratie en monitoring.",
-      "context": "Individueel project dat containerimplementatiestrategieën en beveiligingspraktijken binnen de AWS-cloudomgeving verkent.",
-      "background": "Onderzocht methoden voor het implementeren van webapplicaties met Docker op AWS, waarbij directe EC2-implementatie werd vergeleken met ECS-orkestratie, inclusief VPC-configuratie, beveiligingsgroepen en gebruik van containerregisters.",
-      "realizations": "Succesvol de applicatie geïmplementeerd via EC2 met Docker Compose en via ECS met een ECR-image. Configureerde VPC met publieke/private subnets, Security Groups, NACL's, NAT/Internet Gateways. ECR opgezet voor image-opslag en ECS (Task Definition, Cluster, Service) voor orkestratie. Basis monitoring geïmplementeerd met CloudWatch-dashboards voor CPU, geheugen en logs.",
-      "learnings": "Praktische ervaring opgedaan met AWS-services (VPC, EC2, ECR, ECS, CloudWatch), Docker-containerisatie, Docker Compose, infrastructuurconfiguratie voor veilige containerimplementatie (netwerken, beveiligingsgroepen) en basisprincipes van cloudmonitoring."
+      "title": "Azure Platform: Modulaire Bicep-Flex",
+      "description": "Modulair Infrastructure as Code (IaC) framework voor Azure, met geautomatiseerde compliance-checks en gestandaardiseerde security benchmarks.",
+      "context": "Cloud Engineering & Azure Governance",
+      "background": "Ont ontwerp van herbruikbare Bicep-modules om enterprise deployments te versnellen met strikte zero-trust policies.",
+      "realizations": "Succesvol geautomatiseerde validatie-pipelines gemaakt voor Bicep-templates, met 100% naleving van Azure Security Benchmark v3.",
+      "learnings": "Expertise in Azure Policy as Code, modulair IaC-ontwerp en geautomatiseerde resource-governance."
     },
     "p5": {
-      "title": "AI-Gedreven Slim Brugbesturingssysteem",
-      "description": "Intelligent IoT-brugbesturingssysteem met nauwkeurige geluidsclassificatie en computer vision voor autonoom maritiem verkeersbeheer.",
-      "context": "Project voor infrastructuurautomatisering gericht op intelligente transportsystemen en sensorfusie.",
-      "background": "Ontwikkelde een multi-modaal herkenningssysteem om de brugbediening en waterwegnavigatie te optimaliseren.",
-      "realizations": "Ontwikkelde hybride audio-visuele herkenningsalgoritmen met een nauwkeurigheid van 94% in real-world vaartuigclassificatie.",
-      "learnings": "Expertise in digitale signaalverwerking, CNN-gebaseerde vision-systemen en edge-gebaseerde beslissingslogica."
+      "title": "Edge MLOps: AI-Gedreven Slim Brugbesturingssysteem",
+      "description": "Enterprise-grade IoT-infrastructuur voor maritiem verkeer via edge-deployed ML-modellen, geluidsclassificatie en computer vision.",
+      "context": "MLOps & Edge Computing Orkestratie",
+      "background": "Ontwikkelde een production-ready ML-pipeline voor real-time sensorfusie op de edge, optimalisatie van brugbediening via geautomatiseerde besluit vorming.",
+      "realizations": "Architectuur van een multi-modale inference engine met hybride audio-visuele verwerking, geïntegreerd in een geautomatiseerde CI/CD-pipeline.",
+      "learnings": "Expertise in modelkwantisering voor edge-devices, streaming telemetrie met OpenTelemetry en containerized ML-workloads."
     },
     "p6": {
-      "title": "React-Sec-Ops: Een Veilige 3-Tier Applicatie op AWS",
-      "description": "Een full-stack, 3-tier webapplicatie geïmplementeerd op AWS, die een moderne, veilige en geautomatiseerde benadering van cloudapplicatie-implementatie demonstreert.",
-      "context": "Demonstratie van het diagnosticeren van en aanpassen aan de reële beperkingen van beheerde bedrijfs- of educatieve cloudomgevingen.",
-      "background": "Oorspronkelijk gericht op 100% geautomatiseerde implementatie met OpenTofu, maar aangepast naar een hybride model vanwege IAM-beperkingen in de AWS Learner Lab-omgeving, wat handmatige configuratie voor CI/CD- en CloudFront-componenten vereiste.",
-      "realizations": "Succesvol een hybride architectuur geïmplementeerd met geautomatiseerde kerninfrastructuur (VPC, ECS, RDS) via OpenTofu en handmatig geconfigureerde CI/CD en CloudFront, waarbij de beperkingen en de oplossing zijn gedocumenteerd.",
-      "learnings": "Beheersing van Infrastructure as Code (IaC) met OpenTofu, het ontwerpen van een cloud-native 3-tier architectuur, het toepassen van DevSecOps-principes en het ontwikkelen van geavanceerde probleemoplossende vaardigheden als reactie op omgevingsbeperkingen."
+      "title": "Terra-Multi-Cloud: AWS & Azure Orkestratie",
+      "description": "Cross-provider infrastructuurautomatisering met Terraform om een veerkrachtige multi-cloud applicatie te implementeren op AWS en Azure.",
+      "context": "Platform Engineering & Multi-Cloud Resiliency",
+      "background": "Uniforme deployment pipeline voor Azure Container Apps en AWS ASG/ALB met focus op cross-cloud netwerken en API discovery.",
+      "realizations": "Geautomatiseerde Docker build/push naar ACR, dynamische service discovery en uniform state beheer.",
+      "learnings": "Beheersing van multi-cloud netwerken, provider-geabstraheerde IaC en complexe CI/CD-orkestratie."
+    },
+    "p7": {
+      "title": "Hybrid Cloud Platform: GitOps & Talos Linux",
+      "description": "Enterprise-grade Kubernetes platform gebouwd op Talos Linux en beheerd via ArgoCD, met eBPF-netwerken en gerepliceerde NVMe-opslag.",
+      "context": "Platform Engineering & SRE Operaties",
+      "background": "Ont ontwerp van een zelfherstellende, GitOps-gedreven infrastructuur van metal/VM tot applicatie-laag, met focus op zero-touch operations.",
+      "realizations": "Succesvolle integratie van Cilium eBPF, OpenEBS Mayastor voor NVMe-opslag en Garage S3 voor object-redundantie.",
+      "learnings": "Expertise in GitOps (ArgoCD), immutable OS-beheer, eBPF-visibiliteit en SRE monitoring stacks."
+    },
+    "p8": {
+      "title": "SRE Challenge: BookStack AWS Implementatie",
+      "description": "Hoogbeschikbare, production-hardened deployment van BookStack op AWS met Pulumi (Python) en GitLab CI/CD met focus op observabiliteit en disaster recovery.",
+      "context": "Infrastructure as Code & SRE Best Practices",
+      "background": "Engineeren van een veerkrachtig platform op ECS Fargate, gefocust op geautomatiseerd herstel, secrets management en performance monitoring.",
+      "realizations": "Volledige CI/CD pipeline met multi-stage builds, geautomatiseerde back-up strategieën en geïntegreerde security scanning.",
+      "learnings": "Collaboratieve SRE-praktijken, geavanceerde Pulumi (Python) automatisering en GitLab CI/CD voor missie-kritieke apps."
     }
   },
   "loading": "Laden...",
   "themeToggle": {
     "switchToLight": "Schakel naar licht thema",
     "switchToDark": "Schakel naar donker thema"
+  },
+  "aestheticToggle": {
+    "enable": "Activeer CRT Effecten",
+    "disable": "Deactiveer CRT Effecten"
   },
   "home": {
     "aboutSectionTitle": "Over Mij",
@@ -195,12 +206,13 @@
     "pageTitle": "CV - Maximus Mukiza | Cloud Security Specialist",
     "pageDescription": "Bekijk het Curriculum Vitae van Maximus Mukiza, met details over opleiding, werkervaring, vaardigheden en certificeringen in IT en Cyber Security.",
     "heading": "Curriculum Vitae",
-    "downloadButton": "Download CV",
+    "downloadButton": "Download Volledig Dossier (PDF)",
+    "dossier_ready": "Technisch dossier is gecompileerd en klaar voor ophaling. Download de PDF voor de volledige geschiedenis en certificeringen.",
     "downloadAria": "Download CV",
     "mainTitle": "Curriculum Vitae",
     "downloadAriaLabel": "Download CV",
     "name": "Maximus Mukiza",
-    "role": "Cloud & Cyber Security Specialist",
+    "role": "Platform Engineer | SRE | DevSecOps",
     "phone": "0456190617",
     "location": "Vorselaar, Vlaams Gewest",
     "linkedin": "LinkedIn Profiel",

@@ -33,3 +33,4 @@ bun-debug.log*
 
 # Bun
 bun.lockb
+.venv/

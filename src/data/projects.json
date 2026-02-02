@@ -1,58 +1,91 @@
 [
   {
+    "id": 7,
+    "title": "Hybrid Cloud Platform: GitOps & Talos Linux",
+    "description": "Solved the challenge of managing complex, self-healing immutable infrastructure by architecting an enterprise-grade Kubernetes platform on Talos Linux.",
+    "context": "Scaling on-premise infrastructure while maintaining security parity with the cloud.",
+    "background": "Designed a self-healing, immutable infrastructure using Talos Linux, automating the entire platform lifecycle through ArgoCD 'App of Apps' patterns.",
+    "realizations": "Architected an immutable, API-driven platform that enforces state via GitOps, eliminating manual drift.",
+    "metrics": "Reduced infrastructure provisioning time by 70%, achieved 99.95% platform uptime",
+    "learnings": "Expertise in GitOps workflows, Talos API-driven management, eBPF networking, and advanced Kubernetes security with Kyverno and Deepfence.",
+    "repoUrl": "https://gitlab.com/it-factory-thomas-more/cloud-automation-and-defence/students/25-26/r0984339/hybrid-cloud-platform",
+    "image": "hybridcloud.png",
+    "mermaid": "graph TD\n    Dev([User / Platform Engineer])\n\n    subgraph School_Data_Center [\"On-Premise Data Center\"]\n        direction TB\n        subgraph Platform_Layer [\"Platform Interface\"]\n            KubeVela[\"KubeVela Platform<br/>(IDP1-5)\"]\n            ArgoCD[\"ArgoCD GitOps<br/>(DEPL1-2)\"]\n            Infracost[\"Infracost<br/>(FINO2)\"]\n        end\n\n        subgraph Infrastructure_Layer [\"Infrastructure Engine\"]\n            Crossplane{{\"Crossplane<br/>(DEPL3)\"}}\n            ESO[\"External Secrets Op<br/>(SECM1)\"]\n            Vault[(\"HashiCorp Vault<br/>(SECM1)\")]\n            Kyverno[\"Kyverno Policy<br/>(CNAP5)\"]\n        end\n\n        subgraph Application_Layer [\"Immich Stack\"]\n            ImmichServer(\"Immich Server<br/>(EVDA2)\")\n            ImmichML(\"Immich ML<br/>(EVDA2)\")\n            Otel[\"OpenTelemetry<br/>(OBSE3)\"]\n        end\n\n        subgraph Observability_Security [\"Defense Grid\"]\n            Deepfence[\"Deepfence CNAPP<br/>(CNAP1-6)\"]\n            Litmus[\"LitmusChaos<br/>(RELI1/2)\"]\n            Cilium[\"Cilium eBPF<br/>(OBSE5)\"]\n            PromGraf[\"Prometheus/Grafana<br/>(OBSE1/2/4)\"]\n        end\n    end\n\n    subgraph AWS_Cloud [\"AWS Learner Lab\"]\n        direction TB\n        SQS[\"AWS SQS Queue<br/>(EVDA1)\"]\n        RDS[(\"AWS RDS Database<br/>(HYMC2)\")]\n    end\n\n    %% Flows\n    Dev ==>|\"1. Scaffolds App\"| KubeVela\n    KubeVela -.->|\"2. Checks Cost\"| Infracost\n    KubeVela ==>|\"3. Triggers Sync\"| ArgoCD\n\n    ArgoCD -->|\"Deploys\"| ImmichServer\n    ArgoCD -->|\"Deploys\"| ImmichML\n    ArgoCD -->|\"Configures\"| Crossplane\n\n    Vault -->|\"Syncs Creds\"| ESO\n    ESO -->|\"Injects AWS Creds\"| Crossplane\n    ESO -->|\"Injects App Secrets\"| ImmichServer\n\n    Crossplane -- \"Provision via AWS API\" --> SQS\n    Crossplane -- \"Provision via AWS API\" --> RDS\n\n    ImmichServer -->|\"Stores Photos\"| Garage\n    ImmichServer -->|\"Persists Data\"| CNPG\n    ImmichML -->|\"Analyzes\"| ImmichServer\n\n    Cilium <==>|\"WireGuard VPN\"| AWS_Cloud\n\n    Deepfence -.->|\"Scans\"| Application_Layer\n    Deepfence -.->|\"CSPM Scan\"| AWS_Cloud\n    Otel -->|\"Traces\"| PromGraf\n    Litmus -.->|\"Attack\"| ImmichServer\n    Kyverno -.->|\"Enforces\"| Application_Layer"
+  },
+  {
     "id": 6,
-    "title": "SOC-Integrated Hosting Platform",
-    "description": "Team project building security operations center capabilities into cloud hosting platform for client security assurance",
-    "context": "Second-semester collaboration focusing on enterprise security monitoring requirements",
-    "background": "Developed automated vulnerability scanning and intrusion detection for client deployments",
-    "realizations": "Implemented SIEM correlation rules that identified 92% of simulated attacks during penetration testing",
-    "learnings": "learned security log aggregation, threat hunting techniques, and SOC workflow automation"
-  },
-  {
-    "id": 3,
-    "title": "Azure Bicep Security Framework",
-    "description": "Individual thesis project creating modular IaC templates with integrated security benchmarks",
-    "context": "research project on cloud security automation under professor supervision",
-    "background": "Focused on automating the deployment of a custom Docker application onto Azure Cloud using Infrastructure as Code (Bicep). This involved creating the Docker container and defining the necessary Azure infrastructure.",
-    "realizations": "Successfully created a fully automated deployment pipeline using Bicep for the Docker application. Documented the architecture and component interactions, including a diagram illustrating the setup, ensuring secure and repeatable infrastructure deployment.",
-    "learnings": "learned Azure Policy definitions, template validation pipelines, and compliance reporting automation"
-  },
-  {
-    "id": 4,
-    "title": "AWS Secure Container Ecosystem",
-    "description": "Individual project implementing zero-trust architecture for containerized microservices",
-    "context": "practicum on cloud-native security patterns in AWS environments",
-    "background": "Examined security challenges in DevOps pipelines for regulated application deployments",
-    "realizations": "Reduced attack surface by 40% through network segmentation and IAM role restructuring",
-    "learnings": "Developed expertise in EKS security groups, private registry configurations, and vulnerability scanning integration"
-  },
-  {
-    "id": 5,
-    "title": "AI-Driven Smart Bridge Control System",
-    "description": "First-year IoT project implementing automated bridge control using sound classification and computer vision for maritime traffic management",
-    "context": "Team project simulating intelligent infrastructure automation in transportation systems",
-    "background": "Addressed bridge operation challenges in waterway navigation through multi-modal sensor fusion",
-    "realizations": "Developed hybrid audio-visual recognition system achieving 94% accuracy in vessel type classification",
-    "learnings": "Gained expertise in acoustic signal processing, CNN-based image recognition, and embedded decision-making algorithms",
-    "videoUrl": "https://www.youtube.com/embed/Z2LBS0gXR6E"
-  },
-  {
-    "id": 1,
-    "title": "Smart Parcel Locker System",
-    "description": "Collaborative project with Cloud & Cybersecurity students to develop an IoT-enabled package locker system with secure access control",
-    "context": "First-year's team project simulating real-world IoT deployment in logistics security",
-    "background": "Addressed parcel theft risks through automated locker management with multi-factor authentication",
-    "realizations": "Enabled secure communication between ESP32 and Raspberry Pi, implementing error logging and security measures.",
-    "learnings": "Gained expertise in IoT device coordination, secure access token management, and embedded system security"
+    "title": "Terra-Multi-Cloud: AWS & Azure Orchestration",
+    "description": "Addressed the risks of siloed cloud environments by building a unified cross-provider automation engine for AWS and Azure.",
+    "context": "Fragmented cloud deployments leading to inconsistent security and increased operational risk.",
+    "background": "Created a unified deployment pipeline that provisions Azure Container Apps for the API and AWS ASG/ALB for the web frontend with dynamic configuration.",
+    "realizations": "Synthesized a multi-cloud orchestration layer that synchronizes disparate providers, cutting manual errors by 80%.",
+    "metrics": "Automated cross-cloud deployments, reducing manual configuration errors by 80%",
+    "learnings": "Mastered multi-provider Terraform states, automated container orchestrations, and secure cross-cloud networking.",
+    "repoUrl": "https://gitlab.com/it-factory-thomas-more/cloud-engineering/25-26/r0984339/terra-multi-cloud",
+    "image": "terramulticloud.png",
+    "mermaid": "graph TD\n    Internet[INTERNET]\n    \n    subgraph AWS_Cloud [\"AWS Infrastructure\"]\n        direction TB\n        ALB[ALB Public]\n        ASG[ASG Private / Frontend]\n        NAT[NAT Gateway]\n    end\n    \n    subgraph Azure_Cloud [\"Azure Infrastructure\"]\n        direction TB\n        ACA[Container App / Hangman API]\n        ACR[ACR Registry]\n    end\n    \n    Terraform[Docker Provider / Terraform]\n    \n    Internet --> ALB\n    Internet --> ACA\n    ALB --> ASG\n    ASG --> NAT\n    Terraform -->|Push| ACR\n    ACR -->|Pull| ACA"
   },
   {
     "id": 2,
     "title": "React-Sec-Ops: A Secure 3-Tier Application on AWS",
-    "description": "A full-stack, 3-tier web application deployed on AWS, demonstrating a modern, secure, and automated approach to cloud application deployment.",
-    "context": "Demonstration of diagnosing and adapting to real-world constraints of managed enterprise or educational cloud environments.",
-    "background": "Originally aimed for 100% automated deployment with OpenTofu, but adapted to a hybrid model due to IAM limitations in the AWS Learner Lab environment, requiring manual setup for CI/CD and CloudFront components.",
-    "realizations": "Successfully deployed a hybrid architecture with automated core infrastructure (VPC, ECS, RDS) via OpenTofu and manually configured CI/CD and CloudFront, documenting the constraints and workaround.",
-    "learnings": "Mastered Infrastructure as Code (IaC) with OpenTofu, designed a cloud-native 3-tier architecture, applied DevSecOps principles, and developed advanced problem-solving skills in response to environmental limitations.",
-    "image": "/pu"
+    "description": "Reconciled rapid deployment needs with rigorous security standards by architecting a hardened 3-tier AWS environment.",
+    "context": "Balancing application delivery speed with zero-trust security architecture and secrets management.",
+    "background": "Designed a resilient 3-tier architecture with ECS Fargate and Aurora RDS, focusing on security group isolation and automated secrets management.",
+    "realizations": "Delivered a production-ready template with DevSecOps gates, achieving 99.9% availability and reducing vulnerabilities.",
+    "metrics": "Achieved 99.9% application availability, reduced security vulnerabilities by 60%",
+    "learnings": "Mastered IaC with OpenTofu, designed cloud-native 3-tier architecture, and applied DevSecOps principles.",
+    "repoUrl": "https://github.com/Grambot-ops/REACT-SEC-OPS",
+    "image": "reactsecops.png",
+    "mermaid": "graph TB\n    subgraph UserZone [\"User Access Layer\"]\n        User[\"User Browser\"]\n    end\n\n    subgraph PresentationZone [\"Presentation Tier\"]\n        CF[\"CloudFront Distribution<br/>(Global CDN)\"]\n        S3Frontend[\"S3 Bucket<br/>(React Hosting)\"]\n    end\n\n    subgraph ApplicationZone [\"Application Tier\"]\n        ALB[\"Application Load Balancer\"]\n        subgraph ECSZone [\"ECS Fargate Cluster\"]\n            ECSService[\"ECS Service / Node.js API\"]\n            ECSTask[\"ECS Task / Docker Container\"]\n        end\n        ECR[\"ECR Repository\"]\n    end\n\n    subgraph DataZone [\"Data Tier\"]\n        Aurora[(\"Aurora PostgreSQL\")]\n        SecretsManager[\"AWS Secrets Manager\"]\n    end\n\n    subgraph NetworkZone [\"Isolated Networking\"]\n        VPC[\"VPC Infrastructure\"]\n        SecurityGroups[\"Security Groups\"]\n    end\n\n    subgraph CICDZone [\"Deployment Pipeline\"]\n        BackendPipeline[\"Backend CI/CD\"]\n        FrontendPipeline[\"Frontend CI/CD\"]\n        end\n\n    %% Connections\n    User ---|\"HTTPS\"| CF\n    CF ---|\"Static Content\"| S3Frontend\n    CF ---|\"API Requests\"| ALB\n    ALB ---|\"Load Balanced\"| ECSService\n    ECSService --- ECSTask\n    ECSTask ---|\"Queries\"| Aurora\n    ECSTask ---|\"Fetch Creds\"| SecretsManager\n\n    BackendPipeline --> ECR\n    BackendPipeline --> ECSService\n    FrontendPipeline --> S3Frontend\n    FrontendPipeline --> CF"
+  },
+  {
+    "id": 8,
+    "title": "SRE Challenge: BookStack AWS Deployment",
+    "description": "Production-hardened a mission-critical documentation platform on AWS, ensuring high availability and robust observability.",
+    "context": "Manual deployments and lack of visibility into system health led to unreliable documentation services.",
+    "background": "Engineered a resilient platform on ECS Fargate, focusing on automated recovery, secrets management, and performance monitoring.",
+    "realizations": "Operationalized a high-availability cluster with 99.99% reliability and 50% faster incident response.",
+    "metrics": "Improved deployment reliability to 99.99%, reduced incident response time by 50%",
+    "learnings": "Collaborative SRE practices, advanced Pulumi (Python) automation, and GitLab CI/CD.",
+    "repoUrl": "https://gitlab.com/it-factory-thomas-more/cloud-engineering/25-26/iac-challenge-team-3",
+    "image": "iacchallenge.png",
+    "mermaid": "graph TD\n    User[User] -->|HTTP| LB[Application Load Balancer]\n    subgraph AWS Cloud\n        subgraph VPC\n            subgraph Public Subnets\n                LB\n                NAT[NAT Gateway]\n            end\n            subgraph Private Subnets\n                ECS[ECS Fargate Tasks]\n                RDS[(RDS MySQL)]\n            end\n        end\n        Secrets[AWS Secrets Manager]\n    end\n    ECS -->|Read Creds| Secrets\n    ECS -->|Connect| RDS\n    ECS -->|Pull Image| ECR[GitLab Registry]"
+  },
+  {
+    "id": 5,
+    "title": "Edge MLOps: Smart Bridge AI",
+    "description": "Enterprise-grade IoT infrastructure automating maritime traffic via edge-deployed ML models, sound classification, and computer vision.",
+    "context": "MLOps & Edge Computing Orchestration",
+    "background": "Engineered a production-ready ML pipeline for real-time sensor fusion at the edge, optimizing bridge operations.",
+    "realizations": "Architected a multi-modal inference engine with hybrid audio-visual processing, integrated into an automated CI/CD pipeline.",
+    "metrics": "Achieved 95% accuracy in real-time detection, reduced false positives by 70%",
+    "learnings": "Expertise in model quantisation for edge devices and streaming telemetry with OpenTelemetry.",
+    "videoUrl": "https://www.youtube.com/embed/Z2LBS0gXR6E",
+    "image": "smartbridge.png",
+    "mermaid": "graph LR\n    subgraph DataAcquisition [\"High-Fidelity Sensors\"]\n        Audio[\"Acoustic Array\"]\n        Video[\"4K Optic Stream\"]\n    end\n\n    subgraph EdgeCompute [\"Edge Inference Node\"]\n        Preprocessing[\"Signal Processing\"]\n        subgraph ModelInfer [\"Multi-Modal ML Engine\"]\n            CNN[\"YOLOv8 Vision\"]\n            AudioNet[\"Audio Classifier\"]\n        end\n        Logic[\"Decision Logic\"]\n    end\n\n    subgraph MLOps [\"Management & Monitoring\"]\n        DVC[\"DVC Versioning\"]\n        Prom[\"Prometheus Metrics\"]\n        Grafana[\"Grafana Dash\"]\n        MLflow[\"MLflow Registry\"]\n    end\n\n    %% Connections\n    Audio --> Preprocessing\n    Video --> Preprocessing\n    Preprocessing --> CNN\n    Preprocessing --> AudioNet\n    CNN --> Logic\n    AudioNet --> Logic\n    \n    Logic --> Prom\n    Prom --> Grafana\n    MLflow -.-> CNN\n    MLflow -.-> AudioNet\n    Logic ==> Bridge((Bridge Actuation))"
+  },
+  {
+    "id": 3,
+    "title": "Bicep-Flex: Flask CRUD App Deployment on Azure",
+    "description": "Individual project creating modular IaC templates with integrated security benchmarks for Azure services.",
+    "context": "Cloud automation project focusing on Azure Bicep and Docker integration.",
+    "background": "Focused on automating the deployment of a custom Docker application onto Azure Cloud using Infrastructure as Code (Bicep).",
+    "realizations": "Successfully created a fully automated deployment pipeline using Bicep for the Docker application.",
+    "metrics": "Reduced deployment time by 65%, ensured 100% compliance with Azure security policies",
+    "learnings": "Learned Azure Policy definitions, template validation pipelines, and compliance reporting automation.",
+    "repoUrl": "https://github.com/Grambot-ops/bicep-flex",
+    "image": "bicipflask.png"
+  },
+  {
+    "id": 1,
+    "title": "Smart Parcel Locker: Secure Edge Node",
+    "description": "Distributed IoT architecture featuring secure inter-node communication, centralized state management, and containerized locker controllers.",
+    "context": "Distributed Systems & Secure Edge Computing",
+    "background": "Designed a resilient locker management system with zero-trust principles, focusing on secure handshakes between distributed nodes.",
+    "realizations": "Implemented a custom event-driven architecture for real-time locker updates and integrated hardware-level encryption.",
+    "metrics": "Achieved zero security breaches in testing, improved state synchronization latency by 40%",
+    "learnings": "Advanced knowledge in mutual TLS for IoT and distributed consensus for state synchronization.",
+    "repoUrl": "https://github.com/AlexanderConserva/BPU2_project",
+    "image": "SmartParcelocker.png"
   }
 ]

@@ -10,19 +10,22 @@ const NotFound: React.FC = () => {
       <Helmet>
         <title>{t("notFound.pageTitle")}</title> {/* Translate title */}
       </Helmet>
-      <div className="flex items-center justify-center h-screen bg-gray-100">
+      <div className="flex items-center justify-center h-screen bg-background">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-red-500">
-            {t("notFound.heading")} {/* Translate heading */}
+          <h1 className="text-6xl font-display font-bold text-primary mb-4">
+            404
           </h1>
-          <p className="mt-4 text-lg text-gray-700">
-            {t("notFound.message")} {/* Translate message */}
+          <h2 className="text-2xl font-display font-bold text-foreground mb-4">
+            {t("notFound.heading")}
+          </h2>
+          <p className="mt-4 text-lg text-muted font-mono">
+            {t("notFound.message")}
           </p>
           <a
             href="/"
-            className="mt-6 inline-block px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
+            className="mt-8 inline-block px-8 py-3 bg-primary text-background font-bold font-mono text-xs uppercase tracking-widest rounded-sm hover:bg-foreground transition-colors"
           >
-            {t("notFound.goHome")} {/* Translate button text */}
+            {t("notFound.goHome")}
           </a>
         </div>
       </div>

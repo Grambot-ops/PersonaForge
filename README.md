@@ -12,7 +12,7 @@ High-performance terminal-themed portfolio built with React, TypeScript, and Bun
 
 ## Project Structure
 
-```
+```text
 PersonaForge
 ├── src
 │   ├── components   # Cyberpunk-themed UI components
@@ -26,24 +26,31 @@ PersonaForge
 
 1. Clone the repository:
 
-   ```
+   ```bash
    git clone <repository-url>
-   cd e-portfolio-website
+   cd PersonaForge
    ```
 
-2. Install dependencies:
+2. Setup Python environment (Required for Arch Linux):
 
-   ```
-   npm install
-   ```
-
-3. Start the development server:
-
-   ```
-   npm start
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
    ```
 
-4. Open your browser and navigate to `http://localhost:3000` to view the website.
+3. Install dependencies:
+
+   ```bash
+   bun install
+   ```
+
+4. Start the development server:
+
+   ```bash
+   bun dev
+   ```
+
+5. Open your browser and navigate to `http://localhost:3000` to view the website.
 
 ## Usage
 

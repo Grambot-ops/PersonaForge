@@ -1,58 +1,63 @@
 import React, { useEffect, useState } from "react";
-import { IconContext } from "react-icons";
 import { FaSun, FaMoon } from "react-icons/fa";
-import { useTranslation } from "react-i18next"; // Import useTranslation
+import { useTranslation } from "react-i18next";
 
-// Cast the icon components to React.ElementType
 const SunIcon = FaSun as React.ElementType;
 const MoonIcon = FaMoon as React.ElementType;
 
 const ThemeToggle: React.FC = () => {
-  const { t } = useTranslation(); // Initialize useTranslation hook
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
-    if (typeof window !== "undefined") {
-      // Check for saved theme preference or system preference
-      const savedTheme = localStorage.getItem("theme");
-      return (
-        savedTheme === "dark" ||
-        (!savedTheme &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      );
-    }
-    return false;
-  });
+  const { t } = useTranslation();
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   useEffect(() => {
-    // Apply theme to document
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark-theme");
+    // Initial sync
+    const savedTheme = localStorage.getItem("theme");
+    const isDark =
+      savedTheme === "dark" ||
+      (!savedTheme &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches);
+    setIsDarkMode(isDark);
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const nextMode = !isDarkMode;
+    setIsDarkMode(nextMode);
+    if (nextMode) {
+      document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
     } else {
-      document.documentElement.classList.remove("dark-theme");
+      document.documentElement.classList.remove("dark");
       localStorage.setItem("theme", "light");
     }
-  }, [isDarkMode]);
+  };
 
   return (
-    <IconContext.Provider value={{ className: "react-icons" }}>
-      <button
-        aria-label={
-          isDarkMode
-            ? t("themeToggle.switchToLight")
-            : t("themeToggle.switchToDark")
-        } // Use t function for aria-label
-        className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-        onClick={() => setIsDarkMode(!isDarkMode)}
-      >
-        {isDarkMode ? (
-          // Use the casted icon component
-          <SunIcon size={18} aria-hidden="true" />
-        ) : (
-          // Use the casted icon component
-          <MoonIcon size={18} aria-hidden="true" />
-        )}
-      </button>
-    </IconContext.Provider>
+    <button
+      aria-label={
+        isDarkMode
+          ? t("themeToggle.switchToLight", "Switch to Light Mode")
+          : t("themeToggle.switchToDark", "Switch to Dark Mode")
+      }
+      className="p-2 border border-primary/20 bg-primary/5 text-primary hover:bg-primary/20 transition-all rounded-sm flex items-center justify-center group h-10 w-10 shadow-[0_0_10px_rgba(0,255,65,0.05)] active:scale-95 focus-visible:ring-2 focus-visible:ring-primary outline-none"
+      onClick={toggleTheme}
+    >
+      {isDarkMode ? (
+        <SunIcon
+          size={14}
+          className="group-hover:rotate-180 transition-transform duration-700 ease-in-out"
+        />
+      ) : (
+        <MoonIcon
+          size={14}
+          className="group-hover:-rotate-12 transition-transform duration-500 ease-in-out"
+        />
+      )}
+    </button>
   );
 };
 

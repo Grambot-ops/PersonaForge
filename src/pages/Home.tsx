@@ -9,7 +9,11 @@ import Projects from "./Projects";
 import Contact from "./Contact";
 import CV from "./CV";
 
-const Home: React.FC = () => {
+interface HomeProps {
+  aestheticMode: boolean;
+}
+
+const Home: React.FC<HomeProps> = ({ aestheticMode }) => {
   const { t } = useTranslation();
 
   return (
@@ -30,17 +34,17 @@ const Home: React.FC = () => {
       <div id="home">
         <Hero />
       </div>
-      
+
       <div id="about">
-         <About />
+        <About />
       </div>
 
       <div id="skills">
         <Skills />
       </div>
-      
+
       <div id="projects">
-        <Projects />
+        <Projects aestheticMode={aestheticMode} />
       </div>
 
       <div id="cv">
@@ -53,6 +57,5 @@ const Home: React.FC = () => {
     </div>
   );
 };
-
 
 export default Home;

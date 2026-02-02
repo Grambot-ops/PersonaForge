@@ -25,30 +25,34 @@
   },
   "hero": {
     "title": "Maximus",
-    "subtitle": "Cloud & Cybersecurity Infrastructure",
-    "description": "Architecting secure cloud solutions and protecting digital assets with resilient design, automated security pipelines, and enterprise-grade infrastructure.",
-    "viewProjects": "View My Projects",
-    "getInTouch": "Get In Touch"
+    "subtitle": "Platform Engineering | SRE | DevSecOps",
+    "description": "Architecting resilient, automated cloud platforms with a focus on GitOps workflows, DevSecOps integration, and scalable SRE principles. Specializing in high-availability distributed systems and MLOps at the edge.",
+    "viewProjects": "Explore Infra Projects",
+    "getInTouch": "Establish Connection"
   },
   "about": {
-    "bio": "Hello! I'm Maximus, a passionate Cloud & Cybersecurity specialist based in Belgium. I thrive on tackling complex challenges and continuously expanding my knowledge in the ever-evolving tech landscape. My journey involves hands-on experience with cloud platforms like Azure and AWS, coupled with a strong interest in cybersecurity principles and practices.",
-    "hobbiesTitle": "Hobbies & Interests",
+    "bio": "Hello! I'm Maximus, a Platform Engineer and SRE specialist focused on building robust, automated infrastructure. I thrive on solving complex distributed systems challenges and implementing GitOps workflows into every layer of the stack. My expertise spans Kubernetes orchestration (Talos, ArgoCD), multi-cloud automation (AWS, Azure), and engineering secure-by-default pipelines for both web and ML workloads.",
+    "hobbiesTitle": "Core Interests",
     "hobbies": {
-      "gym": "Gym & Fitness",
-      "homelabbing": "Homelabbing & Server Management",
-      "rust": "Rust Development",
-      "cloud": "Cloud Architecture & Security"
+      "gym": "Fitness & Biomechanics",
+      "homelabbing": "Homelabbing & Distributed Systems",
+      "rust": "Systems Programming (Rust)",
+      "cloud": "High-Availability Arch & SRE"
     },
-    "educationTitle": "Education",
-    "educationText": "Specialized education focused on Cloud Technologies and Cybersecurity, gaining expertise in network security, ethical hacking, cloud infrastructure management, and compliance.",
-    "ambitionsTitle": "Ambitions",
-    "ambitionsText": "My goal is to become a proficient Cloud Security Engineer, helping organizations design, implement, and maintain secure and resilient cloud environments. I am eager to contribute to innovative projects and collaborate with like-minded professionals.",
-    "viewCvButton": "View CV Page",
-    "downloadCvButton": "Download CV (PDF)",
-    "pageTitle": "About Maximus Mukiza | Cloud Security Specialist",
-    "pageDescription": "Learn more about Maximus Mukiza, a passionate cyber security professional with experience in IT support, cloud architecture, and security automation.",
-    "pageKeywords": "Maximus Mukiza, cyber security, cloud security, AWS, Azure, portfolio, infrastructure engineer",
-    "mainTitle": "About Me"
+    "educationTitle": "Systems Education",
+    "educationText": "Specialized education focused on Cloud/Platform Engineering and Cybersecurity, gaining expertise in network security, IaC automation, and enterprise-grade compliance.",
+    "ambitionsTitle": "Career Trajectory",
+    "ambitionsText": "I am aiming to become a lead Platform Engineer/SRE, helping organizations build self-healing, automated, and secure cloud ecosystems from the ground up.",
+    "viewCvButton": "Analyze Technical Dossier",
+    "downloadCvButton": "Download PDF Blueprint",
+    "philosophy_1": "I treat infrastructure not as a collection of resources, but as a live, self-healing software platform.",
+    "philosophy_2": "My work follows the ",
+    "philosophy_3": " principle—designing systems that maintain availability and integrity even under degraded operations.",
+    "trajectory": "Currently deep-diving into GitOps for eBPF-powered Kubernetes clusters and implementing edge MLOps pipelines.",
+    "pageTitle": "Maximus Mukiza | Platform Engineer Portfolio",
+    "pageDescription": "Technical profile of Maximus Mukiza, a specialist in Cloud Engineering, SRE, and DevSecOps with expertise in AWS, Azure, and automated infrastructure.",
+    "pageKeywords": "Platform Engineer, SRE, DevOps, DevSecOps, MLOps, GitOps, Kubernetes, AWS, Azure, Maximus Mukiza",
+    "mainTitle": "System Profile"
   },
   "backToTop": {
     "label": "Back to Top"
@@ -95,57 +99,60 @@
     "imageLightboxLabel": "Image lightbox",
     "videoLightboxLabel": "Video lightbox",
     "p1": {
-      "title": "Smart Parcel Locker System",
-      "description": "Collaborative project to develop an IoT-enabled package locker system with secure access control and centralized management.",
-      "context": "University-led team project simulating real-world IoT deployment in logistics security",
-      "background": "Addressed parcel theft risks through automated locker management with multi-factor authentication",
-      "realizations": "Enabled secure communication between ESP32 and Raspberry Pi, implementing error logging and security measures.",
-      "learnings": "Gained expertise in IoT device coordination, secure access token management, and embedded system security"
+      "title": "Secure Edge Node: Smart Parcel Ecosystem",
+      "description": "Distributed IoT architecture featuring secure inter-node communication, centralized state management, and containerized locker controllers.",
+      "context": "Distributed Systems & Secure Edge Computing",
+      "background": "Designed a resilient locker management system with zero-trust principles, focusing on secure handshakes between distributed Raspberry Pi nodes and ESP32 controllers.",
+      "realizations": "Implemented a custom event-driven architecture for real-time locker updates and integrated hardware-level encryption for access tokens.",
+      "learnings": "Advanced knowledge in mutual TLS for IoT, distributed consensus for state synchronization, and secure boot fundamentals."
     },
     "p2": {
-      "title": "SOC-Integrated Hosting Platform",
-      "description": "Collaborative development of a SOC-integrated cloud hosting platform, focusing on log aggregation, monitoring, and incident response orchestration.",
-      "context": "Enterprise security monitoring initiative for distributed hosting environments.",
-      "background": "Researched and implemented centralized logging (Wazuh, Graylog) to enable real-time detection, forensic analysis, and client isolation.",
-      "realizations": "Integrated multi-tool security stack (Wazuh, MISP, Grafana, Shuffle) to establish an automated Security Operations Center framework.",
-      "learnings": "Advanced proficiency in SIEM architecture, threat intelligence integration, and automated incident response workflows."
-    },
-      "context": "Second-semester team collaboration focused on enterprise security monitoring requirements for a simulated hosting platform within a datacenter environment.",
-      "background": "My role involved researching and implementing logging solutions (Wazuh, Graylog) to enable comprehensive monitoring, attack detection, and client isolation capabilities.",
-      "realizations": "Spearheaded the integration of logging and monitoring tools (Wazuh, Graylog, Grafana, MISP, OpenCTI, TheHive/Cortex, Velociraptor, Shuffle, InfluxDB/Telegraf), establishing a foundation for a near-complete Security Operations Center (SOC). Developed processes for identifying and isolating potentially compromised client instances.",
-      "learnings": "Gained hands-on experience with log aggregation, security monitoring, threat intelligence platforms, incident response workflows, and automation tools within a SOC context. Deepened understanding of SOC principles and tool integration."
+      "title": "React-Sec-Ops: Automated 3-Tier DevSecOps",
+      "description": "High-availability web platform on AWS emphasizing DevSecOps integration, automated CI/CD security scanning, and managed cloud infrastructure.",
+      "context": "DevSecOps & Platform Automation on AWS",
+      "background": "Engineered a secure 3-tier architecture while navigating AWS Learner Lab IAM constraints, utilizing a hybrid IaC model for maximum automation.",
+      "realizations": "Automated ECS Fargate orchestration and Aurora RDS provisioning, with a fallback manual strategy for restricted IAM resources.",
+      "learnings": "Mastery of DevSecOps pipelines, automated secret management, and elastic infrastructure scaling."
     },
     "p3": {
-      "title": "Bicep-Flex: Flask CRUD App Deployment on Azure",
-      "description": "Deployed a Flask CRUD application to Azure using Bicep, featuring ACR, ACI, Load Balancer, VNet with private/public subnets, and NSGs for security.",
-      "context": "Personal project demonstrating Infrastructure as Code (IaC) with Bicep for deploying containerized applications on Azure.",
-      "background": "Aimed to showcase secure deployment practices by placing the application in a private subnet and exposing it via a load balancer in a public subnet.",
-      "realizations": "Successfully automated the deployment of the entire stack (ACR, ACI, VNet, LB, NSGs) using Bicep. Implemented secure networking with private/public subnets and NSGs. Configured pull-only access token for ACR. Integrated Log Analytics for monitoring.",
-      "learnings": "Gained practical experience with Bicep for complex Azure deployments, containerization with Docker, ACR/ACI integration, Azure networking (VNet, Subnets, NSGs, Load Balancer), and secure credential management for ACR."
-    },
-    "p4": {
-      "title": "AWS Secure Container Ecosystem",
-      "description": "Deployed a containerized Flask CRUD application on AWS using both EC2/Docker Compose and ECS, focusing on secure infrastructure setup and monitoring.",
-      "context": "Individual project exploring container deployment strategies and security practices within the AWS cloud environment.",
-      "background": "Investigated methods for deploying web applications using Docker on AWS, comparing direct EC2 deployment with ECS orchestration, including VPC configuration, security groups, and container registry usage.",
-      "realizations": "Successfully deployed the application via EC2 with Docker Compose and via ECS using an ECR image. Configured VPC with public/private subnets, Security Groups, NACLs, NAT/Internet Gateways. Set up ECR for image storage and ECS (Task Definition, Cluster, Service) for orchestration. Implemented basic monitoring using CloudWatch dashboards for CPU, memory, and logs.",
-      "learnings": "Gained hands-on experience with AWS services (VPC, EC2, ECR, ECS, CloudWatch), Docker containerization, Docker Compose, infrastructure setup for secure container deployment (networking, security groups), and cloud monitoring fundamentals."
+      "title": "Azure Platform: Modular Bicep-Flex",
+      "description": "Highly modular Infrastructure as Code (IaC) framework for Azure, featuring automated compliance checks and standardized security benchmarks.",
+      "context": "Cloud Engineering & Azure Governance",
+      "background": "Designed reusable Bicep modules to accelerate enterprise deployments while enforcing zero-trust policies throughout the resource lifecycle.",
+      "realizations": "Created automated validation pipelines for Bicep templates, ensuring 100% compliance with Azure Security Benchmark v3.",
+      "learnings": "Gained expertise in Azure Policy as Code, modular IaC design patterns, and automated resource governance."
     },
     "p5": {
-      "title": "AI-Driven Smart Bridge Control System",
-      "description": "Intelligent IoT bridge control system implementing high-accuracy sound classification and computer vision for autonomous maritime traffic management.",
-      "context": "Infrastructure automation project focused on intelligent transportation systems and sensor fusion.",
-      "background": "Engineered multi-modal recognition system to optimize bridge operations and waterway navigation safety.",
-      "realizations": "Developed hybrid audio-visual recognition algorithms achieving 94% accuracy in real-world vessel classification.",
-      "learnings": "Expertise in digital signal processing, CNN-based vision systems, and edge-based decision logic."
+      "title": "Edge MLOps: AI-Driven Smart Bridge Control",
+      "description": "Enterprise-grade IoT infrastructure automating maritime traffic via edge-deployed ML models, sound classification, and computer vision.",
+      "context": "MLOps & Edge Computing Orchestration",
+      "background": "Engineered a production-ready ML pipeline for real-time sensor fusion at the edge, optimizing bridge operations through automated decision-making.",
+      "realizations": "Architected a multi-modal inference engine with hybrid audio-visual processing, integrated into an automated CI/CD pipeline for model updates.",
+      "learnings": "Expertise in model quantisation for edge devices, streaming telemetry with OpenTelemetry, and containerized ML workloads."
     },
     "p6": {
-      "title": "React-Sec-Ops: A Secure 3-Tier Application on AWS",
-      "description": "A full-stack, 3-tier web application deployed on AWS, demonstrating a modern, secure, and automated approach to cloud application deployment.",
-      "context": "Demonstration of diagnosing and adapting to real-world constraints of managed enterprise or educational cloud environments.",
-      "background": "Originally aimed for 100% automated deployment with OpenTofu, but adapted to a hybrid model due to IAM limitations in the AWS Learner Lab environment, requiring manual setup for CI/CD and CloudFront components.",
-      "realizations": "Successfully deployed a hybrid architecture with automated core infrastructure (VPC, ECS, RDS) via OpenTofu and manually configured CI/CD and CloudFront, documenting the constraints and workaround.",
-      "learnings": "Mastered Infrastructure as Code (IaC) with OpenTofu, designed a cloud-native 3-tier architecture, applied DevSecOps principles, and developed advanced problem-solving skills in response to environmental limitations."
+      "title": "Terra-Multi-Cloud: AWS & Azure Orchestration",
+      "description": "Cross-provider infrastructure automation using Terraform to deploy a resilient multi-cloud application across AWS and Azure.",
+      "context": "Platform Engineering & Multi-Cloud Resiliency",
+      "background": "Built a unified deployment pipeline that provisions Azure Container Apps and AWS ASG/ALB, highlighting cross-cloud networking and API discovery.",
+      "realizations": "Automated Docker build/push to ACR, dynamic service discovery across providers, and unified state management.",
+      "learnings": "Mastered multi-cloud networking, provider-abstracted IaC, and complex CI/CD orchestration."
+    },
+    "p7": {
+      "title": "Hybrid Cloud Platform: GitOps & Talos Linux",
+      "description": "Enterprise-grade Kubernetes foundation built on immutable Talos Linux and managed via ArgoCD, featuring eBPF-powered networking and replicated NVMe storage.",
+      "context": "Platform Engineering & SRE Operations",
+      "background": "Architected a self-healing, GitOps-driven platform from metal/VM to application layer, emphasizing zero-touch operations and high availability.",
+      "realizations": "Integrated Cilium eBPF for secure networking, Mayastor for distributed NVMe storage, and Garage S3 for object storage redundancy.",
+      "learnings": "Expertise in GitOps (ArgoCD), immutable OS management, eBPF visibility, and SRE monitoring stacks."
+    },
+    "p8": {
+      "title": "SRE Challenge: BookStack AWS Deployment",
+      "description": "High-availability, production-hardened deployment of BookStack on AWS using Pulumi (Python) and GitLab CI/CD with focus on observability and disaster recovery.",
+      "context": "Infrastructured as Code & SRE Best Practices",
+      "background": "Engineered a resilient documentation platform on ECS Fargate, focusing on automated recovery, secrets management, and performance monitoring.",
+      "realizations": "Implemented full CI/CD with multi-stage builds, automated backup strategies, and integrated security scanning.",
+      "learnings": "Collaborative SRE practices, advanced Pulumi (Python) automation, and GitLab CI/CD for mission-critical apps."
     }
   },
   "languageSwitcher": {
@@ -155,6 +162,10 @@
   "themeToggle": {
     "switchToLight": "Switch to light theme",
     "switchToDark": "Switch to dark theme"
+  },
+  "aestheticToggle": {
+    "enable": "Enable CRT Effects",
+    "disable": "Disable CRT Effects"
   },
   "home": {
     "aboutSectionTitle": "About Me",
@@ -202,12 +213,13 @@
     "pageTitle": "CV - Maximus Mukiza | Cloud & Cyber Security Specialist",
     "pageDescription": "View the Curriculum Vitae of Maximus Mukiza, detailing education, work experience, skills, and certifications in IT and Cyber Security.",
     "heading": "Curriculum Vitae",
-    "downloadButton": "Download CV",
+    "downloadButton": "Download Full Dossier (PDF)",
+    "dossier_ready": "Technical dossier is compiled and ready for retrieval. Download the PDF for complete engineering history and certifications.",
     "downloadAria": "Download CV",
     "mainTitle": "Curriculum Vitae",
     "downloadAriaLabel": "Download CV",
     "name": "Maximus Mukiza",
-    "role": "Cloud & Cyber Security Specialist",
+    "role": "Platform Engineer | SRE | DevSecOps",
     "phone": "0456190617",
     "location": "Vorselaar, Flemish Region",
     "linkedin": "LinkedIn Profile",
