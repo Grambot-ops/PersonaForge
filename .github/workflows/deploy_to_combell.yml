@@ -30,6 +30,8 @@ jobs:
         run: bun install --frozen-lockfile
       - name: Build
         run: bun run build
+      - name: Copy .htaccess to build directory
+        run: cp public/.htaccess build/.htaccess
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact

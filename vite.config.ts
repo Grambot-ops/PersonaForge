@@ -37,7 +37,12 @@ export default defineConfig({
             "react-i18next",
           ],
         },
+        entryFileNames: "assets/[name]-[hash].js",
+        chunkFileNames: "assets/[name]-[hash].js",
+        assetFileNames: "assets/[name]-[hash][extname]",
       },
     },
+    emptyOutDir: true,
+    minify: "terser",
   },
 });
