@@ -137,6 +137,22 @@ const About: React.FC = () => {
             </div>
 
             <div className="grid sm:grid-cols-2 gap-8 border-t border-border-muted pt-8">
+              <div className="col-span-2 mb-4">
+                <h3 className="text-primary font-mono font-bold uppercase text-xs tracking-widest mb-4">
+                  &gt; System Identity
+                </h3>
+                <p className="text-sm font-mono text-muted mb-6 leading-relaxed">
+                  {t("about.bio", "Hello! I'm Maximus, a Platform Engineer and SRE specialist focused on building robust, automated infrastructure. I thrive on solving complex distributed systems challenges and implementing GitOps workflows into every layer of the stack.")}
+                </p>
+                <a
+                  href="/resume_v2.pdf"
+                  download="Maximus_Mukiza_Resume.pdf"
+                  className="inline-flex items-center space-x-2 px-6 py-3 bg-primary/10 border border-primary text-primary hover:bg-primary hover:text-black transition-colors rounded-sm font-mono text-xs uppercase font-bold tracking-widest"
+                >
+                  <span className="material-symbols-outlined text-sm" aria-hidden="true">download</span>
+                  <span>{t("about.downloadCvButton", "Download PDF Blueprint")}</span>
+                </a>
+              </div>
               <div>
                 <h3 className="text-primary font-mono font-bold uppercase text-xs tracking-widest mb-4 flex items-center">
                   <span className="material-symbols-outlined text-sm mr-2" aria-hidden="true">

@@ -4,6 +4,7 @@
     "about": "Over Mij",
     "projects": "Projecten",
     "cv": "CV",
+    "internship": "Stage",
     "contact": "Contact",
     "student": "Infrastructuur"
   },
@@ -269,6 +270,18 @@
     "skillsSecurityMonitoring": "Security & Monitoring",
     "skillsScriptingAutomation": "Scripting & Automatisering",
     "skillsToolsPlatforms": "Tools & Platformen"
+  },
+  "internship": {
+    "pageTitle": "Stage - Maximus Mukiza",
+    "heading": "Professionele Stage",
+    "title": "Incident Triage Automatisering via Python & SentinelOne",
+    "summary": "Ontwerp en implementatie van een asynchrone SOAR-architectuur met Python microservices, waardoor de triage-tijd is verkort en vendor lock-in is geëlimineerd.",
+    "synopsis": "Tijdens mijn stage bij VanRoey (Dynamate) kreeg ik de opdracht om de trage Mean Time to Respond (MTTR) aan te pakken, die veroorzaakt werd door handmatige incident triage en een grote afhankelijkheid van één enkele EDR-leverancier voor Threat Intelligence. Na aanvankelijk no-code platformen zoals SentinelOne Hyperautomation en Rewst te hebben onderzocht, ontdekte ik kritieke beperkingen op het gebied van foutafhandeling, API-diagnostiek en versiebeheer.\n\nOm dit op te lossen, ben ik overgestapt op een op maat gemaakte oplossing en heb ik een veerkrachtige, asynchrone event-driven pijplijn ontworpen met behulp van FastAPI, RabbitMQ, Redis en Docker. Ik heb onafhankelijke Threat Intelligence-feeds (zoals MISP, CIRCL en CCB) succesvol geïntegreerd in geautomatiseerde workflows. Door de inzet van Python microservices heb ik de extractie en verrijking van Indicators of Compromise (IoC's) geautomatiseerd. Dit resulteerde in hoogwaardige, bruikbare tickets in Datto Autotask met directe links (deep links) en geïntegreerde context. Deze aanpak heeft de handmatige werklast voor de SOC-analisten aanzienlijk verlaagd en de vendor lock-in voor Threat Intelligence volledig geëlimineerd.",
+    "documentsTitle": "Verplichte Documenten",
+    "projectPlan": "Projectplan",
+    "thesis": "Realisatiedocument (Thesis)",
+    "reflection": "Reflectie",
+    "downloadAria": "Download document"
   },
   "app": {
     "htmlLang": "nl",

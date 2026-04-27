@@ -41,20 +41,15 @@ const Hero: React.FC = () => {
             <span>ROOT@MAXIMUS:~/PORTFOLIO# ./BOOT_SEQUENCE.SH</span>
           </div>
 
-          <h1 id="hero-title" className="text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-[1.1] mb-12 text-foreground tracking-tight">
+          <h1 id="hero-title" className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.1] mb-12 text-foreground tracking-tight">
             <span className="text-primary mr-2 md:mr-4 tracking-tighter">&gt; Success:</span>
             <span className="text-muted/40 font-light">{t("hero.title", "Maximus")}</span>
-            <span className="border-b-[6px] border-primary pb-1 ml-2 md:ml-4 inline-block">
-              Platform
-            </span>
             <div className="flex flex-wrap items-center mt-4">
-              <span className="border-b-[6px] border-primary pb-1 mr-4 lg:mr-8 inline-block">
-                Engineering
+              <span className="border-b-[6px] border-primary pb-1 mr-4 lg:mr-8 inline-block text-3xl md:text-5xl lg:text-6xl uppercase tracking-widest">
+                Capstone Portfolio
               </span>
               <span className="text-muted/20 mr-4 lg:mr-8 hidden md:inline-block" aria-hidden="true">|</span>
-              <span className="border-b-[6px] border-primary pb-1 mr-4 lg:mr-8 inline-block">SRE</span>
-              <span className="text-muted/20 mr-4 lg:mr-8 hidden md:inline-block" aria-hidden="true">|</span>
-              <span className="border-b-[6px] border-primary pb-1 inline-block">DevSecOps</span>
+              <span className="border-b-[6px] border-primary pb-1 inline-block text-3xl md:text-5xl lg:text-6xl">IT Factory</span>
             </div>
           </h1>
 

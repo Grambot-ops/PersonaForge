@@ -1,0 +1,235 @@
+
+
+ 
+1.	Inleiding	3
+2.	Achtergrond & Bedrijfscontext	4
+2.1	Over de Organisatie: VanRoey (Dynamate)	4
+2.2	De huidige situatie en Probleemstelling	4
+3.	Projectdoelstellingen & Verwachte Resultaten	5
+3.1	Primaire Doelstellingen	5
+3.2	Non-functionele vereisten (NFR):	5
+3.3	Concrete Opleveringen:	5
+4.	Technische Architectuur & Aanpak	6
+4.1	SentinelOne Hyperautomation Workflow	6
+4.2	Data Normalisatie en Event Search (OCSF & Power Query)	6
+4.3	Geavanceerde JSON Manipulatie & error handling met JQ	6
+4.4	Human-in-the-loop (HITL) Mechanism	7
+5.	Project Scope & Randvoorwaarden	7
+5.1	In Scope	7
+5.2	Out of Scope	7
+5.3	Randvoorwaarden & Vereisten	8
+6.	Stakeholders & RACI Matrix	9
+6.1	Communicatieplan	9
+7.	Methodologie: Agile & Iteratief Werken	9
+8.	Uitgebreide Risicoanalyse & Mitigatiestrategie	11
+9.	Kwaliteitsborging & Testplan	12
+10.	Gedetailleerde 13 weken Projectplanning	13
+10.1	Sprint 0 & 1: Initiatiefase & foundation (week 1 t/m week 3)	13
+10.2	Sprint 2: Technische Realisatie – API & Integratie (week 4 t/m 6)	13
+10.3	Sprint 3: Playbooks Ontwikkeling & Demo (week 7 t/m 8)	14
+10.4	Sprint 4 & 5: Complexiteit, finetunning & testen (week 9 t/m 11)	14
+10.5	Sprint 6: Finalisatie, Rapportage & overdracht (week 12 t/m 13)	14
+10.6	Afrondingsfase (na week 13)	15
+Lijst van Afkortingen	15
+
+	Inleiding 
+Dit document is het formele Plan van Aanpak voor mijn afstudeerstage en integratie-opdracht bij ICT-dienstverlener VanRoey (Dynamate). Het project richt zich op het ontwerpen en implementeren van Threat Intelligence (TI)-integratie, gecombineerd met SOAR (Security Orchestration, Automation, and Response) binnen het SentinelOne-platform.
+
+Security Operations Centers (SOC's) staan onder druk, en dit project pakt die uitdaging aan door SentinelOne Hyperautomation (gelanceerd in februari 2025) in te zetten. Dit is een service die workflows koppelt, zowel binnen als buiten het Singularity-platform. Door API-communicatie met een no-code aanpak te combineren, kunnen we via meer dan 200 standaard of zelfgebouwde integraties—zoals met externe TIP's (Threat Intelligence Platforms) zoals MISP—een snelle en efficiënte werkwijze opzetten. Dit verlaagt de Mean Time to Respond (MTTR) aanzienlijk en vermindert meteen de afhankelijkheid van één leverancier (vendor lock-in)
+
+Dit 13 weken durende project werkt met korte, iteratieve fases om direct resultaat te leveren. Het einddoel: een werkende set geteste, gedocumenteerde playbooks die de MTTR omlaag brengen, de security versterken en de vendor lock-in door het gebruik van externe intelligentie minimaliseren.
+
+
+ 
+	Achtergrond & Bedrijfscontext
+	Over de Organisatie: VanRoey (Dynamate)
+VanRoey is een Belgische ICT-dienstverlener die organisaties helpt met digitale transformatie, met een sterke focus op Cybersecurity, cloud-infrastructuur en moderne werkplekken. Het Security Operations Center (SOC) is cruciaal voor de security-dienstverlening en levert Managed Detection and Response (MDR) aan diverse klanten. Om deze diensten te leveren, gebruikt het SOC verschillende security-oplossingen.
+
+SentinelOne is de kern voor endpoint security (EDR/XDR), Identity Detection & Response (IDR), en Identity Security Posture Management. Dit platform is al gekoppeld aan andere essentiële componenten, zoals Microsoft-omgevingen, Fortinet-firewalls en Scalyr voor logmanagement.
+	De huidige situatie en Probleemstelling
+Hoewel SentinelOne een krachtig beveiligingsplatform is, benut het SOC-team de automatisatiemogelijkheden (via de Hyper Automation-module) nog niet volledig. De huidige werkwijze kent vier knelpunten:
+
+
+
+	Handmatige verrijking van data: Wanneer een alert binnenkomt, moeten security-analisten vaak handmatig externe bronnen (zoals virus Total, AbuseIPDB, of interne Threat intel-database) raadplegen om de context van een mogelijke dreiging te begrijpen.
+
+
+	Tragere Mean Time to Respond (MTTR): Door de afhankelijkheid van handmatige triage en respons duurt het langer voordat een daadwerkelijke dreiging wordt geïsoleerd of gemitigeerd. In het geval van een ransomware-uitbraak telt elke seconde.
+
+
+	Vendor lock-in op het gebied van Threat Intelligence: momenteel vertrouwt de organisatie zwaar op de ingebouwde Threat Intelligence van de security-leverancier zelf. Dit creëert een blinde vlek: als de leverancier een specifieke Threat actor niet herkent, detecteert het SOC deze ook niet (of te laat). Het ontbreken van integratie met onafhankelijke, community-gedreven of sectorspecifieke indicator of compromise (IOC’s) is een gemiste kans.
+
+	Schaalbaarheid Probleem: Naarmate het klantenbestand van VanRoey groeit, groeit ook het aantal dagelijkse alerts. Zonder vergaande automatisering moet het SOC-team lineair meegroeien met het aantal klanten, wat bedrijfseconomisch inefficiënt is. 
+	Projectdoelstellingen & Verwachte Resultaten
+Om het geïdentificeerde probleem gestructureerd en meetbaar aan te pakken, zijn de projectdoelstellingen geformuleerd volgens de SMART-methodiek (Specifiek, Meetbaar, Acceptabel, Realistisch en Tijdgebonden).
+	Primaire Doelstellingen
+	Doel 1: Automatisering van Incident Triage (SOAR): Binnen 11 weken minimaal drie volledig functionele SOAR-playbooks ontwerpen in SentinelOne Hyperautomation. Deze workflows worden automatisch getriggerd door de Singularity Response Trigger (bij nieuwe Alerts, Vulnerabilities of Misconfigurations) om direct externe data te verrijken.
+
+	Doel 2: Implementatie van Onafhankelijke Threat Intelligence: Een naadloze API-koppeling realiseren tussen SentinelOne en platforms zoals MISP of Abuse.ch (Malware Bazaar/ AbuseIPDB). Hierbij implementeren we specifieke logica zoals Pagination om grote hoeveelheden (bulk) indicators efficiënt te verwerken en te uploaden.
+
+	Doel 3: Reductie van Vendor Lock-In: Het opzetten van een architectuur waarbij Threat Intelligence dynamisch kan worden toegevoegd of verwijderd zonder afhankelijk te zijn van de core-functionaliteit van een specifieke EDR-leverancier.
+	Non-functionele vereisten (NFR):
+	Performance: API-verrijking moet binnen <5 seconden resultaten leveren.
+	Betrouwbaarheid: Playbooks moeten ‘fail-open’ logica hebben (als een API faalt, mag het incidentproces niet stoppen)
+	onderhoudbaarheid: modulaire opbouwen van JQ-scripts voor makkelijke overdracht naar het SOC-team
+	Concrete Opleveringen:
+De volgende tastbare resultaten zullen fysiek of digitaal worden achtergelaten bij VanRoey en Thomas More:
+	Werkende Demo-omgeving: Een geconfigureerde testomgeving binnen SentinelOne waarin de geautomatiseerde playbooks visueel en technisch kunnen worden gedemonstreerd met behulp van gesimuleerde malware/alerts
+
+	Technische Documentatie & Run Books: uitgebreide documentatie over de gemaakte API-koppelingen, de structuur van de JSON-payload, de JQ-Parsing logica en instructies voor het beheer van de playbooks.
+
+	Realisatie Document: Een academisch verantwoord document dat de keuzes, de architectuur, de technische uitdagingen en de uiteindelijke resultaten beschrijft ter beoordeling van de onderwijsinstelling.
+
+	Kennisoverdracht-sessie: Een formele presentatie en workshop in week 13 voor de SOC-analisten VanRoey, zodat zij eigenaarschap kunnen nemen over de nieuwe geautomatiseerde processen. 
+	Technische Architectuur & Aanpak
+Dit project vereist een diepgaand begrip van API-architecturen, data-transformatie en securityconcepten. De technische aanpak is als volgt gestructureerd:
+	SentinelOne Hyperautomation Workflow
+Hyperautomation fungeert als de kern van de SOAR-functionaliteit en is opgebouwd uit verschillende bouwstenen:
+	Triggers: Workflows worden gestart via Singularity Response Triggers (event-gebaseerd via het SOC), HTTP (Webhook) Triggers voor externe aanroepen, of tijd gebaseerde Scheduled Triggers.
+
+	Core Actions & Variabelen: We maken gebruik van geavanceerde logica via Loops en Conditions. Hierbij spelen Variables een cruciale rol; we gebruiken lokale variabelen, geneste arrays en globale variabelen om data over meerdere iteraties en workflows heen te manipuleren en op te slaan.
+
+	Custom Integrations: Voor platformen die niet standaard in de integratiebibliotheek zitten, worden vanaf de basis Custom Integrations gebouwd, inclusief authenticatie-headers (Bearer tokens) en dynamische REST API-endpoints.
+	Data Normalisatie en Event Search (OCSF & Power Query)
+Binnen de Singularity AI SIEM worden inkomende logs en telemetrie geparseerd en genormaliseerd volgens het Open Cybersecurity Schema Format (OCSF). Om gericht te zoeken naar specifieke dreigingen, wordt een tweetraps-aanpak gehanteerd:
+	Event Search: Het initieel filteren van enorme hoeveelheden data om de resultaten terug te brengen naar de relevante set.
+	Power Query: Deze krachtige module wordt ingezet om de zoekopdracht verder te verfijnen, formateren en samen te vatten (bijv. via statistische groeperingen of Table Mapping).
+	Geavanceerde JSON Manipulatie & error handling met JQ
+Aangezien Hyperautomation primair communiceert via JSON-payload, is JQ (JSON Query) de meest effectieve methode voor datatransformatie. In de workflows wordt uitgebreid gebruik gemaakt van functies zoals Function.JQ om complexe API-responses te vertalen en overbodige data weg te filteren. Voor datavisualisatie en iteratie gebruiken we Function.MAP_TABLE om Power Query-resultaten (kolommen en waarden) naadloos om te zetten in bruikbare, iteratieve objecten. Naast de datatransformatie fungeert JQ als de kracht achter onze Error handling logica. Daar inkomende request proactief te valideren garanderen we dat playbook niet onverwacht crashen op lege of ontbrekende JSON-velden (nul-waarden). Deze resulteert in een stabiele executie van de workflows, zelfs bij incomplete API-response 
+	Human-in-the-loop (HITL) Mechanism
+Volledige automatisering brengt risico’s met zich mee, met name het risico op ‘False Positives’. Daarom wordt in de playbooks een Human-in-the-loop architectuur toegepast. Dit betekent dat systemen automatisch data verzamelen, verrijken, en een mitigatie-advies klaarzetten. Een senior SOC-analist moet vervolgens met één druk op de knop goedkeuring geven (approval-flow) voordat een destructieve of impactvolle actie (zoals netwerk isolatie) wordt uitgevoerd. 
+ 
+	Project Scope & Randvoorwaarden
+Om project vertragingen of scope creep te voorkomen, zijn de grenzen van de opdracht scherp gedefinieerd.
+	In Scope
+	Het configureren, testen en in productie voorbereiden van SentinelOne HyperAutomate ’s functionaliteiten binnen de toegekende test-omgeving.
+	Het bouwen van API-verbindingen met specifieke Threat Intel-bronnen (MISP en/of OPENCTI).
+	Het schrijven van JQ-scripts voor het parseren van inkomende en uitgaande JSON-payload.
+	Het ontwerpen, bouwen en testen van minimaal 3 SOAR playbooks (use cases).
+	Het genereren van gesimuleerde waarschuwingen en malware-executies in een gecontroleerde sandbox-omgeving om de playbooks te valideren.
+	Het opstellen van alle vereiste academische en professionele documentatie.
+	Het configureren van Custom Integrations binnen Hyperautomation voor 3rd-party services.
+	Het koppelen van collaboratie-tools (zoals MS Teams via Webhook of Slack) aan de automatische workflows ten behoeve van incidentmeldingen en collaborative analysis.
+	Het ontwerpen van Pagination-handling workflows; het afvangen van API-limieten door data (zoals duizenden MISP-indicators) in cyclische batches (via cursors) op te halen.
+	Out of Scope
+	Het beheren of foutopsporing van de fysieke of virtuele infrastructuur waar MISP of OPENCTI op draait.
+	Het toevoegen, configureren of onboarding van nieuwe logbronnen (netwerkopslag en hypervisor logs) naar de SIEM-Oplossing van VanRoey.
+	Het schrijven van log parsers of complexe Regex-regels voor de SIEM.
+	Het beheren op lange termijn, bijwerken of updaten van de gemaakte integratie na het formele einde van de stageperiode (week 13).
+
+	Randvoorwaarden & Vereisten
+Om dit project succesvol te kunnen starten en afronden, moet aan de volgende voorwaarden worden voldaan:
+	Toegang & Permissies: De projectuitvoerder heeft tijdig (voor week 3) beheerdersrechten (admin-level API Keys) nodig tot de SentinelOne test-omgeving en de beschikbare Threat Intel-platforms.
+	Hardware & Software: Beschikking over een zakelijke laptop met de benodigde ontwikkel – en testtools (Postman voor API-testing, IDE zoals VS Code).
+	Begeleiding: Wekelijkse beschikbaarheid van de stagementors voor het wegnemen van bedrijfsinterne blokkades. 
+	Stakeholders & RACI Matrix
+Om de communicatie en verantwoordelijkheden helder te structureren, is het onderstaande RACI-model (Responsible, Accountable, Consulted, Informed) opgesteld.
+	Stakeholder/Rol	Verantwoordelijkheden binnen het project	RACI ROI
+Maximus 	Project uitvoerder	Het uitvoeren van alle technische taken, schrijven en bewaken van de planning en communiceren van risico’s.	R (Responsible)
+Yenthe	Teamleader Remote Engineer	Facilitering van middelen, strategische sturing en de goedkeuring van zowel de uiteindelijke oplevering als ook de tussentijdse evaluaties.	A (Accountable)
+Nikolai	SOC-team VanRoey	Het bieden van technische inzichten over huidige workflows en het valideren van de praktische werkbaarheid van de nieuwe playbooks.	C (Consulted)
+	Communicatieplan
+	Dagelijkse stand-up (Intern): Korte synchronisatie met beschikbare SOC-led om technische blokkades te bespreken
+	Wekelijks overleg (klant): een structurele meeting van 10±minuten met de SOC-teamlead en Yenthe om de voortgang op basis van agile-sprints te bespreken.
+	Wekelijks mails naar stagementor en stagebegeleider met een korte samenvatiing (10-15) zinnen en een update van het onedrive logbook
+	Academische check-ins: Geplande contactmomenten in week 4 en week 8 met de stagebegeleider van Thomas More.
+ 
+	Methodologie: Agile & Iteratief Werken
+Aangezien dit project zich op het snijvlak van software-integratie en cybersecurity bevindt, is een traditionele watervalmethode niet geschikt. API’s kunnen namelijk onverwacht reageren waardoor technische limieten vaak pas zichtbaar worden tijdens de bouwfase. Vanuit perspectief wordt een Agile-geïnspireerde methodiek gehanteerd
+Hoewel het project door een persoon wordt uitgevoerd, zal het werk opgedeeld worden in korte Iteraties (Sprints) van 2 tot 3 weken.
+	Backlog: er wordt een lijst (backlog) bijgehouden van alle gewenste functionaliteiten (bijv. “verkrijg IP-Reputaties”, “Isoleer machines”, “Stuur teams-notificatie”).
+
+	Sprint Planning: Aan het begin van elke fase wordt bepaald welke taken prioriteit hebben.
+
+	Fail Fast, learn fast: Door zo vroeg mogelijk (in sprint 2) te beginnen met de moeilijkste API-koppelingen worden fatale technische roadblocks (zoals netwerk firewall die API-verkeer blokkeren) vroegtijdig ontdekt. Mocht een specifieke route onhaalbaar blijken, dan biedt Agile de flexibiliteit om de scope licht te buigen zonder het hoofddoel (Automatisering & verminderen Vendor lock-in) uit het oog te verliezen. 
+	Uitgebreide Risicoanalyse & Mitigatiestrategie
+In de onderstaande tabel zijn de belangrijkste projectrisico’s in kaart gebracht, inclusief hun waarschijnlijkheid (kans), de impact op het project, en de preventieve en correctieve maatregelen.
+ID	Omschrijving van het Risico	Kans	Impact
+R01	Scope Creep: Het toevoegen van extra wensen vanuit het SOC tijdens de uitvoering kan de deadline in gevaar brengen.	Hoog	Hoog
+R02	API Rate Limiting & Blokkeren: Externe Threat Intel Providers (zoals Virustotal) limiteren het aantal API-calls in gratis of test-Tiers, waardoor playbooks falen	Hoog	Gemiddeld
+R03	Tijdgebrek door technische complexiteit: JSON parsing met JQ of API-authenticatie blijkt aanzienlijk meer tijd te kosten dan gepland	Gemid.	Hoog
+R04	Data Privacy/vertrouwelijkheid: Gevoelige klantinformatie of IOC’s worden per ongeluk naar publieke, ongeëncrypteerde bronnen verstuurd ter verrijking	Laag	Kritiek
+R05	False Positives in Playbooks: Een geautomatiseerde actie isoleert ten onrechte een kritieke server.	Gemid.	Hoog
+R06	Uitval of ziekte van projectuitvoerder/mentor: vertraging door afwezigheid	Laag 	Gemiddeld
+R07	Paginatie & API-Limieten bij Bulk Data: Het ophalen van duizenden indicators via MISP of het extern wegschrijven hiervan veroorzaakt time-outs of een limietoverschrijding.	Hoog	Hoog
+	Kwaliteitsborging & Testplan
+Een integraal onderdeel van de realisatie is de kwaliteitsborging. Een playbook in een SOAR-omgeving moet blindelings vertrouwbaar zijn. Het testplan bestaat uit drie fases:
+	Unit Testing (API-niveau): Voordat een API-call in SentinelOne wordt gebouwd, wordt deze eerst onafhankelijk getest via tools zoals Postman. Hierbij wordt gecontroleerd op de juiste headers, authenticatie, en wordt de structuur van de JSON-response geanalyseerd.
+	Integration Testing (workflow-niveau): Bij het bouwen van de flow in Hyper Automate, worden logische componenten (variabelen overdragen van stap A naar stap B) getest. Er wordt gecontroleerd of error-handling werkt (wat doet het playbook als MISP een “404 NOT found” teruggeeft?).
+	User Acceptance Testing (UAT): Simulatie van een real-world scenario. Er wordt een algemeen controle uitgevoerd, dan ongevaarlijke test-malware (zoals het EICAR-testbestand) of een gesimuleerde verdachte Power Shell-executie uitgevoerd op een test-endpoint. De analist observeert of SentinelOne de waarschuwing genereert, het playbook triggert, de verrijking correct uitvoert en het mitigatie-advies juist aanbiedt in het dashboard. 
+	Gedetailleerde 13 weken Projectplanning
+De planning is zorgvuldig opgesteld in logische, opeenvolgende fasen (Sprints), rekening houdend met het contact met de contactmomenten vanuit Thomas More en de evaluatiemomenten van VanRoey.
+	Sprint 0 & 1: Initiatiefase & foundation (week 1 t/m week 3)
+De focus in de eerste weken ligt op oriëntatie, kennisopbouw en het formaliseren van de opdracht.
+	Week 1: Onboarding bij VanRoey en kennismaking met stagementor Yenthe ne het intern SOC-team
+	Verkenning van de huidige workflows en het lezen van de officiële SentinelOne HyperAutomate Documentatie
+	Start met het opstellen en uitschrijven van de eerste versie van dit Project Plan.
+
+	Week 2: Kick-off meeting met zowel de stagementor als de school-stagebegeleider.
+	Identificeren van de exact benodigde API- toegangsrechten en het aanvragen hiervan bij IT-beheer
+
+	Week 3: Presentatie van het project Plan
+	Maken van praktische afspraken over evaluatiemomenten, feedback-loops en de structuur van de op te leveren technische documentatie
+
+	Sprint 2: Technische Realisatie – API & Integratie (week 4 t/m 6)
+In deze fase start het daadwerkelijk bouwen. Het risico op technische blokkades is hier het grootst.
+	Week 4: Het 1ste contactmoment op school/online met Thomas More en het geven van een korte presentatie (max 10 min) van het bijgewerkte projectplan, waarin de feedback uit de kick-off verwerkt is.
+	Initiale setup in postman voor het testen van de connectie met MISP/OPENCTI.
+
+	Week 5: De uiterlijke indiendatum van het definitieve, formeel goedgekeurde Projectplan aan de stagebegeleiders.
+	Het bouwen van de eerst authenticatie-flow binnen SentinelOne (Omgaan met Bearer token en API Keys).
+
+	Week 6: De tussentijdse stage-evaluatie, afgerond door de stagementor via het stageportaal en structureel besproken met de student.
+	De Realisatie van de eerst succesvolle, bi-directionele API-koppelingen in HyperAutomate (data ophalen en wegschrijven)
+
+	Sprint 3: Playbooks Ontwikkeling & Demo (week 7 t/m 8)
+	Week 7: Start met de bouw van de eerst end to end SOAR use-case (bijvoorbeeld: “verrijk onbekende file-hash via MISP en plaats op intern blocklist indien malicious”)
+	De implementatie van JQ-parsing voor het filteren van de JSON-response.
+
+	Week 8: 2de contactmoment op school/online
+
+	Korte presentatie (10 min) over de realisatie tot nu toe, inclusief een live-demo van de eerste werkende playbooks in de testomgeving
+
+	Het inleveren van de eerste conceptversie van het realisatie document (stageverslag) inclusief een volledige en goedgekeurde inhoudsopgaven
+
+	De evaluatie en bijwerking van de projectplanning indien nodig.
+	Sprint 4 & 5: Complexiteit, finetunning & testen (week 9 t/m 11)
+De basis staat; nu wordt de complexiteit verhoogde en de robuustheid gegarandeerd.
+	Week 9: Het uitwerken van de complexe flow, hierbij ligt de focus op iteratieve acties zoals bulk uploads (het verwerken van lijsten met honderden IOC’s gelijktijdig zonder time-outs).
+
+	Week 10: Het optimaliseren van JQ-parsing logica voor geavanceerde datastructuren
+	Diepgaande implementatie van Error handling (wat als API rate-limited is? Wat als een veld leeg is in de JSON payload?)
+
+	Week 11: Het afronden van de fysieke testomgeving
+	Het uitvoeren van de User Acceptance Testing (UAT) samen met de SOC-analisten aan de hand van gesimuleerde malware-waarschuwingen.
+	Sprint 6: Finalisatie, Rapportage & overdracht (week 12 t/m 13)
+De focus verschuift van techniek naar documentatie, bording en academische afronding.
+	Week 12: De harde deadline voor het inleveren van alle vereiste stagedocumenten, het academische reflectieverslag en de managementsamenvatting en andere vooraf overeengekomen bewijsstukken.
+	Week 13 (Laatste stageweek): De definitieve overdracht van het project aan VanRoey.
+	Overhandiging van de technische run Books en architectuur diagrammen aan het SOC-team
+	Eindpresentatie/workshop voor het SOC-team om hen te trainen in het gebruik en geautomatiseerde workflows
+	Formele, afsluitende stage-evaluatie door de stagementor 
+	Afrondingsfase (na week 13)
+	Voorbereiding op de verdediging
+	Portfolio-sessie, eindreview en de uiteindelijke verdediging voor de beoordeling jury van Thomas More
+Lijst van Afkortingen
+Afkorting	Voluit geschreven
+TI	Threat Intelligence
+SOAR	Security Orchestration, Automation, and Response
+SOC	Security Operations Center
+MTTR	Mean Time to Respond
+TIP	Threat Intelligence Platform
+MISP	Malware Information Sharing Platform
+IOC	Indicator of Compromise
+EDR	Endpoint Detection and Response
+XDR	Extended Detection and Response
+IDR	Identity Detection & Response
+SIEM	Security Information and Event Management
+OCSF	Open Cybersecurity Schema Format
+JQ	JSON Query
+HITL	Human-in-the-loop
+UAT	User Acceptance Testing
+API	Application Programming Interface
+RACI	Responsible, Accountable, Consulted, Informed
+SMART	Specifiek, Meetbaar, Acceptabel, Realistisch en Tijdgebonden
+

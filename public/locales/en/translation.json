@@ -4,6 +4,7 @@
     "about": "About",
     "projects": "Projects",
     "cv": "CV",
+    "internship": "Internship",
     "contact": "Contact",
     "student": "Infrastructure",
     "langEnShort": "EN",
@@ -277,6 +278,18 @@
     "skillsSecurityMonitoring": "Security & Monitoring",
     "skillsScriptingAutomation": "Scripting & Automation",
     "skillsToolsPlatforms": "Tools & Platforms"
+  },
+  "internship": {
+    "pageTitle": "Internship - Maximus Mukiza",
+    "heading": "Professional Internship",
+    "title": "Automating Incident Triage via Python & SentinelOne",
+    "summary": "Designed and implemented an asynchronous SOAR architecture using Python microservices, reducing incident triage time and eliminating vendor lock-in.",
+    "synopsis": "During my internship at VanRoey (Dynamate), I was tasked with addressing the slow Mean Time to Respond (MTTR) caused by manual incident triage and the organization's heavy reliance on a single EDR vendor for Threat Intelligence. Initially exploring no-code platforms like SentinelOne Hyperautomation and Rewst, I identified critical limitations in error handling, API diagnostic visibility, and version control. \n\nTo overcome this, I pivoted to a custom-built solution, architecting a resilient, asynchronous event-driven pipeline using FastAPI, RabbitMQ, Redis, and Docker. I successfully integrated independent Threat Intelligence feeds (such as MISP, CIRCL, and CCB) directly into the automated workflows. By deploying Python microservices, I automated the extraction and enrichment of Indicators of Compromise (IoCs), resulting in high-fidelity, actionable tickets in Datto Autotask with deep links and integrated context. This significantly reduced manual workload for the SOC analysts and completely removed vendor lock-in for threat intelligence.",
+    "documentsTitle": "Mandatory Documents",
+    "projectPlan": "Project Plan",
+    "thesis": "Realization (Thesis)",
+    "reflection": "Reflection",
+    "downloadAria": "Download document"
   },
   "app": {
     "htmlLang": "en",

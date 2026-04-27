@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import Hero from "../components/Hero";
 import Skills from "../components/Skills";
 import About from "./About";
+import Internship from "../components/Internship";
 import Projects from "./Projects";
 import Contact from "./Contact";
 import CV from "./CV";
@@ -37,6 +38,10 @@ const Home: React.FC<HomeProps> = ({ aestheticMode }) => {
 
       <div id="about">
         <About />
+      </div>
+
+      <div id="internship">
+        <Internship />
       </div>
 
       <div id="skills">

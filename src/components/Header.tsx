@@ -30,10 +30,11 @@ const Header: React.FC<HeaderProps> = ({
   };
 
   const navItems = [
-    { id: "home", label: "[01] Home" },
-    { id: "about", label: "[02] About" },
-    { id: "projects", label: "[03] Projects" },
-    { id: "contact", label: "[04] Contact" },
+    { id: "home", label: "[01] " + t("header.home") },
+    { id: "about", label: "[02] " + t("header.about") },
+    { id: "internship", label: "[03] " + t("header.internship") },
+    { id: "projects", label: "[04] " + t("header.projects") },
+    { id: "contact", label: "[05] " + t("header.contact") },
   ];
 
   return (

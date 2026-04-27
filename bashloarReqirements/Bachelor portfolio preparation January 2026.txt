@@ -1,0 +1,272 @@
+1
+Bachelor Portfolio
+Graduation Portfolio & Jury Presentation
+Graduation Portfolio Jury Presentation
+Bachelor Portfolio
++
+Graduation Portfolio
+3
+Graduation Portfolio
+4
+Why?
+ Goal of the portfolio is to proof to jury of IT professionals, that you have
+achieved the level of a Bachelor in the domain of IT
+What?
+ Online portfolio, with a predefined structure
+ Focus is on concrete realisations & accomplishments
+ NOT: a ‘transitional’-portfolio, where focus was on personal growth and evolution
+ ECTS: ‘At a minimum, the portfolio must include the following elements’:
+ ‘About me’-section, including a CV
+ ‘Internship’-section, including all mandatory documentation
+ Other ‘Achievements & Projects’-section
+Graduation Portfolio
+5
+Online Hosting
+ Personal portfolio, where you take ownership
+ Beware of the content you post online
+ Confidentiality of documents, privacy concerns,…
+ Ensure reliable hosting / availability
+ https://sinners.be
+ https://www.netlify.com
+ https://pages.github.com/
+ …
+ www.academicsoftware.be → Free web hosting by Combell
+Graduation Portfolio
+6
+Target audience
+ External IT professionals, not your friends
+ Beware of linguistic errors, bad grammar and structure, misspellings,…
+Predefined structure
+ Home Page
+ Navigational anchor
+ State the purpose of the portfolio
+ ‘Capstone’, or culmination of your studies, just before graduation
+ Watch out for overlap with the ‘About me’ section
+ First contact, first impression. So… Impress!
+Graduation Portfolio
+7
+Predefined structure
+ About Me-section
+ Build a personal connection with your audience
+ Use first-person point of view to make your page more relatable and
+engaging
+ Include some personal details that reveal your personality, interests and
+values
+ Use a professional photo: (not:)
+ Include contact details, socials, …
+ Must have:
+ Your downloadable (updated) Curriculum Vitae
+Example
+8
+Graduation Portfolio
+9
+Predefined structure
+ Internship-section
+ Content on the page itself:
+ Title
+ Summary
+ Synopsis or abstract of your internship assignment
+ NOT a week-by-week report overview
+ Focus on the ‘What’ and ‘How’
+ Write in the past tense (!)
+ Mandatory documents (available via download links)
+ Project Plan
+ Realization document (thesis – full 5W1H approach)
+ Reflection
+ Optional: other supporting documents
+RECAP: Mandatory documents:
+10
+Project Plan Realization (Thesis) Reflection
+Example
+11
+ Mandatory documents +
+other supporting documents
+ Title of your internship &
+Summary
+Graduation Portfolio
+12
+Predefined structure
+ Achievements & Projects
+ Achievements
+ Hackathons, badges from online courses,…
+ Showcase other projects
+ Other awesome schoolprojects or extracurricular work
+ What do you excel at? What are your passions?
+ Provide context
+ Summary and conclusion
+ Focus on the ‘What’ and ‘How’
+ Make it tangible
+ Use visual aids: include screenshots, movies, reports, code repo’s,…
+ Result of teamwork?
+ Make sure you highlight your own contribution
+ Give credit where credit is due
+Graduation Portfolio
+13
+UX ‘guidelines’
+ Supporting documents
+ Automatically open in new tab
+ Appropriate format, preferably pdf
+ Links to external resources (other projects, other sites,…)
+ Check for availability / dead links
+ Usage of Text in portfolio / documents
+ Double / triple check!
+ Be consistent
+ Not: Cybersecurity, Cyber Security, Cyber security, cyber security,…
+ Use spellchecker, or…
+ Use references when applicable
+Portfolio Check & Check-list
+14
+Portfolio check-list
+ After finalizing your online portfolio, run through the checklist
+ Canvas > ITF – Internship & Portfolio > Bachelor portfolio January 2026
+ Check by an acquaintance
+ Forward link to friend / acquaintance (not a member of ThomasMore) to
+run through the checklist themselves
+Portfolio Check
+ Make an appointment with your internship supervisor (from ThomasMore)
+ Supervisor will check completion of checklist, and give you a ‘go-ahead’
+to send it to jury members
+ A trial presentation can also be arranged at that time
+ Note down possible comments & feedback, so you can adapt & improve
+Portfolio Invite
+15
+Portfolio Invite
+16
+Invite mail with URL of your portfolio (part of the evaluation criteria of your portfolio)
+ Can only be sent after:
+ Checking site availability for external users
+ Forward link to friend / acquaintance (not a member of ThomasMore) to check availability of all
+resources (before sending it to jurymembers)
+ The ‘go-ahead’ from your internship supervisor, after evaluating your checklist
+ Email Format
+ Professional and polite invite mail to thank them for being part of your jurypanel, and to
+review your online portfolio
+ Choose appropriate subject of the mail
+ Best to send an individual mail to each jurymember
+ Don’t forget to include the link to your portfolio
+ Ask for confirmation of receipt
+ Check afterwards if all your invites were received correctly
+ Your responsibility to send invite to all members of your jury
+ List of email addresses of jury members will be available on Canvas by the end of this
+lesson
+Portfolio Invite
+17
+Invite mail with URL of your portfolio
+ When to send?
+ After pre-checks (see previous slide)
+ Not before January 12th, and no later than January 16th (midnight)
+ No changes can be made to your portfolio after sending invite
+ ECTS
+ “If the link to the portfolio is not forwarded to all members of your jury in a timely
+manner or if the required elements on the portfolio are not available to all
+members of its jury in a timely manner, the student may fail this OPO.”
+ Upload to Canvas
+ Create a zip-file from your porfolio, and upload to Canvas (assignments)
+Evaluation of Graduation Portfolio
+18
+Evaluation Graduation Portfolio
+19
+Who
+ Jury
+ 2 teachers IT Factory
+ 2-3 IT Professionals (usually including your supervisor)
+What
+ Content
+ Portfolio invite mail
+ Online Bachelor portfolio
+ About me, Internship documents, Other achievements & projects
+ Form
+ Design (relative to your IT specialization), UX, linguistically correct, fluent yet
+sufficiently formal style
+When
+ Just before your presentation
+Jury Presentation
+20
+Jury Presentation
+21
+Duration
+ Minimum 15min - maximum 20min
+Content
+ Start with a great introduction (first impression)
+ Use a visually appealing slidedeck to support your story
+ Select the topics you want to talk about
+ Remember: you’re applying for the title of ‘Professional Bachelor’ in IT
+ Jury members have reviewed your portfolio, so don’t just repeat / re-use
+ Internship is the main topic, but summarize (limited time)
+ Select a couple of other achievements / projects as well, so the jury can
+get a good impression of your work towards a bachelor’s degree
+ Remember: if it’s a team project, highlight your own contributions
+ Hardest part: choose wisely, you have limited time!
+Jury Presentation
+22
+Practical tips
+ Take precautions to be on time!
+ Be there at least 15min before your scheduled timeslot
+ Internship supervisor will briefly introduce the jury members before the
+start of your presentation
+ Timing is crucial (min 15min – max 20min)
+ Don’t drag it out!
+ Try to insert ‘buffer moments’: topics that you can cover swiftly or take a little
+more time, depending on your current timing
+ Like a demo, or a technical overview image: highlight only the crucial items, or go a
+little more in depth
+ Like a reflection slide, where you add a couple of icons
+ Don’t use bullet points, otherwise you have to cover them all
+ Icons are ‘vague’ enough, so you can cover them swiftly, or lengthly
+ Do a trial run!
+Jury Presentation
+23
+Practical tips
+ Dress code
+ Be professional: smart – business casual
+ Answering questions
+ You are probably pretty knowledgeable about the topics, because you’ve spent a
+lot of time on them
+ But: jury members might ask questions from their own perspective
+ If it’s a little out of scope, or you don’t exactly know:
+ Try to answer to the best of your knowledge, from your own perspective
+ If you have no clue beware of the pitfall of fabricating answers
+ Don’t dig your own grave.
+ After the presentation and the Q&A
+ You’ll be asked to leave the room for a moment, so the jury can discuss
+ You’ll be called back in to receive some feedback on how you did
+Evaluation of Jury Presentation
+24
+Evaluation Jury Presentation
+25
+Structure and contents of the presentation
+ Intro – Body – Conclusion & Reflection
+ Smooth transitions between slides, demo, movies, (portfolio),…
+Delivery of the presentation
+ Professional, clear, convincing
+ Linguistically fluent and correct
+Timing
+ Min 15min, max 20min
+Question answering
+Proper and appropriate appearance
+Evaluation Internship by Jury
+26
+The qualitative assessment of the internship (defined by the Workplacement
+Mentor) serves as a guiding basis for the final grade, which is determined by
+the Jury after the presentation
+27
+Final Remarks
+28
+Jobs for (near) graduates can be found at (after registration)
+ http://werkenvia.thomasmore.be/zoek-een-vacature
+Feedback form
+ Evaluate your internship on the internship portal
+Final Remarks
+29
+Jury Schedule
+ Online now
+ Email addresses of jury members will only become available online by
+the end of this week (see sending the invite-section of this powerpoint)
+ Check your timeslot and jury members
+ Supervisor not listed or faulty
+ Notify your internship supervisor to correct it ASAP
+ Observers are not listed
+ Notify the chair of the jury that this person will observe your presentation
+ Inform the observer personally where and when they must join your presentation
+Check Canvas / mail / Teams daily because changes might occur
+30
