@@ -9,11 +9,7 @@ import Mermaid from "./Mermaid";
 
 const projectData: Project[] = projectDataImport as Project[];
 
-interface ProjectsProps {
-  aestheticMode: boolean;
-}
-
-const Projects: React.FC<ProjectsProps> = ({ aestheticMode }) => {
+const Projects: React.FC = () => {
   const { t } = useTranslation();
   const publicUrl = import.meta.env.BASE_URL;
   const [modalData, setModalData] = useState<{
@@ -33,7 +29,7 @@ const Projects: React.FC<ProjectsProps> = ({ aestheticMode }) => {
 
   return (
     <section
-      className={`py-24 bg-background relative ${aestheticMode ? "crt-flicker" : ""}`}
+      className="py-24 bg-background relative"
       id="projects"
       aria-labelledby="projects-heading"
     >

@@ -1,18 +1,9 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import ThemeToggle from "./ThemeToggle";
-import AestheticToggle from "./AestheticToggle";
 import { FaBars, FaTimes } from "react-icons/fa";
 
-interface HeaderProps {
-  aestheticMode: boolean;
-  toggleAestheticMode: () => void;
-}
-
-const Header: React.FC<HeaderProps> = ({
-  aestheticMode,
-  toggleAestheticMode,
-}) => {
+const Header: React.FC = () => {
   const { i18n, t } = useTranslation();
   const [activeSection, setActiveSection] = useState("home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,15 +21,15 @@ const Header: React.FC<HeaderProps> = ({
   };
 
   const navItems = [
-    { id: "home", label: "[01] " + t("header.home") },
-    { id: "about", label: "[02] " + t("header.about") },
-    { id: "internship", label: "[03] " + t("header.internship") },
-    { id: "projects", label: "[04] " + t("header.projects") },
-    { id: "contact", label: "[05] " + t("header.contact") },
+    { id: "home", label: t("header.home") },
+    { id: "about", label: t("header.about") },
+    { id: "internship", label: t("header.internship") },
+    { id: "projects", label: t("header.projects") },
+    { id: "contact", label: t("header.contact") },
   ];
 
   return (
-    <header className="fixed top-0 w-full z-50 border-b border-primary/20 bg-background/90 backdrop-blur-md">
+    <header className="fixed top-0 w-full z-50 border-b border-primary/20 bg-background/80 backdrop-blur-md">
       <nav
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         aria-label="Main Navigation"
@@ -46,18 +37,17 @@ const Header: React.FC<HeaderProps> = ({
         <div className="flex justify-between items-center h-16">
           <button
             onClick={() => scrollToSection("home")}
-            className="flex items-center space-x-3 group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm transition-all"
+            className="flex items-center space-x-3 group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg transition-all"
             aria-label="Maximus Portfolio - Back to top"
           >
             <div
-              className="w-8 h-8 bg-primary/10 border border-primary text-primary rounded-sm flex items-center justify-center font-bold font-mono text-sm group-hover:bg-primary group-hover:text-black transition-all"
+              className="w-8 h-8 bg-primary/10 border border-primary text-primary rounded-lg flex items-center justify-center font-bold font-mono text-sm group-hover:bg-primary group-hover:text-background transition-all"
               aria-hidden="true"
             >
-              &gt;_
+              M
             </div>
-            <span className="font-mono font-bold text-lg tracking-tight text-foreground group-hover:text-primary transition-colors">
-              MAXIMUS.SH
-              <span className="animate-cursor-blink text-primary">_</span>
+            <span className="font-sans font-bold text-lg tracking-tight text-foreground group-hover:text-primary transition-colors">
+              Maximus.
             </span>
           </button>
 
@@ -65,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-foreground hover:text-primary transition-colors p-2 focus-visible:ring-2 focus-visible:ring-primary rounded-sm outline-none"
+              className="text-foreground hover:text-primary transition-colors p-2 focus-visible:ring-2 focus-visible:ring-primary rounded-lg outline-none"
               aria-label={isMenuOpen ? "Close main menu" : "Open main menu"}
               aria-expanded={isMenuOpen}
               aria-controls="mobile-menu"
@@ -79,15 +69,15 @@ const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Desktop Navigation */}
-          <ul className="hidden md:flex items-center space-x-8 text-xs font-mono font-medium tracking-widest uppercase list-none">
+          <ul className="hidden md:flex items-center space-x-8 text-sm font-sans font-medium list-none">
             {navItems.map((item) => (
               <li key={item.id}>
                 <button
                   onClick={() => scrollToSection(item.id)}
                   aria-current={activeSection === item.id ? "page" : undefined}
-                  className={`transition-colors focus-visible:text-primary focus-visible:outline-none font-bold ${
+                  className={`transition-colors focus-visible:text-primary focus-visible:outline-none font-medium ${
                     activeSection === item.id
-                      ? "text-primary border-b border-primary"
+                      ? "text-primary"
                       : "text-muted hover:text-primary"
                   }`}
                 >
@@ -101,11 +91,11 @@ const Header: React.FC<HeaderProps> = ({
           {isMenuOpen && (
             <div
               id="mobile-menu"
-              className="md:hidden absolute top-full left-0 w-full bg-background border-b border-primary/20 shadow-2xl py-6 px-4 animate-in slide-in-from-top-2 duration-300"
+              className="md:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-md border-b border-primary/20 shadow-2xl py-6 px-4 animate-in slide-in-from-top-2 duration-300"
               role="region"
               aria-label="Mobile Navigation Menu"
             >
-              <ul className="flex flex-col space-y-4 mb-8 list-none">
+              <ul className="flex flex-col space-y-2 mb-8 list-none">
                 {navItems.map((item) => (
                   <li key={item.id}>
                     <button
@@ -116,9 +106,9 @@ const Header: React.FC<HeaderProps> = ({
                       aria-current={
                         activeSection === item.id ? "page" : undefined
                       }
-                      className={`w-full text-left px-4 py-3 text-sm font-mono font-bold tracking-[0.2em] uppercase transition-all rounded-sm ${
+                      className={`w-full text-left px-4 py-3 text-sm font-sans font-medium transition-all rounded-lg ${
                         activeSection === item.id
-                          ? "text-primary bg-primary/10 border-l-4 border-primary"
+                          ? "text-primary bg-primary/10"
                           : "text-muted hover:text-primary hover:bg-primary/5"
                       }`}
                     >
@@ -130,11 +120,11 @@ const Header: React.FC<HeaderProps> = ({
 
               <div className="flex flex-col space-y-4 pt-4 border-t border-primary/10">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono text-muted uppercase">
+                  <span className="text-xs font-sans text-muted uppercase">
                     Language
                   </span>
                   <div
-                    className="flex border border-primary/30 rounded-sm overflow-hidden text-[10px] font-mono"
+                    className="flex border border-primary/30 rounded-lg overflow-hidden text-xs font-sans"
                     role="group"
                     aria-label="Select Language"
                   >
@@ -143,7 +133,7 @@ const Header: React.FC<HeaderProps> = ({
                       aria-pressed={i18n.language.startsWith("en")}
                       className={`px-4 py-2 transition-all ${
                         i18n.language.startsWith("en")
-                          ? "bg-primary text-black font-bold"
+                          ? "bg-primary text-background font-bold"
                           : "text-muted"
                       }`}
                     >
@@ -154,7 +144,7 @@ const Header: React.FC<HeaderProps> = ({
                       aria-pressed={i18n.language.startsWith("nl")}
                       className={`px-4 py-2 transition-all ${
                         i18n.language.startsWith("nl")
-                          ? "bg-primary text-black font-bold"
+                          ? "bg-primary text-background font-bold"
                           : "text-muted"
                       }`}
                     >
@@ -164,18 +154,14 @@ const Header: React.FC<HeaderProps> = ({
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono text-muted uppercase">
-                    Interface
+                  <span className="text-xs font-sans text-muted uppercase">
+                    Theme
                   </span>
                   <div
                     className="flex space-x-2"
                     role="group"
-                    aria-label="Interface Settings"
+                    aria-label="Theme Settings"
                   >
-                    <AestheticToggle
-                      aestheticMode={aestheticMode}
-                      toggleAestheticMode={toggleAestheticMode}
-                    />
                     <ThemeToggle />
                   </div>
                 </div>
@@ -185,18 +171,18 @@ const Header: React.FC<HeaderProps> = ({
                     scrollToSection("contact");
                     setIsMenuOpen(false);
                   }}
-                  className="w-full py-4 bg-primary text-black text-center rounded-sm font-mono font-bold text-xs uppercase tracking-widest shadow-[0_4px_10px_rgba(0,255,65,0.2)]"
+                  className="w-full py-3 bg-primary text-background text-center rounded-lg font-sans font-bold text-sm shadow-md"
                 >
-                  ./EXEC_CONTACT
+                  Contact Me
                 </button>
               </div>
             </div>
           )}
 
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-4">
             {/* Language Switcher */}
             <div
-              className="hidden sm:flex border border-primary/30 rounded-sm overflow-hidden text-[10px] font-mono h-10"
+              className="hidden sm:flex border border-primary/30 rounded-lg overflow-hidden text-xs font-sans h-9"
               role="group"
               aria-label="Select Language"
             >
@@ -205,7 +191,7 @@ const Header: React.FC<HeaderProps> = ({
                 aria-pressed={i18n.language.startsWith("en")}
                 className={`px-3 py-1 flex items-center justify-center transition-all focus-visible:bg-primary/20 outline-none ${
                   i18n.language.startsWith("en")
-                    ? "bg-primary text-black font-bold"
+                    ? "bg-primary text-background font-medium"
                     : "text-muted hover:text-primary"
                 }`}
               >
@@ -216,7 +202,7 @@ const Header: React.FC<HeaderProps> = ({
                 aria-pressed={i18n.language.startsWith("nl")}
                 className={`px-3 py-1 flex items-center justify-center transition-all focus-visible:bg-primary/20 outline-none ${
                   i18n.language.startsWith("nl")
-                    ? "bg-primary text-black font-bold"
+                    ? "bg-primary text-background font-medium"
                     : "text-muted hover:text-primary"
                 }`}
               >
@@ -227,20 +213,16 @@ const Header: React.FC<HeaderProps> = ({
             <div
               className="flex items-center space-x-2"
               role="group"
-              aria-label="Interface Settings"
+              aria-label="Theme Settings"
             >
-              <AestheticToggle
-                aestheticMode={aestheticMode}
-                toggleAestheticMode={toggleAestheticMode}
-              />
               <ThemeToggle />
             </div>
 
             <button
               onClick={() => scrollToSection("contact")}
-              className="hidden lg:flex bg-primary/10 border border-primary text-primary h-10 px-6 items-center justify-center rounded-sm font-bold text-[10px] hover:bg-primary hover:text-black transition-all font-mono uppercase tracking-[0.2em] shadow-[0_0_15px_rgba(0,255,65,0.1)] active:scale-95 focus-visible:ring-2 focus-visible:ring-primary outline-none"
+              className="hidden lg:flex bg-primary text-background h-9 px-5 items-center justify-center rounded-lg font-bold text-sm hover:bg-primary-dark transition-all shadow-md active:scale-95 focus-visible:ring-2 focus-visible:ring-primary outline-none"
             >
-              ./EXEC_CONTACT
+              Contact
             </button>
           </div>
         </div>

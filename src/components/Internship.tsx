@@ -9,67 +9,114 @@ const Internship: React.FC = () => {
   const documents = [
     {
       title: t("internship.projectPlan", "Project Plan"),
-      icon: <FaFileAlt className="text-xl" />,
+      description: t("internship.projectPlanDesc", "Initial scoping, timeline, and methodology."),
+      icon: <FaFileAlt className="text-lg" />,
       url: `${publicUrl}documents/Project-plan_v3.txt`,
       filename: "Project-plan_v3.txt",
     },
     {
-      title: t("internship.thesis", "Realization (Thesis)"),
-      icon: <FaFileCode className="text-xl" />,
+      title: t("internship.thesis", "Technical Thesis"),
+      description: t("internship.thesisDesc", "Full realization and architecture documentation."),
+      icon: <FaFileCode className="text-lg" />,
       url: `${publicUrl}documents/StageDocumentatieFull.md`,
       filename: "StageDocumentatieFull.md",
     },
     {
-      title: t("internship.reflection", "Reflection"),
-      icon: <FaFileSignature className="text-xl" />,
+      title: t("internship.reflection", "Reflection Report"),
+      description: t("internship.reflectionDesc", "Personal learning outcomes and growth."),
+      icon: <FaFileSignature className="text-lg" />,
       url: `${publicUrl}documents/Reflection.txt`,
       filename: "Reflection.txt",
     },
   ];
 
   return (
-    <section className="py-24 bg-background relative border-t border-border-muted" id="internship" aria-labelledby="internship-heading">
+    <section
+      className="py-24 bg-card-dark relative border-t border-border-muted"
+      id="internship"
+      aria-labelledby="internship-heading"
+    >
+      {/* Subtle glow */}
+      <div
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"
+        aria-hidden="true"
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col items-start mb-16 animate-fadeIn">
-          <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-sm bg-primary/10 text-primary border border-primary/40 text-[10px] font-mono font-bold uppercase tracking-[0.2em] mb-4 shadow-[0_0_10px_rgba(0,255,65,0.1)]">
-            <span className="w-2 h-2 bg-primary rounded-full animate-pulse" aria-hidden="true"></span>
-            <span>./EXEC_INTERNSHIP_MODULE.SH</span>
+
+        {/* Section header */}
+        <div className="mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-medium mb-5">
+            <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" aria-hidden="true" />
+            Professional Internship · VanRoey (Dynamate)
           </div>
-          <h2 id="internship-heading" className="text-4xl md:text-5xl font-display font-bold text-foreground">
-            <span className="text-primary font-mono text-2xl mr-4" aria-hidden="true">03.</span>
-            {t("internship.heading", "Professional Internship")}
+          <h2
+            id="internship-heading"
+            className="text-3xl md:text-4xl font-display font-bold text-foreground mb-3"
+          >
+            {t("internship.heading", "Internship Project")}
           </h2>
+          <p className="text-muted text-base max-w-2xl">
+            {t("internship.subheading", "Automating SOC incident triage using Python microservices and SentinelOne.")}
+          </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-12">
-          {/* Main Content Area */}
-          <div className="lg:col-span-2 space-y-8 text-muted font-mono text-sm leading-relaxed">
-            <div className="bg-card-dark border border-primary/20 p-8 rounded-sm shadow-[0_4px_20px_rgba(0,0,0,0.5)] relative overflow-hidden group transition-all hover:border-primary/50">
-              <div className="absolute top-0 left-0 w-1 h-full bg-primary" aria-hidden="true"></div>
-              <h3 className="text-2xl font-bold text-foreground mb-4 font-display">
+        <div className="grid lg:grid-cols-3 gap-10">
+
+          {/* Main content */}
+          <div className="lg:col-span-2">
+            <div className="bg-background rounded-2xl border border-border-muted p-8 shadow-lg h-full">
+              <h3 className="text-xl font-display font-bold text-foreground mb-2">
                 {t("internship.title", "Automating Incident Triage via Python & SentinelOne")}
               </h3>
-              <div className="text-primary/80 font-bold mb-6 text-xs uppercase tracking-widest border-b border-border-muted pb-4">
-                &gt; {t("internship.summary", "Designed and implemented an asynchronous SOAR architecture using Python microservices, reducing incident triage time and eliminating vendor lock-in.")}
-              </div>
-              
-              <div className="space-y-4 whitespace-pre-line">
-                <span className="text-primary font-bold">SYNOPSIS:</span>
-                {"\n"}
-                {t("internship.synopsis", "During my internship at VanRoey (Dynamate), I was tasked with addressing the slow Mean Time to Respond (MTTR) caused by manual incident triage and the organization's heavy reliance on a single EDR vendor for Threat Intelligence. Initially exploring no-code platforms like SentinelOne Hyperautomation and Rewst, I identified critical limitations in error handling, API diagnostic visibility, and version control. \n\nTo overcome this, I pivoted to a custom-built solution, architecting a resilient, asynchronous event-driven pipeline using FastAPI, RabbitMQ, Redis, and Docker. I successfully integrated independent Threat Intelligence feeds (such as MISP, CIRCL, and CCB) directly into the automated workflows. By deploying Python microservices, I automated the extraction and enrichment of Indicators of Compromise (IoCs), resulting in high-fidelity, actionable tickets in Datto Autotask with deep links and integrated context. This significantly reduced manual workload for the SOC analysts and completely removed vendor lock-in for threat intelligence.")}
+              <p className="text-primary text-sm font-medium mb-6">
+                VanRoey · Dynamate — 2025
+              </p>
+
+              <p className="text-muted text-sm leading-relaxed mb-4">
+                {t(
+                  "internship.synopsis",
+                  "During my internship at VanRoey (Dynamate), I was tasked with addressing slow Mean Time to Respond (MTTR) caused by manual incident triage and heavy reliance on a single EDR vendor for Threat Intelligence.",
+                )}
+              </p>
+              <p className="text-muted text-sm leading-relaxed mb-4">
+                {t(
+                  "internship.synopsis2",
+                  "After evaluating no-code platforms like SentinelOne Hyperautomation and Rewst and identifying critical limitations, I pivoted to architecting a custom resilient, asynchronous event-driven pipeline using FastAPI, RabbitMQ, Redis, and Docker.",
+                )}
+              </p>
+              <p className="text-muted text-sm leading-relaxed">
+                {t(
+                  "internship.synopsis3",
+                  "I integrated independent Threat Intelligence feeds (MISP, CIRCL, CCB) directly into automated workflows, automating IoC extraction and enrichment — resulting in high-fidelity Datto Autotask tickets and significantly reducing manual workload while eliminating vendor lock-in.",
+                )}
+              </p>
+
+              {/* Tech tags */}
+              <div className="flex flex-wrap gap-2 mt-8">
+                {["FastAPI", "RabbitMQ", "Redis", "Docker", "Python", "SentinelOne", "MISP"].map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-medium"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Sidebar / Documents Area */}
+          {/* Documents sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-background border border-border-muted p-6 rounded-sm sticky top-24">
-              <h4 className="text-foreground font-bold font-mono text-lg mb-6 flex items-center border-b border-border-muted pb-4">
-                <span className="text-primary mr-2" aria-hidden="true">&gt;</span>
+            <div className="bg-background rounded-2xl border border-border-muted p-6 shadow-lg">
+              <h4 className="text-foreground font-semibold text-sm mb-5 flex items-center gap-2">
+                <span className="w-5 h-5 bg-primary/10 border border-primary/30 rounded-md flex items-center justify-center">
+                  <span className="material-symbols-outlined text-primary text-xs" aria-hidden="true">folder_open</span>
+                </span>
                 {t("internship.documentsTitle", "Mandatory Documents")}
               </h4>
-              
-              <div className="space-y-4">
+
+              <div className="space-y-3">
                 {documents.map((doc, index) => (
                   <a
                     key={index}
@@ -77,24 +124,28 @@ const Internship: React.FC = () => {
                     download={doc.filename}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center p-4 border border-border-muted hover:border-primary/50 hover:bg-primary/5 transition-all group rounded-sm text-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-primary outline-none"
+                    className="flex items-center gap-4 p-4 rounded-xl border border-border-muted hover:border-primary/40 hover:bg-primary/5 transition-all group focus-visible:ring-2 focus-visible:ring-primary outline-none"
                     aria-label={`${t("internship.downloadAria", "Download")} ${doc.title}`}
                   >
-                    <div className="w-10 h-10 flex items-center justify-center bg-card-dark border border-border-muted group-hover:border-primary/30 group-hover:text-primary transition-colors rounded-sm mr-4">
+                    <div className="w-10 h-10 flex items-center justify-center bg-primary/10 border border-primary/20 rounded-lg text-primary group-hover:bg-primary group-hover:text-background transition-all flex-shrink-0">
                       {doc.icon}
                     </div>
-                    <div className="flex-1 font-mono text-sm">
-                      <div className="font-bold">{doc.title}</div>
-                      <div className="text-[10px] text-muted/60 uppercase tracking-wider">{doc.filename}</div>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-semibold text-sm text-foreground truncate">{doc.title}</p>
+                      <p className="text-xs text-muted truncate">{doc.description}</p>
                     </div>
-                    <div className="text-primary opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true">
-                      &darr;
-                    </div>
+                    <span
+                      className="material-symbols-outlined text-muted group-hover:text-primary transition-colors text-base flex-shrink-0"
+                      aria-hidden="true"
+                    >
+                      download
+                    </span>
                   </a>
                 ))}
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>

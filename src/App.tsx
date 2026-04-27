@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"; // Import useEffect, useState
+import React, { useEffect } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async"; // Import Helmet
 import { useTranslation } from "react-i18next"; // Import useTranslation
 import Header from "./components/Header";
@@ -8,20 +8,6 @@ import Home from "./pages/Home";
 
 const App: React.FC = () => {
   const { t, i18n } = useTranslation(); // Initialize useTranslation hook
-  const [aestheticMode, setAestheticMode] = useState<boolean>(() => {
-    const saved = localStorage.getItem("aesthetic-mode");
-    return saved === null ? false : saved === "true";
-  });
-
-  const toggleAestheticMode = () => {
-    setAestheticMode((prev) => {
-      const next = !prev;
-      localStorage.setItem("aesthetic-mode", String(next));
-      return next;
-    });
-  };
-
-  // Update html lang whenever context changes
   useEffect(() => {
     document.documentElement.lang = i18n.language;
   }, [i18n.language]);
@@ -48,15 +34,11 @@ const App: React.FC = () => {
         />{" "}
         {/* Reusing OG description */}
       </Helmet>
-      {aestheticMode && <div className="scanlines"></div>}
       <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-black transition-colors duration-300">
         <div className="flex flex-col min-h-screen">
-          <Header
-            aestheticMode={aestheticMode}
-            toggleAestheticMode={toggleAestheticMode}
-          />
+          <Header />
           <main className="flex-grow">
-            <Home aestheticMode={aestheticMode} />
+            <Home />
           </main>
           <BackToTop />
           <Footer />

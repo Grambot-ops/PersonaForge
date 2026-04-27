@@ -1,98 +1,94 @@
 import React from "react";
-import { useTranslation } from "react-i18next"; // Import useTranslation
+import { useTranslation } from "react-i18next";
 
 const Hero: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <section 
-      className="relative pt-32 pb-20 overflow-hidden bg-background min-h-[90vh] flex items-center"
+    <section
+      className="relative pt-32 pb-24 overflow-hidden bg-background min-h-[90vh] flex items-center"
       aria-labelledby="hero-title"
     >
-      <div className="absolute inset-0 terminal-grid opacity-20" aria-hidden="true"></div>
+      {/* Subtle glowing orb background */}
+      <div
+        className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/3 rounded-full blur-[100px] pointer-events-none"
+        aria-hidden="true"
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="hidden lg:flex absolute top-[-40px] right-8 items-center space-x-4 bg-background/80 backdrop-blur-sm border border-primary/30 rounded-sm px-4 py-2 text-[10px] font-mono shadow-[0_0_15px_rgba(0,255,65,0.05)]" role="status" aria-label="System Status">
-          <div className="flex items-center gap-2">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-            </span>
-            <span className="text-muted tracking-tight">
-              SYS_STATUS:{" "}
-              <span className="text-primary font-bold uppercase">
-                Operational
-              </span>
-            </span>
-          </div>
-          <span className="text-primary/20" aria-hidden="true">|</span>
-          <span className="text-muted uppercase">
-            Nodes:{" "}
-            <span className="text-foreground/70">AWS // AZURE // ON-PREM</span>
+        {/* Status badge — kept subtle, no terminal prompt */}
+        <div
+          className="hidden lg:flex absolute top-[-32px] right-8 items-center space-x-4 bg-card-dark/80 backdrop-blur border border-border-muted rounded-full px-5 py-2 text-xs font-sans shadow-lg"
+          role="status"
+          aria-label="System Status"
+        >
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
           </span>
-          <span className="text-primary/20" aria-hidden="true">|</span>
-          <span className="text-muted uppercase">
-            Last_Deploy: <span className="text-foreground/70">2H AGO</span>
+          <span className="text-muted">
+            Available for internship · <span className="text-foreground font-medium">2026 Cohort</span>
           </span>
         </div>
 
-        <div className="max-w-6xl">
-          <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-sm bg-primary/10 text-primary border border-primary/40 text-[10px] font-mono font-bold uppercase tracking-[0.2em] mb-8 animate-fadeIn shadow-[0_0_10px_rgba(0,255,65,0.1)]">
-            <span className="w-2 h-2 bg-primary rounded-full animate-pulse" aria-hidden="true"></span>
-            <span>ROOT@MAXIMUS:~/PORTFOLIO# ./BOOT_SEQUENCE.SH</span>
+        <div className="max-w-5xl">
+          {/* Eyebrow label */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-medium mb-10 animate-fadeIn">
+            <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" aria-hidden="true" />
+            Bachelor Capstone Portfolio · IT Factory
           </div>
 
-          <h1 id="hero-title" className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.1] mb-12 text-foreground tracking-tight">
-            <span className="text-primary mr-2 md:mr-4 tracking-tighter">&gt; Success:</span>
-            <span className="text-muted/40 font-light">{t("hero.title", "Maximus")}</span>
-            <div className="flex flex-wrap items-center mt-4">
-              <span className="border-b-[6px] border-primary pb-1 mr-4 lg:mr-8 inline-block text-3xl md:text-5xl lg:text-6xl uppercase tracking-widest">
-                Capstone Portfolio
-              </span>
-              <span className="text-muted/20 mr-4 lg:mr-8 hidden md:inline-block" aria-hidden="true">|</span>
-              <span className="border-b-[6px] border-primary pb-1 inline-block text-3xl md:text-5xl lg:text-6xl">IT Factory</span>
-            </div>
+          {/* Main heading */}
+          <h1
+            id="hero-title"
+            className="text-5xl md:text-7xl font-display font-bold leading-[1.05] mb-8 text-foreground tracking-tight"
+          >
+            {t("hero.title", "Maximus")}{" "}
+            <span className="text-primary">Mukiza</span>
+            <br />
+            <span className="text-foreground/50 font-light text-4xl md:text-5xl">
+              Platform Engineer & SRE
+            </span>
           </h1>
 
-          <p className="text-base md:text-lg text-muted mb-12 max-w-3xl leading-relaxed font-mono border-l-2 border-primary/20 pl-8 box-decoration-clone">
-            <span className="text-primary font-bold uppercase tracking-widest text-xs block mb-2" aria-hidden="true">
-              [ Output Log ]
-            </span>
+          {/* Description */}
+          <p className="text-base md:text-lg text-muted mb-12 max-w-2xl leading-relaxed font-sans">
             {t(
               "hero.description",
               "Architecting resilient, automated cloud platforms with a focus on GitOps workflows, DevSecOps integration, and scalable SRE principles. Specializing in high-availability distributed systems and MLOps at the edge.",
             )}
           </p>
 
-          <div className="flex flex-wrap gap-6">
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap gap-4">
             <a
               href="/resume_v2.pdf"
               download="Maximus_Mukiza_Resume.pdf"
-              className="group relative px-8 py-4 overflow-hidden focus-visible:ring-4 focus-visible:ring-primary/50 outline-none rounded-sm transition-all"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-background font-semibold text-sm rounded-lg hover:bg-primary/90 transition-all shadow-lg hover:shadow-primary/20 hover:shadow-xl active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-primary/40 outline-none"
               aria-label="Download Maximus Mukiza Resume PDF"
             >
-              <div className="absolute inset-0 bg-primary transition-transform duration-300 group-hover:scale-105"></div>
-              <div className="relative flex items-center justify-center gap-3 text-black font-bold text-xs font-mono uppercase tracking-[0.2em]">
-                <span className="material-symbols-outlined text-sm" aria-hidden="true">
-                  download
-                </span>
-                EXECUTE_DL_RESUME
-              </div>
+              <span className="material-symbols-outlined text-base" aria-hidden="true">
+                download
+              </span>
+              Download CV
             </a>
 
             <a
               href="#projects"
               onClick={(e) => {
                 e.preventDefault();
-                document
-                  .getElementById("projects")
-                  ?.scrollIntoView({ behavior: "smooth" });
+                document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="group px-8 py-4 border border-primary/30 text-primary hover:text-foreground rounded-sm font-bold text-xs font-mono flex items-center justify-center transition-all hover:bg-primary/5 hover:border-primary uppercase tracking-[0.2em] relative focus-visible:ring-2 focus-visible:ring-primary outline-none"
+              className="inline-flex items-center gap-2 px-7 py-3.5 border border-border-muted text-foreground hover:text-primary hover:border-primary rounded-lg font-semibold text-sm transition-all hover:bg-primary/5 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-primary outline-none"
             >
-              <span className="mr-3 opacity-50 transition-transform group-hover:translate-x-1" aria-hidden="true">
-                &gt;
+              Explore Projects
+              <span className="material-symbols-outlined text-base" aria-hidden="true">
+                arrow_forward
               </span>
-              cd /engineering_projects
             </a>
           </div>
         </div>
