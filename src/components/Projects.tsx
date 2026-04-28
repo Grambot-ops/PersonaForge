@@ -1,376 +1,477 @@
-import React, { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
-import { FaAws } from "react-icons/fa";
-import { SiKubernetes, SiTerraform, SiPulumi, SiLinux } from "react-icons/si";
-import { VscAzure } from "react-icons/vsc";
-import { Project } from "../types";
-import projectDataImport from "../data/projects.json";
-import Mermaid from "./Mermaid";
+import React, {useState, useEffect, useCallback} from 'react';
+import {useTranslation} from 'react-i18next';
+import {FaGithub} from 'react-icons/fa';
+import {Project} from '../types';
+import projectDataImport from '../data/projects.json';
+import Mermaid from './Mermaid';
 
 const projectData: Project[] = projectDataImport as Project[];
 
+/** Tag a project's categories from its content. */
+const PROJECT_TAGS: Record<number, string[]> = {
+  7: ['SRE', 'Cloud', 'GitOps / IaC', 'Security'],
+  6: ['SRE', 'Cloud', 'GitOps / IaC'],
+  2: ['SRE', 'Cloud', 'Security', 'GitOps / IaC'],
+  8: ['SRE', 'Cloud', 'Security', 'Automation'],
+  5: ['Automation', 'AI / MLOps'],
+  3: ['SRE', 'Cloud', 'GitOps / IaC'],
+  1: ['Security', 'Automation'],
+};
+
+/** Filter tabs shown above the project grid. */
+const FILTER_TABS = ['All', 'SRE', 'Cloud', 'Security', 'GitOps / IaC', 'Automation'] as const;
+type FilterTab = (typeof FILTER_TABS)[number];
+
+/**
+ * Projects section.
+ * Features: filter tabs, featured first project (glass card), masonry grid,
+ * lightbox modal for Mermaid diagrams and images.
+ */
 const Projects: React.FC = () => {
-  const { t } = useTranslation();
+  const {t} = useTranslation();
   const publicUrl = import.meta.env.BASE_URL;
+  const [activeFilter, setActiveFilter] = useState<FilterTab>('All');
   const [modalData, setModalData] = useState<{
-    type: "image" | "mermaid";
+    type: 'image' | 'mermaid';
     content: string;
     title: string;
   } | null>(null);
 
-  // Close modal on escape key
+  /** Close modal on Escape key. */
   useEffect(() => {
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setModalData(null);
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setModalData(null);
     };
-    window.addEventListener("keydown", handleEsc);
-    return () => window.removeEventListener("keydown", handleEsc);
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
   }, []);
+
+  /** Returns true if this project matches the active filter. */
+  const matchesFilter = useCallback(
+    (project: Project): boolean => {
+      if (activeFilter === 'All') return true;
+      return (PROJECT_TAGS[project.id] ?? []).includes(activeFilter);
+    },
+    [activeFilter],
+  );
+
+  const filtered = projectData.filter(matchesFilter);
+  const [featured, ...rest] = filtered;
 
   return (
     <section
-      className="py-24 bg-background relative"
+      className="py-16 md:py-24 bg-background relative"
       id="projects"
       aria-labelledby="projects-heading"
     >
-      {/* Lightbox Modal */}
+      {/* Subtle background accent */}
+      <div
+        className="absolute top-1/3 left-0 w-[600px] h-[600px] bg-primary/[0.04] rounded-full blur-[150px] pointer-events-none"
+        aria-hidden="true"
+      />
+
+      {/* ── Lightbox modal ───────────────────────────────────── */}
       {modalData && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-background/95 p-2 md:p-10"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-background/90 backdrop-blur-sm p-4 md:p-10"
           onClick={() => setModalData(null)}
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-title"
         >
           <div
-            className={`relative ${modalData.type === "mermaid" ? "max-w-[98vw] lg:max-w-[95vw]" : "max-w-6xl"} w-full max-h-[92vh] flex flex-col items-center animate-in zoom-in duration-300`}
+            className={`relative ${
+              modalData.type === 'mermaid' ? 'max-w-[95vw]' : 'max-w-5xl'
+            } w-full max-h-[90vh] flex flex-col animate-enter`}
             onClick={(e) => e.stopPropagation()}
           >
             <h2 id="modal-title" className="sr-only">
-              {modalData.title} Snapshot
+              {modalData.title}
             </h2>
-            <button
-              className="absolute -top-12 right-0 text-foreground hover:text-primary transition-colors flex items-center gap-2 font-mono text-xs uppercase tracking-widest bg-background/50 px-3 py-1 border border-white/10 focus-visible:ring-2 focus-visible:ring-primary outline-none"
-              onClick={() => setModalData(null)}
-              aria-label="Close dialog"
-            >
-              [ CLOSE ]
-              <span className="material-symbols-outlined text-sm" aria-hidden="true">close</span>
-            </button>
 
-            {modalData.type === "image" ? (
+            {/* Close button */}
+            <div className="flex justify-between items-center mb-3">
+              <p className="text-muted text-xs font-sans">{modalData.title}</p>
+              <button
+                className="flex items-center gap-1.5 text-muted hover:text-foreground transition-colors text-sm font-medium bg-surface border border-border-muted px-3 py-1.5 rounded-lg focus-visible:ring-2 focus-visible:ring-primary outline-none"
+                onClick={() => setModalData(null)}
+                aria-label="Close dialog"
+              >
+                <span className="material-symbols-outlined text-sm" aria-hidden="true">
+                  close
+                </span>
+                Close
+              </button>
+            </div>
+
+            {modalData.type === 'image' ? (
               <img
                 src={modalData.content}
-                alt={`${modalData.title} Full View`}
-                className="max-w-full max-h-[85vh] object-contain border border-border-muted shadow-2xl bg-card-dark"
+                alt={`${modalData.title} — full view`}
+                className="max-w-full max-h-[80vh] object-contain rounded-xl border border-border-muted shadow-2xl bg-surface"
               />
             ) : (
-              <div className="w-full h-full min-h-[80vh] flex flex-col bg-card-dark border border-border-muted p-4 md:p-8 overflow-auto scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
-                <div className="min-w-max py-8">
+              <div className="w-full min-h-[70vh] flex flex-col bg-surface border border-border-muted rounded-xl p-4 md:p-8 overflow-auto">
+                <div className="min-w-max py-4">
                   <Mermaid chart={modalData.content} responsive={false} />
                 </div>
               </div>
             )}
-
-            <div className="mt-4 font-mono text-[11px] text-muted uppercase tracking-wider bg-background/50 px-4 py-1.5 border border-border-muted flex flex-wrap items-center gap-4" aria-hidden="true">
-              <span>
-                Source Snapshot //{" "}
-                {modalData.type === "image"
-                  ? "Full Resolution View"
-                  : "Architectural Schema"}
-              </span>
-              {modalData.type === "mermaid" && (
-                <span className="text-primary/60 border-l border-border-muted pl-4">
-                  [ Use Scrollbars / Pinch to Zoom ]
-                </span>
-              )}
-            </div>
           </div>
         </div>
       )}
 
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImEiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdHRlcm4gaWQ9ImIiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw=InRyYW5zcGFyZW50Ii8+PHBhdGggZD0iTTEgMGgwLTI1YzAtMS41Mi40OC0zIDEuNTItM3YzeiIgZmlsbD0iIzIyYzU1ZSIgb3BhY2l0eT0iLjEiLz48L3BhdHRlcm4+PHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSJ1cmwoI2IpIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2EpIi8+PC9zdmc+')] opacity-20 pointer-events-none" aria-hidden="true"></div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="mb-12 border-b border-border-muted flex flex-col md:flex-row justify-between items-end gap-6">
-          <div>
-            <h2 id="projects-heading" className="text-4xl font-display font-bold mb-4 text-foreground">
-              <span className="text-primary font-mono text-lg mr-2" aria-hidden="true">03.</span>
-              {t("projects.heading", "Engineering Case Studies")}
-            </h2>
-            <div className="flex space-x-1 mt-8" role="tablist" aria-label="Deployment Filters">
-              <div className="px-6 py-3 bg-primary/10 border-t-2 border-primary text-primary font-mono text-xs font-bold cursor-default tracking-wider" role="tab" aria-selected="true">
-                {"// ACTIVE_DEPLOYMENTS"}
-              </div>
-            </div>
+
+        {/* Section header */}
+        <div className="mb-10 md:mb-12">
+          <h2
+            id="projects-heading"
+            className="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-foreground mb-2"
+          >
+            {t('projects.heading', 'Engineering Projects')}
+          </h2>
+          <p className="text-muted text-sm mb-8">
+            Cloud, security, and automation case studies built during the Bachelor programme.
+          </p>
+
+          {/* Filter tabs */}
+          <div
+            className="flex flex-wrap gap-2"
+            role="tablist"
+            aria-label="Filter projects by category"
+          >
+            {FILTER_TABS.map((tab) => {
+              const displayLabel = t(`projects.${tab.toLowerCase().split(' / ')[0].split(' ')[0]}`, tab);
+              return (
+                <button
+                  key={tab}
+                  role="tab"
+                  aria-selected={activeFilter === tab}
+                  onClick={() => setActiveFilter(tab)}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all focus-visible:ring-2 focus-visible:ring-primary outline-none ${
+                    activeFilter === tab
+                      ? 'bg-primary text-white shadow-sm'
+                      : 'bg-surface border border-border-muted text-muted hover:text-foreground hover:border-primary/40'
+                  }`}
+                >
+                  {displayLabel}
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        <ul className="flex flex-col gap-16">
-          {projectData.map((project) => (
-            <li
-              key={project.id}
-              className="group flex flex-col lg:flex-row bg-card-dark rounded-sm border border-border-muted overflow-hidden hover:border-primary transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(0,255,65,0.1)]"
-            >
-              <div className="relative lg:w-3/5 h-[350px] lg:h-[480px] border-r border-border-muted overflow-hidden flex items-center justify-center bg-background">
-                {project.videoUrl ? (
-                  <div className="w-full h-full aspect-video">
-                    <iframe
-                      src={project.videoUrl.replace(
-                        "youtube.com",
-                        "youtube-nocookie.com",
-                      )}
-                      title={t(`projects.p${project.id}.title`, project.title)}
-                      className="w-full h-full border-0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      referrerPolicy="strict-origin-when-cross-origin"
-                      allowFullScreen
-                      loading="lazy"
-                    ></iframe>
-                  </div>
-                ) : project.mermaid ? (
-                  <button
-                    className="w-full h-full p-4 overflow-hidden flex items-center justify-center bg-card-dark cursor-zoom-in group/btn focus-visible:ring-2 focus-visible:ring-primary outline-none"
-                    onClick={() =>
-                      setModalData({
-                        type: "mermaid",
-                        content: project.mermaid!,
-                        title: t(`projects.p${project.id}.title`, project.title)
-                      })
-                    }
-                    aria-label={`View documentation for ${t(`projects.p${project.id}.title`, project.title)}`}
-                  >
-                    <div className="w-full h-full max-h-full overflow-hidden flex items-center justify-center transform scale-90 group-hover/btn:scale-100 transition-transform duration-500 pointer-events-none">
-                      <Mermaid chart={project.mermaid} />
-                    </div>
-                  </button>
-                ) : (
-                  <button
-                    className="relative w-full h-full cursor-zoom-in group/img focus-visible:ring-2 focus-visible:ring-primary outline-none overflow-hidden"
-                    onClick={() => {
-                      setModalData({
-                        type: "image",
-                        content: `${publicUrl}projects/${project.image}`,
-                        title: t(`projects.p${project.id}.title`, project.title)
-                      });
-                    }}
-                    aria-label={`View deployment image for ${t(`projects.p${project.id}.title`, project.title)}`}
-                  >
-                    <img
-                      alt=""
-                      className="w-full h-full object-contain grayscale opacity-60 group-hover/img:grayscale-0 group-hover/img:opacity-100 transition-all duration-500"
-                      src={`${publicUrl}projects/${project.image}`}
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src =
-                          "https://placehold.co/800x600/0a0a0a/00ff41?text=Deployment+Snapshot";
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-background/40 group-hover/img:bg-transparent transition-colors duration-300"></div>
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-opacity duration-300">
-                      <div className="bg-primary/20 backdrop-blur-sm border border-primary/50 text-primary px-4 py-2 font-mono text-[10px] uppercase tracking-widest flex items-center gap-2">
-                        <span className="material-symbols-outlined text-sm" aria-hidden="true">
-                          zoom_in
-                        </span>
-                        Enlarge Snapshot
-                      </div>
-                    </div>
-                  </button>
-                )}
-
-                <div className="absolute top-4 right-4 bg-background/95 backdrop-blur text-primary text-[10px] px-3 py-1.5 rounded-sm font-mono border border-primary/30 uppercase z-20 flex items-center gap-2 shadow-[0_0_20px_rgba(0,0,0,0.5)]" aria-label="Tech Stack">
-                  {project.id === 7 ? (
-                    <>
-                      <SiKubernetes aria-label="Kubernetes" />
-                      <SiLinux aria-label="Talos Linux" />
-                      <FaAws aria-label="AWS" />
-                      <span className="ml-1 border-l border-primary/20 pl-2">
-                        HYBRID // GITOPS
-                      </span>
-                    </>
-                  ) : project.id === 6 ? (
-                    <>
-                      <SiTerraform aria-label="Terraform" />
-                      <FaAws aria-label="AWS" />
-                      <VscAzure aria-label="Azure" />
-                      <span className="ml-1 border-l border-primary/20 pl-2">
-                        MULTI-CLOUD
-                      </span>
-                    </>
-                  ) : project.id === 2 ? (
-                    <>
-                      <FaAws aria-label="AWS" />
-                      <SiTerraform aria-label="OpenTofu" />
-                      <span className="ml-1 border-l border-primary/20 pl-2">
-                        AWS // 3-TIER // IAC
-                      </span>
-                    </>
-                  ) : project.id === 8 ? (
-                    <>
-                      <FaAws aria-label="AWS" />
-                      <SiPulumi aria-label="Pulumi" />
-                      <span className="ml-1 border-l border-primary/20 pl-2">
-                        AWS // SRE // PULUMI
-                      </span>
-                    </>
-                  ) : project.id === 3 ? (
-                    <>
-                      <VscAzure aria-label="Azure" />
-                      <span className="ml-1 border-l border-primary/20 pl-2">
-                        AZURE // BICEP // DOCKER
-                      </span>
-                    </>
-                  ) : (
-                    <>
-                      <span className="material-symbols-outlined text-[14px]" aria-hidden="true">
-                        sensors
-                      </span>
-                      <span>IOT // SEC // AI</span>
-                    </>
-                  )}
-                </div>
+        {filtered.length === 0 ? (
+          <div className="text-center py-20 text-muted">
+            <span className="material-symbols-outlined text-4xl mb-3 block" aria-hidden="true">
+              search_off
+            </span>
+            <p>No projects match this filter.</p>
+          </div>
+        ) : (
+          <>
+            {/* ── Featured project ─────────────────────────────── */}
+            {featured && (
+              <div className="mb-8 md:mb-10">
+                <ProjectCard
+                  project={featured}
+                  publicUrl={publicUrl}
+                  t={t}
+                  onOpenModal={setModalData}
+                  featured
+                />
               </div>
+            )}
 
-              <div className="lg:w-2/5 p-8 flex flex-col">
-                <div className="mb-4">
-                  <div className="inline-flex items-center px-2 py-1 mb-3 rounded-sm bg-primary/10 border border-primary/40 text-primary text-[10px] font-bold font-mono tracking-wider" role="status">
-                    <span className="material-symbols-outlined text-sm mr-1" aria-hidden="true">
-                      check_circle
-                    </span>
-                    KEY ACHIEVEMENT: VERIFIED
-                  </div>
-                  <h3 className="text-2xl font-display font-bold text-foreground mb-2">
-                    {t(`projects.p${project.id}.title`, project.title)}
-                  </h3>
-                  <p className="font-mono text-xs text-muted uppercase">
-                    {`ID: EXT-PROJ-0${project.id} // STATUS: STABLE`}
-                  </p>
-                </div>
-
-                <p className="text-muted mb-6 text-sm leading-relaxed font-mono">
-                  {t(
-                    `projects.p${project.id}.description`,
-                    project.description,
-                  )}
-                </p>
-
-                <div className="bg-background rounded-sm border border-border-muted mb-6 overflow-hidden shadow-inner group/vim" aria-label="Deployment Specification">
-                  <div className="bg-card-dark px-3 py-1.5 flex justify-between items-center border-b border-border-muted">
-                    <div className="flex items-center gap-2">
-                      <span className="material-symbols-outlined text-xs text-primary" aria-hidden="true">
-                        description
-                      </span>
-                      <span className="text-[10px] font-mono text-muted uppercase tracking-wider">
-                        deployment_spec.yaml - VIM
-                      </span>
-                    </div>
-                    <div className="flex gap-1.5" aria-hidden="true">
-                      <div className="w-2 h-2 rounded-full bg-red-500/20 border border-red-500/40"></div>
-                      <div className="w-2 h-2 rounded-full bg-yellow-500/20 border border-yellow-500/40"></div>
-                      <div className="w-2 h-2 rounded-full bg-green-500/20 border border-green-500/40"></div>
-                    </div>
-                  </div>
-                  <div className="p-4 bg-background overflow-x-auto scrollbar-thin scrollbar-thumb-primary/10">
-                    <pre className="font-mono text-[11px] leading-relaxed">
-                      <code>
-                        <div className="flex">
-                          <span className="text-muted/40 border-r border-border-muted pr-4 mr-4 select-none text-right font-light" aria-hidden="true">
-                            1<br />2<br />3<br />4
-                          </span>
-                          <div className="text-foreground/90">
-                            <span className="text-primary font-bold">
-                              Problem:
-                            </span>{" "}
-                            <span className="text-muted">
-                              "
-                              {t(
-                                `projects.p${project.id}.context`,
-                                project.context,
-                              )}
-                              "
-                            </span>
-                            {"\n"}
-                            <span className="text-primary font-bold">
-                              Outcome:
-                            </span>{" "}
-                            <span className="text-muted">
-                              "
-                              {t(
-                                `projects.p${project.id}.realizations`,
-                                project.realizations,
-                              )}
-                              "
-                            </span>
-                            {"\n"}
-                            <span className="text-primary font-bold">
-                              Metrics:
-                            </span>{" "}
-                            <span className="text-muted">
-                              "
-                              {t(
-                                `projects.p${project.id}.metrics`,
-                                project.metrics,
-                              )}
-                              "
-                            </span>
-                            {"\n"}
-                            <span className="text-primary font-bold underline decoration-primary/30">
-                              Status:
-                            </span>{" "}
-                            <span className="text-primary animate-pulse font-bold">
-                              VALIDATED
-                            </span>
-                          </div>
-                        </div>
-                      </code>
-                    </pre>
-                  </div>
-                  <div className="bg-primary/5 px-3 py-1 flex justify-between items-center border-t border-border-muted font-mono text-[9px] text-muted/60 uppercase tracking-tighter" aria-hidden="true">
-                    <span>-- INSERT --</span>
-                    <span>UTF-8 | YAML | L: 4 C: 20</span>
-                  </div>
-                </div>
-
-                <div className="flex gap-4 mt-auto">
-                  {project.repoUrl ? (
-                    <a
-                      href={project.repoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 bg-primary text-black py-3 rounded-sm text-xs font-mono font-bold flex items-center justify-center hover:bg-primary/80 transition-colors uppercase tracking-wider focus-visible:ring-4 focus-visible:ring-primary/50 outline-none"
-                    >
-                      <span className="material-symbols-outlined mr-2 text-base" aria-hidden="true">
-                        terminal
-                      </span>{" "}
-                      Source Code
-                    </a>
-                  ) : (
-                    <button className="flex-1 bg-card-dark text-muted/50 py-3 rounded-sm text-xs font-mono font-bold flex items-center justify-center cursor-not-allowed uppercase tracking-wider border border-border-muted focus-visible:ring-2 focus-visible:ring-primary outline-none">
-                      <span className="material-symbols-outlined mr-2 text-base" aria-hidden="true">
-                        lock
-                      </span>{" "}
-                      Internal
-                    </button>
-                  )}
-                  {project.videoUrl && (
-                    <a
-                      href={project.videoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 border border-primary py-3 rounded-sm text-xs font-mono font-bold flex items-center justify-center hover:bg-primary hover:text-black transition-colors text-primary uppercase tracking-wider focus-visible:ring-2 focus-visible:ring-primary outline-none"
-                    >
-                      <span className="material-symbols-outlined mr-2 text-base" aria-hidden="true">
-                        play_circle
-                      </span>{" "}
-                      Watch Demo
-                    </a>
-                  )}
-                </div>
+            {/* ── Project grid ─────────────────────────────────── */}
+            {rest.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6">
+                {rest.map((project) => (
+                  <ProjectCard
+                    key={project.id}
+                    project={project}
+                    publicUrl={publicUrl}
+                    t={t}
+                    onOpenModal={setModalData}
+                    featured={false}
+                  />
+                ))}
               </div>
-            </li>
-          ))}
-        </ul>
+            )}
+          </>
+        )}
       </div>
     </section>
+  );
+};
+
+/* ─── Project Card ──────────────────────────────────────────── */
+
+interface ProjectCardProps {
+  project: Project;
+  publicUrl: string;
+  /** i18n translate function passed from parent. */
+  t: (key: string, fallback: string) => string;
+  onOpenModal: (data: {type: 'image' | 'mermaid'; content: string; title: string}) => void;
+  featured: boolean;
+}
+
+/**
+ * Individual project card.
+ * Featured cards use a horizontal split layout.
+ * Grid cards use a vertical stacked layout.
+ */
+const ProjectCard: React.FC<ProjectCardProps> = ({project, publicUrl, t, onOpenModal, featured}) => {
+  const title = t(`projects.p${project.id}.title`, project.title);
+  const description = t(`projects.p${project.id}.description`, project.description);
+  const metrics = t(`projects.p${project.id}.metrics`, project.metrics);
+  const tags = PROJECT_TAGS[project.id] ?? [];
+
+  /** Open the media viewer. */
+  const openMedia = () => {
+    if (project.mermaid) {
+      onOpenModal({type: 'mermaid', content: project.mermaid, title});
+    } else if (project.image) {
+      onOpenModal({type: 'image', content: `${publicUrl}projects/${project.image}`, title});
+    }
+  };
+
+  if (featured) {
+    return (
+      <article
+        className="group relative flex flex-col lg:flex-row rounded-2xl border border-border-muted overflow-hidden bg-surface shadow-card hover:border-primary/30 hover:shadow-glow transition-all duration-300"
+        aria-label={`Featured project: ${title}`}
+      >
+        {/* Media area */}
+        <button
+          className="relative lg:w-3/5 h-64 sm:h-80 lg:h-auto bg-background overflow-hidden flex items-center justify-center cursor-zoom-in focus-visible:ring-2 focus-visible:ring-primary outline-none"
+          onClick={openMedia}
+          aria-label={`View architecture diagram for ${title}`}
+          disabled={!project.mermaid && !project.image}
+        >
+          {project.videoUrl ? (
+            <iframe
+              src={project.videoUrl.replace('youtube.com', 'youtube-nocookie.com')}
+              title={title}
+              className="w-full h-full border-0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              loading="lazy"
+            />
+          ) : project.mermaid ? (
+            <div className="w-full h-full p-6 overflow-hidden flex items-center justify-center transform scale-90 group-hover:scale-95 transition-transform duration-500 pointer-events-none">
+              <Mermaid chart={project.mermaid} />
+            </div>
+          ) : project.image ? (
+            <>
+              <img
+                alt=""
+                className="w-full h-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-500"
+                src={`${publicUrl}projects/${project.image}`}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = 'none';
+                }}
+              />
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="bg-primary/20 backdrop-blur-sm border border-primary/40 text-primary px-4 py-2 rounded-lg text-xs font-medium flex items-center gap-2">
+                  <span className="material-symbols-outlined text-sm" aria-hidden="true">zoom_in</span>
+                  Enlarge
+                </span>
+              </div>
+            </>
+          ) : null}
+        </button>
+
+        {/* Content area */}
+        <div className="lg:w-2/5 p-6 md:p-8 flex flex-col">
+          {/* Featured badge */}
+          <div className="flex items-center justify-between mb-4">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary/10 border border-primary/25 text-primary text-xs font-semibold rounded-full">
+              <span className="w-1.5 h-1.5 bg-primary rounded-full" aria-hidden="true" />
+              Featured Project
+            </span>
+          </div>
+
+          <h3 className="text-xl md:text-2xl font-display font-bold text-foreground mb-3 leading-tight">
+            {title}
+          </h3>
+
+          <p className="text-muted text-sm leading-relaxed mb-5 flex-1">{description}</p>
+
+          {/* Metrics highlight */}
+          {project.metrics && (
+            <div className="bg-background rounded-xl border border-border-muted px-4 py-3 mb-5">
+              <p className="text-xs font-semibold text-muted uppercase tracking-wider mb-1">
+                Key Outcome
+              </p>
+              <p className="text-sm text-foreground font-medium">{metrics}</p>
+            </div>
+          )}
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 mb-6" role="list" aria-label="Project categories">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                role="listitem"
+                className="px-2.5 py-1 bg-surface-raised border border-border-muted text-muted text-xs font-medium rounded-full"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Actions */}
+          <div className="flex flex-col sm:flex-row gap-3 mt-auto">
+            {project.repoUrl ? (
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 bg-primary text-white py-2.5 px-5 rounded-lg text-sm font-semibold hover:bg-primary-dark transition-all focus-visible:ring-2 focus-visible:ring-primary outline-none active:scale-[0.98]"
+              >
+                <FaGithub size={15} aria-hidden="true" />
+                Source Code
+              </a>
+            ) : (
+              <button
+                disabled
+                className="flex-1 flex items-center justify-center gap-2 bg-surface-raised border border-border-muted text-muted py-2.5 px-5 rounded-lg text-sm font-medium cursor-not-allowed"
+                aria-label="Source code is internal / private"
+              >
+                <span className="material-symbols-outlined text-sm" aria-hidden="true">lock</span>
+                Internal
+              </button>
+            )}
+            {(project.mermaid || project.image) && (
+              <button
+                onClick={openMedia}
+                className="flex-1 flex items-center justify-center gap-2 border border-border-muted text-muted hover:border-primary/40 hover:text-primary py-2.5 px-5 rounded-lg text-sm font-medium transition-all focus-visible:ring-2 focus-visible:ring-primary outline-none active:scale-[0.98]"
+              >
+                <span className="material-symbols-outlined text-sm" aria-hidden="true">schema</span>
+                Architecture
+              </button>
+            )}
+          </div>
+        </div>
+      </article>
+    );
+  }
+
+  /* ── Grid card (non-featured) ───────────────────────────────── */
+  return (
+    <article
+      className="group flex flex-col rounded-2xl border border-border-muted bg-surface overflow-hidden hover:border-primary/30 hover:shadow-card transition-all duration-300"
+      aria-label={`Project: ${title}`}
+    >
+      {/* Media thumbnail */}
+      <button
+        className="relative h-44 bg-background overflow-hidden flex items-center justify-center cursor-zoom-in focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary outline-none"
+        onClick={openMedia}
+        aria-label={`View diagram for ${title}`}
+        disabled={!project.mermaid && !project.image}
+      >
+        {project.videoUrl ? (
+          <iframe
+            src={project.videoUrl.replace('youtube.com', 'youtube-nocookie.com')}
+            title={title}
+            className="w-full h-full border-0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            loading="lazy"
+          />
+        ) : project.mermaid ? (
+          <div className="w-full h-full p-3 overflow-hidden flex items-center justify-center transform scale-75 group-hover:scale-80 transition-transform duration-500 pointer-events-none">
+            <Mermaid chart={project.mermaid} />
+          </div>
+        ) : project.image ? (
+          <img
+            alt=""
+            className="w-full h-full object-contain opacity-60 group-hover:opacity-90 transition-opacity duration-500 p-2"
+            src={`${publicUrl}projects/${project.image}`}
+            onError={(e) => {
+              (e.target as HTMLImageElement).style.display = 'none';
+            }}
+          />
+        ) : (
+          <span
+            className="material-symbols-outlined text-muted text-4xl"
+            aria-hidden="true"
+          >
+            code_blocks
+          </span>
+        )}
+
+        {/* Hover zoom hint */}
+        {(project.mermaid || project.image) && (
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-background/30">
+            <span className="bg-surface/80 backdrop-blur-sm border border-border-muted text-foreground px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5">
+              <span className="material-symbols-outlined text-sm text-primary" aria-hidden="true">zoom_in</span>
+              View diagram
+            </span>
+          </div>
+        )}
+      </button>
+
+      {/* Card body */}
+      <div className="flex flex-col flex-1 p-5">
+        {/* Tags */}
+        <div className="flex flex-wrap gap-1.5 mb-3" role="list" aria-label="Project categories">
+          {tags.map((tag) => (
+            <span
+              key={tag}
+              role="listitem"
+              className="px-2 py-0.5 bg-surface-raised border border-border-muted text-muted text-[11px] font-medium rounded-full"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <h3 className="text-base font-display font-bold text-foreground mb-2 leading-snug">
+          {title}
+        </h3>
+
+        <p className="text-muted text-xs leading-relaxed mb-4 flex-1 line-clamp-3">{description}</p>
+
+        {/* Metrics */}
+        {project.metrics && (
+          <p className="text-primary text-xs font-medium mb-4 leading-relaxed">{metrics}</p>
+        )}
+
+        {/* Actions */}
+        <div className="flex gap-2 mt-auto">
+          {project.repoUrl ? (
+            <a
+              href={project.repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center gap-1.5 bg-primary/10 border border-primary/25 text-primary py-2 px-4 rounded-lg text-xs font-semibold hover:bg-primary hover:text-white transition-all focus-visible:ring-2 focus-visible:ring-primary outline-none active:scale-[0.98]"
+            >
+              <FaGithub size={13} aria-hidden="true" />
+              Code
+            </a>
+          ) : (
+            <span className="flex-1 flex items-center justify-center gap-1.5 border border-border-muted text-muted py-2 px-4 rounded-lg text-xs font-medium cursor-not-allowed">
+              <span className="material-symbols-outlined text-sm" aria-hidden="true">lock</span>
+              Internal
+            </span>
+          )}
+          {(project.mermaid || project.image) && !project.videoUrl && (
+            <button
+              onClick={openMedia}
+              className="flex items-center justify-center gap-1.5 border border-border-muted text-muted hover:border-primary/40 hover:text-primary py-2 px-3 rounded-lg text-xs font-medium transition-all focus-visible:ring-2 focus-visible:ring-primary outline-none active:scale-[0.98]"
+              aria-label={`Open architecture diagram for ${title}`}
+            >
+              <span className="material-symbols-outlined text-sm" aria-hidden="true">schema</span>
+            </button>
+          )}
+        </div>
+      </div>
+    </article>
   );
 };
 

@@ -1,13 +1,58 @@
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { ContactForm } from "../types";
+import React, {useState} from 'react';
+import {useTranslation} from 'react-i18next';
+import {FaGithub, FaLinkedin} from 'react-icons/fa';
+import {ContactForm} from '../types';
 
+const GithubIcon = FaGithub as React.ElementType;
+const LinkedinIcon = FaLinkedin as React.ElementType;
+
+/** Social / info links shown in the left column. */
+const SOCIAL_LINKS = [
+  {
+    id: 'github',
+    label: 'GitHub',
+    href: 'https://github.com/Grambot-ops',
+    icon: 'github',
+    sub: 'Grambot-ops',
+    isCustomIcon: true,
+    customIcon: 'github',
+  },
+  {
+    id: 'linkedin',
+    label: 'LinkedIn',
+    href: 'https://linkedin.com/in/maximus-mukiza-1523a5297',
+    icon: 'linkedin',
+    sub: 'maximus-mukiza',
+    isCustomIcon: true,
+    customIcon: 'linkedin',
+  },
+  {
+    id: 'location',
+    label: 'Location',
+    href: null,
+    materialIcon: 'location_on',
+    sub: 'Belgium 🇧🇪 · Hybrid / Remote',
+  },
+  {
+    id: 'status',
+    label: 'Availability',
+    href: null,
+    materialIcon: 'work',
+    sub: 'Open to roles · June 2026',
+  },
+] as const;
+
+/**
+ * Contact section.
+ * Features: 2-column layout with social links on the left and a
+ * clean contact form on the right. Success state replaces the form.
+ */
 const Contact: React.FC = () => {
-  const { t } = useTranslation();
+  const {t} = useTranslation();
   const [formData, setFormData] = useState<ContactForm>({
-    name: "",
-    email: "",
-    message: "",
+    name: '',
+    email: '',
+    message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -15,141 +60,294 @@ const Contact: React.FC = () => {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    const { name, value } = e.target;
-    setFormData((prev: ContactForm) => ({
-      ...prev,
-      [name]: value,
-    }));
+    const {name, value} = e.target;
+    setFormData((prev: ContactForm) => ({...prev, [name]: value}));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
+    /* Simulate API call — replace with real endpoint when available. */
     setTimeout(() => {
       setSubmitSuccess(true);
       setIsSubmitting(false);
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({name: '', email: '', message: ''});
     }, 1500);
   };
 
   return (
-    <section className="py-24 bg-background relative" id="contact" aria-labelledby="contact-heading">
+    <section
+      className="py-16 md:py-24 bg-background relative"
+      id="contact"
+      aria-labelledby="contact-heading"
+    >
+      {/* Background accent */}
+      <div
+        className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary/[0.05] rounded-full blur-[140px] pointer-events-none"
+        aria-hidden="true"
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-2xl mx-auto text-center mb-16">
-          <h2 id="contact-heading" className="text-3xl font-display font-bold mb-4 text-foreground">
-            <span className="text-primary font-mono text-lg mr-2" aria-hidden="true">04.</span>
-            Establish Secure Connection
+
+        {/* Section header */}
+        <div className="mb-12">
+          <h2
+            id="contact-heading"
+            className="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-foreground mb-2"
+          >
+            {t('contact.heading', "Let's Work Together")}
           </h2>
-          <p className="text-muted font-mono text-sm leading-relaxed">
-            {t("contact.intro")}
+          <p className="text-muted text-sm max-w-lg">
+            {t(
+              'contact.intro',
+              "Looking for a Cloud Engineer or DevSecOps specialist who ships to production? I'm available from June 2026.",
+            )}
           </p>
         </div>
 
-        <div className="max-w-xl mx-auto bg-card-dark p-8 rounded-sm border border-border-muted shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent" aria-hidden="true"></div>
+        {/* 2-column layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
 
-          <div aria-live="polite">
-            {submitSuccess ? (
-              <div className="py-12 text-center animate-fadeIn" role="status">
-                <span className="material-symbols-outlined text-primary text-6xl mb-4" aria-hidden="true">
-                  check_circle
+          {/* ── Left column — social + availability ─────────── */}
+          <div className="space-y-6">
+
+            {/* Availability status card */}
+            <div className="bg-surface border border-border-muted rounded-2xl p-6 shadow-sm">
+              <div className="flex items-center gap-2 mb-5">
+                <span
+                  className="w-2 h-2 bg-primary rounded-full animate-pulse-soft"
+                  aria-hidden="true"
+                />
+                <span className="text-primary text-sm font-semibold">
+                  Available · June 2026
                 </span>
-                <h3 className="text-foreground font-mono font-bold text-xl mb-2 uppercase tracking-widest">
-                  Handshake Complete
-                </h3>
-                <p className="text-muted font-mono text-xs">
-                  {t("contact.successMessage")}
-                </p>
-                <button
-                  onClick={() => setSubmitSuccess(false)}
-                  className="mt-8 text-primary font-mono text-xs hover:underline decoration-dashed rounded-sm p-1 focus-visible:ring-2 focus-visible:ring-primary outline-none"
-                >
-                  &gt; {t("contact.sendAnother")}
-                </button>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="contact-name" className="block text-xs font-bold text-primary uppercase tracking-widest mb-2 font-mono">
-                      &gt; User_ID
-                    </label>
-                    <input
-                      id="contact-name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full bg-background border border-border-muted text-muted rounded-sm px-4 py-3 focus:ring-1 focus:ring-primary focus:border-primary text-xs font-mono placeholder-muted focus-visible:ring-2 focus-visible:ring-primary outline-none"
-                      placeholder="ENTER_NAME"
-                      type="text"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="contact-email" className="block text-xs font-bold text-primary uppercase tracking-widest mb-2 font-mono">
-                      &gt; Return_Path
-                    </label>
-                    <input
-                      id="contact-email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full bg-background border border-border-muted text-muted rounded-sm px-4 py-3 focus:ring-1 focus:ring-primary focus:border-primary text-xs font-mono placeholder-muted focus-visible:ring-2 focus-visible:ring-primary outline-none"
-                      placeholder="ENTER_EMAIL"
-                      type="email"
-                      required
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="contact-message" className="block text-xs font-bold text-primary uppercase tracking-widest mb-2 font-mono">
-                    &gt; Payload_Data
-                  </label>
-                  <textarea
-                    id="contact-message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full bg-background border border-border-muted text-muted rounded-sm px-4 py-3 focus:ring-1 focus:ring-primary focus:border-primary text-xs font-mono placeholder-muted focus-visible:ring-2 focus-visible:ring-primary outline-none"
-                    placeholder="// Describe technical requirements or inquiry..."
-                    rows={4}
-                    required
-                  ></textarea>
-                </div>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-primary text-black font-bold py-4 rounded-sm hover:bg-foreground hover:text-background transition-all flex items-center justify-center font-mono text-xs uppercase tracking-widest group disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(0,255,65,0.2)] focus-visible:ring-4 focus-visible:ring-primary/50 outline-none"
-                >
-                  {isSubmitting ? (
-                    <span className="animate-pulse">
-                      ./transmitting_handshake...
+              <h3 className="text-lg font-display font-bold text-foreground mb-2">
+                Open to Cloud Engineering &amp; DevSecOps roles
+              </h3>
+              <p className="text-muted text-sm leading-relaxed">
+                {t(
+                  'contact.availability',
+                  "Based in Belgium — open to hybrid and remote positions across Europe. Graduating Bachelor IT · IT Factory · Thomas More.",
+                )}
+              </p>
+            </div>
+
+            {/* Social links list */}
+            <div className="bg-surface border border-border-muted rounded-2xl p-6 shadow-sm">
+              <h3 className="text-sm font-semibold text-muted uppercase tracking-wider mb-5">
+                Find Me Online
+              </h3>
+              <ul className="space-y-4 list-none">
+                {SOCIAL_LINKS.map((link) => (
+                  <li key={link.id}>
+                    {link.href ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 group focus-visible:ring-2 focus-visible:ring-primary rounded-lg outline-none"
+                        aria-label={`${link.label}: ${link.sub}`}
+                      >
+                        <span className="w-9 h-9 flex items-center justify-center rounded-lg bg-primary/10 border border-primary/20 text-primary group-hover:bg-primary group-hover:text-white transition-all flex-shrink-0">
+                          {link.id === 'github' ? (
+                            <GithubIcon size={16} aria-hidden="true" />
+                          ) : (
+                            <LinkedinIcon size={16} aria-hidden="true" />
+                          )}
+                        </span>
+                        <div>
+                          <p className="text-foreground font-medium text-sm group-hover:text-primary transition-colors">
+                            {link.label}
+                          </p>
+                          <p className="text-muted text-xs">{link.sub}</p>
+                        </div>
+                      </a>
+                    ) : (
+                      <div className="flex items-center gap-3" aria-label={`${link.label}: ${link.sub}`}>
+                        <span className="w-9 h-9 flex items-center justify-center rounded-lg bg-surface-raised border border-border-muted text-muted flex-shrink-0">
+                          <span
+                            className="material-symbols-outlined text-base"
+                            aria-hidden="true"
+                          >
+                            {'materialIcon' in link ? link.materialIcon : ''}
+                          </span>
+                        </span>
+                        <div>
+                          <p className="text-foreground font-medium text-sm">{link.label}</p>
+                          <p className="text-muted text-xs">{link.sub}</p>
+                        </div>
+                      </div>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Direct email link */}
+            <a
+              href={`mailto:${t('contact.emailAddress', 'maximus.mukiza@student.thomasmore.be')}`}
+              className="flex items-center gap-3 w-full bg-surface border border-border-muted rounded-2xl px-6 py-4 hover:border-primary/40 hover:bg-primary/5 transition-all group focus-visible:ring-2 focus-visible:ring-primary outline-none shadow-sm"
+              aria-label="Send email to Maximus Mukiza"
+            >
+              <span className="w-9 h-9 flex items-center justify-center rounded-lg bg-primary/10 border border-primary/20 text-primary group-hover:bg-primary group-hover:text-white transition-all flex-shrink-0">
+                <span className="material-symbols-outlined text-base" aria-hidden="true">mail</span>
+              </span>
+              <div className="min-w-0">
+                <p className="text-foreground font-medium text-sm">Email</p>
+                <p className="text-muted text-xs truncate">
+                  {t('contact.emailAddress', 'maximus.mukiza@student.thomasmore.be')}
+                </p>
+              </div>
+              <span
+                className="ml-auto text-muted group-hover:text-primary transition-colors material-symbols-outlined text-base flex-shrink-0"
+                aria-hidden="true"
+              >
+                arrow_forward
+              </span>
+            </a>
+          </div>
+
+          {/* ── Right column — contact form ──────────────────── */}
+          <div className="bg-surface border border-border-muted rounded-2xl p-6 md:p-8 shadow-sm">
+            <div aria-live="polite">
+              {submitSuccess ? (
+                /* Success state */
+                <div className="flex flex-col items-center justify-center py-16 text-center animate-fadeIn" role="status">
+                  <div className="w-16 h-16 bg-primary/10 border border-primary/30 rounded-full flex items-center justify-center mb-5">
+                    <span
+                      className="material-symbols-outlined text-primary text-3xl"
+                      aria-hidden="true"
+                    >
+                      check_circle
                     </span>
-                  ) : (
-                    <>
-                      <span className="mr-2">./execute_send.sh</span>
-                      <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform" aria-hidden="true">
-                        send
-                      </span>
-                    </>
-                  )}
-                </button>
-
-                <div className="text-center font-mono text-[10px] text-muted mt-4 border-t border-border-muted pt-4">
-                  <span className="text-green-500 font-bold" role="status">200 OK</span>:
-                  Endpoints secure.
-                  <span className="mx-2" aria-hidden="true">|</span>
-                  <a
-                    href={`mailto:${t("contact.emailAddress")}`}
-                    className="text-primary hover:underline decoration-dashed rounded-sm px-1 focus-visible:ring-2 focus-visible:ring-primary outline-none"
+                  </div>
+                  <h3 className="text-foreground font-display font-bold text-xl mb-2">
+                    Message Sent!
+                  </h3>
+                  <p className="text-muted text-sm mb-8">
+                    {t(
+                      'contact.successMessage',
+                      "Thanks for reaching out — I'll get back to you within 24 hours.",
+                    )}
+                  </p>
+                  <button
+                    onClick={() => setSubmitSuccess(false)}
+                    className="text-primary text-sm font-medium hover:underline decoration-dashed focus-visible:ring-2 focus-visible:ring-primary rounded-lg px-2 outline-none"
                   >
-                    {t("contact.emailAddress")}
-                  </a>
+                    {t('contact.sendAnother', 'Send another message')}
+                  </button>
                 </div>
-              </form>
-            )}
+              ) : (
+                /* Form */
+                <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+                  <h3 className="text-foreground font-display font-semibold text-lg mb-6">
+                    Send a Message
+                  </h3>
+
+                  {/* Name + Email row */}
+                  <div className="grid sm:grid-cols-2 gap-5">
+                    {/* Name field */}
+                    <div>
+                      <label
+                        htmlFor="contact-name"
+                        className="block text-xs font-semibold text-foreground mb-2"
+                      >
+                        Your Name <span className="text-primary" aria-hidden="true">*</span>
+                      </label>
+                      <input
+                        id="contact-name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        type="text"
+                        required
+                        placeholder="Jane Smith"
+                        className="w-full bg-background border border-border-muted text-foreground rounded-lg px-4 py-3 text-sm placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+                      />
+                    </div>
+
+                    {/* Email field */}
+                    <div>
+                      <label
+                        htmlFor="contact-email"
+                        className="block text-xs font-semibold text-foreground mb-2"
+                      >
+                        Email Address <span className="text-primary" aria-hidden="true">*</span>
+                      </label>
+                      <input
+                        id="contact-email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        type="email"
+                        required
+                        placeholder="jane@company.com"
+                        className="w-full bg-background border border-border-muted text-foreground rounded-lg px-4 py-3 text-sm placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Message field */}
+                  <div>
+                    <label
+                      htmlFor="contact-message"
+                      className="block text-xs font-semibold text-foreground mb-2"
+                    >
+                      Message <span className="text-primary" aria-hidden="true">*</span>
+                    </label>
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows={5}
+                      placeholder="Tell me about the role or opportunity..."
+                      className="w-full bg-background border border-border-muted text-foreground rounded-lg px-4 py-3 text-sm placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none resize-none"
+                    />
+                  </div>
+
+                  {/* Submit button */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-primary text-white font-semibold py-3.5 rounded-lg hover:bg-primary-dark transition-all flex items-center justify-center gap-2 text-sm shadow-sm hover:shadow-glow disabled:opacity-60 disabled:cursor-not-allowed active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-primary/40 outline-none"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <span
+                          className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"
+                          aria-hidden="true"
+                        />
+                        Sending…
+                      </>
+                    ) : (
+                      <>
+                        Send Message
+                        <span
+                          className="material-symbols-outlined text-base"
+                          aria-hidden="true"
+                        >
+                          send
+                        </span>
+                      </>
+                    )}
+                  </button>
+
+                  <p className="text-center text-xs text-muted">
+                    Or email me directly at{' '}
+                    <a
+                      href={`mailto:${t('contact.emailAddress', 'maximus.mukiza@student.thomasmore.be')}`}
+                      className="text-primary hover:underline focus-visible:ring-1 focus-visible:ring-primary rounded outline-none"
+                    >
+                      {t('contact.emailAddress', 'maximus.mukiza@student.thomasmore.be')}
+                    </a>
+                  </p>
+                </form>
+              )}
+            </div>
           </div>
         </div>
       </div>

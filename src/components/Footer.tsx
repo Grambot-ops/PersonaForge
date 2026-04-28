@@ -1,38 +1,72 @@
-import React from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import React from 'react';
+import {useTranslation} from 'react-i18next';
+import {FaGithub, FaLinkedin} from 'react-icons/fa';
 
-// Cast the icon components to React.ElementType
 const GithubIcon = FaGithub as React.ElementType;
 const LinkedinIcon = FaLinkedin as React.ElementType;
 
+/** Footer navigation links. Labels use translation keys. */
+const NAV_LINKS = [
+  {key: 'header.home', id: 'home'},
+  {key: 'header.about', id: 'about'},
+  {key: 'header.internship', id: 'internship'},
+  {key: 'header.projects', id: 'projects'},
+  {key: 'header.contact', id: 'contact'},
+] as const;
+
+/**
+ * Site footer.
+ * Clean logotype, short nav row, social links, and localized credit.
+ */
 const Footer: React.FC = () => {
+  const {t} = useTranslation();
   const currentYear = new Date().getFullYear();
 
+  /** Smooth-scroll helper used inline for footer nav. */
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({behavior: 'smooth'});
+  };
+
   return (
-    <footer className="py-12 border-t border-border-muted bg-background text-muted">
+    <footer className="py-10 md:py-12 border-t border-border-muted bg-background text-muted">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="text-center md:text-left">
-            <div className="flex items-center space-x-2 justify-center md:justify-start mb-4">
-              <span className="font-mono font-bold tracking-tight text-xl text-foreground">
-                MAXIMUS.SH
-              </span>
-              <span className="text-muted" aria-hidden="true">|</span>
-              <span className="font-mono text-xs text-primary bg-primary/10 px-1 border border-primary/20">
-                v2.4.0-stable
-              </span>
-            </div>
-            <p className="text-[10px] text-muted uppercase tracking-widest font-mono">
-              Engineering & Security Portfolio
+
+        {/* Top row — stacks on mobile */}
+        <div className="flex flex-col gap-8 md:flex-row md:justify-between md:items-start mb-8 md:mb-10">
+
+          {/* Brand + tagline */}
+          <div>
+            <p className="font-display font-bold text-xl text-foreground mb-1">
+              Maximus <span className="text-primary">Mukiza</span>
+            </p>
+            <p className="text-sm text-muted">
+              {t('footer.tagline', 'SRE · DevSecOps · Cloud Automation')}
             </p>
           </div>
 
-          <nav className="flex space-x-6" aria-label="Social links">
+          {/* Footer navigation */}
+          <nav aria-label="Footer navigation">
+            <ul className="flex flex-wrap gap-x-6 gap-y-2 list-none">
+              {NAV_LINKS.map((link) => (
+                <li key={link.id}>
+                  <button
+                    onClick={() => scrollTo(link.id)}
+                    className="text-sm text-muted hover:text-primary transition-colors focus-visible:ring-2 focus-visible:ring-primary outline-none rounded"
+                  >
+                    {t(link.key)}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Social links */}
+          <nav className="flex space-x-4" aria-label="Social links">
             <a
               href="https://github.com/Grambot-ops"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted hover:text-primary transition-colors focus-visible:ring-2 focus-visible:ring-primary outline-none rounded-sm p-1"
+              className="text-muted hover:text-primary transition-colors focus-visible:ring-2 focus-visible:ring-primary outline-none rounded p-1"
               aria-label="GitHub Profile"
             >
               <GithubIcon size={20} aria-hidden="true" />
@@ -41,7 +75,7 @@ const Footer: React.FC = () => {
               href="https://linkedin.com/in/maximus-mukiza-1523a5297"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted hover:text-primary transition-colors focus-visible:ring-2 focus-visible:ring-primary outline-none rounded-sm p-1"
+              className="text-muted hover:text-primary transition-colors focus-visible:ring-2 focus-visible:ring-primary outline-none rounded p-1"
               aria-label="LinkedIn Profile"
             >
               <LinkedinIcon size={20} aria-hidden="true" />
@@ -49,13 +83,12 @@ const Footer: React.FC = () => {
           </nav>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border-muted flex flex-col sm:flex-row justify-between items-center text-[10px] text-muted uppercase tracking-widest gap-4 font-mono">
-          <p>© {currentYear} Maximus Mukiza // All Rights Reserved</p>
-          <div className="flex gap-4">
-            <span className="text-primary/40" aria-hidden="true">SHA256: 7f8d3...</span>
-            <span>Handcrafted in Belgium</span>
-          </div>
+        {/* Bottom row */}
+        <div className="pt-5 md:pt-6 border-t border-border-muted flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-center text-xs text-muted">
+          <p>{t('footer.copyright', {year: currentYear})}</p>
+          <p>Handcrafted in Belgium 🇧🇪</p>
         </div>
+
       </div>
     </footer>
   );

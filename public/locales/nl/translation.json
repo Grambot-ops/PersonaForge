@@ -6,7 +6,15 @@
     "cv": "CV",
     "internship": "Stage",
     "contact": "Contact",
-    "student": "Infrastructuur"
+    "student": "Infrastructuur",
+    "langEnShort": "EN",
+    "langNlShort": "NL",
+    "switchToEn": "Schakel naar Engels",
+    "switchToNl": "Schakel naar Nederlands",
+    "langEnLong": "English",
+    "langNlLong": "Nederlands",
+    "closeMenu": "Sluit menu",
+    "openMenu": "Open menu"
   },
   "footer": {
     "quickLinks": "Snelle Links",
@@ -14,41 +22,62 @@
     "aboutMe": "Over Mij",
     "projects": "Projecten",
     "contact": "Contact",
+    "tagline": "SRE · DevSecOps · Cloud Automatisatie",
     "copyright": "© {{year}} Maximus Mukiza. Alle rechten voorbehouden."
   },
   "hero": {
     "title": "Maximus",
-    "subtitle": "Platform Engineering | SRE | DevSecOps",
-    "description": "Architect van veerkrachtige, geautomatiseerde cloud-platformen met een focus op GitOps-workflows, DevSecOps-integratie en schaalbare SRE-principes. Gespecialiseerd in high-availability gedistribueerde systemen en MLOps op de edge.",
-    "viewProjects": "Verken Infra Projecten",
+    "subtitle": "Cloud Engineering | SRE | DevSecOps",
+    "description": "Bouwen van geautomatiseerde, veilige en veerkrachtige cloud-infrastructuur — van event-driven SOAR pijplijnen en SRE observability stacks tot GitOps-gestuurde Kubernetes platforms.",
+    "viewProjects": "Verken Engineering Projecten",
     "getInTouch": "Maak Verbinding"
   },
-  "languageSwitcher": {
-    "changeLanguage": "Verander Taal"
-  },
   "about": {
-    "bio": "Hallo! Ik ben Maximus, een Platform Engineer en SRE specialist die zich focust op het bouwen van robuuste, geautomatiseerde infrastructuur. Ik gedij bij het oplossen van complexe problemen in gedistribueerde systemen en het implementeren van GitOps-workflows voor elk niveau van de stack. Mijn expertise omvat Kubernetes orkestratie (Talos, ArgoCD), multi-cloud automatisering (AWS, Azure) en het engineeren van secure-by-default pipelines voor zowel web- als ML-workloads.",
+    "bio": "Ik ben Maximus — een SRE & DevSecOps Engineer gefocust op het bouwen van veilige, zelfherstellende softwareplatforms. Bij IT Factory (Thomas More) specialiseer ik me in Cloud Automation en Defence: het uitrollen van beveiligde platforms op AWS en Azure, het automatiseren van threat response pipelines, en het ontwerpen van systemen die veerkrachtig blijven onder reële omstandigheden.",
     "hobbiesTitle": "Kerninteresses",
     "hobbies": {
       "gym": "Fitness & Biomechanica",
       "homelabbing": "Homelabbing & Gedistribueerde Systemen",
-      "rust": "Systems Programming (Rust)",
-      "cloud": "High-Availability Arch & SRE"
+      "rust": "Systems Programming",
+      "cloud": "Cloud Security & Automatisering"
     },
     "educationTitle": "Systeem Opleiding",
-    "educationText": "Specialisatie gericht op Cloud/Platform Engineering en Cybersecurity, met expertise in netwerkweerbaarheid, IaC-automatisering en compliance op enterprise-niveau.",
+    "educationText": "Gespecialiseerde opleiding gericht op Cloud Engineering en Cyber Security, met expertise in netwerkbeveiliging, IaC-automatisering en enterprise-grade compliance.",
     "ambitionsTitle": "Carrièretraject",
-    "ambitionsText": "Mijn doel is om een lead Platform Engineer/SRE te worden, die organisaties helpt bij het bouwen van zelfherstellende, geautomatiseerde en veilige cloud-ecosystemen.",
+    "ambitionsText": "Mijn doel is om een lead DevSecOps Engineer te worden, die organisaties helpt bij het bouwen van geautomatiseerde en veilige cloud-ecosystemen.",
     "viewCvButton": "Analyseer Technisch Dossier",
     "downloadCvButton": "Download PDF Blauwdruk",
-    "philosophy_1": "Ik benader infrastructuur niet als een verzameling resources, maar als een levend, zelfherstellend softwareplatform.",
+    "philosophy_1": "Tijdens mijn stage bij VanRoey (Dynamate) heb ik een productie SOAR-pijplijn opgeleverd met FastAPI, RabbitMQ, Redis en Docker — waarmee minuten aan handmatige SOC-triage werden vervangen door geautomatiseerde verrijking in minder dan 30 seconden. Ik werk met de volledige security toolchain: Wazuh, Graylog, TheHive/Cortex, MISP en SentinelOne.",
     "philosophy_2": "Mijn werk volgt het ",
     "philosophy_3": " principe—systemen ontwerpen die beschikbaarheid en integriteit behouden, zelfs tijdens gedegradeerde operaties.",
-    "trajectory": "Momenteel verdiep ik me in GitOps voor eBPF-gestuurde Kubernetes-clusters en de implementatie van edge MLOps pipelines.",
-    "pageTitle": "Maximus Mukiza | Platform Engineer Portfolio",
-    "pageDescription": "Technisch profiel van Maximus Mukiza, specialist in Cloud Engineering, SRE en DevSecOps met expertise in AWS, Azure en geautomatiseerde infrastructuur.",
-    "pageKeywords": "Platform Engineer, SRE, DevOps, DevSecOps, MLOps, GitOps, Kubernetes, AWS, Azure, Maximus Mukiza",
-    "mainTitle": "Systeemerprofiel"
+    "trajectory": "Momenteel verdiep ik me in GitOps voor eBPF-gestuurde Kubernetes-clusters en de implementatie van beveiligde infrastructure-as-code patronen.",
+    "pageTitle": "Maximus Mukiza | SRE & DevSecOps Engineer Portfolio",
+    "pageDescription": "Technisch profiel van Maximus Mukiza, specialist in Cloud Engineering, SRE en DevSecOps met expertise in AWS, Azure en security operaties.",
+    "pageKeywords": "DevSecOps, Cloud Engineer, SRE, SOC, Wazuh, Graylog, Kubernetes, AWS, Azure, Maximus Mukiza",
+    "mainTitle": "Systeemprofiel",
+    "availability": "Beschikbaar voor Cloud Engineering / SRE rollen · Juni 2026",
+    "competencies": {
+      "cloud": "Cloud Infrastructuur (AWS · Azure)",
+      "security": "DevSecOps · SOC Tooling",
+      "arch": "Event-Driven Architectuur",
+      "automation": "Python · Bash · GitHub Actions",
+      "threat": "Threat Intelligence (MISP · OTX)",
+      "incident": "Zero Trust · Incidentrespons"
+    },
+    "experience": {
+      "tsg": {
+        "title": "IT Support Specialist (Student)",
+        "desc": "Beheerde 800+ bestellingen/week via Excel, verbeterde data-organisatie en behandelde klantenserviceverzoeken."
+      },
+      "bpac": {
+        "title": "IT-Assistent (Student)",
+        "desc": "Herontwierp de verkoopwebsite (UX), beheerde productfotografie en werkte samen in multidisciplinaire teams."
+      },
+      "omnimove": {
+        "title": "Fitnessinstructeur / Assistent",
+        "desc": "Ontwikkelde 20+ gepersonaliseerde trainingsplannen en beheerde verkoop/klantcommunicatie."
+      }
+    }
   },
   "backToTop": {
     "label": "Terug naar Boven"
@@ -68,18 +97,19 @@
     "preferEmail": "Liever direct mailen?",
     "emailAddress": "mukizamaximus08@gmail.com",
     "pageTitle": "Contacteer Maximus Mukiza | Neem Contact Op",
-    "pageDescription": "Neem contact op met Maximus Mukiza om cyberbeveiliging, cloudprojecten of mogelijke samenwerkingen te bespreken. Vul het contactformulier in of mail direct.",
+    "pageDescription": "Neem contact op met Maximus Mukiza om cloud automatisering, DevSecOps of mogelijke samenwerkingen te bespreken.",
     "heading": "Contacteer Mij",
-    "intro": "Geïnteresseerd in het bespreken van cyberbeveiliging, cloudprojecten of mogelijke samenwerkingen? Als infrastructuurprofessional met een passie voor dit vakgebied, hoor ik graag van u. Vul onderstaand formulier in.",
+    "intro": "Geïnteresseerd in het bespreken van DevSecOps, cloud automatisering of mogelijke samenwerkingen? Vul onderstaand formulier in.",
     "mainTitle": "Contacteer Mij",
-    "mainDescription": "Geïnteresseerd in het bespreken van cybersecurity, cloud projecten, of mogelijke samenwerkingen? Als infrastructuurprofessional gepassioneerd door dit vakgebied, hoor ik graag van je. Vul het onderstaande formulier in."
+    "mainDescription": "Geïnteresseerd in het bespreken van DevSecOps, cloud automatisering of mogelijke samenwerkingen? Vul het onderstaande formulier in.",
+    "availability": "Beschikbaar voor Cloud Engineering / SRE rollen · Juni 2026"
   },
   "projects": {
     "closeLightbox": "Sluiten",
-    "pageTitle": "Projecten - Maximus Mukiza | Cyber Security Portfolio",
-    "pageDescription": "Ontdek de projecten van Maximus Mukiza, waaronder packet automation, SIEM stack creatie, Azure Bicep configuraties, AWS hosting en IoT beveiligingsoplossingen.",
-    "heading": "Mijn Projecten",
-    "intro": "Hier zijn enkele van de belangrijkste projecten waaraan ik tijdens mijn carrière heb gewerkt. Elk project vertegenwoordigt unieke uitdagingen en waardevolle leerervaringen op het gebied van cyberbeveiliging en cloud computing.",
+    "pageTitle": "Projecten - Maximus Mukiza | SRE Portfolio",
+    "pageDescription": "Ontdek de projecten van Maximus Mukiza, waaronder SOAR-pijplijnen, SIEM-stacks, Azure Bicep configuraties en AWS hosting.",
+    "heading": "Engineering Case Studies",
+    "intro": "Een verzameling van schaalbare cloud-omgevingen en geautomatiseerde security frameworks ontwikkeld voor enterprise-grade compliance en operationele efficiëntie.",
     "lightboxNav": "Gebruik pijltjestoetsen om tussen projecten te navigeren, ESC om te sluiten",
     "closeImageLightbox": "Sluit afbeelding lightbox",
     "closeVideoLightbox": "Sluit video lightbox",
@@ -92,65 +122,53 @@
     "context": "Context",
     "background": "Achtergrond",
     "learnings": "Leerpunten",
-    "techStack": "Tech Stack",
-    "viewProject": "Bekijk Project",
-    "viewCode": "Bekijk Code",
+    "imageLightboxLabel": "Afbeelding lightbox",
+    "videoLightboxLabel": "Video lightbox",
+    "all": "Alle",
+    "sre": "SRE",
+    "cloud": "Cloud",
+    "security": "Security",
+    "gitops": "GitOps / IaC",
+    "automation": "Automatisatie",
+    "noMatch": "Geen projecten voldoen aan deze filter.",
     "p1": {
       "title": "Secure Edge Node: Smart Parcel Ecosystem",
       "description": "Gedistribueerde IoT-architectuur met beveiligde inter-node communicatie, centraal statusbeheer en containerized locker-controllers.",
-      "context": "Gedistribueerde Systemen & Secure Edge Computing",
-      "background": "Ontwerp van een veerkrachtig lockerbeheersysteem met zero-trust principes, met focus op beveiligde handshakes tussen Raspberry Pi-nodes en ESP32-controllers.",
-      "realizations": "Implementatie van een event-driven architectuur voor real-time updates en hardware-encryptie voor toegangstokens.",
-      "learnings": "Expertise in mutual TLS voor IoT, gedistribueerde consensus voor statussynchronisatie en secure boot fundamenten."
+      "metrics": "Implementatie van mutual TLS & hardware encryptie voor gedistribueerde nodes."
     },
     "p2": {
       "title": "React-Sec-Ops: Geautomatiseerde 3-Layer DevSecOps",
       "description": "High-availability webplatform op AWS met focus op DevSecOps-integratie, geautomatiseerde security scanning en managed cloud-infrastructuur.",
-      "context": "DevSecOps & Platform Automatisering op AWS",
-      "background": "Engineeren van een veilige 3-tier architectuur binnen AWS Learner Lab beperkingen, gebruikmakend van een hybride IaC-model voor maximale automatisering.",
-      "realizations": "Automatisering van ECS Fargate-orkestratie en Aurora RDS-provisioning, met een handmatige fallback voor beperkte IAM-resources.",
-      "learnings": "Beheersing van DevSecOps-pipelines, geautomatiseerd secrets management en elastische infrastructuur-schaling."
+      "metrics": "Geautomatiseerde ECS Fargate deployment met geïntegreerde security scanning."
     },
     "p3": {
       "title": "Azure Platform: Modulaire Bicep-Flex",
       "description": "Modulair Infrastructure as Code (IaC) framework voor Azure, met geautomatiseerde compliance-checks en gestandaardiseerde security benchmarks.",
-      "context": "Cloud Engineering & Azure Governance",
-      "background": "Ont ontwerp van herbruikbare Bicep-modules om enterprise deployments te versnellen met strikte zero-trust policies.",
-      "realizations": "Succesvol geautomatiseerde validatie-pipelines gemaakt voor Bicep-templates, met 100% naleving van Azure Security Benchmark v3.",
-      "learnings": "Expertise in Azure Policy as Code, modulair IaC-ontwerp en geautomatiseerde resource-governance."
+      "metrics": "100% naleving van Azure Security Benchmark v3 afgedwongen via IaC."
     },
     "p5": {
       "title": "Edge MLOps: AI-Gedreven Slim Brugbesturingssysteem",
       "description": "Enterprise-grade IoT-infrastructuur voor maritiem verkeer via edge-deployed ML-modellen, geluidsclassificatie en computer vision.",
-      "context": "MLOps & Edge Computing Orkestratie",
-      "background": "Ontwikkelde een production-ready ML-pipeline voor real-time sensorfusie op de edge, optimalisatie van brugbediening via geautomatiseerde besluit vorming.",
-      "realizations": "Architectuur van een multi-modale inference engine met hybride audio-visuele verwerking, geïntegreerd in een geautomatiseerde CI/CD-pipeline.",
-      "learnings": "Expertise in modelkwantisering voor edge-devices, streaming telemetrie met OpenTelemetry en containerized ML-workloads."
+      "metrics": "Maritieme verkeersstroom geoptimaliseerd via real-time edge sensorfusie."
     },
     "p6": {
       "title": "Terra-Multi-Cloud: AWS & Azure Orkestratie",
       "description": "Cross-provider infrastructuurautomatisering met Terraform om een veerkrachtige multi-cloud applicatie te implementeren op AWS en Azure.",
-      "context": "Platform Engineering & Multi-Cloud Resiliency",
-      "background": "Uniforme deployment pipeline voor Azure Container Apps en AWS ASG/ALB met focus op cross-cloud netwerken en API discovery.",
-      "realizations": "Geautomatiseerde Docker build/push naar ACR, dynamische service discovery en uniform state beheer.",
-      "learnings": "Beheersing van multi-cloud netwerken, provider-geabstraheerde IaC en complexe CI/CD-orkestratie."
+      "metrics": "Cross-cloud hoge beschikbaarheid bereikt met geautomatiseerde failover patronen."
     },
     "p7": {
       "title": "Hybrid Cloud Platform: GitOps & Talos Linux",
       "description": "Enterprise-grade Kubernetes platform gebouwd op Talos Linux en beheerd via ArgoCD, met eBPF-netwerken en gerepliceerde NVMe-opslag.",
-      "context": "Platform Engineering & SRE Operaties",
-      "background": "Ont ontwerp van een zelfherstellende, GitOps-gedreven infrastructuur van metal/VM tot applicatie-laag, met focus op zero-touch operations.",
-      "realizations": "Succesvolle integratie van Cilium eBPF, OpenEBS Mayastor voor NVMe-opslag en Garage S3 voor object-redundantie.",
-      "learnings": "Expertise in GitOps (ArgoCD), immutable OS-beheer, eBPF-visibiliteit en SRE monitoring stacks."
+      "metrics": "Zelfherstellend GitOps-platform opgezet met eBPF-gebaseerde beveiliging."
     },
     "p8": {
-      "title": "SRE Challenge: BookStack AWS Implementatie",
+      "title": "Hoge-Beschikbaarheid Infrastructuur Hardening",
       "description": "Hoogbeschikbare, production-hardened deployment van BookStack op AWS met Pulumi (Python) en GitLab CI/CD met focus op observabiliteit en disaster recovery.",
-      "context": "Infrastructure as Code & SRE Best Practices",
-      "background": "Engineeren van een veerkrachtig platform op ECS Fargate, gefocust op geautomatiseerd herstel, secrets management en performance monitoring.",
-      "realizations": "Volledige CI/CD pipeline met multi-stage builds, geautomatiseerde back-up strategieën en geïntegreerde security scanning.",
-      "learnings": "Collaboratieve SRE-praktijken, geavanceerde Pulumi (Python) automatisering en GitLab CI/CD voor missie-kritieke apps."
+      "metrics": "Infrastructuur provisioning tijd verminderd met 70% met 99.9% uptime."
     }
+  },
+  "languageSwitcher": {
+    "changeLanguage": "Verander Taal"
   },
   "loading": "Laden...",
   "themeToggle": {
@@ -166,8 +184,8 @@
     "projectsSectionTitle": "Uitgelichte Projecten",
     "viewAllProjectsButton": "Bekijk Alle Projecten",
     "contactSectionTitle": "Neem Contact Op",
-    "pageTitle": "Maximus Mukiza - Home | Cyber Security & IT Portfolio",
-    "pageDescription": "Welkom bij het portfolio van Maximus Mukiza. Ontdek projecten in cyberbeveiliging, IT en webontwikkeling."
+    "pageTitle": "Maximus Mukiza | SRE & DevSecOps Engineering",
+    "pageDescription": "Welkom bij het technische portfolio van Maximus Mukiza. Ontdek gespecialiseerde projecten in cloudbeveiliging, geautomatiseerde infrastructuur en DevSecOps."
   },
   "notFound": {
     "pageTitle": "Pagina Niet Gevonden",
@@ -178,24 +196,26 @@
     "goHomeButton": "Ga Terug Naar Home"
   },
   "skills": {
-    "title": "Technische Vaardigheden",
-    "certsTitle": "Gerelateerde Certificeringen & Licenties",
+    "title": "Technology Stack",
+    "intro": "Tools en platformen gebruikt in productie en stage-werk.",
+    "certsTitle": "Professionele Certificaten",
     "certsPursuing": "Momenteel bezig met:",
     "certsCompleted": "Voltooid {{date}}",
     "drivingLicenseCat": "Categorie {{category}}",
-    "categoryCloud": "Cloud",
-    "categorySecurity": "Beveiliging",
-    "categoryProgramming": "Programmeren",
-    "categoryDevOps": "DevOps",
+    "catCloud": "Cloud Platformen",
+    "catSreDevSecOps": "SRE & DevSecOps",
+    "catSecurity": "Security & Monitoring",
+    "catAutomation": "Programmeren & Automatisatie",
+    "catSreInfra": "SRE & Infrastructuur",
     "aws": "AWS Cloud Services",
-    "azure": "Azure Beveiliging",
-    "network": "Netwerkbeveiliging",
-    "siem": "SIEM Oplossingen",
-    "threat": "Dreigingsinformatie",
-    "python": "Python",
+    "azure": "Azure Beveiliging & Bicep",
+    "network": "Netwerkbeveiliging & VPN",
+    "siem": "Wazuh / Graylog / TheHive",
+    "threat": "Dreigingsinformatie (MISP)",
+    "python": "Python / FastAPI",
     "rust": "Rust",
-    "iac": "Infrastructure as Code",
-    "container": "Containerisatie",
+    "iac": "Terraform / OpenTofu",
+    "container": "Kubernetes / Docker",
     "incident": "Incidentrespons",
     "certLpi": "LPI Certificeringen",
     "certLpiDate": "Voltooid December 2023",
@@ -204,16 +224,16 @@
     "certDrivingCat": "Categorie A2 (Motorfiets)"
   },
   "cv": {
-    "pageTitle": "CV - Maximus Mukiza | Cloud Security Specialist",
-    "pageDescription": "Bekijk het Curriculum Vitae van Maximus Mukiza, met details over opleiding, werkervaring, vaardigheden en certificeringen in IT en Cyber Security.",
-    "heading": "Curriculum Vitae",
+    "pageTitle": "Dossier - Maximus Mukiza | SRE specialist",
+    "pageDescription": "Bekijk het Curriculum Vitae van Maximus Mukiza, met details over opleiding, werkervaring, vaardigheden en certificeringen in Cloud & Cyber Security.",
+    "heading": "Professioneel Dossier",
     "downloadButton": "Download Volledig Dossier (PDF)",
     "dossier_ready": "Technisch dossier is gecompileerd en klaar voor ophaling. Download de PDF voor de volledige geschiedenis en certificeringen.",
     "downloadAria": "Download CV",
     "mainTitle": "Curriculum Vitae",
     "downloadAriaLabel": "Download CV",
     "name": "Maximus Mukiza",
-    "role": "Platform Engineer | SRE | DevSecOps",
+    "role": "Cloud Engineering | SRE | DevSecOps",
     "phone": "0456190617",
     "location": "Vorselaar, Vlaams Gewest",
     "linkedin": "LinkedIn Profiel",
@@ -231,24 +251,6 @@
     "educationUniversity2": "KOSH Herentals",
     "educationDate2": "2018 - 2022",
     "workExperienceTitle": "Ervaring",
-    "work1Title": "Fitnessinstructeur / Assistent",
-    "work1Date": "apr. 2024 – nov. 2025",
-    "work1Company": "OmniMove, Vorselaar",
-    "work1Detail1": "Ontwikkelde 20+ gepersonaliseerde trainingsplannen; coachte klanten met focus op veiligheid en resultaat.",
-    "work1Detail2": "Promootte en verkocht abonnementen — bijdrage aan omzetgroei.",
-    "work1Detail3": "Eerste aanspreekpunt voor vragen: oefende duidelijke, oplossingsgerichte communicatie.",
-    "work2Title": "IT Support Specialist",
-    "work2Date": "jun. 2025 – aug. 2025",
-    "work2Company": "TSG Group, Turnhout",
-    "work2Detail1": "Verwerkte en volgde ~ 800 leveringsorders/week via Excel; verbeterde data-organisatie en verminderde fouten.",
-    "work2Detail2": "Ondersteunde klanten via e-mail en loste serviceverzoeken op — sterke focus op klanttevredenheid.",
-    "work2Detail3": "Werkte samen met logistiek en sales: ontwikkelde inzicht in bedrijfsprocessen en dataflow.",
-    "work3Title": "IT Assistent",
-    "work3Date": "jul. 2024 – aug. 2024",
-    "work3Company": "B-PAC BV, Grobbendonk",
-    "work3Detail1": "Herontwierp de verkoopwebsite: verbeterde navigatie en gebruikerservaring (UX).",
-    "work3Detail2": "Maakte en bewerkte productfoto’s; zorgde voor consistente digitale uitstraling.",
-    "work3Detail3": "Werkte in een multidisciplinair team — versterkte communicatie en aanpassingsvermogen.",
     "skillsTitle": "Vaardigheden",
     "languagesTitle": "Talen",
     "langDutch": "Nederlands",
@@ -256,7 +258,8 @@
     "langFrench": "Frans",
     "langKinyarwanda": "Ikinyarwanda",
     "hobbiesTitle": "Interesses",
-    "hobbyFitness": "Fitness & Homelabbing",
+    "hobbyFitness": "Fitness",
+    "hobbyMotorrijden": "Motorrijden",
     "certificationsTitle": "Certificaten",
     "certLPI": "LPI Linux Essentials",
     "certLPIDate": "dec 2023",
@@ -274,21 +277,92 @@
   "internship": {
     "pageTitle": "Stage - Maximus Mukiza",
     "heading": "Professionele Stage",
-    "title": "Incident Triage Automatisering via Python & SentinelOne",
-    "summary": "Ontwerp en implementatie van een asynchrone SOAR-architectuur met Python microservices, waardoor de triage-tijd is verkort en vendor lock-in is geëlimineerd.",
-    "synopsis": "Tijdens mijn stage bij VanRoey (Dynamate) kreeg ik de opdracht om de trage Mean Time to Respond (MTTR) aan te pakken, die veroorzaakt werd door handmatige incident triage en een grote afhankelijkheid van één enkele EDR-leverancier voor Threat Intelligence. Na aanvankelijk no-code platformen zoals SentinelOne Hyperautomation en Rewst te hebben onderzocht, ontdekte ik kritieke beperkingen op het gebied van foutafhandeling, API-diagnostiek en versiebeheer.\n\nOm dit op te lossen, ben ik overgestapt op een op maat gemaakte oplossing en heb ik een veerkrachtige, asynchrone event-driven pijplijn ontworpen met behulp van FastAPI, RabbitMQ, Redis en Docker. Ik heb onafhankelijke Threat Intelligence-feeds (zoals MISP, CIRCL en CCB) succesvol geïntegreerd in geautomatiseerde workflows. Door de inzet van Python microservices heb ik de extractie en verrijking van Indicators of Compromise (IoC's) geautomatiseerd. Dit resulteerde in hoogwaardige, bruikbare tickets in Datto Autotask met directe links (deep links) en geïntegreerde context. Deze aanpak heeft de handmatige werklast voor de SOC-analisten aanzienlijk verlaagd en de vendor lock-in voor Threat Intelligence volledig geëlimineerd.",
+    "subheading": "SOC incident triage automatisering: ontwerpen en opleveren van een productie Python microservice pijplijn voor Managed Detection & Response.",
+    "badge": "Professionele Stage · VanRoey (Dynamate) — 2025",
+    "projectEvolution": "Project Evolutie",
+    "architectureTitle": "Event-Driven Architectuur",
+    "keyResults": "Belangrijkste Resultaten",
+    "synopsisTitle": "Technische Realisatie Synopsis",
+    "title": "Incident Triage Automatisering — VanRoey (Dynamate)",
+    "context": "VanRoey (Dynamate) is een toonaangevende Managed Service Provider. Hun SOC-team handelde security alerts handmatig af — analisten schakelden tussen SentinelOne, VirusTotal en interne databases voor elk incident.",
+    "objectivesTitle": "Doelstellingen",
+    "objectives": "Het hoofddoel was om de triage-bottleneck te elimineren door Threat Intelligence verrijking en ticketing workflows end-to-end te automatiseren.",
+    "businessCaseTitle": "Business Case",
+    "businessCase": "Geautomatiseerde triage verkort de Mean Time to Respond (MTTR), elimineert licentiekosten voor SOAR-platformen van derden en stelt SOC-analisten in staat zich te concentreren op diepgaand onderzoek.",
+    "methodologyTitle": "Methodologie & Rapportering",
+    "methodology": "Ik volgde een agile aanpak: evalueerde MISP vs OpenCTI, ontdekte vendor API bugs via R&D samenwerking en implementeerde een event-driven architectuur met succesvolle UAT.",
+    "synopsis": "Tijdens mijn stage bij VanRoey (Dynamate) kreeg ik de opdracht om de trage Mean Time to Respond (MTTR) aan te pakken. Analisten moesten handmatig schakelen tussen verschillende tools voor elke alert. \n\nIk ontwierp een veerkrachtige, asynchrone event-driven pijplijn met FastAPI, RabbitMQ, Redis en Docker. Ik integreerde onafhankelijke Threat Intelligence-feeds (MISP, CIRCL) rechtstreeks in de workflows. Door de inzet van Python microservices automatiseerde ik IoC extractie en verrijking, wat resulteerde in bruikbare tickets in Datto Autotask binnen 30 seconden. Deze oplossing optimaliseerde niet alleen de operaties, maar elimineerde ook terugkerende SOAR licentiekosten.",
     "documentsTitle": "Verplichte Documenten",
     "projectPlan": "Projectplan",
-    "thesis": "Realisatiedocument (Thesis)",
+    "projectPlanDesc": "Doelstellingen, business case, planning en voortgangsrapportage.",
+    "thesis": "Realisatiedocument",
+    "thesisDesc": "Volledige thesis — 5W1H aanpak, architectuur en resultaten.",
     "reflection": "Reflectie",
-    "downloadAria": "Download document"
+    "reflectionDesc": "Persoonlijke leerresultaten, groei en kritische reflectie.",
+    "downloadAria": "Download document",
+    "result1": "Geautomatiseerde triage tijd",
+    "result1Sub": "Voorheen minuten",
+    "result2": "SOAR licentiekosten",
+    "result2Sub": "Open-source stack",
+    "result3": "IoC Dekking",
+    "result3Sub": "Geïntegreerde MISP & OTX",
+    "timeline": {
+      "step1": "Evaluatie OpenCTI vs MISP",
+      "step1Desc": "Beide uitgerold via Docker; gekozen voor MISP voor bulk-API prestaties",
+      "step2": "S1 connector bug diagnose",
+      "step2Desc": "STIX 2.1 parser defect bevestigd met S1 R&D — geen patch timeline",
+      "step3": "Custom GraphQL pijplijn gebouwd",
+      "step3Desc": "85% payload reductie t.o.v. REST; HTTPS opgelost met HAProxy + Let's Encrypt",
+      "step4": "Evaluatie Rewst, pivot naar Python",
+      "step4Desc": "Black-box debugging & Jinja complexiteit sloten low-code uit",
+      "step5": "FastAPI microservice pijplijn opgeleverd",
+      "step5Desc": "FastAPI · RabbitMQ · Redis · Docker — uitgerold in productie"
+    }
   },
   "app": {
     "htmlLang": "nl",
-    "defaultTitle": "Maximus | Cloud & Cybersecurity E-Portfolio",
-    "metaDescription": "E-Portfolio van Maximus Mukiza, een Cloud & Cybersecurity Specialist die gespecialiseerde projecten, vaardigheden en technische expertise laat zien.",
-    "metaKeywords": "cybersecurity, cloud computing, portfolio, Maximus Mukiza, IT security, AWS, Azure",
-    "ogTitle": "Maximus Mukiza | Cloud & Cybersecurity Portfolio",
+    "defaultTitle": "Maximus | SRE & DevSecOps Engineering",
+    "metaDescription": "E-Portfolio van Maximus Mukiza, een DevSecOps Engineer die enterprise cloud projecten, security automatisering en technische expertise laat zien.",
+    "metaKeywords": "DevSecOps, cloud automatisering, infrastructuur, Maximus Mukiza, SOC, Wazuh, Graylog, AWS, Azure",
+    "ogTitle": "Maximus Mukiza | SRE & DevSecOps Engineering Portfolio",
     "ogDescription": "Portfolio van Maximus Mukiza, toont cybersecurity en cloud projecten, vaardigheden en leertraject."
+  },
+  "theme": {
+    "switchToLight": "Schakel naar licht thema",
+    "switchToDark": "Schakel naar donker thema"
+  },
+  "projectsPage": {
+    "title": "Engineering Case Studies",
+    "description": "Verkenning van schaalbare cloud-omgevingen en geautomatiseerde security frameworks ontwikkeld voor enterprise-grade compliance."
+  },
+  "contactPage": {
+    "title": "Maak Verbinding",
+    "description": "Geïnteresseerd in het bespreken van SRE, DevSecOps, cloud automatisering of mogelijke samenwerkingen? Initieer een handshake protocol hieronder."
+  },
+  "aboutPage": {
+    "title": "Systeemoverzicht"
+  },
+  "meta": {
+    "home": {
+      "title": "Maximus Mukiza | SRE & DevSecOps Engineering",
+      "description": "Welkom bij het technische portfolio van Maximus Mukiza. Ontdek gespecialiseerde projecten in cloudbeveiliging, geautomatiseerde infrastructuur en DevSecOps."
+    },
+    "about": {
+      "title": "Engineering Profiel | Maximus Mukiza",
+      "description": "Professioneel profiel van Maximus Mukiza, een SRE specialist met expertise in veerkrachtige systemen en security automatisering.",
+      "keywords": "Maximus Mukiza, cloud security, infrastructure engineer, AWS, Azure, DevSecOps"
+    },
+    "contact": {
+      "title": "Contact | Beveiligde Handshake",
+      "description": "Neem veilig contact op met Maximus Mukiza voor infrastructuur en security samenwerking."
+    },
+    "projects": {
+      "title": "Case Studies | Engineering Portfolio",
+      "description": "Enterprise-grade cloud security projecten en geautomatiseerde infrastructuur implementaties."
+    },
+    "cv": {
+      "title": "Dossier | Maximus Mukiza",
+      "description": "Curriculum Vitae van Maximus Mukiza, met details over expertise in Cloud Security, Infrastructure as Code en Security Operations."
+    }
   }
 }

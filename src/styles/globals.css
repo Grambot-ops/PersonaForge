@@ -1,172 +1,123 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 @layer base {
   :root {
-    --primary: #059669;
-    --primary-color: #059669;
-    --secondary-color: #10b981;
-    --background: #f8fafc;
-    --card-bg: #ffffff;
-    --text-color: #1e293b;
-    --text-muted: #64748b;
-    --border-color: rgba(5, 150, 105, 0.2);
-    --border-muted: #e2e8f0;
+    /* ── Luxury Brand Palette — Light Mode ────────────────── */
+    --primary: #10b981; /* Emerald 500 */
+    --primary-dark: #059669;
+    
+    /* Premium Mint-Ivory — Pairs perfectly with emerald */
+    --background: #f4faf8;
+    --surface: #ffffff;
+    --surface-raised: #eff6f3;
+    
+    /* High contrast deep emerald-charcoal */
+    --text: #061a12;
+    --text-muted: #4a6158;
+    
+    /* Subtle emerald-tinted borders */
+    --border: rgba(16, 185, 129, 0.12);
+    --border-muted: rgba(16, 185, 129, 0.06);
+    --glow: rgba(16, 185, 129, 0.15);
+
+    /* ── Radius scale ───────────────────────────────────────── */
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --radius-2xl: 2rem;
+
+    /* ── Shadow scale ───────────────────────────────────────── */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-card: 0 4px 24px rgba(6, 26, 18, 0.04);
   }
 
   .dark {
-    --primary: #00ff41;
-    --primary-color: #00ff41;
-    --secondary-color: #00cc33;
-    --background: #09090b;
-    --card-bg: #111113;
-    --text-color: #f1f5f9;
-    --text-muted: #94a3b8;
-    --border-color: rgba(0, 255, 65, 0.15);
-    --border-muted: rgba(255, 255, 255, 0.1);
-  }
+    /* ── Luxury Brand Palette — Dark Mode ─────────────────── */
+    --primary: #34d399; /* Emerald 400 */
+    --primary-dark: #10b981;
+    
+    /* Deep Forest Obsidian — Much more premium than pure black */
+    --background: #0d1410; 
+    --surface: #121d18;
+    --surface-raised: #1a2922;
+    
+    /* Crisp emerald-white text */
+    --text: #eefdf6;
+    --text-muted: #8ca398;
+    
+    /* Neon emerald accents for borders */
+    --border: rgba(52, 211, 153, 0.15);
+    --border-muted: rgba(52, 211, 153, 0.08);
+    --glow: rgba(52, 211, 153, 0.15);
 
-  body {
-    @apply font-sans antialiased overflow-x-hidden selection:bg-primary selection:text-black transition-colors duration-300;
-    background-color: var(--background);
-    color: var(--text-color);
-  }
-
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: var(--background);
-  }
-  ::-webkit-scrollbar-thumb {
-    background: var(--border-color);
-    border-radius: 3px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--primary);
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-bold tracking-tight;
-    color: var(--text-color);
-  }
-
-  h1 {
-    @apply text-4xl md:text-5xl;
-  }
-
-  h3 {
-    @apply text-2xl md:text-3xl;
-  }
-
-  a {
-    @apply text-primary hover:text-primary-dark transition-colors duration-200;
-  }
-
-  /* Focus styles for better accessibility */
-  :focus {
-    @apply outline-none ring-2 ring-primary ring-offset-2;
-  }
-
-  /* Improved input focus states */
-  input:focus,
-  textarea:focus,
-  select:focus {
-    @apply ring-2 ring-primary ring-offset-2 outline-none;
-  }
-
-  /* Dark theme base overrides - Removed messy overrides to favor CSS variables */
-  .dark img {
-    filter: brightness(0.9);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.30);
+    --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.50);
   }
 }
 
-/* Custom utility classes */
-@layer utilities {
-  .container {
-    @apply mx-auto px-4 max-w-7xl;
-  }
-  .section {
-    @apply py-16 md:py-24;
-  }
-  .grid-layout {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
-  }
-}
-
-/* Component specific styles */
 @layer components {
-  /* Ensure react-icons inherit color */
-  .react-icons {
-    @apply align-middle;
+  /* Premium card styling */
+  .glass-card {
+    @apply bg-surface backdrop-blur-md border border-border shadow-card transition-all duration-300;
+  }
+  
+  .dark .glass-card {
+    background-color: var(--surface);
+    @apply backdrop-blur-xl border-white/5;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 }
 
-/* Custom animations (Keep keyframes outside layers) */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 15px var(--glow);
   }
-  to {
-    opacity: 1;
+  
+  .bg-grid-white {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(15 23 42 / 0.04)'%3E%3Cpath d='M0 .5H31.5V32'/%3E%3C/svg%3E");
+  }
+
+  .dark .bg-grid-white {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(52 211 153 / 0.04)'%3E%3Cpath d='M0 .5H31.5V32'/%3E%3C/svg%3E");
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(0.98); }
   }
 }
 
-@keyframes growWidth {
-  from {
-    width: 0;
-  }
-  to {
-    width: var(--width-value);
-  }
+/* Global scroll behavior */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  overflow-x: hidden;
 }
 
-@keyframes slideInFromLeft {
-  from {
-    transform: translateX(-30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+body {
+  @apply bg-background text-foreground font-sans transition-colors duration-300;
 }
 
-@keyframes slideInFromRight {
-  from {
-    transform: translateX(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+/* Scroll reveal classes */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
 }
 
-@keyframes slideInFromBottom {
-  from {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+[data-reveal][data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }

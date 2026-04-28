@@ -22,38 +22,62 @@
     "aboutMe": "About Me",
     "projects": "Projects",
     "contact": "Contact",
+    "tagline": "SRE · DevSecOps · Cloud Automation",
     "copyright": "© {{year}} Maximus Mukiza. All rights reserved."
   },
   "hero": {
     "title": "Maximus",
-    "subtitle": "Platform Engineering | SRE | DevSecOps",
-    "description": "Architecting resilient, automated cloud platforms with a focus on GitOps workflows, DevSecOps integration, and scalable SRE principles. Specializing in high-availability distributed systems and MLOps at the edge.",
-    "viewProjects": "Explore Infra Projects",
+    "subtitle": "Cloud Engineering | SRE | DevSecOps",
+    "description": "Building automated, secure, and resilient cloud infrastructure — from event-driven SOAR pipelines and SRE observability stacks to GitOps-driven Kubernetes platforms.",
+    "viewProjects": "Explore Engineering Projects",
     "getInTouch": "Establish Connection"
   },
   "about": {
-    "bio": "Hello! I'm Maximus, a Platform Engineer and SRE specialist focused on building robust, automated infrastructure. I thrive on solving complex distributed systems challenges and implementing GitOps workflows into every layer of the stack. My expertise spans Kubernetes orchestration (Talos, ArgoCD), multi-cloud automation (AWS, Azure), and engineering secure-by-default pipelines for both web and ML workloads.",
+    "bio": "I'm Maximus — a DevSecOps Engineer and Cloud Automation specialist focused on building secure, self-healing software platforms. At IT Factory (Thomas More), I specialise in Cloud Automation and Defence: deploying secure platforms on AWS and Azure, automating threat response pipelines, and designing systems that stay resilient under real-world conditions.",
     "hobbiesTitle": "Core Interests",
     "hobbies": {
       "gym": "Fitness & Biomechanics",
       "homelabbing": "Homelabbing & Distributed Systems",
-      "rust": "Systems Programming (Rust)",
-      "cloud": "High-Availability Arch & SRE"
+      "rust": "Systems Programming",
+      "cloud": "Cloud Security & Automation"
     },
     "educationTitle": "Systems Education",
-    "educationText": "Specialized education focused on Cloud/Platform Engineering and Cybersecurity, gaining expertise in network security, IaC automation, and enterprise-grade compliance.",
+    "educationText": "Specialized education focused on Cloud Engineering and Cyber Security, gaining expertise in network security, IaC automation, and enterprise-grade compliance.",
     "ambitionsTitle": "Career Trajectory",
-    "ambitionsText": "I am aiming to become a lead Platform Engineer/SRE, helping organizations build self-healing, automated, and secure cloud ecosystems from the ground up.",
+    "ambitionsText": "I am aiming to become a lead DevSecOps Engineer, helping organizations build automated, and secure cloud ecosystems from the ground up.",
     "viewCvButton": "Analyze Technical Dossier",
     "downloadCvButton": "Download PDF Blueprint",
-    "philosophy_1": "I treat infrastructure not as a collection of resources, but as a live, self-healing software platform.",
+    "philosophy_1": "During my internship at VanRoey (Dynamate), I shipped a production SOAR pipeline using FastAPI, RabbitMQ, Redis and Docker — replacing minutes of manual SOC triage with sub-30-second automated enrichment. I work with the full security toolchain: Wazuh, Graylog, TheHive/Cortex, MISP, and SentinelOne.",
     "philosophy_2": "My work follows the ",
     "philosophy_3": " principle—designing systems that maintain availability and integrity even under degraded operations.",
-    "trajectory": "Currently deep-diving into GitOps for eBPF-powered Kubernetes clusters and implementing edge MLOps pipelines.",
-    "pageTitle": "Maximus Mukiza | Platform Engineer Portfolio",
-    "pageDescription": "Technical profile of Maximus Mukiza, a specialist in Cloud Engineering, SRE, and DevSecOps with expertise in AWS, Azure, and automated infrastructure.",
-    "pageKeywords": "Platform Engineer, SRE, DevOps, DevSecOps, MLOps, GitOps, Kubernetes, AWS, Azure, Maximus Mukiza",
-    "mainTitle": "System Profile"
+    "trajectory": "Currently deep-diving into GitOps for eBPF-powered Kubernetes clusters and implementing secure infrastructure-as-code patterns.",
+    "pageTitle": "Maximus Mukiza | SRE & DevSecOps Engineer Portfolio",
+    "pageDescription": "Technical profile of Maximus Mukiza, a specialist in Cloud Engineering, DevSecOps, and Cloud Automation with expertise in AWS, Azure, and security operations.",
+    "pageKeywords": "DevSecOps, Cloud Engineer, Cloud Automation, SOC, Wazuh, Graylog, Kubernetes, AWS, Azure, Maximus Mukiza",
+    "mainTitle": "System Profile",
+    "availability": "Available for Cloud Engineering / SRE roles · June 2026",
+    "competencies": {
+      "cloud": "Cloud Infrastructure (AWS · Azure)",
+      "security": "DevSecOps · SOC Tooling",
+      "arch": "Event-Driven Architecture",
+      "automation": "Python · Bash · GitHub Actions",
+      "threat": "Threat Intelligence (MISP · OTX)",
+      "incident": "Zero Trust · Incident Response"
+    },
+    "experience": {
+      "tsg": {
+        "title": "IT Support (Student)",
+        "desc": "Managed 800+ orders/week via Excel, improved data organization, and handled customer service requests."
+      },
+      "bpac": {
+        "title": "IT-Assistant (Student)",
+        "desc": "Redesigned sales website (UX), managed product photography, and collaborated in multidisciplinary teams."
+      },
+      "omnimove": {
+        "title": "Fitness Instructor / Assistant",
+        "desc": "Developed 20+ personalized training plans and handled sales/client communication."
+      }
+    }
   },
   "backToTop": {
     "label": "Back to Top"
@@ -73,18 +97,19 @@
     "preferEmail": "Prefer to email directly?",
     "emailAddress": "mukizamaximus08@gmail.com",
     "pageTitle": "Contact Maximus Mukiza | Get In Touch",
-    "pageDescription": "Contact Maximus Mukiza to discuss cyber security, cloud projects, or potential collaborations. Fill out the contact form or email directly.",
+    "pageDescription": "Contact Maximus Mukiza to discuss cloud automation, DevSecOps, or potential collaborations.",
     "heading": "Contact Me",
-    "intro": "Interested in discussing cybersecurity, cloud projects, or potential collaborations? As an infrastructure professional passionate about this field, I'd love to hear from you. Fill out the form below.",
+    "intro": "Interested in discussing DevSecOps, cloud automation, or potential collaborations? Fill out the form below.",
     "mainTitle": "Contact Me",
-    "mainDescription": "Interested in discussing cybersecurity, cloud projects, or potential collaborations? As an infrastructure professional passionate about this field, I'd love to hear from you. Fill out the form below."
+    "mainDescription": "Interested in discussing DevSecOps, cloud automation, or potential collaborations? Fill out the form below.",
+    "availability": "Available for Cloud Engineering / SRE roles · June 2026"
   },
   "projects": {
     "closeLightbox": "Close",
-    "pageTitle": "Projects - Maximus Mukiza | Cloud Security Portfolio",
-    "pageDescription": "Explore Maximus Mukiza's infrastructure projects, including packet automation, SIEM stack creation, Azure Bicep configurations, AWS hosting, and IoT security solutions.",
-    "heading": "My Projects",
-    "intro": "Here are some of the key projects I've worked on throughout my career. Each project represents unique challenges and valuable learning experiences in the field of cybersecurity and cloud computing.",
+    "pageTitle": "Projects - Maximus Mukiza | SRE Portfolio",
+    "pageDescription": "Explore Maximus Mukiza's engineering projects, including SOAR pipelines, SIEM stacks, Azure Bicep configurations, and AWS hosting.",
+    "heading": "Engineering Case Studies",
+    "intro": "A collection of scalable cloud environments and automated security frameworks developed for enterprise-grade compliance and operational efficiency.",
     "lightboxNav": "Use arrow keys to navigate between projects, ESC to close",
     "closeImageLightbox": "Close image lightbox",
     "closeVideoLightbox": "Close video lightbox",
@@ -99,61 +124,47 @@
     "learnings": "Learnings",
     "imageLightboxLabel": "Image lightbox",
     "videoLightboxLabel": "Video lightbox",
+    "all": "All",
+    "sre": "SRE",
+    "cloud": "Cloud",
+    "security": "Security",
+    "gitops": "GitOps / IaC",
+    "automation": "Automation",
+    "noMatch": "No projects match this filter.",
     "p1": {
       "title": "Secure Edge Node: Smart Parcel Ecosystem",
       "description": "Distributed IoT architecture featuring secure inter-node communication, centralized state management, and containerized locker controllers.",
-      "context": "Distributed Systems & Secure Edge Computing",
-      "background": "Designed a resilient locker management system with zero-trust principles, focusing on secure handshakes between distributed Raspberry Pi nodes and ESP32 controllers.",
-      "realizations": "Implemented a custom event-driven architecture for real-time locker updates and integrated hardware-level encryption for access tokens.",
-      "learnings": "Advanced knowledge in mutual TLS for IoT, distributed consensus for state synchronization, and secure boot fundamentals."
+      "metrics": "Implemented mutual TLS & hardware encryption for distributed nodes."
     },
     "p2": {
       "title": "React-Sec-Ops: Automated 3-Tier DevSecOps",
       "description": "High-availability web platform on AWS emphasizing DevSecOps integration, automated CI/CD security scanning, and managed cloud infrastructure.",
-      "context": "DevSecOps & Platform Automation on AWS",
-      "background": "Engineered a secure 3-tier architecture while navigating AWS Learner Lab IAM constraints, utilizing a hybrid IaC model for maximum automation.",
-      "realizations": "Automated ECS Fargate orchestration and Aurora RDS provisioning, with a fallback manual strategy for restricted IAM resources.",
-      "learnings": "Mastery of DevSecOps pipelines, automated secret management, and elastic infrastructure scaling."
+      "metrics": "Automated ECS Fargate deployment with integrated security scanning."
     },
     "p3": {
       "title": "Azure Platform: Modular Bicep-Flex",
       "description": "Highly modular Infrastructure as Code (IaC) framework for Azure, featuring automated compliance checks and standardized security benchmarks.",
-      "context": "Cloud Engineering & Azure Governance",
-      "background": "Designed reusable Bicep modules to accelerate enterprise deployments while enforcing zero-trust policies throughout the resource lifecycle.",
-      "realizations": "Created automated validation pipelines for Bicep templates, ensuring 100% compliance with Azure Security Benchmark v3.",
-      "learnings": "Gained expertise in Azure Policy as Code, modular IaC design patterns, and automated resource governance."
+      "metrics": "Enforced 100% compliance with Azure Security Benchmark v3 via IaC."
     },
     "p5": {
       "title": "Edge MLOps: AI-Driven Smart Bridge Control",
       "description": "Enterprise-grade IoT infrastructure automating maritime traffic via edge-deployed ML models, sound classification, and computer vision.",
-      "context": "MLOps & Edge Computing Orchestration",
-      "background": "Engineered a production-ready ML pipeline for real-time sensor fusion at the edge, optimizing bridge operations through automated decision-making.",
-      "realizations": "Architected a multi-modal inference engine with hybrid audio-visual processing, integrated into an automated CI/CD pipeline for model updates.",
-      "learnings": "Expertise in model quantisation for edge devices, streaming telemetry with OpenTelemetry, and containerized ML workloads."
+      "metrics": "Optimized maritime traffic flow via real-time edge sensor fusion."
     },
     "p6": {
       "title": "Terra-Multi-Cloud: AWS & Azure Orchestration",
       "description": "Cross-provider infrastructure automation using Terraform to deploy a resilient multi-cloud application across AWS and Azure.",
-      "context": "Platform Engineering & Multi-Cloud Resiliency",
-      "background": "Built a unified deployment pipeline that provisions Azure Container Apps and AWS ASG/ALB, highlighting cross-cloud networking and API discovery.",
-      "realizations": "Automated Docker build/push to ACR, dynamic service discovery across providers, and unified state management.",
-      "learnings": "Mastered multi-cloud networking, provider-abstracted IaC, and complex CI/CD orchestration."
+      "metrics": "Achieved cross-cloud high-availability with automated failover patterns."
     },
     "p7": {
       "title": "Hybrid Cloud Platform: GitOps & Talos Linux",
       "description": "Enterprise-grade Kubernetes foundation built on immutable Talos Linux and managed via ArgoCD, featuring eBPF-powered networking and replicated NVMe storage.",
-      "context": "Platform Engineering & SRE Operations",
-      "background": "Architected a self-healing, GitOps-driven platform from metal/VM to application layer, emphasizing zero-touch operations and high availability.",
-      "realizations": "Integrated Cilium eBPF for secure networking, Mayastor for distributed NVMe storage, and Garage S3 for object storage redundancy.",
-      "learnings": "Expertise in GitOps (ArgoCD), immutable OS management, eBPF visibility, and SRE monitoring stacks."
+      "metrics": "Deployed a self-healing GitOps platform with eBPF-powered security."
     },
     "p8": {
-      "title": "SRE Challenge: BookStack AWS Deployment",
+      "title": "High-Availability Infrastructure Hardening",
       "description": "High-availability, production-hardened deployment of BookStack on AWS using Pulumi (Python) and GitLab CI/CD with focus on observability and disaster recovery.",
-      "context": "Infrastructured as Code & SRE Best Practices",
-      "background": "Engineered a resilient documentation platform on ECS Fargate, focusing on automated recovery, secrets management, and performance monitoring.",
-      "realizations": "Implemented full CI/CD with multi-stage builds, automated backup strategies, and integrated security scanning.",
-      "learnings": "Collaborative SRE practices, advanced Pulumi (Python) automation, and GitLab CI/CD for mission-critical apps."
+      "metrics": "Reduced infrastructure provisioning time by 70% with 99.9% uptime."
     }
   },
   "languageSwitcher": {
@@ -173,8 +184,8 @@
     "projectsSectionTitle": "Featured Projects",
     "viewAllProjectsButton": "View All Projects",
     "contactSectionTitle": "Get In Touch",
-    "pageTitle": "Maximus Mukiza - Home | Cyber Security & IT Portfolio",
-    "pageDescription": "Welcome to the portfolio of Maximus Mukiza. Explore projects in cyber security, IT, and web development."
+    "pageTitle": "Maximus Mukiza | SRE & DevSecOps Engineering",
+    "pageDescription": "Welcome to the technical portfolio of Maximus Mukiza. Explore specialized projects in cloud security, automated infrastructure, and DevSecOps."
   },
   "notFound": {
     "pageTitle": "Page Not Found",
@@ -185,42 +196,44 @@
     "goHomeButton": "Go Back Home"
   },
   "skills": {
-    "title": "Technical Skills",
-    "certsTitle": "Related Certifications & Licenses",
+    "title": "Technology Stack",
+    "intro": "Tools and platforms used in production and internship work.",
+    "certsTitle": "Professional Certifications",
     "certsPursuing": "Currently pursuing:",
     "certsCompleted": "Completed {{date}}",
     "drivingLicenseCat": "Category {{category}}",
-    "categoryCloud": "Cloud",
-    "categorySecurity": "Security",
-    "categoryProgramming": "Programming",
-    "categoryDevOps": "DevOps",
+    "catCloud": "Cloud Platforms",
+    "catSreDevSecOps": "SRE & DevSecOps",
+    "catSecurity": "Security & Monitoring",
+    "catAutomation": "Programming & Automation",
+    "catSreInfra": "SRE & Infrastructure",
     "aws": "AWS Cloud Services",
-    "azure": "Azure Security",
-    "network": "Network Security",
-    "siem": "SIEM Solutions",
-    "threat": "Threat Intelligence",
-    "python": "Python",
+    "azure": "Azure Security & Bicep",
+    "network": "Network Security & VPN",
+    "siem": "Wazuh / Graylog / TheHive",
+    "threat": "Threat Intelligence (MISP)",
+    "python": "Python / FastAPI",
     "rust": "Rust",
-    "iac": "Infrastructure as Code",
-    "container": "Containerization",
+    "iac": "Terraform / OpenTofu",
+    "container": "Kubernetes / Docker",
     "incident": "Incident Response",
-    "certLpi": "LPI Certifications",
+    "certLpi": "LPI Linux Essentials",
     "certLpiDate": "Completed December 2023",
     "certAws": "AWS Cloud Practitioner",
     "certDriving": "Driving License",
     "certDrivingCat": "Category A2 (Motorcycle)"
   },
   "cv": {
-    "pageTitle": "CV - Maximus Mukiza | Cloud & Cyber Security Specialist",
-    "pageDescription": "View the Curriculum Vitae of Maximus Mukiza, detailing education, work experience, skills, and certifications in IT and Cyber Security.",
-    "heading": "Curriculum Vitae",
+    "pageTitle": "Dossier - Maximus Mukiza | SRE specialist",
+    "pageDescription": "View the Curriculum Vitae of Maximus Mukiza, detailing education, work experience, skills, and certifications in Cloud & Cyber Security.",
+    "heading": "Professional Dossier",
     "downloadButton": "Download Full Dossier (PDF)",
     "dossier_ready": "Technical dossier is compiled and ready for retrieval. Download the PDF for complete engineering history and certifications.",
     "downloadAria": "Download CV",
     "mainTitle": "Curriculum Vitae",
     "downloadAriaLabel": "Download CV",
     "name": "Maximus Mukiza",
-    "role": "Platform Engineer | SRE | DevSecOps",
+    "role": "Cloud Engineering | SRE | DevSecOps",
     "phone": "0456190617",
     "location": "Vorselaar, Flemish Region",
     "linkedin": "LinkedIn Profile",
@@ -238,24 +251,6 @@
     "educationUniversity2": "KOSH Herentals",
     "educationDate2": "2018 - 2022",
     "workExperienceTitle": "Experience",
-    "work1Title": "Fitness Instructor / Assistant",
-    "work1Date": "Apr 2024 – Nov 2025",
-    "work1Company": "OmniMove, Vorselaar",
-    "work1Detail1": "Developed 20+ personalized training plans; coached clients with a focus on safety and results.",
-    "work1Detail2": "Promoted and sold memberships — contributing to revenue growth.",
-    "work1Detail3": "First point of contact for questions: practiced clear, solution-oriented communication.",
-    "work2Title": "IT Support Specialist",
-    "work2Date": "Jun 2025 – Aug 2025",
-    "work2Company": "TSG Group, Turnhout",
-    "work2Detail1": "Processed and tracked ~800 delivery orders/week via Excel; improved data organization and reduced errors.",
-    "work2Detail2": "Supported customers via email and resolved service requests — strong focus on customer satisfaction.",
-    "work2Detail3": "Collaborated with logistics and sales: developed insight into business processes and data flow.",
-    "work3Title": "IT Assistant",
-    "work3Date": "Jul 2024 – Aug 2024",
-    "work3Company": "B-PAC BV, Grobbendonk",
-    "work3Detail1": "Redesigned the sales website: improved navigation and user experience (UX).",
-    "work3Detail2": "Created and edited product photos; ensured a consistent digital appearance.",
-    "work3Detail3": "Worked in a multidisciplinary team — strengthened communication and adaptability.",
     "skillsTitle": "Skills",
     "languagesTitle": "Languages",
     "langDutch": "Dutch",
@@ -282,21 +277,54 @@
   "internship": {
     "pageTitle": "Internship - Maximus Mukiza",
     "heading": "Professional Internship",
-    "title": "Automating Incident Triage via Python & SentinelOne",
-    "summary": "Designed and implemented an asynchronous SOAR architecture using Python microservices, reducing incident triage time and eliminating vendor lock-in.",
-    "synopsis": "During my internship at VanRoey (Dynamate), I was tasked with addressing the slow Mean Time to Respond (MTTR) caused by manual incident triage and the organization's heavy reliance on a single EDR vendor for Threat Intelligence. Initially exploring no-code platforms like SentinelOne Hyperautomation and Rewst, I identified critical limitations in error handling, API diagnostic visibility, and version control. \n\nTo overcome this, I pivoted to a custom-built solution, architecting a resilient, asynchronous event-driven pipeline using FastAPI, RabbitMQ, Redis, and Docker. I successfully integrated independent Threat Intelligence feeds (such as MISP, CIRCL, and CCB) directly into the automated workflows. By deploying Python microservices, I automated the extraction and enrichment of Indicators of Compromise (IoCs), resulting in high-fidelity, actionable tickets in Datto Autotask with deep links and integrated context. This significantly reduced manual workload for the SOC analysts and completely removed vendor lock-in for threat intelligence.",
+    "subheading": "SOC incident triage automation: designing and shipping a production Python microservice pipeline for Managed Detection & Response.",
+    "badge": "Professional Internship · VanRoey (Dynamate) — 2025",
+    "projectEvolution": "Project Evolution",
+    "architectureTitle": "Event-Driven Architecture",
+    "keyResults": "Key Results",
+    "synopsisTitle": "Technical Realization Synopsis",
+    "title": "Automating SOC Incident Triage — VanRoey (Dynamate)",
+    "context": "VanRoey (Dynamate) is a leading Managed Service Provider. Their SOC team was handling security alerts manually — analysts pivoted between SentinelOne, VirusTotal and internal databases for each incident.",
+    "objectivesTitle": "Objectives",
+    "objectives": "The primary goal was to eliminate the triage bottleneck by automating Threat Intelligence enrichment and ticketing workflows end-to-end.",
+    "businessCaseTitle": "Business Case",
+    "businessCase": "Automated triage reduces Mean Time to Respond (MTTR), eliminates licensing costs for third-party SOAR platforms, and allows SOC analysts to focus on deep investigation rather than data pivot.",
+    "methodologyTitle": "Methodology & Reporting",
+    "methodology": "I followed an agile approach, evaluating MISP vs OpenCTI, discovering vendor API bugs through R&D collaboration, and implementing an event-driven architecture with high-fidelity UAT.",
+    "synopsis": "During my internship at VanRoey (Dynamate), I was tasked with addressing the slow Mean Time to Respond (MTTR) caused by manual incident triage. Analysts were pivoting between disconnected tools for every alert. \n\nI architected a resilient, asynchronous event-driven pipeline using FastAPI, RabbitMQ, Redis, and Docker. I integrated independent Threat Intelligence feeds (MISP, CIRCL) rechtstreeks in de workflows. By deploying custom Python microservices, I automated IoC extraction and enrichment, generating actionable tickets in Datto Autotask with sub-30-second turnaround. This solution not only optimized operations but also eliminated recurring SOAR platform licensing costs.",
     "documentsTitle": "Mandatory Documents",
     "projectPlan": "Project Plan",
-    "thesis": "Realization (Thesis)",
+    "projectPlanDesc": "Objectives, business case, planning, and progress reporting.",
+    "thesis": "Realization Document",
+    "thesisDesc": "Full realization thesis — 5W1H approach, architecture, and outcomes.",
     "reflection": "Reflection",
-    "downloadAria": "Download document"
+    "reflectionDesc": "Personal learning outcomes, growth, and critical reflection.",
+    "downloadAria": "Download document",
+    "result1": "Automated triage time",
+    "result1Sub": "Previously minutes",
+    "result2": "SOAR licensing cost",
+    "result2Sub": "Open-source stack",
+    "result3": "IoC Coverage",
+    "result3Sub": "Integrated MISP & OTX",
+    "timeline": {
+      "step1": "Evaluated OpenCTI vs MISP",
+      "step1Desc": "Deployed both via Docker; chose MISP for bulk-API performance",
+      "step2": "Diagnosed S1 connector bug",
+      "step2Desc": "Confirmed STIX 2.1 parser defect with S1 R&D — no patch timeline",
+      "step3": "Built custom GraphQL pipeline",
+      "step3Desc": "85% payload reduction vs REST; solved HTTPS with HAProxy + Let's Encrypt",
+      "step4": "Evaluated Rewst, pivoted to Python",
+      "step4Desc": "Black-box debugging & Jinja complexity ruled out low-code",
+      "step5": "Shipped FastAPI microservice pipeline",
+      "step5Desc": "FastAPI · RabbitMQ · Redis · Docker — deployed to production"
+    }
   },
   "app": {
     "htmlLang": "en",
-    "defaultTitle": "Maximus | Cloud & Cybersecurity Infrastructure",
-    "metaDescription": "E-Portfolio of Maximus Mukiza, a Cloud & Cybersecurity Specialist showcasing enterprise infrastructure projects, security research, and technical expertise.",
-    "metaKeywords": "cybersecurity, cloud computing, infrastructure, Maximus Mukiza, IT security, AWS, Azure, DevSecOps",
-    "ogTitle": "Maximus Mukiza | Cloud & Cybersecurity Infrastructure Portfolio",
+    "defaultTitle": "Maximus | SRE & DevSecOps Engineering",
+    "metaDescription": "E-Portfolio of Maximus Mukiza, a DevSecOps Engineer showcasing enterprise cloud projects, security automation, and technical expertise.",
+    "metaKeywords": "DevSecOps, cloud automation, infrastructure, Maximus Mukiza, SOC, Wazuh, Graylog, AWS, Azure",
+    "ogTitle": "Maximus Mukiza | SRE & DevSecOps Engineering Portfolio",
     "ogDescription": "Portfolio of Maximus Mukiza, showcasing cybersecurity and cloud infrastructure projects and expertise."
   },
   "theme": {
@@ -309,19 +337,19 @@
   },
   "contactPage": {
     "title": "Establish Connection",
-    "description": "Interested in discussing cybersecurity, cloud projects, or potential collaborations? Initiate a handshake protocol below."
+    "description": "Interested in discussing DevSecOps, cloud automation, or potential collaborations? Initiate a handshake protocol below."
   },
   "aboutPage": {
     "title": "Systems Overview"
   },
   "meta": {
     "home": {
-      "title": "Maximus Mukiza | Cloud Security & Infrastructure",
+      "title": "Maximus Mukiza | SRE & DevSecOps Engineering",
       "description": "Welcome to the technical portfolio of Maximus Mukiza. Explore specialized projects in cloud security, automated infrastructure, and DevSecOps."
     },
     "about": {
       "title": "Engineering Profile | Maximus Mukiza",
-      "description": "Professional profile of Maximus Mukiza, a Cloud & Cybersecurity specialist with expertise in resilient systems and security automation.",
+      "description": "Professional profile of Maximus Mukiza, a DevSecOps specialist with expertise in resilient systems and security automation.",
       "keywords": "Maximus Mukiza, cloud security, infrastructure engineer, AWS, Azure, DevSecOps"
     },
     "contact": {
