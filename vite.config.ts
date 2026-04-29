@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -7,7 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   base: "/", // Updated for custom domain root https://mmt-labs.be/
   resolve: {
     alias: {
@@ -27,12 +28,7 @@ export default defineConfig({
     sourcemap: false,
     emptyOutDir: true,
     rollupOptions: {
-      output: {
-        manualChunks: {
-          mermaid: ["mermaid"],
-          vendor: ["react", "react-dom", "react-i18next", "i18next"],
-        },
-      },
+      output: {},
     },
   },
 });

@@ -22,7 +22,7 @@ const Home: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="home-page bg-background">
+    <div className="home-page bg-transparent">
       <Helmet>
         <title>
           {t("home.pageTitle", "MAXIMUS.SH | Engineering Narrative Portfolio")}

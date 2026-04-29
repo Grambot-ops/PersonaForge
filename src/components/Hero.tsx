@@ -3,19 +3,21 @@ import { useTranslation } from "react-i18next";
 
 /** Glass stat cards shown in the hero background (lg+ screens). */
 const HERO_STATS = [
-  { icon: "cloud", label: "3 Cloud Platforms", sub: "AWS · Azure · Proxmox" },
-  { icon: "speed", label: "< 30s MTTR", sub: "SOC Automation Pipeline" },
-  { icon: "shield", label: "DevSecOps", sub: "SOAR · Zero Trust · IaC" },
-  { icon: "location_on", label: "Belgium 🇧🇪", sub: "Open to hybrid / remote" },
+  { icon: "cloud", label: "Cloud Systems", sub: "Managed Resilience" },
+  { icon: "security", label: "DevSecOps", sub: "Automated Defense" },
+  { icon: "settings_suggest", label: "SRE / Ops", sub: "Chaos Engineering" },
 ] as const;
 
 /** Role chips displayed below the main heading. */
-const ROLES = ["Cloud Engineering", "SRE", "DevSecOps"] as const;
+const ROLES = [
+  "SRE & Platform Engineering",
+  "DevSecOps Architecture",
+  "Cloud Automation",
+] as const;
 
 /**
  * Hero section.
- * Features: animated gradient-mesh background, glass stat cards,
- * text-gradient heading, role chips, and an animated scroll cue.
+ * Targeted at SRE/Cloud/DevSecOps roles.
  */
 const Hero: React.FC = () => {
   const { t } = useTranslation();
@@ -23,27 +25,12 @@ const Hero: React.FC = () => {
 
   return (
     <section
-      className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden bg-background min-h-[95vh] flex items-center"
+      className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden bg-transparent min-h-[95vh] flex items-center"
       aria-labelledby="hero-title"
       id="home"
     >
-      {/* ── Visual Backdrop ──────────────────────────────────── */}
-      {/* Dynamic Mesh Orbs */}
-      <div
-        className="absolute -top-40 -left-40 w-[800px] h-[800px] bg-primary/[0.12] dark:bg-primary/[0.08] rounded-full blur-[150px] pointer-events-none animate-float"
-        aria-hidden="true"
-        style={{ animationDelay: "0s" }}
-      />
-      <div
-        className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-primary/[0.08] dark:bg-primary/[0.05] rounded-full blur-[130px] pointer-events-none animate-float"
-        aria-hidden="true"
-        style={{ animationDelay: "-4s" }}
-      />
-      <div
-        className="absolute -bottom-40 left-1/4 w-[500px] h-[500px] bg-primary/[0.05] dark:bg-primary/[0.03] rounded-full blur-[110px] pointer-events-none animate-float"
-        aria-hidden="true"
-        style={{ animationDelay: "-8s" }}
-      />
+      {/* Static Noise Overlay */}
+      <div className="absolute inset-0 bg-noise opacity-[0.02] pointer-events-none" />
 
       {/* Grid Overlay */}
       <div
@@ -87,83 +74,58 @@ const Hero: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="max-w-3xl">
           {/* Eyebrow pill */}
-          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-surface-raised/50 backdrop-blur-md border border-border-muted text-accent text-[10px] font-mono font-bold uppercase tracking-[0.15em] mb-10 animate-fadeIn">
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-surface-raised/50 backdrop-blur-md border border-border-muted text-primary text-[10px] font-mono font-bold uppercase tracking-[0.15em] mb-10 animate-fadeIn">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
             </span>
-            <span>Bachelor Capstone · IT Factory · 2026</span>
+            <span>SYSTEM_RELIABILITY_ENGINEER // 2026</span>
           </div>
 
           {/* Main heading */}
-          <h1 id="hero-title" className="mb-8 text-foreground">
-            {t("hero.title", "Maximus")}
-            <br />
-            <span className="text-gradient">Mukiza</span>
-            <span className="text-primary text-glow">.</span>
+          <h1
+            id="hero-title"
+            className="mb-8 text-6xl md:text-8xl text-foreground font-mono font-black tracking-tight uppercase leading-none"
+          >
+            MAXIMUS<br />MUKIZA
+            <span className="text-primary animate-pulse">_</span>
           </h1>
 
           {/* Role chips */}
-          <div
-            className="flex flex-wrap gap-2.5 mb-10 animate-fadeIn"
-            style={{ animationDelay: "200ms" }}
-          >
-            {ROLES.map((role) => (
-              <span
+          <div className="flex flex-wrap gap-4 mb-12">
+            {ROLES.map((role, i) => (
+              <div
                 key={role}
-                className="px-4 py-2 bg-surface/50 backdrop-blur-sm border border-border-muted text-foreground text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm hover:border-primary/40 transition-colors"
+                className="px-4 py-2 bg-primary/5 border border-primary/10 rounded-lg text-primary text-xs font-mono font-bold uppercase tracking-widest animate-fadeIn"
+                style={{ animationDelay: `${200 + i * 100}ms` }}
               >
                 {role}
-              </span>
+              </div>
             ))}
           </div>
 
-          {/* Description */}
-          <p
-            className="text-lg md:text-xl text-muted mb-12 max-w-2xl leading-relaxed font-sans animate-fadeIn"
-            style={{ animationDelay: "400ms" }}
-          >
-            {t(
-              "hero.description",
-              "Specializing in event-driven SOAR pipelines and GitOps-driven Kubernetes platforms. I bridge the gap between secure architecture and high-velocity engineering.",
-            )}
+          <p className="text-muted text-xl max-w-2xl leading-relaxed mb-12 font-mono opacity-80">
+            Engineering resilient cloud systems and automated security pipelines. 
+            Bridging the gap between development chaos and operational stability.
           </p>
 
-          {/* CTA buttons */}
-          <div
-            className="flex flex-col sm:flex-row gap-4 animate-fadeIn"
-            style={{ animationDelay: "600ms" }}
-          >
-            <a
-              href={`${publicUrl}CV_Maximus.pdf`}
-              download="Maximus_Mukiza_CV.pdf"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary text-white font-bold text-sm rounded-2xl hover:bg-primary-dark transition-all shadow-glow hover:scale-[1.02] active:scale-[0.98] outline-none"
-            >
-              <span
-                className="material-symbols-outlined text-lg"
-                aria-hidden="true"
-              >
-                download
-              </span>
-              Download Narrative CV
-            </a>
-
+          <div className="flex flex-col sm:flex-row gap-6">
             <a
               href="#projects"
-              onClick={(e) => {
-                e.preventDefault();
-                document
-                  .getElementById("projects")
-                  ?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 glass-card text-foreground font-bold text-sm rounded-2xl hover:border-primary/40 transition-all hover:bg-primary/5 active:scale-[0.98] outline-none"
+              className="px-8 py-4 bg-primary text-white font-mono font-bold text-sm uppercase tracking-widest hover:bg-primary-dark transition-all flex items-center justify-center gap-3 group"
             >
-              Explore Projects
-              <span
-                className="material-symbols-outlined text-lg"
-                aria-hidden="true"
-              >
+              Initialize Deep Dive
+              <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
                 arrow_forward
+              </span>
+            </a>
+            <a
+              href="#cv"
+              className="px-8 py-4 bg-transparent border border-primary/20 text-foreground font-mono font-bold text-sm uppercase tracking-widest hover:border-primary/50 transition-all flex items-center justify-center gap-3"
+            >
+              Export Dossier (CV)
+              <span className="material-symbols-outlined text-sm">
+                download
               </span>
             </a>
           </div>

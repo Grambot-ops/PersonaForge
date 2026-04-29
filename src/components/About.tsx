@@ -77,7 +77,7 @@ const About: React.FC = () => {
                   height={750}
                   loading="eager"
                   // @ts-ignore
-                  fetchpriority="high"
+                  fetchPriority="high"
                   decoding="async"
                 />
                 <div

@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next"; // Import useTranslation
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
+import ChaosBackground from "./components/ChaosBackground";
 import Home from "./pages/Home";
 
 const App: React.FC = () => {
@@ -34,8 +35,11 @@ const App: React.FC = () => {
         />{" "}
         {/* Reusing OG description */}
       </Helmet>
-      <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-black transition-colors duration-300">
-        <div className="flex flex-col min-h-screen">
+      <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-black transition-colors duration-300 relative">
+        <div className="fixed inset-0 z-0 pointer-events-none">
+          <ChaosBackground />
+        </div>
+        <div className="flex flex-col min-h-screen relative z-10">
           <Header />
           <main className="flex-grow" id="main-content">
             <Home />
