@@ -20,7 +20,7 @@ const CATEGORY_MAP: Record<
   "Cloud Platforms": {
     key: "skills.catCloud",
     icon: "cloud",
-    color: "text-sky-400",
+    color: "text-primary",
   },
   "SRE & DevSecOps": {
     key: "skills.catSreDevSecOps",
@@ -146,9 +146,11 @@ const Skills: React.FC = () => {
             return (
               <div
                 key={category}
-                className={`bento-card ${gridClass} group animate-enter`}
+                className={`bento-card ${gridClass} group animate-enter relative overflow-hidden`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
+                {/* Subtle Carbon Texture on hover */}
+                <div className="absolute inset-0 bg-carbon opacity-0 group-hover:opacity-[0.03] transition-opacity pointer-events-none" />
                 <div>
                   {/* Category header */}
                   <div className="flex items-center gap-3 mb-6">

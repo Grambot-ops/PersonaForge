@@ -109,9 +109,14 @@ const Header: React.FC = () => {
             {/* Logo wordmark */}
             <button
               onClick={() => scrollToSection("home")}
-              className="flex items-center group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg transition-all"
+              className="flex items-center gap-3 group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg transition-all"
               aria-label="Maximus Mukiza Portfolio — Back to top"
             >
+              {/* K8s Heartbeat Indicator */}
+              <div className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-40"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-accent/80 shadow-[0_0_8px_rgba(0,240,255,0.5)]"></span>
+              </div>
               <span className="font-display font-bold text-xl tracking-tight text-foreground group-hover:text-primary transition-colors">
                 Maximus<span className="text-primary">.</span>
               </span>

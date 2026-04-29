@@ -1,18 +1,11 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-/** Glass stat cards shown in the hero background (lg+ screens). */
-const HERO_STATS = [
-  { icon: "cloud", label: "Cloud Systems", sub: "Managed Resilience" },
-  { icon: "security", label: "DevSecOps", sub: "Automated Defense" },
-  { icon: "settings_suggest", label: "SRE / Ops", sub: "Chaos Engineering" },
-] as const;
-
 /** Role chips displayed below the main heading. */
 const ROLES = [
-  "SRE & Platform Engineering",
-  "DevSecOps Architecture",
-  "Cloud Automation",
+  "SRE & DEVSECOPS",
+  "KUBERNETES ENTHUSIAST",
+  "IRON & CODE",
 ] as const;
 
 /**
@@ -37,40 +30,6 @@ const Hero: React.FC = () => {
         className="absolute inset-0 bg-grid-white bg-blueprints pointer-events-none opacity-[0.03] dark:opacity-[0.05]"
         aria-hidden="true"
       />
-
-      {/* ── Glass stat cards — floating layout ───── */}
-      <div
-        className="hidden xl:flex flex-col gap-4 absolute top-1/2 -translate-y-1/2 right-12 2xl:right-24 z-10"
-        aria-label="Quick stats"
-      >
-        {HERO_STATS.map((stat, index) => (
-          <div
-            key={stat.label}
-            className="glass-card rounded-2xl px-5 py-4 flex items-center gap-4 w-64 animate-enter group hover:border-primary/30"
-            style={{ animationDelay: `${400 + index * 150}ms` }}
-            role="status"
-          >
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
-              <span
-                className="material-symbols-outlined text-xl"
-                aria-hidden="true"
-              >
-                {stat.icon}
-              </span>
-            </div>
-            <div>
-              <p className="text-foreground font-bold text-sm tracking-tight leading-none mb-1">
-                {stat.label}
-              </p>
-              <p className="text-muted text-[10px] font-mono font-medium uppercase tracking-wider">
-                {stat.sub}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* ── Main content ───────────────────────────────────────── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="max-w-3xl">
           {/* Eyebrow pill */}
@@ -79,16 +38,20 @@ const Hero: React.FC = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
             </span>
-            <span>SYSTEM_RELIABILITY_ENGINEER // 2026</span>
+            <span className="text-foreground">
+              ARCHITECTING RAW POWER & INTELLIGENCE // EST. 2026
+            </span>
           </div>
 
           {/* Main heading */}
           <h1
             id="hero-title"
-            className="mb-8 text-6xl md:text-8xl text-foreground font-mono font-black tracking-tight uppercase leading-none"
+            className="mb-8 text-7xl md:text-9xl text-foreground font-display font-black tracking-tighter uppercase leading-[0.85] relative"
           >
-            MAXIMUS<br />MUKIZA
-            <span className="text-primary animate-pulse">_</span>
+            MAXIMUS
+            <br />
+            MUKIZA
+            <span className="text-primary animate-pulse opacity-50">_</span>
           </h1>
 
           {/* Role chips */}
@@ -105,8 +68,14 @@ const Hero: React.FC = () => {
           </div>
 
           <p className="text-muted text-xl max-w-2xl leading-relaxed mb-12 font-mono opacity-80">
-            Engineering resilient cloud systems and automated security pipelines. 
-            Bridging the gap between development chaos and operational stability.
+            <span className="text-primary">
+              "I want to be the strongest and most intelligent person I know."
+            </span>
+            <br />
+            <br />
+            Architecting Kubernetes clusters in my homelab, pushing my limits in
+            the gym, and riding motorcycles. I bring that same discipline to
+            building resilient cloud systems and automated security pipelines.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6">

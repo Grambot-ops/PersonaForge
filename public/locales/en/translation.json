@@ -33,7 +33,7 @@
     "getInTouch": "Establish Connection"
   },
   "about": {
-    "bio": "I'm Maximus — a DevSecOps Engineer and Cloud Automation specialist focused on building secure, self-healing software platforms. At IT Factory (Thomas More), I specialise in Cloud Automation and Defence: deploying secure platforms on AWS and Azure, automating threat response pipelines, and designing systems that stay resilient under real-world conditions.",
+    "bio": "I am Maximus. My philosophy is simple: forge discipline in the iron room, push limits on the motorcycle, and architect unbreakable systems in my Kubernetes homelab. I bring that same relentless drive and edge to my professional work—building secure, self-healing cloud infrastructure and automated threat response pipelines. I don't just maintain systems; I engineer raw performance and resilience from the ground up.",
     "hobbiesTitle": "Core Interests",
     "hobbies": {
       "gym": "Fitness & Biomechanics",
@@ -63,6 +63,13 @@
       "automation": "Python · Bash · GitHub Actions",
       "threat": "Threat Intelligence (MISP · OTX)",
       "incident": "Zero Trust · Incident Response"
+    },
+    "directive": "I want to be the strongest and most intelligent person I know.",
+    "philosophyTitle": "North Star",
+    "specs": {
+      "fitness": "Fitness & Biomechanics",
+      "k8s": "Kubernetes Homelab",
+      "motorcycle": "Motorcycle Riding"
     },
     "experience": {
       "tsg": {

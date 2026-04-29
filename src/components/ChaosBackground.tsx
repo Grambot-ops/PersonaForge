@@ -61,6 +61,13 @@ const ChaosBackground: React.FC = () => {
       const dy = (x * (rho - z) - y) * dt;
       const dz = (x * y - beta * z) * dt;
 
+      // Reset if it explodes (Lorenz can be unstable with certain dt)
+      if (Math.abs(x) > 100 || Math.abs(y) > 100 || Math.abs(z) > 100) {
+        x = 0.1;
+        y = 0;
+        z = 0;
+      }
+
       x += dx;
       y += dy;
       z += dz;
@@ -76,7 +83,7 @@ const ChaosBackground: React.FC = () => {
 
       // ── Architectural Grid (SRE/Infrastructure Feel) ──
       // Optimized grid rendering: Single beginPath/stroke call
-      ctx.strokeStyle = "rgba(101, 79, 240, 0.06)"; // Slightly softer for better contrast
+      ctx.strokeStyle = "rgba(191, 148, 255, 0.08)"; // Maximus Lavender Grid
       ctx.lineWidth = 0.5;
       const gridSize = 60;
 
@@ -106,7 +113,7 @@ const ChaosBackground: React.FC = () => {
           ctx.lineTo(i, j + crosshairSize);
         }
       }
-      ctx.strokeStyle = "rgba(101, 79, 240, 0.25)"; // Brighter intersection hits
+      ctx.strokeStyle = "rgba(191, 148, 255, 0.3)"; // Subtle lavender intersections
       ctx.stroke();
 
       // ── Logic Tracing (The Chaos) ──
@@ -142,12 +149,12 @@ const ChaosBackground: React.FC = () => {
           // Progressive glow and thickness
           if (age > 0.98) {
             ctx.lineWidth = 2.0;
-            ctx.strokeStyle = `rgba(200, 190, 255, ${age})`; // Bright tip
-            ctx.shadowBlur = 8;
-            ctx.shadowColor = "rgba(101, 79, 240, 1)";
+            ctx.strokeStyle = `rgba(255, 255, 255, ${age})`; // Pure White / Silver hot tip
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = "rgba(191, 148, 255, 1)"; // Piercing Lavender glow
           } else {
             ctx.lineWidth = 1.0 + age * 0.5; // taper the width slightly
-            ctx.strokeStyle = `rgba(101, 79, 240, ${age * 0.8})`;
+            ctx.strokeStyle = `rgba(191, 148, 255, ${age * 0.8})`; // Lavender body
             ctx.shadowBlur = 0;
           }
 

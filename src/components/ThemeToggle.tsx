@@ -7,15 +7,13 @@ const MoonIcon = FaMoon as React.ElementType;
 
 const ThemeToggle: React.FC = () => {
   const { t } = useTranslation();
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
 
   useEffect(() => {
     // Initial sync
     const savedTheme = localStorage.getItem("theme");
-    const isDark =
-      savedTheme === "dark" ||
-      (!savedTheme &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches);
+    // Default to dark unless light is explicitly saved
+    const isDark = savedTheme !== "light";
     setIsDarkMode(isDark);
     if (isDark) {
       document.documentElement.classList.add("dark");

@@ -64,6 +64,13 @@
       "threat": "Threat Intelligence (MISP · OTX)",
       "incident": "Zero Trust · Incidentrespons"
     },
+    "directive": "Ik wil de sterkste en meest intelligente persoon zijn die ik ken.",
+    "philosophyTitle": "Leidraad",
+    "specs": {
+      "fitness": "Fitness & Biomechanica",
+      "k8s": "Kubernetes Homelab",
+      "motorcycle": "Motorrijden"
+    },
     "experience": {
       "tsg": {
         "title": "IT Support Specialist (Student)",

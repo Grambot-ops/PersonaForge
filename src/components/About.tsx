@@ -14,9 +14,16 @@ const COMPETENCIES = [
 /** Languages spoken. Labels and tooltips use translation keys. */
 const LANGUAGES = [
   { lang: "cv.langDutch", level: "Native" },
+  { lang: "cv.langKinyarwanda", level: "Native" },
   { lang: "cv.langEnglish", level: "Full Professional" },
   { lang: "cv.langFrench", level: "Professional Working" },
-  { lang: "cv.langKinyarwanda", level: "Native" },
+] as const;
+
+/** Performance metrics re-framing hobbies as engineering specs. */
+const PERFORMANCE_METRICS = [
+  { id: "fitness", icon: "fitness_center", labelKey: "about.specs.fitness" },
+  { id: "k8s", icon: "hub", labelKey: "about.specs.k8s" },
+  { id: "motorcycle", icon: "motorcycle", labelKey: "about.specs.motorcycle" },
 ] as const;
 
 /** Professional experience timeline. Content uses translation keys. */
@@ -165,13 +172,57 @@ const About: React.FC = () => {
                 </div>
               ))}
             </div>
+
+            {/* Core Directive (Quote) */}
+            <div className="mt-12 p-6 rounded-2xl border-l-4 border-primary bg-surface-raised/50 relative overflow-hidden group">
+               <div className="absolute top-0 right-0 p-2 opacity-5 group-hover:opacity-10 transition-opacity">
+                  <span className="material-symbols-outlined text-6xl">format_quote</span>
+               </div>
+               <p className="text-sm font-sans font-medium text-muted uppercase tracking-[0.2em] mb-2">{t("about.philosophyTitle", "Philosophy")}</p>
+               <h3 className="text-xl md:text-2xl font-display font-bold text-foreground italic leading-tight">
+                  "{t("about.directive")}"
+               </h3>
+            </div>
           </div>
         </div>
 
-        {/* ── Secondary Grid (Education, Languages, Timeline) ── */}
+        {/* ── Secondary Grid (Performance, Education, Languages, Timeline) ── */}
         <div className="mt-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Timeline - Spans 7 columns */}
-          <div className="lg:col-span-7 bento-card h-full">
+          {/* Performance Metrics - Spans 4 columns */}
+          <div className="lg:col-span-4 bento-card h-full relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-primary/10 transition-colors" />
+            <h4 className="text-sm font-semibold text-muted uppercase tracking-wider mb-8 flex items-center gap-3">
+              <span className="material-symbols-outlined text-primary text-lg">
+                interests
+              </span>
+              {t("about.hobbiesTitle")}
+            </h4>
+            <div className="space-y-6">
+              {PERFORMANCE_METRICS.map((metric) => (
+                <div key={metric.id} className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-surface border border-border-muted flex items-center justify-center text-primary group-hover:border-primary/30 transition-colors">
+                    <span className="material-symbols-outlined text-base">
+                      {metric.icon}
+                    </span>
+                  </div>
+                  <span className="text-sm font-bold text-foreground">
+                    {t(metric.labelKey)}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 pt-6 border-t border-border-muted flex items-center justify-between">
+               <span className="text-[10px] font-mono text-muted uppercase">Status: Operational</span>
+               <div className="flex gap-1">
+                  <div className="w-1 h-1 rounded-full bg-accent animate-pulse" />
+                  <div className="w-1 h-1 rounded-full bg-accent animate-pulse [animation-delay:200ms]" />
+                  <div className="w-1 h-1 rounded-full bg-accent animate-pulse [animation-delay:400ms]" />
+               </div>
+            </div>
+          </div>
+
+          {/* Timeline - Spans 8 columns */}
+          <div className="lg:col-span-8 bento-card h-full">
             <h4 className="text-sm font-semibold text-muted uppercase tracking-wider mb-8 flex items-center gap-3">
               <span className="material-symbols-outlined text-primary text-lg">
                 history
@@ -209,67 +260,49 @@ const About: React.FC = () => {
             </div>
           </div>
 
-          {/* Education & Languages - Spans 5 columns */}
-          <div className="lg:col-span-5 space-y-8">
-            {/* Languages */}
-            <div className="bento-card !p-6 shadow-sm">
-              <h4 className="text-foreground font-bold text-sm mb-6 flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                  <span
-                    className="material-symbols-outlined text-base"
-                    aria-hidden="true"
-                  >
-                    language
-                  </span>
-                </div>
-                {t("cv.languagesTitle")}
-              </h4>
-              <div className="flex flex-wrap gap-2">
-                {LANGUAGES.map((item) => (
-                  <div key={item.lang} className="group relative">
-                    <span className="px-3 py-2 bg-surface-raised/50 border border-border-muted text-muted text-xs font-bold rounded-xl cursor-help transition-all hover:border-primary/40 hover:text-primary">
-                      {t(item.lang)}
-                    </span>
-                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-1.5 bg-surface border border-border-muted rounded-lg text-[10px] font-bold text-foreground whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all pointer-events-none shadow-xl z-20">
-                      {item.level}
-                    </div>
+          {/* Education & Languages - Spans 12 columns in mobile, grid-column management */}
+          <div className="lg:col-span-12 grid grid-cols-1 sm:grid-cols-2 gap-8">
+             {/* Education */}
+             <div className="bento-card !p-6 shadow-sm">
+                <h4 className="text-foreground font-bold text-sm mb-6 flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                    <span className="material-symbols-outlined text-base" aria-hidden="true">school</span>
                   </div>
-                ))}
-              </div>
-            </div>
+                  {t("cv.educationTitle")}
+                </h4>
+                <div className="space-y-6">
+                  <div className="group">
+                    <p className="text-foreground font-bold text-sm group-hover:text-primary transition-colors">Thomas More Hogeschool</p>
+                    <p className="text-muted text-[11px] font-medium mt-1">{t("cv.educationDegree1")} · 2023 - 2026</p>
+                  </div>
+                  <div className="group">
+                    <p className="text-foreground font-bold text-sm group-hover:text-primary transition-colors">KOSH Herentals</p>
+                    <p className="text-muted text-[11px] font-medium mt-1">{t("cv.educationDegree2")} · 2018 - 2022</p>
+                  </div>
+                </div>
+             </div>
 
-            {/* Education Short */}
-            <div className="bento-card !p-6 shadow-sm">
-              <h4 className="text-foreground font-bold text-sm mb-6 flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                  <span
-                    className="material-symbols-outlined text-base"
-                    aria-hidden="true"
-                  >
-                    school
-                  </span>
+             {/* Languages */}
+             <div className="bento-card !p-6 shadow-sm">
+                <h4 className="text-foreground font-bold text-sm mb-6 flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                    <span className="material-symbols-outlined text-base" aria-hidden="true">language</span>
+                  </div>
+                  {t("cv.languagesTitle")}
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {LANGUAGES.map((item) => (
+                    <div key={item.lang} className="px-3 py-2 bg-surface border border-border-muted rounded-lg transition-all hover:border-primary hover:bg-primary/5 group min-w-[120px]">
+                      <p className="text-foreground font-bold text-xs mb-0.5 group-hover:text-primary transition-colors">
+                        {t(item.lang)}
+                      </p>
+                      <p className="text-muted text-[9px] font-mono font-medium uppercase tracking-tighter opacity-70">
+                        {item.level}
+                      </p>
+                    </div>
+                  ))}
                 </div>
-                {t("cv.educationTitle")}
-              </h4>
-              <div className="space-y-6">
-                <div className="group">
-                  <p className="text-foreground font-bold text-sm group-hover:text-primary transition-colors">
-                    Thomas More Hogeschool
-                  </p>
-                  <p className="text-muted text-[11px] font-medium mt-1">
-                    {t("cv.educationDegree1")} · 2023 - 2026
-                  </p>
-                </div>
-                <div className="group">
-                  <p className="text-foreground font-bold text-sm group-hover:text-primary transition-colors">
-                    KOSH Herentals
-                  </p>
-                  <p className="text-muted text-[11px] font-medium mt-1">
-                    {t("cv.educationDegree2")} · 2018 - 2022
-                  </p>
-                </div>
-              </div>
-            </div>
+             </div>
           </div>
         </div>
       </div>
