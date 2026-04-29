@@ -41,81 +41,107 @@ const Skills: React.FC = () => {
 
   return (
     <section
-      className="py-12 md:py-16 border-y border-border-muted bg-background relative z-20"
+      className="py-16 md:py-24 border-y border-border-muted bg-background relative z-20 overflow-hidden"
       id="skills"
       aria-labelledby="skills-heading"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Background Decorative Element */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" aria-hidden="true" />
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-          <div>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+          <div className="max-w-2xl">
             <h2
               id="skills-heading"
-              className="text-2xl md:text-3xl font-display font-bold text-foreground mb-2"
+              className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4 tracking-tight"
             >
               {t('skills.title', 'Technology Stack')}
             </h2>
-            <p className="text-muted text-sm">
-              {t('skills.intro', 'Tools and platforms used in production and internship work.')}
+            <p className="text-muted text-base leading-relaxed">
+              {t('skills.intro', 'A comprehensive overview of the tools and platforms I leverage to build secure, scalable, and automated infrastructure.')}
             </p>
           </div>
 
           {/* Tech highlights strip */}
           <div
-            className="flex items-center gap-4 md:gap-6 bg-surface border border-border-muted px-4 md:px-5 py-3 rounded-xl shadow-sm overflow-x-auto"
+            className="flex items-center gap-6 bg-surface/50 backdrop-blur-md border border-border-muted px-6 py-4 rounded-2xl shadow-card overflow-x-auto no-scrollbar"
             role="list"
             aria-label="Key cloud platforms"
           >
-            <div className="flex items-center gap-2 text-sm font-medium text-muted flex-shrink-0" role="listitem">
-              <FaAws className="text-xl text-amber-400" aria-label="AWS" />
-              <span className="whitespace-nowrap">Amazon Web Services</span>
+            <div className="flex items-center gap-3 text-sm font-semibold text-foreground flex-shrink-0" role="listitem">
+              <FaAws className="text-2xl text-[#FF9900]" aria-label="AWS" />
+              <span>AWS</span>
             </div>
-            <div className="flex items-center gap-2 text-sm font-medium text-muted flex-shrink-0" role="listitem">
-              <VscAzure className="text-xl text-sky-400" aria-label="Microsoft Azure" />
-              <span className="whitespace-nowrap">Microsoft Azure</span>
+            <div className="h-4 w-px bg-border-muted" aria-hidden="true" />
+            <div className="flex items-center gap-3 text-sm font-semibold text-foreground flex-shrink-0" role="listitem">
+              <VscAzure className="text-2xl text-[#0089D6]" aria-label="Microsoft Azure" />
+              <span>Azure</span>
             </div>
-            <div className="flex items-center gap-2 text-sm font-medium text-muted flex-shrink-0" role="listitem">
-              <SiLinux className="text-xl text-muted" aria-label="Linux" />
-              <span className="whitespace-nowrap">Linux / On-Prem</span>
+            <div className="h-4 w-px bg-border-muted" aria-hidden="true" />
+            <div className="flex items-center gap-3 text-sm font-semibold text-foreground flex-shrink-0" role="listitem">
+              <SiLinux className="text-2xl text-muted" aria-label="Linux" />
+              <span>Linux</span>
             </div>
           </div>
         </div>
 
-        {/* Grouped skill badge columns */}
-        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6 md:gap-8">
-          {CATEGORY_ORDER.map((category) => {
+        {/* Bento Grid layout */}
+        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6">
+          {CATEGORY_ORDER.map((category, index) => {
             const config = CATEGORY_MAP[category];
             const categorySkills = grouped[category];
             if (!categorySkills || categorySkills.length === 0) return null;
 
+            // Determine bento sizing based on category
+            const isWide = category === 'SRE & DevSecOps' || category === 'Cloud Platforms' || category === 'Security & Monitoring';
+            const gridClass = isWide 
+              ? 'md:col-span-3 lg:col-span-6' 
+              : 'md:col-span-3 lg:col-span-4';
+
             return (
-              <div key={category} className="flex flex-col gap-3">
-                {/* Category header */}
-                <div className="flex items-center gap-2 mb-1">
-                  <span
-                    className={`material-symbols-outlined text-base ${config.color}`}
-                    aria-hidden="true"
-                  >
-                    {config.icon}
-                  </span>
-                  <span className="text-xs font-semibold text-muted uppercase tracking-wider">
-                    {t(config.key, category)}
-                  </span>
+              <div 
+                key={category} 
+                className={`bento-card ${gridClass} group animate-enter`}
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div>
+                  {/* Category header */}
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className={`w-10 h-10 rounded-xl bg-surface-raised border border-border-muted flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                      <span
+                        className={`material-symbols-outlined text-xl ${config.color}`}
+                        aria-hidden="true"
+                      >
+                        {config.icon}
+                      </span>
+                    </div>
+                    <h3 className="text-[10px] font-mono font-bold text-foreground uppercase tracking-widest">
+                      {t(config.key, category)}
+                    </h3>
+                  </div>
+
+                  {/* Skill list */}
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {categorySkills.map((skill) => (
+                      <div
+                        key={skill.id}
+                        className="px-3 py-1.5 bg-background/50 border border-border-muted rounded-lg text-[10px] font-mono text-muted font-medium hover:border-primary/40 hover:bg-primary/5 hover:text-primary transition-all cursor-default"
+                        title={`${skill.label} - ${skill.proficiency}%`}
+                      >
+                        {skill.label}
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
-                {/* Skill pills */}
-                <ul className="flex flex-col gap-2">
-                  {categorySkills.map((skill) => (
-                    <li
-                      key={skill.id}
-                      className="px-3 py-2 bg-surface-raised border border-border-muted rounded-lg text-sm text-foreground font-medium hover:border-primary/40 hover:bg-primary/5 hover:text-primary transition-all cursor-default select-none"
-                      aria-label={`${skill.label} — proficiency ${skill.proficiency}%`}
-                    >
-                      {skill.label}
-                    </li>
-                  ))}
-                </ul>
+                {/* Progress-like decorative bar at bottom */}
+                <div className="mt-6 w-full h-1 bg-border-muted rounded-full overflow-hidden">
+                  <div 
+                    className={`h-full opacity-20 ${config.color.replace('text-', 'bg-')}`} 
+                    style={{ width: '100%' }}
+                  />
+                </div>
               </div>
             );
           })}

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import mermaid from "mermaid";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Initialize mermaid with reliable defaults
 mermaid.initialize({
@@ -189,19 +190,43 @@ const Mermaid: React.FC<MermaidProps> = ({ chart, responsive = true }) => {
   }
 
   return (
-    <div className="relative w-full overflow-visible">
-      {isLoading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-background/50 backdrop-blur-sm z-10 min-h-[300px]">
-          <div className="font-mono text-[10px] text-primary animate-pulse tracking-[0.3em] uppercase">
-            Init Visual Engine...
-          </div>
-        </div>
-      )}
-      <div
+    <div className="relative w-full overflow-visible group">
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 flex items-center justify-center bg-background/50 backdrop-blur-sm z-10 min-h-[300px]"
+          >
+            <div className="flex flex-col items-center gap-3">
+              <div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+              <div className="font-mono text-[10px] text-primary animate-pulse tracking-[0.3em] uppercase">
+                Init Visual Engine...
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0, y: 10, scale: 0.98 }}
+        animate={!isLoading ? { opacity: 1, y: 0, scale: 1 } : {}}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         ref={containerRef}
         className="mermaid-container flex justify-center w-full min-h-[300px]"
         style={{ visibility: isLoading ? "hidden" : "visible" }}
       />
+      {!isLoading && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+          className="absolute top-2 right-2 pointer-events-none"
+        >
+          <div className="bg-primary/5 backdrop-blur-md border border-primary/20 px-2 py-1 rounded text-[8px] font-bold text-primary uppercase tracking-wider">
+            Enhanced Technical Blueprint
+          </div>
+        </motion.div>
+      )}
     </div>
   );
 };

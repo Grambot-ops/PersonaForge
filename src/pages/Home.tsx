@@ -1,14 +1,22 @@
-// ... imports
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import Hero from "../components/Hero";
 import Skills from "../components/Skills";
 import About from "./About";
 import Internship from "../components/Internship";
-import Projects from "./Projects";
-import Contact from "./Contact";
-import CV from "./CV";
+
+// Lazy load components that contain heavy libraries (like Mermaid.js in Projects)
+const Projects = lazy(() => import("./Projects"));
+const Contact = lazy(() => import("./Contact"));
+const CV = lazy(() => import("./CV"));
+
+// Loading fallback component
+const SectionLoader = () => (
+  <div className="py-20 flex items-center justify-center">
+    <div className="w-8 h-8 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
+  </div>
+);
 
 const Home: React.FC = () => {
   const { t } = useTranslation();
@@ -45,15 +53,21 @@ const Home: React.FC = () => {
       </div>
 
       <div id="projects">
-        <Projects />
+        <Suspense fallback={<SectionLoader />}>
+          <Projects />
+        </Suspense>
       </div>
 
       <div id="cv">
-        <CV />
+        <Suspense fallback={<SectionLoader />}>
+          <CV />
+        </Suspense>
       </div>
 
       <div id="contact">
-        <Contact />
+        <Suspense fallback={<SectionLoader />}>
+          <Contact />
+        </Suspense>
       </div>
     </div>
   );

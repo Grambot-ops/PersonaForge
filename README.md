@@ -1,64 +1,45 @@
-# PersonaForge | Infrastructure Specialist Portfolio
+# PersonaForge | Infrastructure Narrative Portfolio
 
-High-performance terminal-themed portfolio built with React, TypeScript, and Bun. Dedicated to showcasing enterprise infrastructure, cloud orchestration, and cybersecurity research.
+A premium, high-performance portfolio dedicated to showcasing enterprise infrastructure, cloud orchestration, and DevSecOps research. Built with React, TypeScript, and Vite.
 
 ## Features
 
-- **Cyberpunk Terminal UI**: High-fidelity CRT and glitch effects powered by Tailwind CSS.
-- **Multilingual Support**: Dynamic i18n switching between English and Dutch.
-- **Infrastructure Focus**: Modular architecture designed for high maintainability.
-- **Bun Runtime**: Optimized for speed with Bun and React 18.
-- **Responsive Terminal**: Fully responsive grid system with scanline effects.
+- **Premium Enterprise Aesthetic**: A sleek, modern interface utilizing glassmorphism and the "Emerald Forest" design system.
+- **Bento Grid Architecture**: Structured, high-density information display for projects and skills.
+- **Multilingual Support**: Seamless i18n integration for English and Dutch audiences.
+- **Infrastructure Focus**: Modular architecture designed for high maintainability and narrative-driven storytelling.
+- **Optimized for Speed**: Fast load times and smooth transitions powered by Vite and Tailwind CSS.
 
 ## Project Structure
 
 ```text
 PersonaForge
+├── design-system    # Master Design System (MASTER.md)
 ├── src
-│   ├── components   # Cyberpunk-themed UI components
+│   ├── components   # Premium UI components
 │   ├── pages        # Layout and view logic
-│   ├── data         # Structured content
-│   ├── styles       # Tailwind global layers and CRT animations
+│   ├── data         # Structured content (Projects, Skills)
+│   ├── styles       # Global CSS and Design Tokens
 │   └── types        # Type definitions
 ```
 
 ## Installation
 
 1. Clone the repository:
-
    ```bash
    git clone <repository-url>
    cd PersonaForge
    ```
 
-2. Setup Python environment (Required for Arch Linux):
-
+2. Install dependencies:
    ```bash
-   python -m venv .venv
-   source .venv/bin/activate
+   npm install
    ```
 
-3. Install dependencies:
-
+3. Start the development server:
    ```bash
-   bun install
+   npm run dev
    ```
 
-4. Start the development server:
+4. Open your browser and navigate to `http://localhost:5173` to view the website.
 
-   ```bash
-   bun dev
-   ```
-
-5. Open your browser and navigate to `http://localhost:3000` to view the website.
-
-## Usage
-
-- Navigate through the website using the navigation menu in the header.
-- Explore the "About" section for personal information and hobbies.
-- Check out the "Projects" section to see the work done.
-- Use the "Contact" section to reach out via email.
-
-## License
-
-This project is licensed under the MIT License. Feel free to use and modify it as you wish.

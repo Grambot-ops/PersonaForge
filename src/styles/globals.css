@@ -1,72 +1,106 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @layer base {
   :root {
     /* ── Luxury Brand Palette — Light Mode ────────────────── */
-    --primary: #10b981; /* Emerald 500 */
+    --primary: #10b981;
     --primary-dark: #059669;
-    
+    --accent: #6366f1;
+
     /* Premium Mint-Ivory — Pairs perfectly with emerald */
     --background: #f4faf8;
     --surface: #ffffff;
     --surface-raised: #eff6f3;
-    
+
     /* High contrast deep emerald-charcoal */
     --text: #061a12;
     --text-muted: #4a6158;
-    
+
+    /* ── Fluid Typography Scale ───────────────────────────── */
+    --font-fluid-base: clamp(1rem, 0.92rem + 0.39vw, 1.125rem);
+    --font-fluid-h1: clamp(2.5rem, 1.5rem + 5vw, 5.5rem);
+
     /* Subtle emerald-tinted borders */
     --border: rgba(16, 185, 129, 0.12);
     --border-muted: rgba(16, 185, 129, 0.06);
     --glow: rgba(16, 185, 129, 0.15);
 
-    /* ── Radius scale ───────────────────────────────────────── */
-    --radius-sm: 0.5rem;
-    --radius-md: 0.75rem;
-    --radius-lg: 1rem;
-    --radius-xl: 1.5rem;
-    --radius-2xl: 2rem;
+    /* ── Radius scale (8pt Grid) ───────────────────────────── */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-2xl: 32px;
 
-    /* ── Shadow scale ───────────────────────────────────────── */
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
-    --shadow-card: 0 4px 24px rgba(6, 26, 18, 0.04);
+    /* ── Shadow scale — Refined for "Frosted" depth ─────────── */
+    --shadow-sm: 0 2px 4px rgba(6, 26, 18, 0.05);
+    --shadow-card: 0 12px 32px rgba(16, 185, 129, 0.08);
+    --shadow-glow: 0 0 20px rgba(16, 185, 129, 0.12);
   }
 
   .dark {
     /* ── Luxury Brand Palette — Dark Mode ─────────────────── */
-    --primary: #34d399; /* Emerald 400 */
+    --primary: #5eead4; /* Brighter teal for better glow */
     --primary-dark: #10b981;
-    
-    /* Deep Forest Obsidian — Much more premium than pure black */
-    --background: #0d1410; 
-    --surface: #121d18;
-    --surface-raised: #1a2922;
-    
-    /* Crisp emerald-white text */
-    --text: #eefdf6;
-    --text-muted: #8ca398;
-    
-    /* Neon emerald accents for borders */
-    --border: rgba(52, 211, 153, 0.15);
-    --border-muted: rgba(52, 211, 153, 0.08);
-    --glow: rgba(52, 211, 153, 0.15);
+    --accent: #9fa8da; /* Muted Lavender-Indigo for professional dark mode */
 
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.30);
-    --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.50);
+    /* Deep Forest Obsidian — Much more premium than pure black */
+    --background: #0a0f0e; /* Slightly deeper obsidian */
+    --surface: #111a17;
+    --surface-raised: #182521;
+
+    /* High-contrast mint-white text for dark mode accessibility */
+    --text: #f0fdfa; /* Mint-white */
+    --text-muted: #819b90;
+
+    /* Elevated emerald accents for borders */
+    --border: rgba(94, 234, 212, 0.1);
+    --border-muted: rgba(94, 234, 212, 0.05);
+    --glow: rgba(94, 234, 212, 0.2);
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+    --shadow-card: 0 20px 50px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 0 30px rgba(94, 234, 212, 0.15);
+  }
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    @apply font-display font-bold;
+    letter-spacing: -0.02em;
   }
 }
 
 @layer components {
   /* Premium card styling */
   .glass-card {
-    @apply bg-surface backdrop-blur-md border border-border shadow-card transition-all duration-300;
-  }
-  
-  .dark .glass-card {
     background-color: var(--surface);
+    @apply backdrop-blur-md border border-border shadow-card transition-all duration-300;
+  }
+
+  /* Sophisticated light mode glass */
+  :root .glass-card {
+    background-color: rgba(255, 255, 255, 0.7);
+    @apply backdrop-blur-lg border-white/40;
+  }
+
+  .dark .glass-card {
+    background-color: rgba(18, 29, 24, 0.8);
     @apply backdrop-blur-xl border-white/5;
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .bento-card {
+    @apply glass-card rounded-xl p-6 flex flex-col justify-between hover:scale-[1.02] active:scale-[0.98] transition-all;
   }
 
   .section-container {
@@ -75,16 +109,50 @@
 }
 
 @layer utilities {
+  .bg-blueprints {
+    background-image:
+      linear-gradient(rgba(94, 234, 212, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(94, 234, 212, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .bg-dots {
+    background-image: radial-gradient(
+      rgba(94, 234, 212, 0.05) 1px,
+      transparent 1px
+    );
+    background-size: 24px 24px;
+  }
+
   .text-glow {
     text-shadow: 0 0 15px var(--glow);
   }
-  
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-primary via-primary to-primary-dark;
+  }
+
   .bg-grid-white {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(15 23 42 / 0.04)'%3E%3Cpath d='M0 .5H31.5V32'/%3E%3C/svg%3E");
   }
 
   .dark .bg-grid-white {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(52 211 153 / 0.04)'%3E%3Cpath d='M0 .5H31.5V32'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(94 234 212 / 0.05)'%3E%3Cpath d='M0 .5H31.5V32'/%3E%3C/svg%3E");
+  }
+
+  /* Architectural Blueprints Pattern */
+  .bg-blueprints {
+    background-image: radial-gradient(
+      circle at 2px 2px,
+      var(--border) 1px,
+      transparent 0
+    );
+    background-size: 40px 40px;
+  }
+
+  .bg-dots {
+    background-image: radial-gradient(var(--border) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 
   .animate-pulse-soft {
@@ -92,8 +160,15 @@
   }
 
   @keyframes pulse-soft {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.8; transform: scale(0.98); }
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(0.98);
+    }
   }
 }
 
