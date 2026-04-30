@@ -33,8 +33,8 @@ const Hero: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="max-w-3xl">
           {/* Eyebrow pill */}
-          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-surface-raised/50 backdrop-blur-md border border-border-muted text-primary text-[10px] font-mono font-bold uppercase tracking-[0.15em] mb-10 animate-fadeIn">
-            <span className="relative flex h-2 w-2">
+          <div className="inline-flex items-start sm:items-center gap-3 px-4 py-2 rounded-2xl sm:rounded-full bg-surface-raised/50 backdrop-blur-md border border-border-muted text-primary text-[10px] font-mono font-bold uppercase tracking-[0.15em] mb-10 animate-fadeIn max-w-full">
+            <span className="relative flex h-2 w-2 mt-1 sm:mt-0 shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
             </span>
@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
           {/* Main heading */}
           <h1
             id="hero-title"
-            className="mb-8 text-7xl md:text-9xl text-foreground font-display font-black tracking-tighter uppercase leading-[0.85] relative"
+            className="mb-8 text-5xl sm:text-7xl md:text-9xl text-foreground font-display font-black tracking-tighter uppercase leading-[0.85] relative break-words"
           >
             MAXIMUS
             <br />

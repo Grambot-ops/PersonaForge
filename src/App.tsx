@@ -35,7 +35,7 @@ const App: React.FC = () => {
         />{" "}
         {/* Reusing OG description */}
       </Helmet>
-      <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-black transition-colors duration-300 relative">
+      <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-black transition-colors duration-300 relative overflow-x-hidden flex flex-col">
         <div className="fixed inset-0 z-0 pointer-events-none">
           <ChaosBackground />
         </div>
