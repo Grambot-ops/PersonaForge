@@ -25,7 +25,8 @@ const ChaosBackground: React.FC = () => {
     let z = 0;
 
     // Use a pre-allocated Float32Array as a ring buffer to eliminate O(N) points.shift() every frame
-    const maxPoints = 1600;
+    const isMobile = window.innerWidth < 768;
+    const maxPoints = isMobile ? 800 : 1600; // Reduce points on mobile to save battery/CPU
     const points = new Float32Array(maxPoints * 3);
     let head = 0;
     let count = 0;
@@ -43,11 +44,17 @@ const ChaosBackground: React.FC = () => {
     window.addEventListener("resize", resize);
     resize();
 
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current.x = e.clientX;
-      mouseRef.current.y = e.clientY;
+    const handleMouseMove = (e: MouseEvent | TouchEvent) => {
+      if ("touches" in e) {
+        mouseRef.current.x = e.touches[0].clientX;
+        mouseRef.current.y = e.touches[0].clientY;
+      } else {
+        mouseRef.current.x = (e as MouseEvent).clientX;
+        mouseRef.current.y = (e as MouseEvent).clientY;
+      }
     };
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleMouseMove, { passive: true });
 
     const render = () => {
       // Smooth interpolation for the Butterfly Effect
@@ -170,6 +177,7 @@ const ChaosBackground: React.FC = () => {
     return () => {
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
