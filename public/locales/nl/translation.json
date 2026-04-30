@@ -71,6 +71,16 @@
       "k8s": "Kubernetes Homelab",
       "motorcycle": "Motorrijden"
     },
+    "downloadCv": "Download Technisch CV",
+    "traitsTitle": "Operationele Mindset",
+    "traits": {
+      "communication": "Technische Communicatie",
+      "communicationDesc": "Overbrugt de kloof tussen complexe engineering-eisen en de verwachtingen van stakeholders.",
+      "collaboration": "Interdisciplinaire Samenwerking",
+      "collaborationDesc": "Ervaring in het werken met R&D en cross-functionele teams om systeem-brede bottlenecks te diagnosticeren.",
+      "rigor": "Operationele Rigor",
+      "rigorDesc": "Gebouwd op een fundament van discipline en fysieke training op hoog niveau; vertaald naar systeembetrouwbaarheid zonder compromissen."
+    },
     "experience": {
       "tsg": {
         "title": "IT Support Specialist (Student)",

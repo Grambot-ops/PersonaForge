@@ -26,6 +26,13 @@ const PERFORMANCE_METRICS = [
   { id: "motorcycle", icon: "motorcycle", labelKey: "about.specs.motorcycle" },
 ] as const;
 
+/** Operational traits (soft skills) for the professional field. */
+const TRAITS = [
+  { id: "communication", icon: "forum" },
+  { id: "collaboration", icon: "groups" },
+  { id: "rigor", icon: "verified_user" },
+] as const;
+
 /** Professional experience timeline. Content uses translation keys. */
 const TIMELINE = [
   {
@@ -152,6 +159,25 @@ const About: React.FC = () => {
                   {t("about.philosophy_3")}
                 </p>
               </div>
+
+              {/* Download CV CTA */}
+              <div className="pt-4 flex flex-wrap gap-4">
+                <a
+                  href={`${publicUrl}CV_Maximus.pdf`}
+                  download="CV_Maximus_Mukiza.pdf"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-white font-display font-bold rounded-2xl hover:shadow-glow hover:-translate-y-0.5 transition-all group/cv focus-visible:ring-4 focus-visible:ring-primary/30 outline-none"
+                >
+                  <span className="material-symbols-outlined text-xl group-hover/cv:scale-110 transition-transform">download</span>
+                  {t("about.downloadCv")}
+                </a>
+                <button
+                  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-surface-raised border border-border-muted text-foreground font-display font-bold rounded-2xl hover:bg-surface hover:border-primary/40 transition-all focus-visible:ring-4 focus-visible:ring-primary/10 outline-none"
+                >
+                  {t("hero.getInTouch")}
+                  <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                </button>
+              </div>
             </div>
 
             {/* Competency grid */}
@@ -186,8 +212,36 @@ const About: React.FC = () => {
           </div>
         </div>
 
-        {/* ── Secondary Grid (Performance, Education, Languages, Timeline) ── */}
+        {/* ── Secondary Grid (Traits, Performance, Education, Languages, Timeline) ── */}
         <div className="mt-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Professional Traits - Spans all 12 columns */}
+          <div className="lg:col-span-12 bento-card !p-8 md:!p-10 border-primary/20 bg-primary/[0.02] relative overflow-hidden group">
+            <div className="absolute top-0 right-0 p-8 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity pointer-events-none">
+                <span className="material-symbols-outlined text-9xl">analytics</span>
+            </div>
+            
+            <h4 className="text-sm font-semibold text-primary uppercase tracking-[0.2em] mb-10 flex items-center gap-3">
+              <span className="w-10 h-px bg-primary/40" />
+              {t("about.traitsTitle")}
+            </h4>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
+              {TRAITS.map((trait) => (
+                <div key={trait.id} className="space-y-4">
+                  <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform duration-500">
+                    <span className="material-symbols-outlined text-2xl">{trait.icon}</span>
+                  </div>
+                  <h5 className="text-lg font-display font-bold text-foreground">
+                    {t(`about.traits.${trait.id}`)}
+                  </h5>
+                  <p className="text-muted text-sm leading-relaxed max-w-sm">
+                    {t(`about.traits.${trait.id}Desc`)}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Performance Metrics - Spans 4 columns */}
           <div className="lg:col-span-4 bento-card h-full relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-primary/10 transition-colors" />

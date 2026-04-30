@@ -71,6 +71,16 @@
       "k8s": "Kubernetes Homelab",
       "motorcycle": "Motorcycle Riding"
     },
+    "downloadCv": "Download Technical CV",
+    "traitsTitle": "Operational Mindset",
+    "traits": {
+      "communication": "Technical Communication",
+      "communicationDesc": "Bridging the gap between complex engineering requirements and stakeholder expectations.",
+      "collaboration": "Interdisciplinary Collaboration",
+      "collaborationDesc": "Experienced in working with R&D and cross-functional teams to diagnose and solve system-wide bottlenecks.",
+      "rigor": "Operational Rigor",
+      "rigorDesc": "Built on a foundation of discipline and high-performance physical training; translated to zero-compromise system reliability."
+    },
     "experience": {
       "tsg": {
         "title": "IT Support (Student)",
