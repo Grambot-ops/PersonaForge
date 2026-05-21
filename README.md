@@ -23,7 +23,13 @@ PersonaForge
 │   └── types        # Type definitions
 ```
 
-## Installation
+## Installation & Development
+
+### Prerequisites
+
+Make sure you have [Bun](https://bun.sh/) installed.
+
+### Setup
 
 1. Clone the repository:
    ```bash
@@ -33,13 +39,32 @@ PersonaForge
 
 2. Install dependencies:
    ```bash
-   npm install
+   bun install
    ```
 
 3. Start the development server:
    ```bash
-   npm run dev
+   bun dev
+   ```
+   Or use the alias:
+   ```bash
+   bun start
    ```
 
-4. Open your browser and navigate to `http://localhost:5173` to view the website.
+4. Build the application:
+   ```bash
+   bun run build
+   ```
+
+5. Preview the build:
+   ```bash
+   bun run preview
+   ```
+
+6. Run the test suite:
+   ```bash
+   bun test
+   ```
+
+7. Open your browser and navigate to `http://localhost:5173` to view the website.
 
