@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { FaGithub } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
 import { Project } from "../types";
 import projectDataImport from "../data/projects.json";
 import Mermaid from "./Mermaid";
@@ -81,51 +82,59 @@ const Projects: React.FC = () => {
       />
 
       {/* ── Lightbox modal ───────────────────────────────────── */}
-      {modalData && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0d1410]/95 backdrop-blur-md p-4 md:p-10"
-          onClick={() => setModalData(null)}
-          role="dialog"
-          aria-modal="true"
-        >
-          <div
-            className={`relative ${
-              modalData.type === "mermaid" ? "max-w-[95vw]" : "max-w-5xl"
-            } w-full max-h-[90vh] flex flex-col animate-enter`}
-            onClick={(e) => e.stopPropagation()}
+      <AnimatePresence>
+        {modalData && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0d1410]/95 backdrop-blur-md p-4 md:p-10"
+            onClick={() => setModalData(null)}
+            role="dialog"
+            aria-modal="true"
           >
-            {/* Close button */}
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-foreground font-display font-bold text-lg">
-                {modalData.title}
-              </h2>
-              <button
-                className="flex items-center gap-2 text-muted hover:text-primary transition-all bg-surface border border-border-muted px-4 py-2 rounded-xl"
-                onClick={() => setModalData(null)}
-              >
-                <span className="material-symbols-outlined text-base">
-                  close
-                </span>
-                <span className="text-sm font-semibold">Close</span>
-              </button>
-            </div>
-
-            {modalData.type === "image" ? (
-              <img
-                src={modalData.content}
-                alt={modalData.title}
-                className="max-w-full max-h-[80vh] object-contain rounded-2xl border border-white/5 shadow-2xl bg-surface"
-              />
-            ) : (
-              <div className="w-full min-h-[70vh] bg-surface border border-white/5 rounded-2xl p-6 md:p-10 overflow-auto no-scrollbar">
-                <div className="min-w-max">
-                  <Mermaid chart={modalData.content} responsive={false} />
-                </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 15 }}
+              transition={{ type: "spring", damping: 28, stiffness: 260 }}
+              className={`relative ${
+                modalData.type === "mermaid" ? "max-w-[95vw]" : "max-w-5xl"
+              } w-full max-h-[90vh] flex flex-col`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close button */}
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-foreground font-display font-bold text-lg">
+                  {modalData.title}
+                </h2>
+                <button
+                  className="flex items-center gap-2 text-muted hover:text-primary transition-all bg-surface border border-border-muted px-4 py-2 rounded-xl cursor-pointer"
+                  onClick={() => setModalData(null)}
+                >
+                  <span className="material-symbols-outlined text-base">
+                    close
+                  </span>
+                  <span className="text-sm font-semibold">Close</span>
+                </button>
               </div>
-            )}
-          </div>
-        </div>
-      )}
+
+              {modalData.type === "image" ? (
+                <img
+                  src={modalData.content}
+                  alt={modalData.title}
+                  className="max-w-full max-h-[80vh] object-contain rounded-2xl border border-white/5 shadow-2xl bg-surface"
+                />
+              ) : (
+                <div className="w-full h-[65vh] md:h-[75vh] bg-surface border border-white/5 rounded-2xl relative overflow-hidden select-none">
+                  <Mermaid chart={modalData.content} responsive={false} interactive={true} />
+                </div>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header */}
@@ -176,41 +185,56 @@ const Projects: React.FC = () => {
           </div>
         </div>
 
-        {filtered.length === 0 ? (
-          <div className="bento-card justify-center items-center py-32 text-center">
-            <span className="material-symbols-outlined text-5xl text-primary/20 mb-4">
-              search_off
-            </span>
-            <p className="text-muted font-medium">
-              No projects found for this category.
-            </p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
-            {filtered.map((project, index) => {
-              // Featured logic: first item in 'All' view, or first 2 items for visual interest
-              const isFeatured =
-                (activeFilter === "All" && index === 0) ||
-                (index === 0 && filtered.length > 2);
-              const gridClass = isFeatured
-                ? "lg:col-span-8 lg:row-span-2"
-                : "lg:col-span-4";
+        <motion.div layout className="relative">
+          <AnimatePresence mode="popLayout">
+            {filtered.length === 0 ? (
+              <motion.div
+                key="empty"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+                className="bento-card justify-center items-center py-32 text-center w-full"
+              >
+                <span className="material-symbols-outlined text-5xl text-primary/20 mb-4">
+                  search_off
+                </span>
+                <p className="text-muted font-medium">
+                  No projects found for this category.
+                </p>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="grid"
+                layout
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 w-full"
+              >
+                {filtered.map((project, index) => {
+                  // Featured logic: first item in 'All' view, or first 2 items for visual interest
+                  const isFeatured =
+                    (activeFilter === "All" && index === 0) ||
+                    (index === 0 && filtered.length > 2);
+                  const gridClass = isFeatured
+                    ? "lg:col-span-8 lg:row-span-2"
+                    : "lg:col-span-4";
 
-              return (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  publicUrl={publicUrl}
-                  t={t}
-                  onOpenModal={setModalData}
-                  featured={isFeatured}
-                  index={index}
-                  className={gridClass}
-                />
-              );
-            })}
-          </div>
-        )}
+                  return (
+                    <ProjectCard
+                      key={project.id}
+                      project={project}
+                      publicUrl={publicUrl}
+                      t={t}
+                      onOpenModal={setModalData}
+                      featured={isFeatured}
+                      index={index}
+                      className={gridClass}
+                    />
+                  );
+                })}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   );
@@ -262,9 +286,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   };
 
   return (
-    <article
-      className={`bento-card group animate-enter ${className}`}
-      style={{ animationDelay: `${index * 100}ms` }}
+    <motion.article
+      layout
+      initial={{ opacity: 0, scale: 0.9, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.9, y: 20 }}
+      transition={{
+        opacity: { duration: 0.25 },
+        scale: { duration: 0.25 },
+        y: { duration: 0.25 },
+        layout: { type: "spring", stiffness: 300, damping: 30 }
+      }}
+      className={`bento-card group ${className}`}
     >
       <div className="flex flex-col h-full">
         {/* Media area for featured cards or cards with media */}
@@ -404,7 +437,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </div>
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 };
 

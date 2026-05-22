@@ -215,6 +215,14 @@
     animation: pulse-soft 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
+  .animate-fadeIn {
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-enter {
+    animation: enter 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
   @keyframes pulse-soft {
     0%,
     100% {
@@ -224,6 +232,28 @@
     50% {
       opacity: 0.8;
       transform: scale(0.98);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes enter {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }
