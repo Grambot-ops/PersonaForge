@@ -106,6 +106,10 @@
     "messageLabel": "Message",
     "submitError": "An error occurred. Please try again.",
     "submitErrorFallback": "There was an error submitting your message. Please try again.",
+    "errorName": "Name is required.",
+    "errorEmailRequired": "Email is required.",
+    "errorEmailInvalid": "Please enter a valid email address.",
+    "errorMessageRequired": "Message is required.",
     "sending": "Sending...",
     "sendMessageButton": "Send Message",
     "successTitle": "Message Sent!",
@@ -123,6 +127,7 @@
   },
   "projects": {
     "closeLightbox": "Close",
+    "filterAria": "Filter projects",
     "pageTitle": "Projects - Maximus Mukiza | SRE Portfolio",
     "pageDescription": "Explore Maximus Mukiza's engineering projects, including SOAR pipelines, SIEM stacks, Azure Bicep configurations, and AWS hosting.",
     "heading": "Engineering Case Studies",

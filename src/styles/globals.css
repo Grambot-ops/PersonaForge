@@ -13,6 +13,7 @@
   --color-foreground: var(--text);
   --color-surface: var(--surface);
   --color-border: var(--border);
+  --color-border-muted: var(--border-muted);
 
   --radius-sm: 2px; /* Sharper, more engineered corners */
   --radius-md: 4px;
@@ -36,6 +37,7 @@
     --text: #0f172a;
     --text-muted: #64748b;
     --border: rgba(15, 23, 42, 0.08);
+    --border-muted: rgba(15, 23, 42, 0.04);
     --glow: rgba(191, 148, 255, 0.4);
   }
 
@@ -46,6 +48,7 @@
     --text: #f8fafc;
     --text-muted: #94a3b8;
     --border: rgba(255, 255, 255, 0.06);
+    --border-muted: rgba(255, 255, 255, 0.04);
     --glow: rgba(191, 148, 255, 0.5);
   }
 }

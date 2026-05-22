@@ -54,7 +54,7 @@ const CATEGORY_ORDER = Object.keys(CATEGORY_MAP);
  */
 const Skills: React.FC = () => {
   const { t } = useTranslation();
-  const skills: Skill[] = skillsData as Skill[];
+  const skills: Skill[] = skillsData;
 
   /** Group skills by category, preserving defined order. */
   const grouped = CATEGORY_ORDER.reduce<Record<string, Skill[]>>((acc, cat) => {

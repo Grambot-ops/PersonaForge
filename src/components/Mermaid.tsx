@@ -192,17 +192,23 @@ const Mermaid: React.FC<MermaidProps> = ({ chart, responsive = true, interactive
     };
   }, [interactive]);
 
-  // Window resize handler to keep minimap bounds up to date
+  // Resize observer to handle container size changes (modal animations, window resizing)
   useEffect(() => {
-    if (!interactive) return;
-    const handleResize = () => {
-      if (!viewportRef.current) return;
-      const rect = viewportRef.current.getBoundingClientRect();
-      setViewportSize({ width: rect.width, height: rect.height });
+    if (!interactive || !viewportRef.current) return;
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const { width, height } = entry.contentRect;
+        setViewportSize({ width, height });
+        fitToScreen();
+      }
+    });
+
+    resizeObserver.observe(viewportRef.current);
+    return () => {
+      resizeObserver.disconnect();
     };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [interactive]);
+  }, [interactive, fitToScreen]);
 
   useEffect(() => {
     const observer = new MutationObserver((mutations) => {
@@ -430,9 +436,9 @@ const Mermaid: React.FC<MermaidProps> = ({ chart, responsive = true, interactive
             initial={{ opacity: 0, x: 20, scale: 0.95 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute top-4 right-4 flex flex-col gap-2 z-20"
+            className="absolute top-4 right-4 flex flex-col gap-1.5 z-20"
           >
-            <div className="flex flex-col bg-surface/90 backdrop-blur-md border border-border-muted rounded-xl p-1 shadow-lg">
+            <div className="flex flex-col bg-surface/90 backdrop-blur-md border border-border-muted rounded-lg p-0.5 shadow-md">
               <motion.button
                 whileHover={{ scale: 1.1, backgroundColor: "rgba(255, 255, 255, 0.05)" }}
                 whileTap={{ scale: 0.9 }}
@@ -449,10 +455,10 @@ const Mermaid: React.FC<MermaidProps> = ({ chart, responsive = true, interactive
                     y: centerY - (centerY - currentPan.y) * scaleChange,
                   });
                 }}
-                className="w-8 h-8 flex items-center justify-center text-muted hover:text-primary rounded-lg transition-colors cursor-pointer"
+                className="w-6 h-6 flex items-center justify-center text-muted hover:text-primary rounded-md transition-colors cursor-pointer"
                 title="Zoom In"
               >
-                <span className="material-symbols-outlined text-sm font-bold">add</span>
+                <span className="material-symbols-outlined text-xs font-bold">add</span>
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.1, backgroundColor: "rgba(255, 255, 255, 0.05)" }}
@@ -470,19 +476,19 @@ const Mermaid: React.FC<MermaidProps> = ({ chart, responsive = true, interactive
                     y: centerY - (centerY - currentPan.y) * scaleChange,
                   });
                 }}
-                className="w-8 h-8 flex items-center justify-center text-muted hover:text-primary rounded-lg transition-colors border-t border-border-muted/50 cursor-pointer"
+                className="w-6 h-6 flex items-center justify-center text-muted hover:text-primary rounded-md transition-colors border-t border-border-muted/30 cursor-pointer"
                 title="Zoom Out"
               >
-                <span className="material-symbols-outlined text-sm font-bold">remove</span>
+                <span className="material-symbols-outlined text-xs font-bold">remove</span>
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.1, backgroundColor: "rgba(255, 255, 255, 0.05)" }}
                 whileTap={{ scale: 0.9 }}
                 onClick={fitToScreen}
-                className="w-8 h-8 flex items-center justify-center text-muted hover:text-primary rounded-lg transition-colors border-t border-border-muted/50 cursor-pointer"
+                className="w-6 h-6 flex items-center justify-center text-muted hover:text-primary rounded-md transition-colors border-t border-border-muted/30 cursor-pointer"
                 title="Fit to Screen"
               >
-                <span className="material-symbols-outlined text-sm font-bold">fit_screen</span>
+                <span className="material-symbols-outlined text-xs font-bold">fit_screen</span>
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.1, backgroundColor: "rgba(255, 255, 255, 0.05)" }}
@@ -491,10 +497,10 @@ const Mermaid: React.FC<MermaidProps> = ({ chart, responsive = true, interactive
                   setZoom(1);
                   setPan({ x: 0, y: 0 });
                 }}
-                className="w-8 h-8 flex items-center justify-center text-muted hover:text-primary rounded-lg transition-colors border-t border-border-muted/50 cursor-pointer"
+                className="w-6 h-6 flex items-center justify-center text-muted hover:text-primary rounded-md transition-colors border-t border-border-muted/30 cursor-pointer"
                 title="Reset View"
               >
-                <span className="material-symbols-outlined text-sm font-bold">restart_alt</span>
+                <span className="material-symbols-outlined text-xs font-bold">restart_alt</span>
               </motion.button>
             </div>
             <motion.div 

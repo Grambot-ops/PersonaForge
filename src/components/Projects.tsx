@@ -6,7 +6,7 @@ import { Project } from "../types";
 import projectDataImport from "../data/projects.json";
 import Mermaid from "./Mermaid";
 
-const projectData: Project[] = projectDataImport as Project[];
+const projectData: Project[] = projectDataImport;
 
 /** Tag a project's categories from its content. */
 const PROJECT_TAGS: Record<number, string[]> = {
@@ -89,7 +89,7 @@ const Projects: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0d1410]/95 backdrop-blur-md p-4 md:p-10"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-background/95 backdrop-blur-md p-4 md:p-10"
             onClick={() => setModalData(null)}
             role="dialog"
             aria-modal="true"
@@ -124,10 +124,10 @@ const Projects: React.FC = () => {
                 <img
                   src={modalData.content}
                   alt={modalData.title}
-                  className="max-w-full max-h-[80vh] object-contain rounded-2xl border border-white/5 shadow-2xl bg-surface"
+                  className="max-w-full max-h-[80vh] object-contain rounded-2xl border border-border shadow-2xl bg-surface"
                 />
               ) : (
-                <div className="w-full h-[65vh] md:h-[75vh] bg-surface border border-white/5 rounded-2xl relative overflow-hidden select-none">
+                <div className="w-full h-[65vh] md:h-[75vh] bg-surface border border-border rounded-2xl relative overflow-hidden select-none">
                   <Mermaid chart={modalData.content} responsive={false} interactive={true} />
                 </div>
               )}
@@ -156,10 +156,10 @@ const Projects: React.FC = () => {
             </p>
           </div>
 
-          {/* Filter tabs */}
+          {/* Filter buttons */}
           <div
             className="flex flex-wrap gap-2 p-1.5 bg-surface/50 backdrop-blur-md border border-border-muted rounded-2xl shadow-sm"
-            role="tablist"
+            aria-label={t("projects.filterAria", "Filter projects")}
           >
             {FILTER_TABS.map((tab) => {
               const displayLabel = t(
@@ -169,8 +169,7 @@ const Projects: React.FC = () => {
               return (
                 <button
                   key={tab}
-                  role="tab"
-                  aria-selected={activeFilter === tab}
+                  aria-pressed={activeFilter === tab}
                   onClick={() => setActiveFilter(tab)}
                   className={`px-5 py-2.5 text-xs font-bold rounded-xl transition-all ${
                     activeFilter === tab

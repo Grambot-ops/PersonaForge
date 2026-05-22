@@ -106,6 +106,10 @@
     "messageLabel": "Bericht",
     "submitError": "Er is een fout opgetreden. Probeer het opnieuw.",
     "submitErrorFallback": "Er is een fout opgetreden bij het verzenden van uw bericht. Probeer het opnieuw.",
+    "errorName": "Naam is verplicht.",
+    "errorEmailRequired": "E-mail is verplicht.",
+    "errorEmailInvalid": "Vul een geldig e-mailadres in.",
+    "errorMessageRequired": "Bericht is verplicht.",
     "sending": "Verzenden...",
     "sendMessageButton": "Verstuur Bericht",
     "successTitle": "Bericht Verzonden!",
@@ -123,6 +127,7 @@
   },
   "projects": {
     "closeLightbox": "Sluiten",
+    "filterAria": "Filter projecten",
     "pageTitle": "Projecten - Maximus Mukiza | SRE Portfolio",
     "pageDescription": "Ontdek de projecten van Maximus Mukiza, waaronder SOAR-pijplijnen, SIEM-stacks, Azure Bicep configuraties en AWS hosting.",
     "heading": "Engineering Case Studies",

@@ -54,24 +54,53 @@ const Contact: React.FC = () => {
     email: '',
     message: '',
   });
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  const validate = (): boolean => {
+    const newErrors: Record<string, string> = {};
+    if (!formData.name.trim()) {
+      newErrors.name = t('contact.errorName', 'Name is required.');
+    }
+    if (!formData.message.trim()) {
+      newErrors.message = t('contact.errorMessageRequired', 'Message is required.');
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim()) {
+      newErrors.email = t('contact.errorEmailRequired', 'Email is required.');
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = t('contact.errorEmailInvalid', 'Invalid email address.');
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const {name, value} = e.target;
     setFormData((prev: ContactForm) => ({...prev, [name]: value}));
+    if (errors[name]) {
+      setErrors((prev) => {
+        const next = {...prev};
+        delete next[name];
+        return next;
+      });
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validate()) return;
     setIsSubmitting(true);
     /* Simulate API call — replace with real endpoint when available. */
     setTimeout(() => {
       setSubmitSuccess(true);
       setIsSubmitting(false);
       setFormData({name: '', email: '', message: ''});
+      setErrors({});
     }, 1500);
   };
 
@@ -263,9 +292,24 @@ const Contact: React.FC = () => {
                         onChange={handleChange}
                         type="text"
                         required
+                        aria-invalid={!!errors.name}
+                        aria-describedby={errors.name ? "contact-name-error" : undefined}
                         placeholder="Jane Smith"
-                        className="w-full bg-background border border-border-muted text-foreground rounded-lg px-4 py-3 text-sm placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+                        className={`w-full bg-background border text-foreground rounded-lg px-4 py-3 text-sm placeholder:text-muted focus:ring-2 transition-all outline-none ${
+                          errors.name
+                            ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20'
+                            : 'border-border-muted focus:border-primary focus:ring-primary/20'
+                        }`}
                       />
+                      {errors.name && (
+                        <span
+                          id="contact-name-error"
+                          className="text-red-500 text-xs mt-1.5 block animate-fadeIn"
+                          role="alert"
+                        >
+                          {errors.name}
+                        </span>
+                      )}
                     </div>
 
                     {/* Email field */}
@@ -283,9 +327,24 @@ const Contact: React.FC = () => {
                         onChange={handleChange}
                         type="email"
                         required
+                        aria-invalid={!!errors.email}
+                        aria-describedby={errors.email ? "contact-email-error" : undefined}
                         placeholder="jane@company.com"
-                        className="w-full bg-background border border-border-muted text-foreground rounded-lg px-4 py-3 text-sm placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+                        className={`w-full bg-background border text-foreground rounded-lg px-4 py-3 text-sm placeholder:text-muted focus:ring-2 transition-all outline-none ${
+                          errors.email
+                            ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20'
+                            : 'border-border-muted focus:border-primary focus:ring-primary/20'
+                        }`}
                       />
+                      {errors.email && (
+                        <span
+                          id="contact-email-error"
+                          className="text-red-500 text-xs mt-1.5 block animate-fadeIn"
+                          role="alert"
+                        >
+                          {errors.email}
+                        </span>
+                      )}
                     </div>
                   </div>
 
@@ -304,9 +363,24 @@ const Contact: React.FC = () => {
                       onChange={handleChange}
                       required
                       rows={5}
+                      aria-invalid={!!errors.message}
+                      aria-describedby={errors.message ? "contact-message-error" : undefined}
                       placeholder="Tell me about the role or opportunity..."
-                      className="w-full bg-background border border-border-muted text-foreground rounded-lg px-4 py-3 text-sm placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none resize-none"
+                      className={`w-full bg-background border text-foreground rounded-lg px-4 py-3 text-sm placeholder:text-muted focus:ring-2 transition-all outline-none resize-none ${
+                        errors.message
+                          ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20'
+                          : 'border-border-muted focus:border-primary focus:ring-primary/20'
+                      }`}
                     />
+                    {errors.message && (
+                      <span
+                        id="contact-message-error"
+                        className="text-red-500 text-xs mt-1.5 block animate-fadeIn"
+                        role="alert"
+                      >
+                        {errors.message}
+                      </span>
+                    )}
                   </div>
 
                   {/* Submit button */}
