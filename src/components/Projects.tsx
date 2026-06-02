@@ -393,7 +393,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             className={`relative mb-6 rounded-xl overflow-hidden bg-background/50 border border-border-muted ${featured ? "h-64 sm:h-80 md:h-[450px]" : "h-48"}`}
           >
             <button
-              className="w-full h-full flex items-center justify-center cursor-zoom-in group-hover:scale-105 transition-transform duration-700"
+              className="w-full h-full flex items-center justify-center cursor-zoom-in"
               onClick={openMedia}
               disabled={!project.hasDiagram && !project.image && !project.videoUrl}
             >

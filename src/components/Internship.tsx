@@ -256,7 +256,7 @@ const Internship: React.FC = () => {
                 {t("internship.architectureTitle")}
               </h4>
               <div 
-                className="group/flow relative cursor-pointer w-full h-[350px] bg-[#020202]/30 border border-border-muted rounded-2xl overflow-hidden shadow-inner transition-colors hover:border-primary/40"
+                className="group/flow relative cursor-pointer w-full h-[350px] bg-surface/50 border border-border-muted rounded-2xl overflow-hidden shadow-inner transition-colors hover:border-primary/40"
                 onClick={() => setIsDiagramExpanded(true)}
               >
                 <div className="w-full h-full pointer-events-none select-none opacity-80 group-hover/flow:opacity-100 transition-opacity">
@@ -377,7 +377,7 @@ const Internship: React.FC = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 15 }}
               transition={{ type: "spring", damping: 28, stiffness: 260 }}
-              className="relative w-full max-w-[95vw] h-[85vh] bg-[#020202] border border-border rounded-2xl flex flex-col p-6 shadow-2xl"
+              className="relative w-full max-w-[95vw] h-[85vh] bg-background border border-border rounded-2xl flex flex-col p-6 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}

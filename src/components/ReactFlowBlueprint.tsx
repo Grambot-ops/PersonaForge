@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ReactFlow,
   Controls,
@@ -54,12 +54,12 @@ const getIcon = (category: string) => {
 
 export const CustomCloudNode: React.FC<{ data: CloudNodeData }> = ({ data }) => {
   return (
-    <div className={`px-4 py-3 bg-[#0a0a0c]/90 backdrop-blur-md border rounded-xl flex items-center gap-3 min-w-[200px] relative transition-transform hover:scale-102 ${getCategoryColor(data.category)}`}>
+    <div className={`px-4 py-3 bg-surface border rounded-xl flex items-center gap-3 min-w-[200px] relative transition-transform hover:scale-102 ${getCategoryColor(data.category)}`}>
       <Handle type="target" position={Position.Left} className="!bg-border-muted !w-1.5 !h-1.5" />
-      <div className="text-xl flex items-center justify-center w-8 h-8 rounded-lg bg-surface/50">{getIcon(data.category)}</div>
+      <div className="text-xl flex items-center justify-center w-8 h-8 rounded-lg bg-surface-raised">{getIcon(data.category)}</div>
       <div className="flex flex-col text-left">
-        <span className="font-mono text-xs font-semibold text-white leading-tight">{data.label}</span>
-        {data.subLabel && <span className="font-sans text-[9px] text-[#94a3b8] font-medium mt-0.5">{data.subLabel}</span>}
+        <span className="font-mono text-xs font-semibold text-foreground leading-tight">{data.label}</span>
+        {data.subLabel && <span className="font-sans text-[9px] text-muted font-medium mt-0.5">{data.subLabel}</span>}
       </div>
       {data.status && (
         <span className="absolute top-2 right-2 flex h-1.5 w-1.5">
@@ -75,8 +75,8 @@ export const CustomCloudNode: React.FC<{ data: CloudNodeData }> = ({ data }) => 
 // Custom group background component
 export const CustomGroupNode: React.FC<{ data: { label: string } }> = ({ data }) => {
   return (
-    <div className="w-full h-full border border-dashed border-[#bf94ff]/20 bg-[#0a0a0c]/20 backdrop-blur-sm rounded-2xl p-4 flex flex-col justify-start relative select-none animate-fade-in">
-      <div className="font-display text-[9px] font-bold text-[#bf94ff]/60 uppercase tracking-widest absolute -top-2.5 left-4 px-2 bg-[#020202] border border-[#bf94ff]/15 rounded-md">
+    <div className="w-full h-full border border-dashed border-primary/20 bg-surface/10 rounded-2xl p-4 flex flex-col justify-start relative select-none">
+      <div className="font-display text-[9px] font-bold text-primary/60 uppercase tracking-widest absolute -top-2.5 left-4 px-2 bg-background border border-primary/15 rounded-md">
         {data.label}
       </div>
     </div>
@@ -103,6 +103,9 @@ const ReactFlowBlueprint: React.FC<ReactFlowBlueprintProps> = ({
 }) => {
   const [nodes, setNodes, onNodesChange] = useNodesState(propNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(propEdges);
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+  });
 
   // Sync internal state when props change
   useEffect(() => {
@@ -110,8 +113,26 @@ const ReactFlowBlueprint: React.FC<ReactFlowBlueprintProps> = ({
     setEdges(propEdges);
   }, [propNodes, propEdges, setNodes, setEdges]);
 
+  // Sync theme status reactively from document root class list
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      const isDark = document.documentElement.classList.contains('dark');
+      setTheme(isDark ? 'dark' : 'light');
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className={`w-full h-full bg-[#020202] relative ${preview ? "pointer-events-none select-none" : ""}`}>
+    <div
+      className={`w-full h-full bg-background relative ${preview ? "pointer-events-none select-none" : ""}`}
+      style={{ willChange: "transform" }}
+    >
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -119,7 +140,8 @@ const ReactFlowBlueprint: React.FC<ReactFlowBlueprintProps> = ({
         onEdgesChange={preview ? undefined : onEdgesChange}
         nodeTypes={nodeTypes}
         fitView
-        colorMode="dark"
+        fitViewOptions={{ padding: 0.15 }}
+        colorMode={theme}
         minZoom={preview ? 0.1 : 0.2}
         maxZoom={preview ? 1.5 : 1.5}
         panOnDrag={!preview}
@@ -128,15 +150,16 @@ const ReactFlowBlueprint: React.FC<ReactFlowBlueprintProps> = ({
         nodesDraggable={!preview}
         nodesConnectable={!preview}
         elementsSelectable={!preview}
+        proOptions={{ hideAttribution: true }}
       >
-        {!preview && <Controls className="bg-surface/90 border border-border rounded-xl text-foreground font-mono" />}
+        {!preview && <Controls className="bg-surface border border-border rounded-xl text-foreground font-mono" />}
         {!preview && (
           <MiniMap
             nodeColor={(n) => {
               if (n.type === "customGroup") return "rgba(191, 148, 255, 0.05)";
               return "#bf94ff";
             }}
-            maskColor="rgba(0, 0, 0, 0.6)"
+            maskColor={theme === "dark" ? "rgba(0, 0, 0, 0.6)" : "rgba(255, 255, 255, 0.6)"}
             className="border border-border rounded-xl bg-surface/80"
           />
         )}
