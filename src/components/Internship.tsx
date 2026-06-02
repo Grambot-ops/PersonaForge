@@ -224,14 +224,16 @@ const Internship: React.FC = () => {
                 {/* Tech Tags */}
                 <div className="flex flex-wrap gap-2 mt-8">
                   {[
+                    "SentinelOne",
+                    "Python",
                     "FastAPI",
                     "RabbitMQ",
                     "Redis",
                     "Docker",
-                    "Python",
                     "MISP",
                     "GraphQL",
                     "HAProxy",
+                    "MS Teams",
                   ].map((tag) => (
                     <span
                       key={tag}
