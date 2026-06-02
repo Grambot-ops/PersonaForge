@@ -1,0 +1,17 @@
+# Maximus Mukiza - SRE & DevSecOps Portfolio
+
+Technical portfolio of Maximus Mukiza, a specialist in Cloud Engineering, DevSecOps, and Cloud Automation.
+
+## Details
+
+- **Name:** Maximus Mukiza
+- **Role:** SRE & DevSecOps Engineer
+- **Interests:** Cloud Infrastructure (AWS · Azure), DevSecOps, SOC Tooling (Wazuh, Graylog, TheHive), Incident Response, Kubernetes.
+
+## Navigation
+
+- [Home](https://mmt-labs.be/)
+- [About](https://mmt-labs.be/#about)
+- [Projects](https://mmt-labs.be/#projects)
+- [Internship](https://mmt-labs.be/#internship)
+- [Contact](https://mmt-labs.be/#contact)

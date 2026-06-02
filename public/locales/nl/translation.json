@@ -30,7 +30,15 @@
     "subtitle": "Cloud Engineering | SRE | DevSecOps",
     "description": "Bouwen van geautomatiseerde, veilige en veerkrachtige cloud-infrastructuur — van event-driven SOAR pijplijnen en SRE observability stacks tot GitOps-gestuurde Kubernetes platforms.",
     "viewProjects": "Verken Engineering Projecten",
-    "getInTouch": "Maak Verbinding"
+    "getInTouch": "Maak Verbinding",
+    "eyebrow": "ARCHITECTUUR VAN RAUWE KRACHT & INTELLIGENTIE // EST. 2026",
+    "roleSre": "SRE & DEVSECOPS",
+    "roleK8s": "KUBERNETES ENTHUSIASTELING",
+    "roleIron": "IJZER & CODE",
+    "quote": "\"Ik wil de sterkste en meest intelligente persoon zijn die ik ken.\"",
+    "bio": "Kubernetes-clusters bouwen in mijn homelab, grenzen verleggen in de gym en motorrijden. Ik breng diezelfde discipline naar het ontwerpen van veerkrachtige cloudsystemen en geautomatiseerde beveiligingspijplijnen.",
+    "btnDeepDive": "Initialiseer Diepe Duik",
+    "btnDossier": "Exporteer Dossier (CV)"
   },
   "about": {
     "bio": "Ik ben Maximus — een SRE & DevSecOps Engineer gefocust op het bouwen van veilige, zelfherstellende softwareplatforms. Bij IT Factory (Thomas More) specialiseer ik me in Cloud Automation en Defence: het uitrollen van beveiligde platforms op AWS en Azure, het automatiseren van threat response pipelines, en het ontwerpen van systemen die veerkrachtig blijven onder reële omstandigheden.",

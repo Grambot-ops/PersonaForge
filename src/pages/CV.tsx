@@ -25,9 +25,8 @@ const CV: React.FC = () => {
             href={`${publicUrl}CV_Maximus.pdf`}
             download
             className="group px-10 py-5 bg-primary/10 border border-primary text-primary font-mono text-sm font-bold hover:bg-primary hover:text-black transition-all rounded-sm uppercase tracking-widest shadow-[0_0_30px_rgba(0,255,65,0.1)] flex items-center"
-            aria-label={t("cv.downloadAria", "Download CV")}
           >
-            <span className="material-symbols-outlined mr-3 group-hover:animate-bounce">
+            <span className="material-symbols-outlined mr-3 group-hover:animate-bounce" aria-hidden="true">
               download
             </span>
             {t("cv.downloadButton", "Download Full Dossier (PDF)")}

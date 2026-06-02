@@ -1,9 +1,98 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { FaAws } from "react-icons/fa";
-import { SiLinux } from "react-icons/si";
+import {
+  FaAws,
+  FaDocker,
+  FaNetworkWired,
+  FaPython,
+  FaJenkins,
+  FaGitAlt,
+  FaLock,
+  FaSkullCrossbones,
+  FaBug,
+  FaEye,
+  FaShareAlt,
+  FaShieldAlt,
+  FaProjectDiagram,
+  FaServer,
+  FaTerminal,
+} from "react-icons/fa";
+import {
+  SiLinux,
+  SiProxmox,
+  SiFastapi,
+  SiRabbitmq,
+  SiRedis,
+  SiRust,
+  SiTerraform,
+  SiGithubactions,
+  SiKubernetes,
+} from "react-icons/si";
 import { VscAzure } from "react-icons/vsc";
 import skillsData from "../data/skills.json";
+
+const SkillIcon: React.FC<{ id: string; className?: string }> = ({ id, className }) => {
+  const props = { className, "aria-hidden": "true" as const };
+  switch (id) {
+    case "aws": return <FaAws {...props} />;
+    case "azure": return <VscAzure {...props} />;
+    case "proxmox": return <SiProxmox {...props} />;
+    case "linux": return <SiLinux {...props} />;
+    case "docker": return <FaDocker {...props} />;
+    case "fastapi": return <SiFastapi {...props} />;
+    case "rabbitmq": return <SiRabbitmq {...props} />;
+    case "redis": return <SiRedis {...props} />;
+    case "sentinelone": return <FaShieldAlt {...props} />;
+    case "misp": return <FaShareAlt {...props} />;
+    case "haproxy": return <FaNetworkWired {...props} />;
+    case "network": return <FaNetworkWired {...props} />;
+    case "siem": return <FaEye {...props} />;
+    case "thehive": return <FaBug {...props} />;
+    case "threat": return <FaSkullCrossbones {...props} />;
+    case "stix": return <FaProjectDiagram {...props} />;
+    case "zerotrust": return <FaLock {...props} />;
+    case "python": return <FaPython {...props} />;
+    case "bash": return <FaTerminal {...props} />;
+    case "jenkins": return <FaJenkins {...props} />;
+    case "rust": return <SiRust {...props} />;
+    case "iac": return <SiTerraform {...props} />;
+    case "gitops": return <FaGitAlt {...props} />;
+    case "githubactions": return <SiGithubactions {...props} />;
+    case "container": return <SiKubernetes {...props} />;
+    default: return <FaShieldAlt {...props} />;
+  }
+};
+
+const getIconColorClass = (id: string) => {
+  switch (id) {
+    case "aws": return "group-hover:text-[#FF9900]";
+    case "azure": return "group-hover:text-[#0089D6]";
+    case "proxmox": return "group-hover:text-[#E74C3C]";
+    case "linux": return "group-hover:text-[#FFCC00]";
+    case "docker": return "group-hover:text-[#2496ED]";
+    case "fastapi": return "group-hover:text-[#009688]";
+    case "rabbitmq": return "group-hover:text-[#FF6600]";
+    case "redis": return "group-hover:text-[#DC382D]";
+    case "sentinelone": return "group-hover:text-[#000000] dark:group-hover:text-[#FFFFFF]";
+    case "misp": return "group-hover:text-[#2572B4]";
+    case "haproxy": return "group-hover:text-[#0092C8]";
+    case "network": return "group-hover:text-[#1ABC9C]";
+    case "siem": return "group-hover:text-[#00A9E0]";
+    case "thehive": return "group-hover:text-[#F39C12]";
+    case "threat": return "group-hover:text-[#E74C3C]";
+    case "stix": return "group-hover:text-[#34495E]";
+    case "zerotrust": return "group-hover:text-[#2ECC71]";
+    case "python": return "group-hover:text-[#3776AB]";
+    case "bash": return "group-hover:text-[#4EAA25]";
+    case "jenkins": return "group-hover:text-[#D24939]";
+    case "rust": return "group-hover:text-[#E45B25]";
+    case "iac": return "group-hover:text-[#7B42BC]";
+    case "gitops": return "group-hover:text-[#F05032]";
+    case "githubactions": return "group-hover:text-[#2088FF]";
+    case "container": return "group-hover:text-[#326CE5]";
+    default: return "group-hover:text-primary";
+  }
+};
 
 interface Skill {
   id: string;
@@ -137,11 +226,10 @@ const Skills: React.FC = () => {
             // Determine bento sizing based on category
             const isWide =
               category === "SRE & DevSecOps" ||
-              category === "Cloud Platforms" ||
-              category === "Security & Monitoring";
+              category === "Cloud Platforms";
             const gridClass = isWide
               ? "md:col-span-3 lg:col-span-6"
-              : "md:col-span-3 lg:col-span-4";
+              : "md:col-span-2 lg:col-span-4";
 
             return (
               <div
@@ -165,7 +253,7 @@ const Skills: React.FC = () => {
                       </span>
                     </div>
                     <h3 className="text-[10px] font-mono font-bold text-foreground uppercase tracking-widest">
-                      {t(config.key, category)}
+                       {t(config.key, category)}
                     </h3>
                   </div>
 
@@ -174,10 +262,11 @@ const Skills: React.FC = () => {
                     {categorySkills.map((skill) => (
                       <div
                         key={skill.id}
-                        className="px-3 py-1.5 bg-background/50 border border-border-muted rounded-lg text-[10px] font-mono text-muted font-medium hover:border-primary/40 hover:bg-primary/5 hover:text-primary transition-all cursor-default"
+                        className="flex items-center gap-2 px-3 py-2 bg-background/50 border border-border-muted rounded-lg text-xs font-sans text-muted font-medium hover:border-primary/40 hover:bg-primary/5 hover:text-foreground transition-all cursor-default group"
                         title={`${skill.label} - ${skill.proficiency}%`}
                       >
-                        {skill.label}
+                        <SkillIcon id={skill.id} className={`text-sm flex-shrink-0 text-muted/80 ${getIconColorClass(skill.id)}`} />
+                        <span>{skill.label}</span>
                       </div>
                     ))}
                   </div>

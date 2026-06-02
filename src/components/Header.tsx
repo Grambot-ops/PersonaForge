@@ -88,7 +88,7 @@ const Header: React.FC = () => {
       {/* Skip to Content Link */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3 focus:bg-primary focus:text-white focus:rounded-xl focus:shadow-glow focus:font-bold transition-all"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3 focus:bg-primary focus:text-black focus:rounded-xl focus:shadow-glow focus:font-bold transition-all"
       >
         Skip to content
       </a>
@@ -207,7 +207,7 @@ const Header: React.FC = () => {
               <button
                 onClick={() => scrollToSection("contact")}
                 id="header-contact-cta"
-                className="bg-primary text-white h-9 px-5 flex items-center justify-center rounded-lg font-semibold text-sm hover:bg-primary-dark transition-all shadow-sm active:scale-95 focus-visible:ring-2 focus-visible:ring-primary outline-none"
+                className="bg-primary text-black h-9 px-5 flex items-center justify-center rounded-lg font-semibold text-sm hover:bg-primary-dark transition-all shadow-sm active:scale-95 focus-visible:ring-2 focus-visible:ring-primary outline-none"
               >
                 Contact
               </button>
@@ -280,7 +280,7 @@ const Header: React.FC = () => {
                   aria-pressed={i18n.language.startsWith(lng)}
                   className={`px-3 py-1.5 text-xs rounded-md transition-all font-medium ${
                     i18n.language.startsWith(lng)
-                      ? "bg-primary text-white"
+                      ? "bg-primary text-black"
                       : "text-muted hover:text-foreground"
                   }`}
                 >
@@ -302,7 +302,7 @@ const Header: React.FC = () => {
               scrollToSection("contact");
               setIsMenuOpen(false);
             }}
-            className="w-full py-3 bg-primary text-white text-center rounded-lg font-sans font-semibold text-sm shadow-sm"
+            className="w-full py-3 bg-primary text-black text-center rounded-lg font-sans font-semibold text-sm shadow-sm"
           >
             Get in Touch
           </button>

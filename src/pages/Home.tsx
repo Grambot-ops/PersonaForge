@@ -6,7 +6,7 @@ import Skills from "../components/Skills";
 import About from "./About";
 import Internship from "../components/Internship";
 
-// Lazy load components that contain heavy libraries (like Mermaid.js in Projects)
+// Lazy load components that contain heavy libraries (like React Flow in Projects)
 const Projects = lazy(() => import("./Projects"));
 const Contact = lazy(() => import("./Contact"));
 const CV = lazy(() => import("./CV"));

@@ -2,8 +2,8 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
-const GithubIcon = FaGithub as React.ElementType;
-const LinkedinIcon = FaLinkedin as React.ElementType;
+const GithubIcon = FaGithub as any;
+const LinkedinIcon = FaLinkedin as any;
 
 /** Footer navigation links. Labels use translation keys. */
 const NAV_LINKS = [

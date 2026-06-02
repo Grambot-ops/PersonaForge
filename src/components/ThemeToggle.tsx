@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
-const SunIcon = FaSun as React.ElementType;
-const MoonIcon = FaMoon as React.ElementType;
+const SunIcon = FaSun as any;
+const MoonIcon = FaMoon as any;
 
 const ThemeToggle: React.FC = () => {
   const { t } = useTranslation();

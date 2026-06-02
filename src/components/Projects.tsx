@@ -4,7 +4,8 @@ import { FaGithub } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { Project } from "../types";
 import projectDataImport from "../data/projects.json";
-import Mermaid from "./Mermaid";
+import ReactFlowBlueprint from "./ReactFlowBlueprint";
+import { getDiagram } from "../data/diagrams";
 
 const projectData: Project[] = projectDataImport;
 
@@ -40,10 +41,20 @@ const Projects: React.FC = () => {
   const publicUrl = import.meta.env.BASE_URL;
   const [activeFilter, setActiveFilter] = useState<FilterTab>("All");
   const [modalData, setModalData] = useState<{
-    type: "image" | "mermaid";
-    content: string;
+    id?: number;
     title: string;
+    image?: string;
+    hasDiagram?: boolean;
+    videoUrl?: string;
+    defaultTab: "image" | "diagram" | "video";
   } | null>(null);
+  const [activeModalTab, setActiveModalTab] = useState<"image" | "diagram" | "video">("image");
+
+  useEffect(() => {
+    if (modalData) {
+      setActiveModalTab(modalData.defaultTab);
+    }
+  }, [modalData]);
 
   /** Close modal on Escape key. */
   useEffect(() => {
@@ -100,37 +111,107 @@ const Projects: React.FC = () => {
               exit={{ opacity: 0, scale: 0.95, y: 15 }}
               transition={{ type: "spring", damping: 28, stiffness: 260 }}
               className={`relative ${
-                modalData.type === "mermaid" ? "max-w-[95vw]" : "max-w-5xl"
+                activeModalTab === "diagram" ? "max-w-[95vw]" : "max-w-5xl"
               } w-full max-h-[90vh] flex flex-col`}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close button */}
-              <div className="flex justify-between items-center mb-6">
-                <h2 className="text-foreground font-display font-bold text-lg">
-                  {modalData.title}
-                </h2>
-                <button
-                  className="flex items-center gap-2 text-muted hover:text-primary transition-all bg-surface border border-border-muted px-4 py-2 rounded-xl cursor-pointer"
-                  onClick={() => setModalData(null)}
-                >
-                  <span className="material-symbols-outlined text-base">
-                    close
-                  </span>
-                  <span className="text-sm font-semibold">Close</span>
-                </button>
+              {/* Header area */}
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                <div>
+                  <h2 className="text-foreground font-display font-bold text-lg mb-1">
+                    {modalData.title}
+                  </h2>
+                  <p className="text-[10px] font-mono text-muted uppercase tracking-wider">
+                    {activeModalTab === "diagram" ? "System Architecture Blueprint" : (activeModalTab === "video" ? "Project Showcase Video" : "Project Preview Mockup")}
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  {/* Modal tabs */}
+                  {((modalData.image ? 1 : 0) + (modalData.hasDiagram ? 1 : 0) + (modalData.videoUrl ? 1 : 0) > 1) && (
+                    <div className="flex p-1 bg-surface-raised border border-border-muted rounded-xl">
+                      {modalData.videoUrl && (
+                        <button
+                          className={`px-4 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+                            activeModalTab === "video"
+                              ? "bg-primary text-black shadow-glow"
+                              : "text-muted hover:text-foreground"
+                          }`}
+                          onClick={() => setActiveModalTab("video")}
+                        >
+                          Video
+                        </button>
+                      )}
+                      {modalData.hasDiagram && (
+                        <button
+                          className={`px-4 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+                            activeModalTab === "diagram"
+                              ? "bg-primary text-black shadow-glow"
+                              : "text-muted hover:text-foreground"
+                          }`}
+                          onClick={() => setActiveModalTab("diagram")}
+                        >
+                          Architecture
+                        </button>
+                      )}
+                      {modalData.image && (
+                        <button
+                          className={`px-4 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+                            activeModalTab === "image"
+                              ? "bg-primary text-black shadow-glow"
+                              : "text-muted hover:text-foreground"
+                          }`}
+                          onClick={() => setActiveModalTab("image")}
+                        >
+                          Mockup
+                        </button>
+                      )}
+                    </div>
+                  )}
+
+                  <button
+                    className="flex items-center gap-2 text-muted hover:text-primary transition-all bg-surface border border-border-muted px-4 py-2 rounded-xl cursor-pointer"
+                    onClick={() => setModalData(null)}
+                  >
+                    <span className="material-symbols-outlined text-base">
+                      close
+                    </span>
+                    <span className="text-sm font-semibold">Close</span>
+                  </button>
+                </div>
               </div>
 
-              {modalData.type === "image" ? (
-                <img
-                  src={modalData.content}
-                  alt={modalData.title}
-                  className="max-w-full max-h-[80vh] object-contain rounded-2xl border border-border shadow-2xl bg-surface"
-                />
-              ) : (
-                <div className="w-full h-[65vh] md:h-[75vh] bg-surface border border-border rounded-2xl relative overflow-hidden select-none">
-                  <Mermaid chart={modalData.content} responsive={false} interactive={true} />
+              {activeModalTab === "video" && modalData.videoUrl ? (
+                <div className="w-full h-[60vh] md:h-[70vh] bg-black border border-border rounded-2xl relative overflow-hidden">
+                  <iframe
+                    src={modalData.videoUrl.replace(
+                      "youtube.com",
+                      "youtube-nocookie.com",
+                    )}
+                    title={modalData.title}
+                    className="w-full h-full border-0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    loading="lazy"
+                  />
                 </div>
-              )}
+              ) : activeModalTab === "image" && modalData.image ? (
+                <img
+                  src={modalData.image}
+                  alt={modalData.title}
+                  className="max-w-full max-h-[75vh] object-contain rounded-2xl border border-border shadow-2xl bg-surface"
+                />
+              ) : activeModalTab === "diagram" && modalData.hasDiagram ? (
+                <div className="w-full h-[60vh] md:h-[70vh] bg-surface border border-border rounded-2xl relative overflow-hidden select-none">
+                  {(() => {
+                    const diagram = getDiagram(modalData.id || 0, false);
+                    if (diagram && diagram.nodes.length > 0) {
+                      return <ReactFlowBlueprint nodes={diagram.nodes} edges={diagram.edges} preview={false} />;
+                    }
+                    return <div className="p-6 text-center text-muted font-mono">No blueprint found for project {modalData.id}</div>;
+                  })()}
+                </div>
+              ) : null}
             </motion.div>
           </motion.div>
         )}
@@ -173,7 +254,7 @@ const Projects: React.FC = () => {
                   onClick={() => setActiveFilter(tab)}
                   className={`px-5 py-2.5 text-xs font-bold rounded-xl transition-all ${
                     activeFilter === tab
-                      ? "bg-primary text-white shadow-glow"
+                      ? "bg-primary text-black shadow-glow"
                       : "text-muted hover:text-foreground hover:bg-white/5"
                   }`}
                 >
@@ -246,9 +327,12 @@ interface ProjectCardProps {
   publicUrl: string;
   t: (key: string, fallback: string) => string;
   onOpenModal: (data: {
-    type: "image" | "mermaid";
-    content: string;
+    id?: number;
     title: string;
+    image?: string;
+    hasDiagram?: boolean;
+    videoUrl?: string;
+    defaultTab: "image" | "diagram" | "video";
   }) => void;
   featured: boolean;
   index: number;
@@ -272,16 +356,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const metrics = t(`projects.p${project.id}.metrics`, project.metrics);
   const tags = PROJECT_TAGS[project.id] ?? [];
 
+  const getYoutubeId = (url: string) => {
+    const parts = url.split("/");
+    return parts[parts.length - 1];
+  };
+
   const openMedia = () => {
-    if (project.mermaid) {
-      onOpenModal({ type: "mermaid", content: project.mermaid, title });
-    } else if (project.image) {
-      onOpenModal({
-        type: "image",
-        content: `${publicUrl}projects/${project.image}`,
-        title,
-      });
-    }
+    onOpenModal({
+      id: project.id,
+      title,
+      image: project.image ? `${publicUrl}projects/${project.image}` : undefined,
+      hasDiagram: project.hasDiagram,
+      videoUrl: project.videoUrl,
+      defaultTab: project.videoUrl ? "video" : (project.hasDiagram ? "diagram" : "image"),
+    });
   };
 
   return (
@@ -300,29 +388,39 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     >
       <div className="flex flex-col h-full">
         {/* Media area for featured cards or cards with media */}
-        {(featured || project.mermaid || project.image || project.videoUrl) && (
+        {(featured || project.hasDiagram || project.image || project.videoUrl) && (
           <div
             className={`relative mb-6 rounded-xl overflow-hidden bg-background/50 border border-border-muted ${featured ? "h-64 sm:h-80 md:h-[450px]" : "h-48"}`}
           >
             <button
               className="w-full h-full flex items-center justify-center cursor-zoom-in group-hover:scale-105 transition-transform duration-700"
               onClick={openMedia}
-              disabled={!project.mermaid && !project.image}
+              disabled={!project.hasDiagram && !project.image && !project.videoUrl}
             >
               {project.videoUrl ? (
-                <iframe
-                  src={project.videoUrl.replace(
-                    "youtube.com",
-                    "youtube-nocookie.com",
-                  )}
-                  title={title}
-                  className="w-full h-full border-0 pointer-events-none"
-                  loading="lazy"
-                />
-              ) : project.mermaid ? (
-                <div className="w-full h-full p-6 flex items-center justify-center pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity">
-                  <Mermaid chart={project.mermaid} />
+                <div className="relative w-full h-full group/video">
+                  <img
+                    src={`https://img.youtube.com/vi/${getYoutubeId(project.videoUrl)}/maxresdefault.jpg`}
+                    alt={title}
+                    className="w-full h-full object-cover opacity-60 group-hover/video:opacity-85 transition-opacity"
+                    loading="lazy"
+                  />
+                  {/* Play Icon Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="w-14 h-14 rounded-full bg-primary/20 border border-primary text-primary flex items-center justify-center shadow-glow group-hover/video:scale-110 group-hover/video:bg-primary group-hover/video:text-white transition-all duration-300">
+                      <span className="material-symbols-outlined text-3xl pl-1">play_arrow</span>
+                    </div>
+                  </div>
                 </div>
+              ) : project.hasDiagram ? (
+                (() => {
+                  const diagram = getDiagram(project.id, !featured);
+                  return (
+                    <div className="w-full h-full pointer-events-none select-none opacity-80 group-hover:opacity-100 transition-opacity">
+                      <ReactFlowBlueprint nodes={diagram.nodes} edges={diagram.edges} preview={true} />
+                    </div>
+                  );
+                })()
               ) : project.image ? (
                 <img
                   alt={`${title} — ${description}`}
@@ -353,20 +451,71 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                   rel="noopener noreferrer"
                   className="w-8 h-8 rounded-lg bg-surface/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-foreground hover:bg-primary hover:text-white transition-all shadow-lg"
                   onClick={(e) => e.stopPropagation()}
+                  title="View Repository"
                 >
                   <FaGithub size={16} />
                 </a>
               )}
-              {(project.mermaid || project.image) && (
+              {project.image && (
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    openMedia();
+                    onOpenModal({
+                      id: project.id,
+                      title,
+                      image: `${publicUrl}projects/${project.image}`,
+                      hasDiagram: project.hasDiagram,
+                      videoUrl: project.videoUrl,
+                      defaultTab: "image",
+                    });
                   }}
-                  className="w-8 h-8 rounded-lg bg-surface/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-foreground hover:bg-primary hover:text-white transition-all shadow-lg"
+                  className="w-8 h-8 rounded-lg bg-surface/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-foreground hover:bg-primary hover:text-white transition-all shadow-lg cursor-pointer"
+                  title="View Mockup Image"
                 >
                   <span className="material-symbols-outlined text-sm">
-                    fullscreen
+                    image
+                  </span>
+                </button>
+              )}
+              {project.hasDiagram && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onOpenModal({
+                      id: project.id,
+                      title,
+                      image: project.image ? `${publicUrl}projects/${project.image}` : undefined,
+                      hasDiagram: project.hasDiagram,
+                      videoUrl: project.videoUrl,
+                      defaultTab: "diagram",
+                    });
+                  }}
+                  className="w-8 h-8 rounded-lg bg-surface/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-foreground hover:bg-primary hover:text-white transition-all shadow-lg cursor-pointer"
+                  title="View Architecture Diagram"
+                >
+                  <span className="material-symbols-outlined text-sm">
+                    account_tree
+                  </span>
+                </button>
+              )}
+              {project.videoUrl && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onOpenModal({
+                      id: project.id,
+                      title,
+                      image: project.image ? `${publicUrl}projects/${project.image}` : undefined,
+                      hasDiagram: project.hasDiagram,
+                      videoUrl: project.videoUrl,
+                      defaultTab: "video",
+                    });
+                  }}
+                  className="w-8 h-8 rounded-lg bg-surface/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-foreground hover:bg-primary hover:text-white transition-all shadow-lg cursor-pointer"
+                  title="Play Showcase Video"
+                >
+                  <span className="material-symbols-outlined text-sm">
+                    play_circle
                   </span>
                 </button>
               )}
@@ -424,7 +573,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 href={project.repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary text-white font-bold rounded-2xl hover:shadow-glow hover:-translate-y-1 transition-all group/btn"
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary text-black font-bold rounded-2xl hover:shadow-glow hover:-translate-y-1 transition-all group/btn"
               >
                 <FaGithub size={20} />
                 <span>View Repository</span>

@@ -83,8 +83,7 @@
         circle at 50% 50%,
         rgba(191, 148, 255, 0.03) 0%,
         transparent 100%
-      ),
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      );
     background-attachment: fixed;
   }
 }
@@ -281,3 +280,339 @@ html {
   transform: translateY(0);
   pointer-events: auto;
 }
+
+/* ────────────────────────────────────────────────────────── */
+/* ── Mermaid SVG Premium Styling & Animations ──────────────── */
+/* ────────────────────────────────────────────────────────── */
+
+/* Base SVG setup */
+.mermaid-container svg, 
+div[ref="viewportRef"] svg {
+  font-family: var(--font-display), var(--font-mono), monospace !important;
+  background: transparent !important;
+}
+
+/* Subgraphs (clusters) styling */
+.mermaid-container .cluster rect,
+div[ref="viewportRef"] .cluster rect {
+  fill: rgba(191, 148, 255, 0.015) !important;
+  stroke: rgba(191, 148, 255, 0.15) !important;
+  stroke-width: 1px !important;
+  rx: 12px !important;
+  ry: 12px !important;
+  transition: stroke 0.3s ease, fill 0.3s ease;
+}
+
+.dark .mermaid-container .cluster rect,
+.dark div[ref="viewportRef"] .cluster rect {
+  fill: rgba(10, 10, 12, 0.35) !important;
+  stroke: rgba(255, 255, 255, 0.08) !important;
+}
+
+.mermaid-container .cluster rect:hover,
+div[ref="viewportRef"] .cluster rect:hover {
+  stroke: rgba(191, 148, 255, 0.35) !important;
+  fill: rgba(191, 148, 255, 0.03) !important;
+}
+
+/* Node typography and titles */
+.mermaid-container .cluster .label text,
+div[ref="viewportRef"] .cluster .label text {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  fill: var(--text-muted) !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  font-size: 11px !important;
+}
+
+/* Default flowchart node styling */
+.mermaid-container .node rect,
+.mermaid-container .node circle,
+.mermaid-container .node polygon,
+.mermaid-container .node path,
+div[ref="viewportRef"] .node rect,
+div[ref="viewportRef"] .node circle,
+div[ref="viewportRef"] .node polygon,
+div[ref="viewportRef"] .node path {
+  stroke-width: 1.5px !important;
+  transition: all 300ms cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  fill: var(--surface) !important;
+  stroke: var(--border) !important;
+  cursor: pointer;
+}
+
+.dark .mermaid-container .node rect,
+.dark .mermaid-container .node circle,
+.dark .mermaid-container .node polygon,
+.dark .mermaid-container .node path,
+.dark div[ref="viewportRef"] .node rect,
+.dark div[ref="viewportRef"] .node circle,
+.dark div[ref="viewportRef"] .node polygon,
+.dark div[ref="viewportRef"] .node path {
+  fill: rgba(10, 10, 12, 0.85) !important;
+  stroke: rgba(255, 255, 255, 0.1) !important;
+}
+
+.mermaid-container .node:hover rect,
+.mermaid-container .node:hover circle,
+.mermaid-container .node:hover polygon,
+.mermaid-container .node:hover path,
+div[ref="viewportRef"] .node:hover rect,
+div[ref="viewportRef"] .node:hover circle,
+div[ref="viewportRef"] .node:hover polygon,
+div[ref="viewportRef"] .node:hover path {
+  stroke: var(--color-primary) !important;
+  fill: var(--surface-raised) !important;
+  filter: drop-shadow(0 4px 12px rgba(191, 148, 255, 0.25)) !important;
+}
+
+/* Monospace variables and codes inside nodes */
+.mermaid-container .node .label,
+div[ref="viewportRef"] .node .label {
+  font-family: var(--font-mono), monospace !important;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+  fill: var(--text) !important;
+}
+
+/* Edge path lines styling */
+.mermaid-container .edgePath .path,
+div[ref="viewportRef"] .edgePath .path {
+  stroke: var(--text-muted) !important;
+  stroke-opacity: 0.35 !important;
+  stroke-width: 1.5px !important;
+  transition: stroke 0.3s, stroke-width 0.3s;
+}
+
+.mermaid-container .edgePath:hover .path,
+div[ref="viewportRef"] .edgePath:hover .path {
+  stroke: var(--color-primary) !important;
+  stroke-opacity: 0.85 !important;
+  stroke-width: 2px !important;
+}
+
+/* Thick edges represent core triggers or active paths */
+.mermaid-container .edgePath.edgeThickness-thick .path,
+div[ref="viewportRef"] .edgePath.edgeThickness-thick .path {
+  stroke: var(--color-primary) !important;
+  stroke-opacity: 0.7 !important;
+  stroke-width: 2.5px !important;
+}
+
+/* Dash flow animation for dotted lines (indicating background channels / async syncs) */
+@keyframes mermaidFlow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.mermaid-container .edgePath .path.edgeStyle-dashed,
+div[ref="viewportRef"] .edgePath .path.edgeStyle-dashed {
+  stroke-dasharray: 6, 4 !important;
+  animation: mermaidFlow 1s linear infinite !important;
+  stroke: var(--color-accent) !important;
+  stroke-opacity: 0.6 !important;
+}
+
+/* Edge labels */
+.mermaid-container .edgeLabel rect,
+div[ref="viewportRef"] .edgeLabel rect {
+  fill: var(--background) !important;
+  rx: 4px !important;
+  ry: 4px !important;
+  opacity: 0.95 !important;
+}
+
+.mermaid-container .edgeLabel text,
+div[ref="viewportRef"] .edgeLabel text {
+  font-family: var(--font-mono), monospace !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  fill: var(--text-muted) !important;
+}
+
+/* ────────────────────────────────────────────────────────── */
+/* ── Node Category Styling Classes ───────────────────────── */
+/* ────────────────────────────────────────────────────────── */
+
+/* 1. External / User Interface Node (Neon Cyan) */
+.mermaid-container .node.external rect,
+.mermaid-container .node.external circle,
+.mermaid-container .node.external polygon,
+.mermaid-container .node.external path,
+div[ref="viewportRef"] .node.external rect,
+div[ref="viewportRef"] .node.external circle,
+div[ref="viewportRef"] .node.external polygon,
+div[ref="viewportRef"] .node.external path {
+  stroke: #00f0ff !important;
+  fill: rgba(0, 240, 255, 0.02) !important;
+}
+.mermaid-container .node.external:hover rect,
+.mermaid-container .node.external:hover circle,
+div[ref="viewportRef"] .node.external:hover rect,
+div[ref="viewportRef"] .node.external:hover circle {
+  fill: rgba(0, 240, 255, 0.08) !important;
+  filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.45)) !important;
+}
+
+/* 2. AWS Components (AWS Orange) */
+.mermaid-container .node.aws rect,
+.mermaid-container .node.aws circle,
+.mermaid-container .node.aws polygon,
+.mermaid-container .node.aws path,
+div[ref="viewportRef"] .node.aws rect,
+div[ref="viewportRef"] .node.aws circle,
+div[ref="viewportRef"] .node.aws polygon,
+div[ref="viewportRef"] .node.aws path {
+  stroke: #ff9900 !important;
+  fill: rgba(255, 153, 0, 0.02) !important;
+}
+.mermaid-container .node.aws:hover rect,
+.mermaid-container .node.aws:hover circle,
+div[ref="viewportRef"] .node.aws:hover rect,
+div[ref="viewportRef"] .node.aws:hover circle {
+  fill: rgba(255, 153, 0, 0.08) !important;
+  filter: drop-shadow(0 0 10px rgba(255, 153, 0, 0.45)) !important;
+}
+
+/* 3. Azure Components (Azure Blue) */
+.mermaid-container .node.azure rect,
+.mermaid-container .node.azure circle,
+.mermaid-container .node.azure polygon,
+.mermaid-container .node.azure path,
+div[ref="viewportRef"] .node.azure rect,
+div[ref="viewportRef"] .node.azure circle,
+div[ref="viewportRef"] .node.azure polygon,
+div[ref="viewportRef"] .node.azure path {
+  stroke: #0089d6 !important;
+  fill: rgba(0, 137, 214, 0.02) !important;
+}
+.mermaid-container .node.azure:hover rect,
+.mermaid-container .node.azure:hover circle,
+div[ref="viewportRef"] .node.azure:hover rect,
+div[ref="viewportRef"] .node.azure:hover circle {
+  fill: rgba(0, 137, 214, 0.08) !important;
+  filter: drop-shadow(0 0 10px rgba(0, 137, 214, 0.45)) !important;
+}
+
+/* 4. Kubernetes / Orchestration Infrastructure (K8s Blue/Cyan) */
+.mermaid-container .node.k8s rect,
+.mermaid-container .node.k8s circle,
+.mermaid-container .node.k8s polygon,
+.mermaid-container .node.k8s path,
+div[ref="viewportRef"] .node.k8s rect,
+div[ref="viewportRef"] .node.k8s circle,
+div[ref="viewportRef"] .node.k8s polygon,
+div[ref="viewportRef"] .node.k8s path {
+  stroke: #326ce5 !important;
+  fill: rgba(50, 108, 229, 0.02) !important;
+}
+.mermaid-container .node.k8s:hover rect,
+.mermaid-container .node.k8s:hover circle,
+div[ref="viewportRef"] .node.k8s:hover rect,
+div[ref="viewportRef"] .node.k8s:hover circle {
+  fill: rgba(50, 108, 229, 0.08) !important;
+  filter: drop-shadow(0 0 10px rgba(50, 108, 229, 0.45)) !important;
+}
+
+/* 5. Core Applications & Services (Maximus Lavender) */
+.mermaid-container .node.app rect,
+.mermaid-container .node.app circle,
+.mermaid-container .node.app polygon,
+.mermaid-container .node.app path,
+div[ref="viewportRef"] .node.app rect,
+div[ref="viewportRef"] .node.app circle,
+div[ref="viewportRef"] .node.app polygon,
+div[ref="viewportRef"] .node.app path {
+  stroke: #bf94ff !important;
+  fill: rgba(191, 148, 255, 0.02) !important;
+}
+.mermaid-container .node.app:hover rect,
+.mermaid-container .node.app:hover circle,
+div[ref="viewportRef"] .node.app:hover rect,
+div[ref="viewportRef"] .node.app:hover circle {
+  fill: rgba(191, 148, 255, 0.08) !important;
+  filter: drop-shadow(0 0 10px rgba(191, 148, 255, 0.45)) !important;
+}
+
+/* 6. Storage, Databases & Queues (Emerald Green) */
+.mermaid-container .node.storage rect,
+.mermaid-container .node.storage circle,
+.mermaid-container .node.storage polygon,
+.mermaid-container .node.storage path,
+div[ref="viewportRef"] .node.storage rect,
+div[ref="viewportRef"] .node.storage circle,
+div[ref="viewportRef"] .node.storage polygon,
+div[ref="viewportRef"] .node.storage path {
+  stroke: #10b981 !important;
+  fill: rgba(16, 185, 129, 0.02) !important;
+}
+.mermaid-container .node.storage:hover rect,
+.mermaid-container .node.storage:hover circle,
+div[ref="viewportRef"] .node.storage:hover rect,
+div[ref="viewportRef"] .node.storage:hover circle {
+  fill: rgba(16, 185, 129, 0.08) !important;
+  filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.45)) !important;
+}
+
+/* 7. Security Components (Crimson Red / High Performance Warning) */
+.mermaid-container .node.security rect,
+.mermaid-container .node.security circle,
+.mermaid-container .node.security polygon,
+.mermaid-container .node.security path,
+div[ref="viewportRef"] .node.security rect,
+div[ref="viewportRef"] .node.security circle,
+div[ref="viewportRef"] .node.security polygon,
+div[ref="viewportRef"] .node.security path {
+  stroke: #ff3e3e !important;
+  fill: rgba(255, 62, 62, 0.02) !important;
+}
+.mermaid-container .node.security:hover rect,
+.mermaid-container .node.security:hover circle,
+div[ref="viewportRef"] .node.security:hover rect,
+div[ref="viewportRef"] .node.security:hover circle {
+  fill: rgba(255, 62, 62, 0.08) !important;
+  filter: drop-shadow(0 0 10px rgba(255, 62, 62, 0.45)) !important;
+}
+
+/* 8. Observability & Monitoring (Indigo / Purple) */
+.mermaid-container .node.monitor rect,
+.mermaid-container .node.monitor circle,
+.mermaid-container .node.monitor polygon,
+.mermaid-container .node.monitor path,
+div[ref="viewportRef"] .node.monitor rect,
+div[ref="viewportRef"] .node.monitor circle,
+div[ref="viewportRef"] .node.monitor polygon,
+div[ref="viewportRef"] .node.monitor path {
+  stroke: #6366f1 !important;
+  fill: rgba(99, 102, 241, 0.02) !important;
+}
+.mermaid-container .node.monitor:hover rect,
+.mermaid-container .node.monitor:hover circle,
+div[ref="viewportRef"] .node.monitor:hover rect,
+div[ref="viewportRef"] .node.monitor:hover circle {
+  fill: rgba(99, 102, 241, 0.08) !important;
+  filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.45)) !important;
+}
+
+/* 9. Edge Computing Nodes (Amber / Orange-Yellow) */
+.mermaid-container .node.edge rect,
+.mermaid-container .node.edge circle,
+.mermaid-container .node.edge polygon,
+.mermaid-container .node.edge path,
+div[ref="viewportRef"] .node.edge rect,
+div[ref="viewportRef"] .node.edge circle,
+div[ref="viewportRef"] .node.edge polygon,
+div[ref="viewportRef"] .node.edge path {
+  stroke: #f59e0b !important;
+  fill: rgba(245, 158, 11, 0.02) !important;
+}
+.mermaid-container .node.edge:hover rect,
+.mermaid-container .node.edge:hover circle,
+div[ref="viewportRef"] .node.edge:hover rect,
+div[ref="viewportRef"] .node.edge:hover circle {
+  fill: rgba(245, 158, 11, 0.08) !important;
+  filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.45)) !important;
+}
+

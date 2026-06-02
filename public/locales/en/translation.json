@@ -30,7 +30,15 @@
     "subtitle": "Cloud Engineering | SRE | DevSecOps",
     "description": "Building automated, secure, and resilient cloud infrastructure — from event-driven SOAR pipelines and SRE observability stacks to GitOps-driven Kubernetes platforms.",
     "viewProjects": "Explore Engineering Projects",
-    "getInTouch": "Establish Connection"
+    "getInTouch": "Establish Connection",
+    "eyebrow": "ARCHITECTING RAW POWER & INTELLIGENCE // EST. 2026",
+    "roleSre": "SRE & DEVSECOPS",
+    "roleK8s": "KUBERNETES ENTHUSIAST",
+    "roleIron": "IRON & CODE",
+    "quote": "\"I want to be the strongest and most intelligent person I know.\"",
+    "bio": "Architecting Kubernetes clusters in my homelab, pushing my limits in the gym, and riding motorcycles. I bring that same discipline to building resilient cloud systems and automated security pipelines.",
+    "btnDeepDive": "Initialize Deep Dive",
+    "btnDossier": "Export Dossier (CV)"
   },
   "about": {
     "bio": "I am Maximus. My philosophy is simple: forge discipline in the iron room, push limits on the motorcycle, and architect unbreakable systems in my Kubernetes homelab. I bring that same relentless drive and edge to my professional work—building secure, self-healing cloud infrastructure and automated threat response pipelines. I don't just maintain systems; I engineer raw performance and resilience from the ground up.",

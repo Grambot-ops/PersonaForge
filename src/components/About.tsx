@@ -13,10 +13,10 @@ const COMPETENCIES = [
 
 /** Languages spoken. Labels and tooltips use translation keys. */
 const LANGUAGES = [
-  { lang: "cv.langDutch", level: "Native" },
-  { lang: "cv.langKinyarwanda", level: "Native" },
-  { lang: "cv.langEnglish", level: "Full Professional" },
-  { lang: "cv.langFrench", level: "Professional Working" },
+  { lang: "cv.langDutch" },
+  { lang: "cv.langKinyarwanda" },
+  { lang: "cv.langEnglish" },
+  { lang: "cv.langFrench" },
 ] as const;
 
 /** Performance metrics re-framing hobbies as engineering specs. */
@@ -104,9 +104,9 @@ const About: React.FC = () => {
               <div className="absolute bottom-6 left-6 right-6 p-5 rounded-xl border border-white/20 bg-white/10 dark:bg-black/40 backdrop-blur-md shadow-2xl">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-xl font-display font-bold text-white tracking-tight drop-shadow-md">
+                    <div className="text-xl font-display font-bold text-white tracking-tight drop-shadow-md">
                       Maximus Mukiza
-                    </h3>
+                    </div>
                     <p className="text-white/90 text-xs font-sans font-medium uppercase tracking-widest mt-0.5">
                       Cloud Engineering | SRE | DevSecOps
                     </p>
@@ -165,7 +165,7 @@ const About: React.FC = () => {
                 <a
                   href={`${publicUrl}CV_Maximus.pdf`}
                   download="CV_Maximus_Mukiza.pdf"
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-white font-display font-bold rounded-2xl hover:shadow-glow hover:-translate-y-0.5 transition-all group/cv focus-visible:ring-4 focus-visible:ring-primary/30 outline-none"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-black font-display font-bold rounded-2xl hover:shadow-glow hover:-translate-y-0.5 transition-all group/cv focus-visible:ring-4 focus-visible:ring-primary/30 outline-none"
                 >
                   <span className="material-symbols-outlined text-xl group-hover/cv:scale-110 transition-transform">download</span>
                   {t("about.downloadCv")}
@@ -220,10 +220,10 @@ const About: React.FC = () => {
                 <span className="material-symbols-outlined text-9xl">analytics</span>
             </div>
             
-            <h4 className="text-sm font-semibold text-primary uppercase tracking-[0.2em] mb-10 flex items-center gap-3">
+            <h3 className="text-sm font-semibold text-primary uppercase tracking-[0.2em] mb-10 flex items-center gap-3">
               <span className="w-10 h-px bg-primary/40" />
               {t("about.traitsTitle")}
-            </h4>
+            </h3>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
               {TRAITS.map((trait) => (
@@ -231,9 +231,9 @@ const About: React.FC = () => {
                   <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform duration-500">
                     <span className="material-symbols-outlined text-2xl">{trait.icon}</span>
                   </div>
-                  <h5 className="text-lg font-display font-bold text-foreground">
+                  <h4 className="text-lg font-display font-bold text-foreground">
                     {t(`about.traits.${trait.id}`)}
-                  </h5>
+                  </h4>
                   <p className="text-muted text-sm leading-relaxed max-w-sm">
                     {t(`about.traits.${trait.id}Desc`)}
                   </p>
@@ -245,12 +245,12 @@ const About: React.FC = () => {
           {/* Performance Metrics - Spans 4 columns */}
           <div className="lg:col-span-4 bento-card h-full relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-primary/10 transition-colors" />
-            <h4 className="text-sm font-semibold text-muted uppercase tracking-wider mb-8 flex items-center gap-3">
+            <h3 className="text-sm font-semibold text-muted uppercase tracking-wider mb-8 flex items-center gap-3">
               <span className="material-symbols-outlined text-primary text-lg">
                 interests
               </span>
               {t("about.hobbiesTitle")}
-            </h4>
+            </h3>
             <div className="space-y-6">
               {PERFORMANCE_METRICS.map((metric) => (
                 <div key={metric.id} className="flex items-center gap-3">
@@ -277,12 +277,12 @@ const About: React.FC = () => {
 
           {/* Timeline - Spans 8 columns */}
           <div className="lg:col-span-8 bento-card h-full">
-            <h4 className="text-sm font-semibold text-muted uppercase tracking-wider mb-8 flex items-center gap-3">
+            <h3 className="text-sm font-semibold text-muted uppercase tracking-wider mb-8 flex items-center gap-3">
               <span className="material-symbols-outlined text-primary text-lg">
                 history
               </span>
               {t("cv.workExperienceTitle")}
-            </h4>
+            </h3>
             <div className="space-y-8">
               {TIMELINE.map((item, idx) => (
                 <div
@@ -317,13 +317,13 @@ const About: React.FC = () => {
           {/* Education & Languages - Spans 12 columns in mobile, grid-column management */}
           <div className="lg:col-span-12 grid grid-cols-1 sm:grid-cols-2 gap-8">
              {/* Education */}
-             <div className="bento-card !p-6 shadow-sm">
-                <h4 className="text-foreground font-bold text-sm mb-6 flex items-center gap-3">
+             <div className="bento-card !p-6 shadow-sm !justify-start gap-4">
+                <h3 className="text-foreground font-bold text-sm mb-6 flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
                     <span className="material-symbols-outlined text-base" aria-hidden="true">school</span>
                   </div>
                   {t("cv.educationTitle")}
-                </h4>
+                </h3>
                 <div className="space-y-6">
                   <div className="group">
                     <p className="text-foreground font-bold text-sm group-hover:text-primary transition-colors">Thomas More Hogeschool</p>
@@ -337,21 +337,18 @@ const About: React.FC = () => {
              </div>
 
              {/* Languages */}
-             <div className="bento-card !p-6 shadow-sm">
-                <h4 className="text-foreground font-bold text-sm mb-6 flex items-center gap-3">
+             <div className="bento-card !p-6 shadow-sm !justify-start gap-4">
+                <h3 className="text-foreground font-bold text-sm mb-6 flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
                     <span className="material-symbols-outlined text-base" aria-hidden="true">language</span>
                   </div>
                   {t("cv.languagesTitle")}
-                </h4>
-                <div className="flex flex-wrap gap-2">
+                </h3>
+                <div className="flex flex-wrap gap-3">
                   {LANGUAGES.map((item) => (
                     <div key={item.lang} className="px-3 py-2 bg-surface border border-border-muted rounded-lg transition-all hover:border-primary hover:bg-primary/5 group min-w-[120px]">
                       <p className="text-foreground font-bold text-xs mb-0.5 group-hover:text-primary transition-colors">
                         {t(item.lang)}
-                      </p>
-                      <p className="text-muted text-[9px] font-mono font-medium uppercase tracking-tighter opacity-70">
-                        {item.level}
                       </p>
                     </div>
                   ))}

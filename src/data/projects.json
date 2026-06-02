@@ -9,8 +9,7 @@
     "metrics": "Reduced infrastructure provisioning time by 70%, achieved 99.95% platform uptime",
     "learnings": "Expertise in GitOps workflows, Talos API-driven management, eBPF networking, and advanced Kubernetes security with Kyverno and Deepfence.",
     "repoUrl": "https://gitlab.com/it-factory-thomas-more/cloud-automation-and-defence/students/25-26/r0984339/hybrid-cloud-platform",
-    "image": "hybridcloud.png",
-    "mermaid": "graph TD\n    Dev([User / Platform Engineer])\n\n    subgraph School_Data_Center [\"On-Premise Data Center\"]\n        direction TB\n        subgraph Platform_Layer [\"Platform Interface\"]\n            KubeVela[\"KubeVela Platform<br/>(IDP1-5)\"]\n            ArgoCD[\"ArgoCD GitOps<br/>(DEPL1-2)\"]\n            Infracost[\"Infracost<br/>(FINO2)\"]\n        end\n\n        subgraph Infrastructure_Layer [\"Infrastructure Engine\"]\n            Crossplane{{\"Crossplane<br/>(DEPL3)\"}}\n            ESO[\"External Secrets Op<br/>(SECM1)\"]\n            Vault[(\"HashiCorp Vault<br/>(SECM1)\")]\n            Kyverno[\"Kyverno Policy<br/>(CNAP5)\"]\n        end\n\n        subgraph Application_Layer [\"Immich Stack\"]\n            ImmichServer(\"Immich Server<br/>(EVDA2)\")\n            ImmichML(\"Immich ML<br/>(EVDA2)\")\n            Otel[\"OpenTelemetry<br/>(OBSE3)\"]\n        end\n\n        subgraph Observability_Security [\"Defense Grid\"]\n            Deepfence[\"Deepfence CNAPP<br/>(CNAP1-6)\"]\n            Litmus[\"LitmusChaos<br/>(RELI1/2)\"]\n            Cilium[\"Cilium eBPF<br/>(OBSE5)\"]\n            PromGraf[\"Prometheus/Grafana<br/>(OBSE1/2/4)\"]\n        end\n    end\n\n    subgraph AWS_Cloud [\"AWS Learner Lab\"]\n        direction TB\n        SQS[\"AWS SQS Queue<br/>(EVDA1)\"]\n        RDS[(\"AWS RDS Database<br/>(HYMC2)\")]\n    end\n\n    %% Flows\n    Dev ==>|\"1. Scaffolds App\"| KubeVela\n    KubeVela -.->|\"2. Checks Cost\"| Infracost\n    KubeVela ==>|\"3. Triggers Sync\"| ArgoCD\n\n    ArgoCD -->|\"Deploys\"| ImmichServer\n    ArgoCD -->|\"Deploys\"| ImmichML\n    ArgoCD -->|\"Configures\"| Crossplane\n\n    Vault -->|\"Syncs Creds\"| ESO\n    ESO -->|\"Injects AWS Creds\"| Crossplane\n    ESO -->|\"Injects App Secrets\"| ImmichServer\n\n    Crossplane -- \"Provision via AWS API\" --> SQS\n    Crossplane -- \"Provision via AWS API\" --> RDS\n\n    ImmichServer -->|\"Stores Photos\"| Garage\n    ImmichServer -->|\"Persists Data\"| CNPG\n    ImmichML -->|\"Analyzes\"| ImmichServer\n\n    Cilium <==>|\"WireGuard VPN\"| AWS_Cloud\n\n    Deepfence -.->|\"Scans\"| Application_Layer\n    Deepfence -.->|\"CSPM Scan\"| AWS_Cloud\n    Otel -->|\"Traces\"| PromGraf\n    Litmus -.->|\"Attack\"| ImmichServer\n    Kyverno -.->|\"Enforces\"| Application_Layer"
+    "hasDiagram": true
   },
   {
     "id": 6,
@@ -22,8 +21,7 @@
     "metrics": "Automated cross-cloud deployments, reducing manual configuration errors by 80%",
     "learnings": "Mastered multi-provider Terraform states, automated container orchestrations, and secure cross-cloud networking.",
     "repoUrl": "https://gitlab.com/it-factory-thomas-more/cloud-engineering/25-26/r0984339/terra-multi-cloud",
-    "image": "terramulticloud.png",
-    "mermaid": "graph TD\n    Internet[INTERNET]\n    \n    subgraph AWS_Cloud [\"AWS Infrastructure\"]\n        direction TB\n        ALB[ALB Public]\n        ASG[ASG Private / Frontend]\n        NAT[NAT Gateway]\n    end\n    \n    subgraph Azure_Cloud [\"Azure Infrastructure\"]\n        direction TB\n        ACA[Container App / Hangman API]\n        ACR[ACR Registry]\n    end\n    \n    Terraform[Docker Provider / Terraform]\n    \n    Internet --> ALB\n    Internet --> ACA\n    ALB --> ASG\n    ASG --> NAT\n    Terraform -->|Push| ACR\n    ACR -->|Pull| ACA"
+    "hasDiagram": true
   },
   {
     "id": 2,
@@ -35,8 +33,7 @@
     "metrics": "Achieved 99.9% application availability, reduced security vulnerabilities by 60%",
     "learnings": "Mastered IaC with OpenTofu, designed cloud-native 3-tier architecture, and applied DevSecOps principles.",
     "repoUrl": "https://github.com/Grambot-ops/REACT-SEC-OPS",
-    "image": "reactsecops.png",
-    "mermaid": "graph TB\n    subgraph UserZone [\"User Access Layer\"]\n        User[\"User Browser\"]\n    end\n\n    subgraph PresentationZone [\"Presentation Tier\"]\n        CF[\"CloudFront Distribution<br/>(Global CDN)\"]\n        S3Frontend[\"S3 Bucket<br/>(React Hosting)\"]\n    end\n\n    subgraph ApplicationZone [\"Application Tier\"]\n        ALB[\"Application Load Balancer\"]\n        subgraph ECSZone [\"ECS Fargate Cluster\"]\n            ECSService[\"ECS Service / Node.js API\"]\n            ECSTask[\"ECS Task / Docker Container\"]\n        end\n        ECR[\"ECR Repository\"]\n    end\n\n    subgraph DataZone [\"Data Tier\"]\n        Aurora[(\"Aurora PostgreSQL\")]\n        SecretsManager[\"AWS Secrets Manager\"]\n    end\n\n    subgraph NetworkZone [\"Isolated Networking\"]\n        VPC[\"VPC Infrastructure\"]\n        SecurityGroups[\"Security Groups\"]\n    end\n\n    subgraph CICDZone [\"Deployment Pipeline\"]\n        BackendPipeline[\"Backend CI/CD\"]\n        FrontendPipeline[\"Frontend CI/CD\"]\n        end\n\n    %% Connections\n    User ---|\"HTTPS\"| CF\n    CF ---|\"Static Content\"| S3Frontend\n    CF ---|\"API Requests\"| ALB\n    ALB ---|\"Load Balanced\"| ECSService\n    ECSService --- ECSTask\n    ECSTask ---|\"Queries\"| Aurora\n    ECSTask ---|\"Fetch Creds\"| SecretsManager\n\n    BackendPipeline --> ECR\n    BackendPipeline --> ECSService\n    FrontendPipeline --> S3Frontend\n    FrontendPipeline --> CF"
+    "hasDiagram": true
   },
   {
     "id": 8,
@@ -47,9 +44,8 @@
     "realizations": "Operationalized a high-availability cluster with 99.99% reliability and automated failover protocols.",
     "metrics": "Achieved 99.99% uptime, reduced deployment risk by 60%",
     "learnings": "Collaborative DevOps practices, advanced Pulumi automation, and GitLab CI/CD pipelines.",
-    "repoUrl": "https://gitlab.com/it-factory-thomas-more/cloud-engineering/25-26/iac-challenge-team-3",
-    "image": "iacchallenge.png",
-    "mermaid": "graph TD\n    User[User] -->|HTTP| LB[Application Load Balancer]\n    subgraph AWS Cloud\n        subgraph VPC\n            subgraph Public Subnets\n                LB\n                NAT[NAT Gateway]\n            end\n            subgraph Private Subnets\n                ECS[ECS Fargate Tasks]\n                RDS[(RDS MySQL)]\n            end\n        end\n        Secrets[AWS Secrets Manager]\n    end\n    ECS -->|Read Creds| Secrets\n    ECS -->|Connect| RDS\n    ECS -->|Pull Image| ECR[GitLab Registry]"
+    "repoUrl": "https://gitlab.com/it-factory-thomas-more/iac-challenge-team-3",
+    "hasDiagram": true
   },
   {
     "id": 5,
@@ -61,8 +57,7 @@
     "metrics": "Achieved 95% accuracy in real-time detection, reduced false positives by 70%",
     "learnings": "Expertise in model quantisation for edge devices and streaming telemetry with OpenTelemetry.",
     "videoUrl": "https://www.youtube.com/embed/Z2LBS0gXR6E",
-    "image": "smartbridge.png",
-    "mermaid": "graph LR\n    subgraph DataAcquisition [\"High-Fidelity Sensors\"]\n        Audio[\"Acoustic Array\"]\n        Video[\"4K Optic Stream\"]\n    end\n\n    subgraph EdgeCompute [\"Edge Inference Node\"]\n        Preprocessing[\"Signal Processing\"]\n        subgraph ModelInfer [\"Multi-Modal ML Engine\"]\n            CNN[\"YOLOv8 Vision\"]\n            AudioNet[\"Audio Classifier\"]\n        end\n        Logic[\"Decision Logic\"]\n    end\n\n    subgraph MLOps [\"Management & Monitoring\"]\n        DVC[\"DVC Versioning\"]\n        Prom[\"Prometheus Metrics\"]\n        Grafana[\"Grafana Dash\"]\n        MLflow[\"MLflow Registry\"]\n    end\n\n    %% Connections\n    Audio --> Preprocessing\n    Video --> Preprocessing\n    Preprocessing --> CNN\n    Preprocessing --> AudioNet\n    CNN --> Logic\n    AudioNet --> Logic\n    \n    Logic --> Prom\n    Prom --> Grafana\n    MLflow -.-> CNN\n    MLflow -.-> AudioNet\n    Logic ==> Bridge((Bridge Actuation))"
+    "hasDiagram": false
   },
   {
     "id": 3,

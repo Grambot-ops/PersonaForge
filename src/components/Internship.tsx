@@ -1,6 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { FaFileAlt, FaFileCode, FaFileSignature } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
+import ReactFlowBlueprint from "./ReactFlowBlueprint";
+import { getDiagram } from "../data/diagrams";
 
 /**
  * Internship section.
@@ -10,6 +13,7 @@ import { FaFileAlt, FaFileCode, FaFileSignature } from "react-icons/fa";
 const Internship: React.FC = () => {
   const { t } = useTranslation();
   const publicUrl = import.meta.env.BASE_URL;
+  const [isDiagramExpanded, setIsDiagramExpanded] = React.useState(false);
 
   const projectSteps = [
     {
@@ -251,52 +255,24 @@ const Internship: React.FC = () => {
                 </span>
                 {t("internship.architectureTitle")}
               </h4>
-              <div className="flex flex-col gap-3">
-                {[
-                  {
-                    from: "SentinelOne (Alert)",
-                    to: "FastAPI Webhook",
-                    arrow: "→ HTTP POST",
-                  },
-                  {
-                    from: "FastAPI Webhook",
-                    to: "RabbitMQ Queue",
-                    arrow: "→ Publish",
-                  },
-                  {
-                    from: "RabbitMQ Queue",
-                    to: "Enrichment Worker",
-                    arrow: "→ Consume",
-                  },
-                  {
-                    from: "Enrichment Worker",
-                    to: "MISP / OTX",
-                    arrow: "→ Threat Intel",
-                  },
-                  {
-                    from: "Enrichment Worker",
-                    to: "Ticketing Engine",
-                    arrow: "→ Enriched JSON",
-                  },
-                  {
-                    from: "Ticketing Engine",
-                    to: "Datto Autotask",
-                    arrow: "→ API Create",
-                  },
-                ].map((row, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-4 text-[11px] md:text-xs"
-                  >
-                    <span className="w-32 md:w-40 px-3 py-2 bg-surface-raised border border-border-muted rounded-xl text-foreground font-medium text-center">
-                      {row.from}
-                    </span>
-                    <span className="text-primary font-bold">{row.arrow}</span>
-                    <span className="flex-1 px-3 py-2 bg-surface-raised border border-border-muted rounded-xl text-foreground font-medium text-center">
-                      {row.to}
-                    </span>
+              <div 
+                className="group/flow relative cursor-pointer w-full h-[350px] bg-[#020202]/30 border border-border-muted rounded-2xl overflow-hidden shadow-inner transition-colors hover:border-primary/40"
+                onClick={() => setIsDiagramExpanded(true)}
+              >
+                <div className="w-full h-full pointer-events-none select-none opacity-80 group-hover/flow:opacity-100 transition-opacity">
+                  {(() => {
+                    const diagram = getDiagram(100, false);
+                    return <ReactFlowBlueprint nodes={diagram.nodes} edges={diagram.edges} preview={true} />;
+                  })()}
+                </div>
+                {/* Hover Click overlay */}
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/flow:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2 backdrop-blur-[1px]">
+                  <div className="px-4 py-2 bg-primary text-black text-xs font-bold rounded-xl shadow-glow flex items-center gap-2 animate-pulse-soft">
+                    <span className="material-symbols-outlined text-base">zoom_in</span>
+                    Inspect Architecture
                   </div>
-                ))}
+                  <p className="text-[10px] font-mono text-white/70">Click to interact in full screen</p>
+                </div>
               </div>
             </div>
           </div>
@@ -382,6 +358,58 @@ const Internship: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Lightbox Modal for Internship Diagram */}
+      <AnimatePresence>
+        {isDiagramExpanded && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-background/95 backdrop-blur-md p-4 md:p-10"
+            onClick={() => setIsDiagramExpanded(false)}
+            role="dialog"
+            aria-modal="true"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 15 }}
+              transition={{ type: "spring", damping: 28, stiffness: 260 }}
+              className="relative w-full max-w-[95vw] h-[85vh] bg-[#020202] border border-border rounded-2xl flex flex-col p-6 shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h3 className="text-foreground font-display font-bold text-lg mb-1">
+                    {t("internship.architectureTitle")}
+                  </h3>
+                  <p className="text-[10px] font-mono text-muted uppercase tracking-wider">
+                    Interactive System Architecture Blueprint
+                  </p>
+                </div>
+                <button
+                  className="flex items-center gap-2 text-muted hover:text-primary transition-all bg-surface border border-border-muted px-4 py-2 rounded-xl cursor-pointer"
+                  onClick={() => setIsDiagramExpanded(false)}
+                >
+                  <span className="material-symbols-outlined text-base">close</span>
+                  <span className="text-sm font-semibold">Close</span>
+                </button>
+              </div>
+
+              {/* Diagram */}
+              <div className="flex-1 w-full bg-surface border border-border rounded-xl relative overflow-hidden select-none">
+                {(() => {
+                  const diagram = getDiagram(100, false);
+                  return <ReactFlowBlueprint nodes={diagram.nodes} edges={diagram.edges} preview={false} />;
+                })()}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

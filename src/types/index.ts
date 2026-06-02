@@ -10,7 +10,7 @@ export interface Project {
   videoUrl?: string;
   repoUrl?: string;
   image?: string;
-  mermaid?: string;
+  hasDiagram?: boolean;
 }
 
 export interface ContactForm {

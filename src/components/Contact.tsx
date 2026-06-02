@@ -3,8 +3,8 @@ import {useTranslation} from 'react-i18next';
 import {FaGithub, FaLinkedin} from 'react-icons/fa';
 import {ContactForm} from '../types';
 
-const GithubIcon = FaGithub as React.ElementType;
-const LinkedinIcon = FaLinkedin as React.ElementType;
+const GithubIcon = FaGithub as any;
+const LinkedinIcon = FaLinkedin as any;
 
 /** Social / info links shown in the left column. */
 const SOCIAL_LINKS = [
@@ -177,7 +177,6 @@ const Contact: React.FC = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-3 group focus-visible:ring-2 focus-visible:ring-primary rounded-lg outline-none"
-                        aria-label={`${link.label}: ${link.sub}`}
                       >
                         <span className="w-9 h-9 flex items-center justify-center rounded-lg bg-primary/10 border border-primary/20 text-primary group-hover:bg-primary group-hover:text-white transition-all flex-shrink-0">
                           {link.id === 'github' ? (
@@ -194,7 +193,7 @@ const Contact: React.FC = () => {
                         </div>
                       </a>
                     ) : (
-                      <div className="flex items-center gap-3" aria-label={`${link.label}: ${link.sub}`}>
+                      <div className="flex items-center gap-3">
                         <span className="w-9 h-9 flex items-center justify-center rounded-lg bg-surface-raised border border-border-muted text-muted flex-shrink-0">
                           <span
                             className="material-symbols-outlined text-base"
@@ -218,7 +217,6 @@ const Contact: React.FC = () => {
             <a
               href={`mailto:${t('contact.emailAddress', 'maximus.mukiza@student.thomasmore.be')}`}
               className="flex items-center gap-3 w-full bg-surface border border-border-muted rounded-2xl px-6 py-4 hover:border-primary/40 hover:bg-primary/5 transition-all group focus-visible:ring-2 focus-visible:ring-primary outline-none shadow-sm"
-              aria-label="Send email to Maximus Mukiza"
             >
               <span className="w-9 h-9 flex items-center justify-center rounded-lg bg-primary/10 border border-primary/20 text-primary group-hover:bg-primary group-hover:text-white transition-all flex-shrink-0">
                 <span className="material-symbols-outlined text-base" aria-hidden="true">mail</span>
@@ -387,7 +385,7 @@ const Contact: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-primary text-white font-semibold py-3.5 rounded-lg hover:bg-primary-dark transition-all flex items-center justify-center gap-2 text-sm shadow-sm hover:shadow-glow disabled:opacity-60 disabled:cursor-not-allowed active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-primary/40 outline-none"
+                    className="w-full bg-primary text-black font-semibold py-3.5 rounded-lg hover:bg-primary-dark transition-all flex items-center justify-center gap-2 text-sm shadow-sm hover:shadow-glow disabled:opacity-60 disabled:cursor-not-allowed active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-primary/40 outline-none"
                   >
                     {isSubmitting ? (
                       <>
